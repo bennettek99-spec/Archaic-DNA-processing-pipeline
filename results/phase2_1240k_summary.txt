@@ -1,0 +1,48 @@
+Phase 2 dataset preparation — panel 1240k
+anno rows: 23,089   genotyped: 23,089
+RETAINED (Eurasian ancient, QC-pass): 15,443
+EXCLUDED: 7,646
+
+Exclusion reasons (grouped):
+  present_day               3,967
+  non_eurasian              1,950
+  low_snps                  1,305
+  qc_assessment               402
+  reference_or_archaic         22
+
+Retained — non-fatal flags:
+  low_power                 3,299
+  questionable                634
+  no_coords                    51
+
+Retained — by era (BP):
+  0-3k (hist/IA-MBA)        7,934
+  3-5k (Neo-EBA)            3,826
+  5-8k (Neolithic)          3,093
+  8-12k (Meso/EpiPal)         487
+  12k+ (UP)                   103
+  no_date                       0
+
+Retained — top 15 countries:
+  Russia                    1,611
+  Hungary                   1,409
+  United Kingdom            1,213
+  China                       875
+  Austria                     749
+  Italy                       700
+  Germany                     660
+  Denmark                     613
+  Spain                       598
+  France                      527
+  Czechia                     477
+  Turkey                      465
+  Belgium                     445
+  Ukraine                     403
+  Poland                      372
+
+Retained — SNP coverage quartiles:
+    0%  30,033
+   25%  251,043
+   50%  618,313
+   75%  833,734
+  100%  1,150,293

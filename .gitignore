@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Large AADR genotype data — lives outside the repo (C:\Users\benne\aadr_v66\).
+# Guard against accidentally committing any copy.
+*.geno
+*.snp
+*.ind
+*.anno
+*.tar
+*.tar.gz
+*.md5sum
+
+# run logs
+results/*.log
+
+# OS
+.DS_Store
+Thumbs.db

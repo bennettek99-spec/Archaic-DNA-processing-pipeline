@@ -1,0 +1,24 @@
+Phase 9 robustness — panel 1240k
+================================================================
+baseline K=80: max|z|=3.90  Bonferroni z*=4.55  #significant=0
+
+(a) NULL STABILITY — #passing Bonferroni & max|z| under perturbation:
+  perturbation                        #sig   maxZ  rho(z,base)  top20 kept
+  K=40                                   0   3.89        0.992       17/20
+  K=160                                  0   3.96        0.996       18/20
+  reference 50% subsample (seed 0)       0   3.90        0.991       17/20
+  reference 50% subsample (seed 1)       0   3.93        0.992       17/20
+  reference 50% subsample (seed 2)       0   3.87        0.992       18/20
+  tight floor >=400k SNP (n=2355)        0   3.97        0.981       15/20
+
+(b) BOOTSTRAP of reference pool (B=100): distribution of max|z|
+  observed max|z|=3.90; bootstrap max|z| mean=3.93 [3.79, 4.03]  (always < Bonferroni z*=4.55: 100%)
+
+CONCLUSION: the null is robust — 0 samples pass Bonferroni/FDR under every
+perturbation, and the bootstrap max|z| never reaches the threshold. The
+residual ranking is itself STABLE (rho~0.99, 15-18/20 top candidates kept),
+so the same individuals are consistently the most deviant — but their
+deviations stay within the extreme order statistics of ~9,000 noisy tests
+and the strongest are explained by known ancestry (African/Levantine
+admixture -> less Neanderthal). No finding is retained as significant; the
+stable top candidates are the only defensible targets for future deeper data.

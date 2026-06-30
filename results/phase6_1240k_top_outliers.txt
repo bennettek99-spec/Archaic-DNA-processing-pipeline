@@ -1,0 +1,58 @@
+Phase 6 — unexpected archaic introgression candidates (panel 1240k)
+high-confidence eligible: 9,252   K=80   data-type offsets: AG:-0.12pp, DG:-0.04pp, SG:+0.17pp, TW:+0.05pp
+z = (observed_adj - expected) / sqrt(SE_self^2 + bio_scatter^2 + SE_expected^2)
+HYPOTHESES ONLY — Phase 7 investigates each, Phase 9 tests robustness.
+
+=== MORE Neanderthal than expected (top 25 positive z) ===
+  z=+3.90  obs= 4.66% exp= 2.23% (res=+2.25pp) nSNP=275,840    8110BP  Russia         Russia_Tyumen_EN_Mesolithic
+  z=+3.73  obs= 4.39% exp= 1.93% (res=+2.29pp) nSNP=434,197     750BP  United Kingdom England_Medieval
+  z=+3.15  obs= 4.10% exp= 1.86% (res=+2.06pp) nSNP=422,388     750BP  United Kingdom England_Medieval
+  z=+3.01  obs= 3.94% exp= 2.22% (res=+1.55pp) nSNP=340,404    7410BP  Russia         Russia_Omsk_LN
+  z=+2.94  obs= 4.05% exp= 2.30% (res=+1.57pp) nSNP=290,737    3547BP  Russia         Russia_Andronovo
+  z=+2.76  obs= 3.75% exp= 2.12% (res=+1.46pp) nSNP=333,178    4226BP  Denmark        Denmark_SingleGraveCulture
+  z=+2.66  obs= 3.64% exp= 1.84% (res=+1.92pp) nSNP=204,062    5450BP  Tajikistan     Tajikistan_C
+  z=+2.62  obs= 3.56% exp= 2.13% (res=+1.55pp) nSNP=280,155    3404BP  Italy          Italy_Sardinia_MBA-o
+  z=+2.60  obs= 3.30% exp= 2.01% (res=+1.41pp) nSNP=237,336    2150BP  Spain          Spain_LateArchaic_Classical_Hellenistic-oL
+  z=+2.58  obs= 3.85% exp= 2.35% (res=+1.62pp) nSNP=203,631     596BP  Mongolia       Mongolia_Khentii_LateMedieval
+  z=+2.58  obs= 3.41% exp= 1.92% (res=+1.61pp) nSNP=269,761    6984BP  Hungary        Hungary_MN_AVK_Tiszadob
+  z=+2.51  obs= 3.54% exp= 2.13% (res=+1.52pp) nSNP=355,274    1225BP  Austria        Austria_Avar
+  z=+2.51  obs= 3.98% exp= 2.23% (res=+1.58pp) nSNP=262,369     700BP  United Kingdom England_Cambridgeshire_Medieval
+  z=+2.49  obs= 3.42% exp= 2.15% (res=+1.39pp) nSNP=358,249     625BP  Germany        Germany_Medieval_Jewish-highEastEU
+  z=+2.49  obs= 3.16% exp= 1.71% (res=+1.57pp) nSNP=269,731    6150BP  Israel         Israel_LateC
+  z=+2.49  obs= 3.75% exp= 2.21% (res=+1.66pp) nSNP=316,078     445BP  China          China_Guangxi_HuaqiaoCaves_MingDynasty
+  z=+2.48  obs= 3.81% exp= 2.26% (res=+1.37pp) nSNP=364,608    3360BP  Russia         Russia_Karasuk
+  z=+2.39  obs= 3.36% exp= 2.11% (res=+1.37pp) nSNP=451,412    1154BP  Hungary        Hungary_MiddleAvar
+  z=+2.38  obs= 3.04% exp= 1.78% (res=+1.38pp) nSNP=266,215    2600BP  Israel         Israel_Phoenician
+  z=+2.34  obs= 4.08% exp= 2.29% (res=+1.62pp) nSNP=230,960    3439BP  Kazakhstan     Kazakhstan_Andronovo
+  z=+2.32  obs= 4.13% exp= 1.92% (res=+2.21pp) nSNP=445,276   43250BP  Bulgaria       Bulgaria_BachoKiroCave_IUP
+  z=+2.32  obs= 3.35% exp= 2.14% (res=+1.32pp) nSNP=295,619    4650BP  Spain          Spain_C
+  z=+2.31  obs= 3.58% exp= 2.31% (res=+1.10pp) nSNP=401,045    2046BP  Mongolia       Mongolia_Omnogovi_XiongnuPeriod
+  z=+2.30  obs= 3.26% exp= 1.96% (res=+1.42pp) nSNP=335,189    3300BP  Greece         Greece_Peloponnese_LBA
+  z=+2.30  obs= 3.31% exp= 2.07% (res=+1.06pp) nSNP=495,179     975BP  Sweden         Sweden_Viking
+
+=== LESS Neanderthal than expected (top 25 negative z) ===
+  z=-3.16  obs= 0.41% exp= 2.24% (res=-1.71pp) nSNP=366,765    6300BP  Russia         Russia_AltaiKrai_N
+  z=-2.90  obs= 0.41% exp= 1.95% (res=-1.71pp) nSNP=479,008      60BP  Georgia        Georgia_Tkhina_19thCentury-oAfrican
+  z=-2.89  obs= 0.83% exp= 2.22% (res=-1.57pp) nSNP=295,189    1100BP  Denmark        Denmark_Viking
+  z=-2.87  obs= 0.56% exp= 1.97% (res=-1.58pp) nSNP=444,910    2930BP  Italy          Italy_Lazio_BA_IA_a_Etruscan
+  z=-2.79  obs= 0.39% exp= 2.25% (res=-1.74pp) nSNP=227,628    4767BP  Russia         Russia_Omsk_N-o
+  z=-2.75  obs= 0.45% exp= 2.09% (res=-1.52pp) nSNP=287,755    7100BP  Slovakia       Slovakia_N_LBK
+  z=-2.70  obs= 0.45% exp= 2.21% (res=-1.64pp) nSNP=296,868    7363BP  France         France_EN
+  z=-2.59  obs= 0.76% exp= 1.87% (res=-1.28pp) nSNP=434,986    1780BP  Austria        Austria_ImperialRoman-oAfrica-oLevant
+  z=-2.58  obs= 1.03% exp= 2.30% (res=-1.45pp) nSNP=397,059    1325BP  Hungary        Hungary_EarlyAvar-oHighEastAsia
+  z=-2.58  obs= 1.43% exp= 2.25% (res=-1.00pp) nSNP=343,887    3300BP  China          China_MLBA
+  z=-2.58  obs= 0.90% exp= 2.10% (res=-1.38pp) nSNP=505,376    4550BP  Spain          Spain_C
+  z=-2.57  obs= 0.76% exp= 2.28% (res=-1.40pp) nSNP=399,678    1750BP  China          China_Tibet_Pulanduowa_IA
+  z=-2.54  obs= 0.76% exp= 2.26% (res=-1.38pp) nSNP=322,916    3600BP  Spain          Spain_EBA_BA_Argar
+  z=-2.54  obs= 0.11% exp= 2.13% (res=-1.91pp) nSNP=264,761    4050BP  Germany        Germany_Leubingen1_EBA_Unetice
+  z=-2.49  obs= 0.51% exp= 2.08% (res=-1.45pp) nSNP=281,142    3325BP  Czechia        Czechia_MBA_Tumulus
+  z=-2.45  obs= 0.65% exp= 2.08% (res=-1.31pp) nSNP=306,651    2430BP  Italy          Italy_Sicily_Himera_IA_b_Greek
+  z=-2.38  obs= 0.89% exp= 2.11% (res=-1.40pp) nSNP=286,710    1959BP  United Kingdom England_IA
+  z=-2.37  obs= 0.50% exp= 1.85% (res=-1.22pp) nSNP=297,727    2850BP  Pakistan       Pakistan_IA
+  z=-2.34  obs= 0.87% exp= 2.15% (res=-1.16pp) nSNP=385,746    1450BP  United Kingdom England_EarlyMedieval_Saxon
+  z=-2.34  obs= 1.49% exp= 2.19% (res=-0.88pp) nSNP=414,847    2782BP  Japan          Japan_Ikawazu_Jomon
+  z=-2.34  obs= 1.41% exp= 2.20% (res=-0.96pp) nSNP=503,714    3750BP  Russia         Russia_Sakha_LN
+  z=-2.33  obs= 0.98% exp= 2.13% (res=-1.32pp) nSNP=369,077     975BP  Hungary        Hungary_Conqueror_Commoner
+  z=-2.32  obs= 1.11% exp= 2.20% (res=-1.14pp) nSNP=350,683     825BP  Russia         Russia_Tatarstan_Medieval_EarlyChiyalik
+  z=-2.28  obs= 1.27% exp= 2.13% (res=-1.03pp) nSNP=269,735    1625BP  Thailand       Thailand_IA_LogCoffin
+  z=-2.27  obs= 0.53% exp= 2.13% (res=-1.47pp) nSNP=212,605    1450BP  Hungary        Hungary_TiszagyendaLakhatom_Hunnic-2

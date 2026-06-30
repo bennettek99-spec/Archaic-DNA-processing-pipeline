@@ -1,0 +1,27 @@
+Phase 4 bias / normalisation report — panel 1240k
+samples: 15,443   high-confidence (>= 200,000 SNP, not questionable): 9,252
+
+Weighted mean alpha_Nea overall: 2.116%
+
+(1) alpha_Nea by sequencing data type (pseudo-haploid AG vs diploid DG/SG):
+  type        n wmean_alpha%    med_SNP  med_SE%
+  AA         13        2.818    379,355    0.714
+  AG       8848        1.995    269,462    0.646
+  BY         14        1.470    115,150    0.824
+  DG         64        2.071    501,675    0.487
+  SG       5764        2.290    260,766    0.651
+  TW        729        2.170    364,571    0.588
+  WGC         7        2.351     28,947    1.555
+
+(2) directional bias: weighted corr(alpha_Nea, covariate)
+    |r| small => estimate not systematically driven by that technical axis
+  log10 usable SNPs            r_all=-0.021   r_highconf=+0.055
+  mean coverage                r_all=-0.022   r_highconf=-0.012
+  DNA damage rate              r_all=+0.067   r_highconf=+0.032
+  contamination lower bound    r_all=+0.015   r_highconf=-0.051
+  sample age (BP)              r_all=-0.015   r_highconf=-0.027
+
+Interpretation: a non-trivial r in r_all that SHRINKS in r_highconf indicates a
+low-coverage artifact (handled by the SNP floor + precision weighting). A covariate
+with persistent |r| in the high-confidence set is a real nuisance axis and is added
+to the Phase-5 expected-value model so Phase-6 residuals are net of it.

@@ -232,6 +232,9 @@ def make_paper_figures(G, T, D, dist_names, Cc):
     conc = f"{FIG}/fig_concordance.png"
     if os.path.exists(conc):
         figs.append(("fig_concordance.png", "Figure 6. Concordance with ADMIXTOOLS 2 (Maier et al. 2023) on the same data: f-statistics (left) correlate at r≥0.99 — dashed line y=x; absolute offsets are normalisation-convention differences — and qpAdm ancestry proportions (right) agree to within ~4 percentage points."))
+    adm = f"{FIG}/fig_admixture.png"
+    if os.path.exists(adm):
+        figs.append(("fig_admixture.png", "Figure 7. Sparse-NMF ancestry components (snmf/ADMIXTURE-style, K=4): the source populations carry distinct components (WHG, Anatolian-farmer, Steppe, Iran/CHG), while the Italian targets — Bronze Age, Etruscan, Latin and Imperial Roman — are visually identical ancestry mixtures, independently reinforcing the genetic continuity. (Descriptive clustering; absolute fractions differ from the calibrated qpAdm proportions.)"))
     return figs
 
 
@@ -438,7 +441,7 @@ Modelling each target as Anatolian Neolithic + Steppe (Yamnaya) + WHG, relative 
 |---|---|---|---|---|---|
 {qp_table}
 
-Etruscans are {etr_anc} — essentially identical to Latins/Italics and Imperial Romans — and the Steppe component rises from the Bronze Age (~11%) to the Iron Age, confirming both genetic continuity and the documented Steppe influx. As is typical of simple qpAdm models at >1M SNPs, the 3-way fit is formally rejected, indicating an additional eastern-Mediterranean / Iranian-Neolithic source (cf. Antonio et al. 2019; Posth et al. 2021); the proportions are robust descriptive estimates.
+Etruscans are {etr_anc} — essentially identical to Latins/Italics and Imperial Romans — and the Steppe component rises from the Bronze Age (~11%) to the Iron Age, confirming both genetic continuity and the documented Steppe influx. As is typical of simple qpAdm models at >1M SNPs, the 3-way fit is formally rejected; a 4-source model (adding Iran-Neolithic/CHG) does not improve it (it yields negative WHG weights) and no model is formally accepted at full SNP density even with a minimal outgroup set — reflecting genuine ancestry heterogeneity in Iron-Age Italy (Antonio et al. 2019; Posth et al. 2021) — so the proportions are reported descriptively. An independent sparse-NMF (snmf/ADMIXTURE-style) clustering shows the Italian targets (Bronze Age, Etruscan, Latin, Imperial Roman) as visually identical ancestry mixtures, distinct from the source populations (Figure 7), reinforcing the continuity.
 
 ### 7. Relatedness and robustness
 {kin_txt}
@@ -505,7 +508,7 @@ code{{background:var(--box);padding:1px 5px;border-radius:4px;font-size:13px}}
 <table><tr><th>gene</th><th>phenotype</th><th>archaic SNPs</th><th>Δ/kyr (pp)</th><th>p</th></tr>{rowsL}</table>
 
 <h2>6. Ancestry composition (qpAdm)</h2>
-<p>Each target modelled as Anatolian Neolithic + Steppe (Yamnaya) + WHG, relative to distal outgroups (target cohorts kinship-pruned). Etruscans are {etr_anc} — essentially identical to Latins/Italics and Imperial Romans — and the Steppe component rises from the Bronze Age (~11%) to the Iron Age, confirming continuity <i>and</i> the documented Steppe influx. As is typical of simple qpAdm models at &gt;1M SNPs the 3-way fit is formally rejected, indicating an additional eastern-Mediterranean/Iranian-Neolithic source (Antonio 2019; Posth 2021); the proportions are robust descriptive estimates.</p>
+<p>Each target modelled as Anatolian Neolithic + Steppe (Yamnaya) + WHG, relative to distal outgroups (target cohorts kinship-pruned). Etruscans are {etr_anc} — essentially identical to Latins/Italics and Imperial Romans — and the Steppe component rises from the Bronze Age (~11%) to the Iron Age, confirming continuity <i>and</i> the documented Steppe influx. As is typical at &gt;1M SNPs the 3-way fit is formally rejected; a 4-source model (adding Iran/CHG) does not improve it (negative WHG weights), and no model is formally accepted even with a minimal outgroup set — reflecting genuine ancestry heterogeneity (Antonio 2019; Posth 2021) — so proportions are descriptive. An independent sparse-NMF (ADMIXTURE-style) clustering shows the Italian targets as visually identical mixtures, distinct from the sources (Figure 7), reinforcing continuity.</p>
 <table><tr><th>target</th><th>n</th><th>Anatolia_N %</th><th>Steppe %</th><th>WHG %</th><th>fit p</th></tr>{qp_rows}</table>
 
 <h2>7. Relatedness and robustness</h2>

@@ -23,3 +23,4 @@ results/*.log
 Thumbs.db
 results/plink/
 results/f2_admixtools/
+results/lea/*.geno

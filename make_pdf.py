@@ -31,6 +31,7 @@ FIGURES = [
     ("etr_loci_heatmap.png", "Figure 4. Mean Neanderthal-allele frequency at adaptive-introgression loci across the Italian time transect."),
     ("fig_p5_qpadm.png", "Figure 5. qpAdm ancestry proportions (Anatolian-farmer + Steppe + WHG): Etruscans match Latins and Imperial Romans; Steppe rises from the Bronze Age to the Iron Age."),
     ("fig_concordance.png", "Figure 6. Concordance with ADMIXTOOLS 2: f-statistics correlate at r>=0.99 and qpAdm ancestry proportions agree within ~4 percentage points."),
+    ("fig_admixture.png", "Figure 7. Sparse-NMF ancestry components (snmf/ADMIXTURE-style, K=4): source populations carry distinct components; the Italian targets (Bronze Age, Etruscan, Latin, Imperial Roman) are visually identical mixtures, reinforcing continuity."),
 ]
 
 

@@ -147,19 +147,26 @@ python run_pipeline.py --panel 1240k        # Phases 2→9 + HTML report, in ord
 python -m pytest tests/ -q                  # validate the core f-statistics math
 ```
 
-## Sub-study: Etruscan archaic introgression
+## Sub-study: Etruscan archaic introgression (+ research paper)
 
 ```bash
-python etruscan_study.py                    # -> ETRUSCAN_FINDINGS.md + reports/etruscan_report.html
+python etruscan_study.py     # core analysis -> ETRUSCAN_FINDINGS.md + reports/etruscan_report.html
+python etruscan_paper.py     # expanded paper -> PAPER.md + reports/etruscan_paper.html
 ```
 
-Situates the 75 Etruscans in the Italian time transect and asks: did archaic ancestry
-change over time, are any individuals outliers *after conditioning on ancestry+geography*,
-do outliers track genetic ancestry / archaeological context, and **which archaic genes**
-shifted in frequency over time (locus-level scan over curated adaptive-introgression loci,
-controlling for ancestry turnover). Headline: genome-wide Neanderthal flat over time; the
-steppe/Levantine/East-Med ancestry outliers are *not* archaic outliers; **FADS1-2** (dietary
-selection) is the one introgression locus surviving Bonferroni — a candidate, not proof.
+Situates the 75 Etruscans in the Italian time transect and a regional comparison panel
+(Anatolia/Steppe/Latins/Romans/Greeks/Sicily/Sardinia + moderns) and asks: did archaic
+ancestry change over time, do Etruscans differ from neighbours, are any individuals outliers
+*after conditioning on ancestry+geography*, do outliers track genetic ancestry, and **which
+archaic genes** shifted in frequency over time. Findings: Etruscan Neanderthal ~2.0%,
+indistinguishable from Latins (D-stat Z=0.2); flat over time; the steppe/Levantine/East-Med
+ancestry outliers are *not* archaic outliers (decoupled); **FADS1-2** (dietary selection) is
+the one introgression locus surviving Bonferroni — a candidate, not proof. The full write-up
+is **`PAPER.md`** (manuscript) / `reports/etruscan_paper.html`.
+
+The paper uses **population mean-genome profiles** (`archaic/profiles.py`): per-cohort mean
+allele-frequency vectors that average out single-genome noise, giving tight group-level
+archaic estimates, cohort-vs-cohort differential tests, and genetic-distance maps.
 
 ## Layout
 
@@ -171,7 +178,9 @@ archaic/
   anno.py             parse the AADR .anno metadata
   refs.py             per-panel config (HO / 1240K reference samples, QC thresholds)
   loci.py             locus/gene-level archaic-allele analysis (adaptive-introgression panel)
+  profiles.py         population "mean-genome" profiles + group-level archaic + distances
 phase1_validate.py … phase9_robustness.py   the nine pipeline stages
+etruscan_study.py / etruscan_paper.py        Etruscan sub-study + manuscript (PAPER.md)
 validate_published.py external validation vs the literature  -> VALIDATION.md
 generate_report.py    self-contained HTML executive summary  -> reports/
 etruscan_study.py     focused Etruscan sub-study              -> reports/etruscan_report.html

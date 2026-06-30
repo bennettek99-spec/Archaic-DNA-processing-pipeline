@@ -1,0 +1,4 @@
+quantity,n,pearson_r,scale_mine_over_admix
+alpha_Nea,5,0.9895,1.19
+D_Nea,5,0.9998,15.28
+qpAdm_weights,12,0.9792,mean abs diff 3.9 pp

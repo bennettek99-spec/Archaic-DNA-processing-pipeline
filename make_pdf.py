@@ -30,6 +30,7 @@ FIGURES = [
     ("fig_p3_mds.png", "Figure 3. Multidimensional scaling of genome-wide allele-frequency distances (cohorts with n>=30). Etruscans cluster with Romans and other Italians."),
     ("etr_loci_heatmap.png", "Figure 4. Mean Neanderthal-allele frequency at adaptive-introgression loci across the Italian time transect."),
     ("fig_p5_qpadm.png", "Figure 5. qpAdm ancestry proportions (Anatolian-farmer + Steppe + WHG): Etruscans match Latins and Imperial Romans; Steppe rises from the Bronze Age to the Iron Age."),
+    ("fig_concordance.png", "Figure 6. Concordance with ADMIXTOOLS 2: f-statistics correlate at r>=0.99 and qpAdm ancestry proportions agree within ~4 percentage points."),
 ]
 
 

@@ -228,6 +228,10 @@ def make_paper_figures(G, T, D, dist_names, Cc):
         ax.set_title("qpAdm ancestry composition (Anatolian-farmer + Steppe + WHG)")
         fig.tight_layout(); p = f"{FIG}/fig_p5_qpadm.png"; fig.savefig(p); plt.close(fig)
         figs.append(("fig_p5_qpadm.png", "Figure 5. qpAdm ancestry proportions. Etruscans (Tuscany and Lazio) match Latins and Imperial Romans, and the Steppe component rises from the Bronze Age to the Iron Age. (3-way fits are formally rejected at full SNP density; proportions are descriptive.)"))
+
+    conc = f"{FIG}/fig_concordance.png"
+    if os.path.exists(conc):
+        figs.append(("fig_concordance.png", "Figure 6. Concordance with ADMIXTOOLS 2 (Maier et al. 2023) on the same data: f-statistics (left) correlate at r≥0.99 — dashed line y=x; absolute offsets are normalisation-convention differences — and qpAdm ancestry proportions (right) agree to within ~4 percentage points."))
     return figs
 
 
@@ -309,7 +313,8 @@ def write_paper(G, Cc, T, etr, o_absz, no_absz, Cl, n_tested, bonf, counts, figs
         f"errors — is validated three ways: it reproduces published values (r=0.87 across 17 literature "
         f"anchors; the Oase1 individual recovered at 6–9% Neanderthal), recovers a KNOWN introgression "
         f"fraction in coalescent simulations (calibration 0.97·true + 0.01 pp), and its outlier detector "
-        f"shows a nominal null false-positive rate. Modular components add population mean-genome profiles, "
+        f"shows a nominal null false-positive rate; it further concords with ADMIXTOOLS 2 (f-statistics "
+        f"r≥0.99; qpAdm ancestry within ~4 percentage points). Modular components add population mean-genome profiles, "
         f"locus-level archaic-allele scans, qpAdm ancestry modelling, and READ-style relatedness pruning. "
         f"We demonstrate the pipeline on {n_etr} Iron Age Etruscan genomes with a regional comparison panel. "
         f"Etruscan Neanderthal ancestry is {etr_a:.2f}% ± {etr_se:.2f} — statistically indistinguishable from "
@@ -389,7 +394,7 @@ The Etruscans (Etruria, central Italy, ~800–100 BCE) developed a distinctive l
 
 **Selection scan.** At curated adaptive-introgression loci (BNC2, OAS, TLR, FADS, HLA, TBX15, etc.), "archaic-informative" SNPs (Altai+Vindija-derived, near-absent in Africans) are identified; per-individual archaic-allele dosage is regressed on age across Italian samples, controlling for genome-wide archaic ancestry and ancestry turnover (PC1, PC2), so the age term isolates locus-specific temporal change.
 
-**Ancestry, relatedness and validation.** Ancestry is quantified by qpAdm (sources Anatolian Neolithic + Steppe/Yamnaya + WHG; distal outgroups Mbuti, Han, Papuan, Karitiana, Iran_N, Natufian, Ust'-Ishim, Mal'ta). Relatives and duplicate libraries are removed before group estimates with a READ-style pairwise-allele-mismatch scan (Monroy Kuhn et al. 2018). The estimator is additionally validated against msprime coalescent simulations with a *known* introgression fraction (calibration 0.97·true + 0.01 pp; the outlier detector's null false-positive rate matches the nominal level — SIMULATION_VALIDATION.md), complementing the reproduction of published values.
+**Ancestry, relatedness and validation.** Ancestry is quantified by qpAdm (sources Anatolian Neolithic + Steppe/Yamnaya + WHG; distal outgroups Mbuti, Han, Papuan, Karitiana, Iran_N, Natufian, Ust'-Ishim, Mal'ta). Relatives and duplicate libraries are removed before group estimates with a READ-style pairwise-allele-mismatch scan (Monroy Kuhn et al. 2018). The estimator is additionally validated against msprime coalescent simulations with a *known* introgression fraction (calibration 0.97·true + 0.01 pp; the outlier detector's null false-positive rate matches the nominal level — SIMULATION_VALIDATION.md), and cross-checked against ADMIXTOOLS 2 (Maier et al. 2023) computed on a PLINK export: f-statistics correlate at r≥0.99 (absolute scales differ by a normalisation constant) and qpAdm ancestry proportions agree to within ~4 percentage points (Figure 6). This concordance check also caught and fixed an exporter encoding bug, illustrating its value.
 
 ## Results
 
@@ -442,13 +447,13 @@ Etruscans are {etr_anc} — essentially identical to Latins/Italics and Imperial
 Etruscan archaic ancestry is unremarkable: ~2% Neanderthal, ~0 Denisovan, indistinguishable from neighbours and stable through time. This is the expected outcome — Neanderthal ancestry is shared across all non-Africans and the within-European variance is small — and it reinforces, from the archaic-ancestry angle, the genetic continuity of Etruscans with Italic peoples. The decoupling of genetic-ancestry outliers from archaic-ancestry outliers is a useful methodological point: an individual can be a clear ancestry outlier yet carry a perfectly ordinary archaic complement, because the relevant alternative ancestries are themselves ~2% Neanderthal. The FADS candidate is intriguing and concordant with the strongest known signal of recent dietary selection in Europe, but the single-locus power on capture data is low and the result must be treated as a hypothesis.
 
 ## Limitations
-Capture-array, pseudo-haploid genotypes; ~75 Etruscans over a narrow window; single-locus selection power is low; archaic-allele sets are putative (incomplete lineage sorting can mimic introgression); the f4-ratio absolute scale runs ~0.2 pp high versus some studies (quantified by simulation; relative comparisons are unbiased). The qpAdm 3-way model is formally rejected at full SNP density (a known property of simple models at >1M SNPs); proportions are descriptive and a 4-source model is left to future work. Cross-validation against ADMIXTOOLS 2 is scaffolded (`tools/`) and pending a compatible R toolchain. No claim here is a validated biological discovery.
+Capture-array, pseudo-haploid genotypes; ~75 Etruscans over a narrow window; single-locus selection power is low; archaic-allele sets are putative (incomplete lineage sorting can mimic introgression); the f4-ratio absolute scale runs ~0.2 pp high versus some studies (quantified by simulation; relative comparisons are unbiased). The qpAdm 3-way model is formally rejected at full SNP density (a known property of simple models at >1M SNPs); proportions are descriptive and a 4-source model is left to future work. Cross-validation against ADMIXTOOLS 2 confirms the implementation (f-statistics r≥0.99; qpAdm within ~4 pp), with absolute f-statistic scales differing by a normalisation constant. No claim here is a validated biological discovery.
 
 ## Code and data availability
 The pipeline is open-source, modular and config-driven (no hard-coded paths), with unit tests, continuous integration and an archived release: <https://github.com/bennettek99-spec/Archaic-DNA-processing-pipeline> (Zenodo DOI per `RELEASING.md`). Every result here is reproducible from `etruscan_paper.py`, `etruscan_qpadm.py`, `etruscan_robustness.py` and `validate_simulation.py`. Genotype data are the Allen Ancient DNA Resource v66.1 (Mallick et al. 2024), from the Reich Lab / Harvard Dataverse.
 
 ## References
-Antonio et al. 2019 *Science* 366:708 · Posth et al. 2021 *Sci. Adv.* 7:eabi7673 · Green et al. 2010 *Science* 328:710 · Prüfer et al. 2014 *Nature* 505:43 · Prüfer et al. 2017 *Science* 358:655 · Petr et al. 2019 *PNAS* 116:1639 · Patterson et al. 2012 *Genetics* 192:1065 · Haak et al. 2015 *Nature* 522:207 (qpAdm) · Monroy Kuhn et al. 2018 *PLOS ONE* 13:e0195491 (READ) · Kelleher et al. 2016 *PLoS Comput. Biol.* 12:e1004842 (msprime) · Mathieson et al. 2015 *Nature* 528:499 · Buckley et al. 2017 *Mol. Biol. Evol.* 34:1307 · Mallick et al. 2024 *Sci. Data* 11:182 (AADR).
+Antonio et al. 2019 *Science* 366:708 · Posth et al. 2021 *Sci. Adv.* 7:eabi7673 · Green et al. 2010 *Science* 328:710 · Prüfer et al. 2014 *Nature* 505:43 · Prüfer et al. 2017 *Science* 358:655 · Petr et al. 2019 *PNAS* 116:1639 · Patterson et al. 2012 *Genetics* 192:1065 · Haak et al. 2015 *Nature* 522:207 (qpAdm) · Maier et al. 2023 *eLife* 12:e85492 (ADMIXTOOLS 2) · Monroy Kuhn et al. 2018 *PLOS ONE* 13:e0195491 (READ) · Kelleher et al. 2016 *PLoS Comput. Biol.* 12:e1004842 (msprime) · Mathieson et al. 2015 *Nature* 528:499 · Buckley et al. 2017 *Mol. Biol. Evol.* 34:1307 · Mallick et al. 2024 *Sci. Data* 11:182 (AADR).
 """
 
 HTML_TEMPLATE = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">

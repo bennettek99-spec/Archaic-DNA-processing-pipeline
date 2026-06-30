@@ -22,3 +22,4 @@ results/*.log
 .DS_Store
 Thumbs.db
 results/plink/
+results/f2_admixtools/

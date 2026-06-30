@@ -22,19 +22,31 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.panel import Panel
 from archaic.refs import PANELS
 
-# default export set: name -> selector. (kind, value)
+# curated export set: clean LABEL -> selector (kind, value). First match wins, so
+# specific groups (Etruscan, Latin) take precedence over broad ones.
+_whg = lambda g: any(s in g for s in ("loschbour", "villabruna", "bichon", "labrana",
+                                      "iberia_mesolithic", "france_mesolithic", "england_mesolithic"))
+_latin = lambda g: ("latini" in g) or (("lazio_ia" in g) and ("etruscan" not in g))
 DEFAULT = [
-    ("grp", "Etruscan"), ("grp", "Latini"), ("grp", "Lazio_IA"),
-    ("grp", "ImperialRoman"), ("grp", "Republic"),
-    ("grp", "Italy_") , ("grp", "Yamnaya"), ("grp", "Turkey_N"),
-    ("grp", "Mycenaean"), ("grp", "Minoan"), ("grp", "Sicily"),
-    ("pop", "French"), ("pop", "Sardinian"), ("pop", "Han"), ("pop", "Mbuti"),
-    ("pop", "Yoruba"), ("pop", "Papuan"), ("pop", "Karitiana"),
-    ("id", "AltaiNeanderthal.DG"), ("id", "VindijaG1_final.SG"),
-    ("id", "Denisova.SG"), ("id", "Chimp.REF"),
+    # archaic refs + outgroups (single samples / pops) — assign first
+    ("Altai", "id", "AltaiNeanderthal.DG"), ("Vindija", "id", "VindijaG1_final.SG"),
+    ("Denisova", "id", "Denisova.SG"), ("Chimp", "id", "Chimp.REF"),
+    ("Ust_Ishim", "id", "Ust_Ishim.DG"), ("MA1", "id", "MA1.SG"),
+    ("Mbuti", "pop", "Mbuti"), ("Yoruba", "pop", "Yoruba"), ("Han", "pop", "Han"),
+    ("Papuan", "pop", "Papuan"), ("Karitiana", "pop", "Karitiana"),
+    ("French", "pop", "French"), ("Sardinian", "pop", "Sardinian"),
+    # ancient sources / targets — specific before broad
+    ("Etruscan", "grp", "etruscan"), ("Latin", "grpfn", _latin),
+    ("ImperialRoman", "grp", "imperialroman"), ("RepublicanRoman", "grp", "republic"),
+    ("Anatolia_N", "grp", "turkey_n"), ("Yamnaya", "grp", "yamnaya"),
+    ("WHG", "grpfn", _whg), ("Iran_N", "grp", "iran_ganjdareh_n"),
+    ("Natufian", "grp", "israel_natufian"), ("ItalyBA", "grpfn",
+        lambda g: "italy" in g and any(b in g for b in ("_ba", "_eba", "_mba", "_lba"))),
 ]
-# dosage (copies of allele1) -> PLINK 2-bit code (A1=allele1): 2->00,1->10(het),0->11,-1->01
-_CODE = np.array([3, 1, 0], dtype=np.uint8)  # index by dosage 0,1,2 ; missing handled separately
+MAXN = 80  # cap individuals per population
+# dosage (copies of allele1) -> PLINK 2-bit code (A1=allele1):
+#   dosage 2 (hom A1) -> 0b00=0 ; dosage 1 (het) -> 0b10=2 ; dosage 0 (hom A2) -> 0b11=3 ; missing -> 0b01=1
+_CODE = np.array([3, 2, 0], dtype=np.uint8)  # index by dosage 0,1,2 ; missing handled separately
 
 
 def write_bed(path, panel, snp_rows, cols, chunk=20000):
@@ -62,23 +74,29 @@ def main():
     panel = Panel(PANELS[args.panel]["prefix"])
     meta_path = os.path.join("results", f"phase2_{args.panel}_metadata.csv")
 
-    # gather columns + labels
+    # gather columns + clean labels (first curated match wins; cap per population)
     gl = panel.ind["pop"].str.lower()
+    pops = panel.ind["pop"].values
+    rng = np.random.default_rng(0)
     idset, labels = [], {}
-    for kind, val in DEFAULT:
+    for label, kind, val in DEFAULT:
         if kind == "pop":
-            idx = np.where(panel.ind["pop"].values == val)[0]
+            idx = np.where(pops == val)[0]
         elif kind == "id":
             c = panel._id_to_col.get(val)
             idx = np.array([c]) if c is not None else np.array([], int)
-        else:
+        elif kind == "grpfn":
+            idx = np.where(gl.map(val).fillna(False).values)[0]
+        else:  # grp substring
             idx = np.where(gl.str.contains(val.lower(), na=False).values)[0]
+        idx = [int(i) for i in idx if int(i) not in labels]
+        if len(idx) > MAXN:
+            idx = sorted(rng.choice(idx, MAXN, replace=False).tolist())
         for i in idx:
-            if i not in labels:
-                idset.append(i)
-                labels[i] = (val if kind != "id" else panel.ind["pop"].values[i])
+            labels[i] = label
+            idset.append(i)
     cols = np.array(sorted(idset), dtype=np.int64)
-    print(f"exporting {len(cols)} individuals")
+    print(f"exporting {len(cols)} individuals across {len(set(labels.values()))} populations")
 
     # SNP set (autosomes, optionally thinned)
     snp_rows = panel.snp_rows[::args.snp_step]

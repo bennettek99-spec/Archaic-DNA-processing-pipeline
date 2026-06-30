@@ -168,6 +168,20 @@ The paper uses **population mean-genome profiles** (`archaic/profiles.py`): per-
 allele-frequency vectors that average out single-genome noise, giving tight group-level
 archaic estimates, cohort-vs-cohort differential tests, and genetic-distance maps.
 
+```bash
+python make_pdf.py PAPER.md reports/Etruscan_paper.pdf   # manuscript -> styled PDF
+python fads_report.py        # FADS deep-dive   -> FADS_REPORT.md + reports/fads_report.html
+python mutation_diversity.py # worldwide diversity -> DIVERSITY_REPORT.md + reports/diversity_report.html
+```
+
+- **FADS deep-dive** — the candidate selection locus, traced SNP-by-SNP (rs174537/rs174550) and
+  shown to be the pan-European post-Neolithic FADS dietary sweep (archaic allele ~90% in
+  Mesolithic HGs, declining; p≈0 across 5,936 Europeans), not adaptive introgression.
+- **Worldwide diversity** — heterozygosity across 20 populations (the measurable proxy for
+  "mutation rate"; rate per se needs trios). Africans highest, Native Americans lowest, the
+  serial-founder gradient (r=−0.74), and a 1240K-vs-Human-Origins cross-check that *demonstrates*
+  SNP-ascertainment bias (the San jump from #17 to #4).
+
 ## Layout
 
 ```

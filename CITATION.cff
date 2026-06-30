@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+title: "Archaic-DNA processing pipeline: a modular archaeogenetics pipeline for detecting unexpected archaic introgression"
+message: "If you use this software, please cite it using these metadata."
+type: software
+authors:
+  - family-names: Kuhn
+    given-names: Bennett
+repository-code: "https://github.com/bennettek99-spec/Archaic-DNA-processing-pipeline"
+license: MIT
+version: 0.2.0
+keywords:
+  - archaeogenetics
+  - ancient DNA
+  - Neanderthal introgression
+  - f-statistics
+  - AADR
+abstract: >-
+  A modular, validated Python pipeline that estimates Neanderthal and Denisovan
+  ancestry in ancient Eurasian genomes from the Allen Ancient DNA Resource using
+  allele-frequency f-statistics with block-jackknife errors, detects individuals
+  whose archaic ancestry is unexpected given their ancestry, geography and age,
+  and is validated against published estimates, coalescent simulations with known
+  ground truth, and ADMIXTOOLS 2.
+references:
+  - type: article
+    authors: [{family-names: Patterson, given-names: Nick}]
+    title: "Ancient admixture in human history"
+    journal: Genetics
+    volume: 192
+    year: 2012
+  - type: article
+    authors: [{family-names: Mallick, given-names: Swapan}]
+    title: "The Allen Ancient DNA Resource (AADR): a curated compendium of ancient human genomes"
+    journal: Scientific Data
+    year: 2024

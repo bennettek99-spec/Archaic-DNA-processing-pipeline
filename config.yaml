@@ -1,0 +1,22 @@
+# Archaic-DNA pipeline configuration.
+# Edit this (or set ARCHAIC_CONFIG to point elsewhere) so the pipeline runs on
+# any machine — no paths are hard-coded in the code.
+
+# Directory holding the AADR EIGENSTRAT/TGENO files (.geno/.snp/.ind/.anno).
+aadr_dir: "C:/Users/benne/aadr_v66"
+
+# Panels: <prefix> is the filename stem inside aadr_dir; QC thresholds per panel.
+panels:
+  ho:
+    prefix: "v66.p1_HO"
+    snps_col: "snps_ho"
+    snp_floor: 15000
+    snp_lowpower: 100000
+  1240k:
+    prefix: "v66.p1_1240K"
+    snps_col: "snps_1240k"
+    snp_floor: 30000
+    snp_lowpower: 200000
+
+# Output directory (relative to the repo root).
+results_dir: "results"

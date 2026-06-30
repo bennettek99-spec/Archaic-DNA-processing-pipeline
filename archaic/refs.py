@@ -1,41 +1,48 @@
 """
-refs.py — per-panel configuration: file prefix, the relevant 'SNPs hit' QC column,
-and the archaic/outgroup/baseline reference samples (their IDs differ between the
-HO and 1240K releases — e.g. the chimp is 'Chimp_HO.HO' in HO but 'Chimp.REF' in
-1240K). One place so every phase stays panel-agnostic.
+refs.py — per-panel configuration. File paths and QC thresholds come from
+config.yaml (archaic.config), so no user paths are hard-coded here. This module
+holds only the archaic/outgroup/baseline reference *samples*, whose IDs differ
+between the HO and 1240K releases (e.g. the chimp is 'Chimp_HO.HO' in HO but
+'Chimp.REF' in 1240K). PANELS merges the two so every phase stays panel-agnostic.
 """
+from .config import load_config, panel_prefix
 
-PANELS = {
+# archaic / outgroup / baseline reference samples per panel (structural, not paths)
+REF_SAMPLES = {
     "ho": dict(
-        prefix=r"C:\Users\benne\aadr_v66\v66.p1_HO",
-        snps_col="snps_ho",
-        snp_floor=15_000,      # hard exclusion below this many autosomal SNPs hit
-        snp_lowpower=100_000,  # flag (not exclude) low-power samples below this
-        refs=dict(
-            Altai=dict(ids=["AltaiNeanderthal.DG"]),
-            Vindija=dict(ids=["VindijaG1_final.SG"]),
-            Denisova=dict(ids=["Denisova.SG"]),
-            Chimp=dict(ids=["Chimp_HO.HO"]),
-            Mbuti=dict(pops=["Mbuti"]),
-            Yoruba=dict(pops=["Yoruba"]),
-        ),
+        Altai=dict(ids=["AltaiNeanderthal.DG"]),
+        Vindija=dict(ids=["VindijaG1_final.SG"]),
+        Denisova=dict(ids=["Denisova.SG"]),
+        Chimp=dict(ids=["Chimp_HO.HO"]),
+        Mbuti=dict(pops=["Mbuti"]),
+        Yoruba=dict(pops=["Yoruba"]),
     ),
     "1240k": dict(
-        prefix=r"C:\Users\benne\aadr_v66\v66.p1_1240K",
-        snps_col="snps_1240k",
-        snp_floor=30_000,
-        snp_lowpower=200_000,
-        refs=dict(
-            Altai=dict(ids=["AltaiNeanderthal.DG"]),
-            Vindija=dict(ids=["VindijaG1_final.SG"]),
-            Denisova=dict(ids=["Denisova.SG"]),
-            Chimp=dict(ids=["Chimp.REF"]),
-            # high-coverage shotgun Africans in 1240K (HGDP/SGDP .DG)
-            Mbuti=dict(pops=["Mbuti"]),
-            Yoruba=dict(pops=["Yoruba", "YRI", "YRI-Discovery"]),
-        ),
+        Altai=dict(ids=["AltaiNeanderthal.DG"]),
+        Vindija=dict(ids=["VindijaG1_final.SG"]),
+        Denisova=dict(ids=["Denisova.SG"]),
+        Chimp=dict(ids=["Chimp.REF"]),
+        Mbuti=dict(pops=["Mbuti"]),
+        Yoruba=dict(pops=["Yoruba", "YRI", "YRI-Discovery"]),
     ),
 }
+
+
+def _build_panels():
+    cfg = load_config()
+    panels = {}
+    for name, pc in cfg["panels"].items():
+        panels[name] = dict(
+            prefix=panel_prefix(name),
+            snps_col=pc["snps_col"],
+            snp_floor=pc["snp_floor"],
+            snp_lowpower=pc["snp_lowpower"],
+            refs=REF_SAMPLES.get(name, REF_SAMPLES["1240k"]),
+        )
+    return panels
+
+
+PANELS = _build_panels()
 
 # group_id keyword fragments that mark a NON-test reference / archaic / non-human;
 # these are removed from the analysis set regardless of geography/age.

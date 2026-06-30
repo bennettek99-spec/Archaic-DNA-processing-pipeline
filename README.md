@@ -140,12 +140,44 @@ External validation against the literature (Oase1, Ust'-Ishim, Fu 2016 UP series
 modern populations): see **`VALIDATION.md`** — r=0.87 (0.96 excl. Oase1) vs published,
 16/17 within range, Oase1 recovered at 6–9%, Papuan Denisovan confirmed.
 
+## Configure (no hard-coded paths)
+
+Point the pipeline at your AADR download by editing **`config.yaml`** (or set
+`ARCHAIC_CONFIG=/path/to/your.yaml`):
+
+```yaml
+aadr_dir: "/path/to/aadr"      # folder with v66.p1_1240K.{geno,snp,ind,anno}
+```
+
+Everything else (panel prefixes, QC thresholds) is in the same file; nothing is
+hard-coded in the code.
+
 ## Full pipeline (one command)
 
 ```bash
+pip install -e .                            # installable package (pyproject.toml)
 python run_pipeline.py --panel 1240k        # Phases 2→9 + HTML report, in order
-python -m pytest tests/ -q                  # validate the core f-statistics math
+python -m pytest tests/ -q                  # unit tests (math, simulation, kinship, config)
 ```
+
+## Validation & robustness (for reuse / publication)
+
+```bash
+python validate_simulation.py               # ground-truth recovery -> SIMULATION_VALIDATION.md
+Rscript tools/admixtools_concordance.R <prefix> results/admixtools_results.csv
+python tools/compare_admixtools.py          # concordance vs ADMIXTOOLS 2
+```
+
+- **Simulation (msprime)** — recovers a *known* Neanderthal fraction (calibration
+  0.97·true + 0.01pp, r=0.99); confirms SE ∝ 1/√SNPs, the detector's null
+  false-positive rate, and its power. The ground-truth backbone for a methods paper.
+- **ADMIXTOOLS 2 concordance** — the same f-statistics computed by the field-standard
+  tool on the same files; `compare_admixtools.py` reports the differences.
+- **Kinship** (`archaic.kinship.prune`) — READ-style relatedness/duplicate removal
+  before group estimates (e.g. flags the Tarquinia necropolis family clusters among
+  the Etruscans: 75 → 69 independent, 1 duplicate + 6 first-degree).
+- **Release** — `pip`-installable, `CITATION.cff`, `.zenodo.json`, CI; see `RELEASING.md`
+  for minting a Zenodo DOI.
 
 ## Sub-study: Etruscan archaic introgression (+ research paper)
 
@@ -193,8 +225,14 @@ archaic/
   refs.py             per-panel config (HO / 1240K reference samples, QC thresholds)
   loci.py             locus/gene-level archaic-allele analysis (adaptive-introgression panel)
   profiles.py         population "mean-genome" profiles + group-level archaic + distances
+  simulate.py         msprime coalescent simulation with known archaic introgression
+  kinship.py          READ-style relatedness / duplicate detection and pruning
+  config.py           load paths + thresholds from config.yaml (nothing hard-coded)
 phase1_validate.py … phase9_robustness.py   the nine pipeline stages
 etruscan_study.py / etruscan_paper.py        Etruscan sub-study + manuscript (PAPER.md)
+validate_simulation.py                       ground-truth simulation validation
+tools/admixtools_concordance.R + compare_admixtools.py   ADMIXTOOLS 2 concordance
+config.yaml · pyproject.toml · CITATION.cff · .zenodo.json · RELEASING.md   reuse/release
 validate_published.py external validation vs the literature  -> VALIDATION.md
 generate_report.py    self-contained HTML executive summary  -> reports/
 etruscan_study.py     focused Etruscan sub-study              -> reports/etruscan_report.html

@@ -1,0 +1,1981 @@
+genetic_id,group_id,country,date_bp,snps,reason
+cay011.SG,Turkey_PPN,Turkey,8369.0,23943.0,low_snps:23943
+cay012.SG,Turkey_PPN,Turkey,10100.0,25796.0,low_snps:25796
+cay014.SG,Turkey_PPN,Turkey,8908.0,17719.0,low_snps:17719
+cay015.SG,Turkey_PPN,Turkey,10100.0,13799.0,low_snps:13799
+cay1820.SG,Turkey_PPN,Turkey,10100.0,15198.0,low_snps:15198
+cay022.SG,Turkey_PPN,Turkey,7303.0,15946.0,low_snps:15946
+cay027.SG,Turkey_PPN,Turkey,8400.0,23407.0,low_snps:23407
+CL110.AG,Italy_Piedmont_North_EarlyMedieval_Lombards-4,Italy,1350.0,24319.0,low_snps:24319
+CL31.AG,Italy_Piedmont_North_EarlyMedieval_Lombards,Italy,1350.0,816869.0,qc_assessment:CRITICAL
+SZ20.AG,Hungary_Lombards,Hungary,1425.0,11467.0,low_snps:11467
+SZ35.AG,Hungary_Lombards,Hungary,1425.0,7125.0,low_snps:7125
+JK2134.AG,Egypt_AbusirelMeleq_ThirdIntermediatePeriod,Egypt,2609.0,135011.0,qc_assessment:CRITICAL
+JK2888.AG,Egypt_AbusirelMeleq_Ptolemaic,Egypt,1997.0,207380.0,qc_assessment:CRITICAL
+I1454.AG,Ukraine_Cherkasy_Eneolithic_SeredniiStih,Ukraine,5650.0,5488.0,low_snps:5488
+I1894.AG,Hungary_MN_Vinca,Hungary,7150.0,16149.0,low_snps:16149
+I1929.AG,Ukraine_Ternopil_Eneolithic_Trypillia,Ukraine,5650.0,27233.0,low_snps:27233
+I2014.AG,Germany_HalberstadtSonntagsfeld_EN_LBK,Germany,6946.0,19763.0,low_snps:19763
+I2022.AG,Germany_HalberstadtSonntagsfeld_EN_LBK,Germany,7125.0,21603.0,low_snps:21603
+I2713.AG,USA_California_4900BP,USA,5105.0,12812.0,low_snps:12812
+I2954.AG,Pakistan_Historic,Pakistan,2316.0,5860.0,qc_assessment:CRITICAL
+I3065.AG,Scotland_Mesolithic,United Kingdom,6290.0,16018.0,qc_assessment:CRITICAL
+I3496.AG,Spain_IA,Spain,2200.0,140772.0,qc_assessment:MERGE_CRITICAL
+I3562.AG,USA_California_3000BP,USA,3200.0,14556.0,low_snps:14556
+I3563.AG,USA_California_3000BP,USA,3200.0,26535.0,low_snps:26535
+I3587.AG,Germany_StkrStraubing_BellBeaker-1,Germany,4175.0,8280.0,qc_assessment:CRITICAL
+I3592.AG,Germany_StkrStraubing_BellBeaker,Germany,4260.0,18186.0,qc_assessment:CRITICAL
+I3607.AG,Germany_KunzingBruck_BellBeaker,Germany,4200.0,10344.0,low_snps:10344
+I3686.AG,Italy_Campania_ImperialRoman,Italy,1871.0,63780.0,qc_assessment:CRITICAL
+I3778.AG,Spain_EarlyMedieval,Spain,1300.0,29533.0,low_snps:29533
+I3945.AG,Armenia_KarmirBlur_Urartian,Armenia,2600.0,16163.0,low_snps:16163
+I4004.AG,Russia_Kalmykia_EMBA_EasternManych,Russia,4188.0,20997.0,low_snps:20997
+I4156.AG,Uzbekistan_BA,Uzbekistan,3400.0,24890.0,low_snps:24890
+I4159.AG,Uzbekistan_BA,Uzbekistan,3400.0,248618.0,qc_assessment:CRITICAL
+I4181.AG,Hungary_MN_LBK,Hungary,7050.0,11385.0,low_snps:11385
+I4183.AG,Hungary_LN_Sopot,Hungary,6743.0,11464.0,low_snps:11464
+I4314.AG,Uzbekistan_BA1-1,Uzbekistan,3756.0,4581.0,low_snps:4581
+I4319.AG,Kazakhstan_MLBA_Petrovka-o,Kazakhstan,3632.0,7359.0,low_snps:7359
+I4933.AG,Italy_Sicily_BellBeaker,Italy,4150.0,1041.0,qc_assessment:CRITICAL
+I5249.AG,Turkey_Ancient-1,Turkey,2071.0,39877.0,qc_assessment:CRITICAL
+I5364.AG,Wales_IA,United Kingdom,2644.0,29197.0,low_snps:29197
+I5469.AG,Scotland_EBA_C,United Kingdom,3517.0,5371.0,low_snps:5371
+I5470.AG,Scotland_EBA_C,United Kingdom,3477.0,9026.0,low_snps:9026
+I5473.AG,Scotland_EBA_C,United Kingdom,4200.0,8698.0,low_snps:8698
+I5656.AG,Germany_IrlbachLKR_BellBeaker,Germany,4200.0,3737.0,low_snps:3737
+I6181.AG,Romania_Mesolithic_N_Starcevo,Romania,7600.0,128833.0,qc_assessment:CRITICAL
+I6218.AG,Turkmenistan_BA1-1,Turkmenistan,4000.0,4826.0,low_snps:4826
+I6466.AG,Portugal_C,Portugal,4450.0,3794.0,low_snps:3794
+I6467.AG,Portugal_C,Portugal,4450.0,11913.0,low_snps:11913
+I6476.AG,Czechia_BellBeaker,Czechia,4100.0,25441.0,low_snps:25441
+I6481.AG,Germany_Weichering_BellBeaker,Germany,4250.0,6479.0,low_snps:6479
+I6482.AG,Germany_Weichering_BellBeaker,Germany,4250.0,17830.0,low_snps:17830
+I6535.AG,Poland_BellBeaker,Poland,4284.0,2980.0,low_snps:2980
+I6538.AG,Poland_BellBeaker,Poland,3823.0,27091.0,low_snps:27091
+I6585.AG,Spain_C,Spain,4181.0,10294.0,low_snps:10294
+I6589.AG,Spain_C,Spain,4200.0,4658.0,low_snps:4658
+I6605.AG,Spain_C,Spain,4335.0,13031.0,low_snps:13031
+I6610.AG,Spain_C,Spain,3803.0,6477.0,low_snps:6477
+I6613.AG,Spain_C,Spain,4100.0,12274.0,low_snps:12274
+I6626.AG,Spain_C-oSteppe,Spain,4100.0,4602.0,qc_assessment:CRITICAL
+I7556.AG,Belize_5600BP_Archaic_Maya,Belize,5630.0,8319.0,low_snps:8319
+I0520.AG,England_N,United Kingdom,5200.0,17237.0,low_snps:17237
+I0987.AG,Russia_Chelyabinsk_MLBA_Sintashta,Russia,3825.0,395501.0,qc_assessment:CRITICAL
+I10058.AG,Croatia_C_Lasinja,Croatia,6050.0,117253.0,qc_assessment:CRITICAL
+I10067.AG,Croatia_C_Lasinja,Croatia,6075.0,23451.0,low_snps:23451
+I10096.AG,Israel_MLBA,Israel,3500.0,6205.0,low_snps:6205
+I10168.AG,NorthMacedonia_BA,North Macedonia,3050.0,6765.0,low_snps:6765
+I10171.AG,NorthMacedonia_N,North Macedonia,3150.0,6428.0,low_snps:6428
+I10267.AG,Israel_MLBA,Israel,3527.0,6995.0,low_snps:6995
+I10269.AG,Israel_MLBA,Israel,3600.0,4974.0,low_snps:4974
+I10282.AG,Spain_MLN,Spain,4900.0,6957.0,low_snps:6957
+I10292.AG,Croatia_C_Lasinja,Croatia,6050.0,12042.0,low_snps:12042
+I10295.AG,Croatia_C_Lasinja,Croatia,6050.0,19605.0,low_snps:19605
+I10361.AG,Israel_MLBA,Israel,3500.0,26621.0,low_snps:26621
+I1069.AG,Israel_Natufian,Israel,12700.0,27653.0,low_snps:27653
+I10973.AG,Vietnam_N,Vietnam,3850.0,5640.0,low_snps:5640
+I11019.AG,Malawi_LSA_6000BP,Malawi,4300.0,6031.0,low_snps:6031
+I1135.AG,Vietnam_N,Vietnam,3715.0,21381.0,low_snps:21381
+I11461.AG,Iran_ShahriSokhta_BA1-1,Iran,4600.0,2440.0,qc_assessment:CRITICAL
+I11471.AG,Iran_ShahriSokhta_BA2-2,Iran,5115.0,27573.0,qc_assessment:CRITICAL
+I1311.AG,Spain_EBA,Spain,3650.0,5519.0,low_snps:5519
+I1369_alt.AG,Vanuatu_2900BP,Vanuatu,2885.0,29099.0,low_snps:29099
+I1416.AG,Jordan_PPNB,Jordan,10050.0,11078.0,qc_assessment:CRITICAL
+I1789.AG,Turkmenistan_BA-2,Turkmenistan,4082.0,43312.0,qc_assessment:CRITICAL
+I1952.AG,Iran_GanjDareh_N,Iran,9952.0,208641.0,qc_assessment:CRITICAL
+I1982.AG,Spain_MBA,Spain,3558.0,16376.0,low_snps:16376
+I2005.AG,Germany_HalberstadtSonntagsfeld_EN_LBK,Germany,7100.0,10817.0,low_snps:10817
+I2016.AG,Germany_HalberstadtSonntagsfeld_EN_LBK,Germany,7125.0,27670.0,low_snps:27670
+I2017.AG,Germany_HalberstadtSonntagsfeld_EN_LBK,Germany,7125.0,23175.0,low_snps:23175
+I2021.AG,Germany_HalberstadtSonntagsfeld_EN_LBK,Germany,7125.0,14554.0,low_snps:14554
+I2122.AG,Turkmenistan_BA1-2,Turkmenistan,4023.0,17730.0,low_snps:17730
+I2181_alt.AG,Bulgaria_Smyadovo_C-oSteppe,Bulgaria,6458.0,117024.0,qc_assessment:CRITICAL
+I2215.AG,Bulgaria_MalakPreslavets_N,Bulgaria,7976.0,129219.0,qc_assessment:CRITICAL
+I2233.AG,Peru_EarlyHorizon_2250BP_Paracas,Peru,1915.0,15587.0,low_snps:15587
+I2253.AG,Peru_MHorizon_WariHighlands,Peru,1025.0,11713.0,low_snps:11713
+I2268.AG,Peru_LateArchaic_4500BP,Peru,4150.0,21087.0,low_snps:21087
+I2328.AG,Iran_HajjiFiruz_N,Iran,7900.0,27960.0,low_snps:27960
+I2351.AG,Hungary_C_Balaton_Lasinja,Hungary,6050.0,23259.0,low_snps:23259
+I2359.AG,Hungary_LN_Tisza,Hungary,6700.0,34737.0,qc_assessment:CRITICAL
+I2374.AG,Hungary_EN_Koros,Hungary,7700.0,25638.0,low_snps:25638
+I2383.AG,Hungary_MN_AVK,Hungary,7050.0,62056.0,qc_assessment:CRITICAL
+I2407.AG,Poland_GlobularAmphora,Poland,4955.0,16115.0,low_snps:16115
+I2435.AG,Poland_GlobularAmphora,Poland,4950.0,26168.0,low_snps:26168
+I2460.AG,England_EBA_C,United Kingdom,3875.0,24325.0,low_snps:24325
+I0697.AG,Bulgaria_Yabalkovo_N,Bulgaria,7641.0,3842.0,low_snps:3842
+I2538.AG,Chile_CaletaHuelen_1100BP,Chile,1101.0,172494.0,qc_assessment:CRITICAL
+I2543.AG,Peru_MiddleHolocene_1000BP,Peru,945.0,11283.0,low_snps:11283
+I2657.AG,Scotland_N,United Kingdom,5814.0,150086.0,qc_assessment:CRITICAL
+I2726.AG,Vietnam_N,Vietnam,3850.0,11253.0,low_snps:11253
+I2824.AG,Scotland_LIA,United Kingdom,1908.0,132344.0,qc_assessment:CRITICAL
+I2947.AG,Vietnam_N,Vietnam,3850.0,52762.0,qc_assessment:CRITICAL
+I2966.AG,Malawi_LSA_8500BP,Malawi,8895.0,611593.0,qc_assessment:CRITICAL
+I3023.AG,Wales_N,United Kingdom,5300.0,126916.0,qc_assessment:CRITICAL
+I3209.AG,Spain_Mesolithic,Spain,7815.0,24574.0,low_snps:24574
+I3261.AG,Pakistan_IA,Pakistan,2925.0,25437.0,low_snps:25437
+I3300.AG,Turkey_Ancient,Turkey,2350.0,7702.0,low_snps:7702
+I3365.AG,Turkmenistan_BA1-1,Turkmenistan,4050.0,14375.0,low_snps:14375
+I3453.AG,Kazakhstan_LBA,Kazakhstan,3100.0,8996.0,qc_assessment:CRITICAL
+I3456.AG,Kazakhstan_LBA,Kazakhstan,2994.0,21458.0,qc_assessment:CRITICAL
+I3584.AG,Spain_LateAntiquity,Spain,1400.0,74641.0,qc_assessment:CRITICAL
+I3807.AG,Spain_NazariPeriod_Muslim,Spain,400.0,152206.0,qc_assessment:CRITICAL
+I4158.AG,Uzbekistan_BA-o,Uzbekistan,3400.0,10823.0,low_snps:10823
+I4248.AG,Germany_IrlbachLKR_BellBeaker,Germany,4200.0,25765.0,low_snps:25765
+I4383.AG,Italy_Sicily_EBA,Italy,3950.0,15838.0,low_snps:15838
+I4567.AG,Kazakhstan_MLBA,Kazakhstan,3626.0,200466.0,qc_assessment:CRITICAL
+I4617.AG,Turkey_BA,Turkey,5000.0,13493.0,low_snps:13493
+I4620.AG,Turkey_BA,Turkey,4660.0,15736.0,low_snps:15736
+I4621.AG,Turkey_EBA,Turkey,4571.0,5452.0,low_snps:5452
+I4664.AG,Serbia_IronGates_ImperialRoman,Serbia,1724.0,21355.0,low_snps:21355
+I4665.AG,Serbia_IronGates_N,Serbia,8006.0,23596.0,low_snps:23596
+I4785.AG,Kazakhstan_MLBA,Kazakhstan,2675.0,3661.0,qc_assessment:CRITICAL
+I4936.AG,Italy_Sicily_BellBeaker,Italy,4150.0,24332.0,low_snps:24332
+I4947.AG,Czechia_BellBeaker,Czechia,4300.0,6831.0,low_snps:6831
+I4972.AG,Hungary_EN_Koros-oWHG,Hungary,7700.0,9532.0,low_snps:9532
+I5019.AG,Germany_KunzingBruck_BellBeaker,Germany,4200.0,9765.0,low_snps:9765
+I5037.AG,Czechia_EBA_Protounetice,Czechia,4100.0,20139.0,low_snps:20139
+I5116.AG,Hungary_LateC_Baden-o,Hungary,5100.0,16888.0,low_snps:16888
+I5522.AG,Germany_AugsburgHugoEckenerStrasse_BellBeaker,Germany,4250.0,10300.0,low_snps:10300
+I5526.AG,Germany_DGFLan_BellBeaker,Germany,4250.0,10708.0,low_snps:10708
+I5527.AG,Germany_ManchingOberstimm_BellBeaker,Germany,4250.0,24555.0,low_snps:24555
+I5530.AG,Germany_Weichering_BellBeaker,Germany,4250.0,3423.0,low_snps:3423
+I5762.AG,Kazakhstan_MBA,Kazakhstan,3500.0,6273.0,low_snps:6273
+I5868.AG,Ukraine_Zaporizhia_N,Ukraine,7313.0,21504.0,low_snps:21504
+I5873.AG,Ukraine_Zaporizhia_N,Ukraine,7334.0,23094.0,low_snps:23094
+I6117.AG,Turkmenistan_BA1-1,Turkmenistan,3850.0,9376.0,low_snps:9376
+I6118.AG,Turkmenistan_BA1-1,Turkmenistan,4000.0,4140.0,low_snps:4140
+I6120.AG,Turkmenistan_BA1-1,Turkmenistan,4000.0,3142.0,low_snps:3142
+I6122.AG,Turkmenistan_BA1-1,Turkmenistan,4000.0,8937.0,low_snps:8937
+I6125.AG,Turkmenistan_BA1-1,Turkmenistan,4000.0,6687.0,low_snps:6687
+I6126.AG,Turkmenistan_BA1-1,Turkmenistan,4000.0,8787.0,low_snps:8787
+I6127.AG,Turkmenistan_BA1-1,Turkmenistan,4000.0,3551.0,low_snps:3551
+I6217.AG,Turkmenistan_BA1-1,Turkmenistan,4139.0,16491.0,low_snps:16491
+I6302.AG,Russia_Saratov_Eneolithic,Russia,7081.0,25358.0,low_snps:25358
+I6310.AG,Turkmenistan_BA1-1,Turkmenistan,4000.0,14544.0,low_snps:14544
+I6312.AG,Turkmenistan_BA1-1,Turkmenistan,4000.0,7823.0,low_snps:7823
+I6318.AG,Turkmenistan_BA1-1,Turkmenistan,4000.0,8021.0,low_snps:8021
+I6463.AG,Jordan_LBA,Jordan,3300.0,8373.0,low_snps:8373
+I6491.AG,Spain_LateAntiquity_ImperialRoman,Spain,1600.0,20836.0,low_snps:20836
+I6492.AG,Spain_LateAntiquity_ImperialRoman,Spain,1600.0,9228.0,low_snps:9228
+I6661.AG,Romania_EN-oIran,Romania,7506.0,18766.0,low_snps:18766
+I6670.AG,Turkmenistan_EBA,Turkmenistan,4450.0,2453.0,qc_assessment:CRITICAL
+I3004.AG,England_Mesolithic-1,United Kingdom,10393.0,112612.0,qc_assessment:CRITICAL
+I6748.AG,England_EN-o,United Kingdom,5813.0,23475.0,low_snps:23475
+I6776.AG,England_BellBeaker,United Kingdom,4150.0,230611.0,qc_assessment:CRITICAL
+I6836.AG,Russia_Omsk_EBA_Okunevsky,Russia,3825.0,17140.0,low_snps:17140
+I6882_d.AG,Russia_Rostov_EBA_Don_Yamnaya,Russia,4850.0,10335.0,low_snps:10335
+I6913.AG,Austria_N_LBK-oHG,Austria,7366.0,7303.0,low_snps:7303
+I6922.AG,Israel_MLBA,Israel,3725.0,27831.0,low_snps:27831
+I6924.AG,Israel_MLBA,Israel,3725.0,21774.0,low_snps:21774
+I6925.AG,Israel_MLBA,Israel,3725.0,9529.0,low_snps:9529
+I6928.AG,Israel_MLBA,Israel,3725.0,23758.0,low_snps:23758
+I6932.AG,Israel_MLBA,Israel,3725.0,5573.0,low_snps:5573
+I6950.AG,Russia_Omsk_EBA_Okunevsky,Russia,3825.0,19145.0,low_snps:19145
+I7002.AG,Israel_MLBA,Israel,3725.0,25292.0,low_snps:25292
+I7026.AG,Mongolia_EIA_Sagly-4,Mongolia,2222.0,15110.0,low_snps:15110
+I7101.AG,Turkmenistan_BA1-1,Turkmenistan,4050.0,9649.0,low_snps:9649
+I7102.AG,Turkmenistan_BA1-1,Turkmenistan,3850.0,15188.0,low_snps:15188
+I7158.AG,Spain_LateAntiquity_ImperialRoman,Spain,1600.0,5487.0,low_snps:5487
+I7160.AG,Spain_MLN,Spain,5877.0,5701.0,low_snps:5701
+I7170.AG,Turkmenistan_BA1-1,Turkmenistan,3850.0,7779.0,low_snps:7779
+I7171.AG,Turkmenistan_BA1-1,Turkmenistan,4050.0,5616.0,low_snps:5616
+I7173.AG,Turkmenistan_BA1-1,Turkmenistan,4050.0,6169.0,qc_assessment:CRITICAL
+I7177.AG,Israel_MLBA,Israel,3725.0,5872.0,low_snps:5872
+I7179.AG,Israel_MLBA,Israel,3725.0,4980.0,low_snps:4980
+I7180.AG,Israel_MLBA,Israel,3725.0,14886.0,low_snps:14886
+I7184.AG,Israel_MLBA,Israel,3725.0,15177.0,low_snps:15177
+I7258.AG,Italy_Sicily_IA_b_IA_c_Punic_possible,Italy,2300.0,19995.0,qc_assessment:CRITICAL
+I7267.AG,Italy_Sicily_IA_b_IA_c_Punic_possible,Italy,2300.0,32538.0,qc_assessment:CRITICAL
+I7398.AG,Croatia_MN_Sopot,Croatia,6875.0,14322.0,low_snps:14322
+I7426.AG,Spain_NazariPeriod_Muslim,Spain,400.0,9845.0,low_snps:9845
+I7458.AG,Spain_Medieval_Almohade_Islamic,Spain,750.0,5912.0,low_snps:5912
+I7538.AG,Croatia_MN_Sopot,Croatia,6875.0,15115.0,low_snps:15115
+I7588.AG,Spain_C,Spain,4650.0,33044.0,qc_assessment:CRITICAL
+I7595.AG,Spain_MLN,Spain,5396.0,25486.0,low_snps:25486
+I7597.AG,Spain_MLN-o,Spain,5625.0,11808.0,qc_assessment:CRITICAL
+I7630.AG,England_EBA_C_highEEF,United Kingdom,3734.0,17659.0,low_snps:17659
+I7632.AG,England_MIA,United Kingdom,2240.0,256377.0,qc_assessment:CRITICAL
+I7647.AG,Spain_MLN,Spain,5945.0,24488.0,low_snps:24488
+I7674.AG,Spain_Carolingian,Spain,1153.0,28682.0,low_snps:28682
+I7687.AG,Portugal_LBA,Portugal,2900.0,28483.0,low_snps:28483
+I7688.AG,Portugal_LBA,Portugal,2900.0,21907.0,low_snps:21907
+I7689.AG,Portugal_EBA,Portugal,3900.0,13521.0,low_snps:13521
+I7712.AG,Serbia_EN_Starcevo,Serbia,7600.0,21292.0,low_snps:21292
+I7760.AG,Russia_Irkutsk_N_Angara,Russia,5820.0,394080.0,qc_assessment:CRITICAL
+I7763.AG,Italy_Sicily_IA_b_IA_c_Punic,Italy,2350.0,7434.0,low_snps:7434
+I7862_d.AG,Moldova_MBA,Moldova,3456.0,6532.0,low_snps:6532
+I7867.AG,Serbia_EN_Starcevo,Serbia,7985.0,28034.0,low_snps:28034
+I7868.AG,Serbia_EN_Starcevo,Serbia,7967.0,9308.0,low_snps:9308
+I7889.AG,Slovakia_Yamnaya,Slovakia,4750.0,6416.0,low_snps:6416
+I7892.AG,Slovakia_N_LBK,Slovakia,6975.0,22499.0,low_snps:22499
+I7921.AG,Ukraine_Ternopil_Eneolithic_Trypillia,Ukraine,5628.0,9325.0,low_snps:9325
+I7943.AG,Kenya_Swahili,Kenya,425.0,9498.0,low_snps:9498
+I8038.AG,Italy_Sicily_IA_b_IA_c_Punic,Italy,2300.0,10962.0,low_snps:10962
+I8079.AG,Taiwan_IA,Taiwan,1550.0,4777.0,low_snps:4777
+I8090_d.AG,USA_Maryland_Historic_AfricanAmerican,USA,125.0,13765.0,low_snps:13765
+I8109.AG,Serbia_EN_Starcevo,Serbia,7650.0,12939.0,low_snps:12939
+I8113.AG,DominicanRepublic_Ceramic,Dominican Republic,800.0,4266.0,low_snps:4266
+I8116.AG,Serbia_EN_Starcevo-o,Serbia,7650.0,820006.0,qc_assessment:MERGE_CRITICAL
+I8130.AG,Spain_Mesolithic,Spain,7957.0,13066.0,low_snps:13066
+I8132.AG,Spain_C,Spain,4450.0,3172.0,low_snps:3172
+I8141.AG,Spain_C,Spain,4050.0,16155.0,low_snps:16155
+I8148.AG,Spain_C,Spain,4650.0,22535.0,low_snps:22535
+I8150.AG,Spain_C,Spain,4650.0,25923.0,low_snps:25923
+I8153.AG,Spain_C,Spain,4650.0,23608.0,low_snps:23608
+I8157.AG,Spain_C,Spain,4650.0,3665.0,low_snps:3665
+I8204.AG,Spain_LateArchaic_Classical_Hellenistic-oMixedDup,Spain,2179.0,137887.0,qc_assessment:CRITICAL
+I8213.AG,Spain_LateArchaic_Classical_Hellenistic,Spain,2400.0,12544.0,low_snps:12544
+I8241.AG,Mexico_Tayopa_1000BP,Mexico,1000.0,679751.0,qc_assessment:CRITICAL
+I8340.AG,Spain_LateArchaic_Classical_Hellenistic,Spain,2375.0,26756.0,low_snps:26756
+I8412.AG,Russia_Ivanovo_Eneolithic_Volosovo_Lyalovo,Russia,6500.0,25793.0,low_snps:25793
+I8429.AG,Bulgaria_Kairyaka_EBA,Bulgaria,4550.0,5360.0,low_snps:5360
+I8477.AG,Russia_Rostov_EBA_Don_Yamnaya,Russia,4711.0,6114.0,low_snps:6114
+I8505.AG,Turkmenistan_C,Turkmenistan,5025.0,117681.0,qc_assessment:CRITICAL
+I8508.AG,Uzbekistan_N,Uzbekistan,6356.0,16278.0,qc_assessment:CRITICAL
+I8525.AG,Turkmenistan_C,Turkmenistan,4943.0,97375.0,qc_assessment:CRITICAL
+I8554.AG,Jordan_PPNB,Jordan,9900.0,12811.0,low_snps:12811
+I8570.AG,Spain_LBA,Spain,3100.0,242323.0,qc_assessment:CRITICAL
+I8738.AG,Russia_Samara_Eneolithic_Ekaterinovka,Russia,7200.0,8194.0,low_snps:8194
+I8949.AG,Russia_Rostov_EBA_Don_Yamnaya,Russia,4324.0,26582.0,low_snps:26582
+I8970.AG,Thailand_IA,Thailand,2450.0,18920.0,low_snps:18920
+I8974.AG,Thailand_BA,Thailand,3050.0,19435.0,low_snps:19435
+I8977.AG,Thailand_BA,Thailand,3050.0,11147.0,low_snps:11147
+I8978.AG,Thailand_LN_BA,Thailand,3300.0,4869.0,low_snps:4869
+I0589.SG,Tanzania_1300BP,Tanzania,1331.0,17974.0,low_snps:17974
+I1048.SG,Tanzania_1400BP,Tanzania,1357.0,5871.0,low_snps:5871
+I2966.SG,Malawi_LSA_8500BP,Malawi,8895.0,252321.0,qc_assessment:CRITICAL
+I0442.AG,Russia_Samara_MBA_Poltavka,Russia,4350.0,29194.0,low_snps:29194
+I0456.AG,Spain_C,Spain,4500.0,29765.0,low_snps:29765
+I0457.AG,Spain_C,Spain,4500.0,20338.0,low_snps:20338
+I0721.AG,USA_Alaska_PaleoAleut,USA,2070.0,29777.0,low_snps:29777
+I0800.AG,Germany_SalzmundeSchiepzig_MN_IA_c_Salzmuende,Germany,5164.0,24759.0,low_snps:24759
+I0802.AG,Germany_SalzmundeSchiepzig_MN_IA_c_Salzmuende,Germany,5150.0,21297.0,low_snps:21297
+I0971.AG,Peru_MiddleHolocene_1000BP,Peru,1250.0,25179.0,low_snps:25179
+I0979.AG,Bolivia_MHorizon,Bolivia,1125.0,24853.0,low_snps:24853
+I1065.AG,Russia_Chelyabinsk_MLBA_Sintashta,Russia,3825.0,181845.0,qc_assessment:CRITICAL
+I1396.AG,Peru_LIP_600BP_LaGalgada,Peru,590.0,76195.0,qc_assessment:CRITICAL
+I1704.AG,Jordan_PPNB,Jordan,9159.0,175863.0,qc_assessment:CRITICAL
+I1707.AG,Jordan_PPNB,Jordan,9569.0,154807.0,qc_assessment:CRITICAL
+I1748.AG,Argentina_BuenosAires_7700BP,Argentina,7200.0,28200.0,low_snps:28200
+ADN012.AG,Germany_Anderten_Medieval_Saxon,Germany,1150.0,27785.0,low_snps:27785
+DRU008.AG,Germany_Drantum_Medieval_Saxon,Germany,1200.0,15749.0,low_snps:15749
+DRU012.AG,Germany_Drantum_Medieval_Saxon,Germany,1200.0,477573.0,qc_assessment:CRITICAL
+DUN003.AG,Germany_Dunum_Medieval_Saxon,Germany,1050.0,8355.0,low_snps:8355
+DUN008.AG,Germany_Dunum_Medieval_Saxon,Germany,1050.0,23018.0,low_snps:23018
+EAS005.AG,England_Kent_EarlyMedieval_AngloSaxon,United Kingdom,1300.0,12579.0,low_snps:12579
+ISS002.AG,Germany_Issendorf_EarlyMedieval,Germany,1550.0,317929.0,qc_assessment:CRITICAL
+KIL007.AG,Ireland_EarlyMedieval,Ireland,950.0,78459.0,qc_assessment:CRITICAL
+KIL017.AG,Ireland_EarlyMedieval,Ireland,950.0,19172.0,low_snps:19172
+KIL030.AG,Ireland_EarlyMedieval-oSteppe,Ireland,950.0,90290.0,qc_assessment:CRITICAL
+KPN010.AG,Denmark_Medieval,Denmark,900.0,10779.0,low_snps:10779
+LAK006.AG,England_Saxon,United Kingdom,1200.0,837609.0,qc_assessment:CRITICAL
+LAK016.AG,England_Suffolk_EarlyMedieval_AngloSaxon,United Kingdom,1487.0,3797.0,low_snps:3797
+LBU005.AG,Germany_Liebenau_EarlyMedieval_Saxon,Germany,1550.0,3040.0,low_snps:3040
+LBU007.AG,Germany_Liebenau_EarlyMedieval_Saxon,Germany,1550.0,2980.0,low_snps:2980
+LBU010.AG,Germany_Liebenau_EarlyMedieval_Saxon,Germany,1550.0,24615.0,low_snps:24615
+SED001.AG,England_EarlyMedieval,United Kingdom,1200.0,17303.0,low_snps:17303
+SED011.AG,England_EarlyMedieval,United Kingdom,1200.0,23234.0,low_snps:23234
+SRS002.AG,Germany_Schortens_EarlyMedieval,Germany,1150.0,20510.0,low_snps:20510
+ZET001.AG,Germany_Zetel_EarlyMedieval_Saxon,Germany,1200.0,92412.0,qc_assessment:CRITICAL
+ZET002.AG,Germany_Zetel_EarlyMedieval_Saxon,Germany,1200.0,7533.0,low_snps:7533
+Xaghra5.SG,Malta_EBA,Malta,4400.0,773921.0,qc_assessment:CRITICAL
+AITI_35.AG.SG,Germany_KleinaitingenGewerbegebietNord_EBA,Germany,3885.0,12252.0,low_snps:12252
+AITI_3.AG.SG,Germany_KleinaitingenGewerbegebietNord_EBA,Germany,3928.0,13265.0,low_snps:13265
+AITI_51.AG.SG,Germany_KleinaitingenGewerbegebietNord_EBA,Germany,3802.0,25534.0,low_snps:25534
+AITI_53.AG.SG,Germany_KleinaitingenGewerbegebietNord_EBA,Germany,3763.0,10474.0,low_snps:10474
+AITI_55.AG.SG,Germany_KleinaitingenGewerbegebietNord_EBA,Germany,3772.0,48556.0,qc_assessment:CRITICAL
+AITI_62A.AG.SG,Germany_KleinaitingenGewerbegebietNord_EBA,Germany,3732.0,17893.0,low_snps:17893
+AITI_65child.AG.SG,Germany_KleinaitingenGewerbegebietNord_EBA,Germany,3547.0,9176.0,low_snps:9176
+ALT_2.AG,Germany_Althausen_CordedWare,Germany,4425.0,10755.0,low_snps:10755
+ALT_4.AG,Germany_Althausen_CordedWare,Germany,4453.0,204731.0,qc_assessment:CRITICAL
+AMP_1_alt.AG.SG,Germany_KonigsbrunnAmpack_BellBeaker,Germany,4356.0,772533.0,qc_assessment:CRITICAL
+HUGO_167.AG,Germany_AugsburgHugoEckenerStrasse_BellBeaker,Germany,4089.0,19199.0,low_snps:19199
+HUGO_169Sk1_alt.AG.SG,Germany_AugsburgHugoEckenerStrasse_BellBeaker,Germany,4385.0,563792.0,qc_assessment:CRITICAL
+HUGO_180Sk1_alt.AG,Germany_AugsburgHugoEckenerStrasse_BellBeaker,Germany,4289.0,682018.0,qc_assessment:CRITICAL
+HUGO_180Sk2_alt.AG.SG,Germany_AugsburgHugoEckenerStrasse_BellBeaker,Germany,4307.0,277533.0,qc_assessment:CRITICAL
+OBKR_117_alt.AG.SG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA,Germany,3883.0,563074.0,qc_assessment:CRITICAL
+OBKR_47.AG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA,Germany,4012.0,52592.0,qc_assessment:CRITICAL
+OBKR_67_alt.AG.SG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA-o,Germany,3906.0,340541.0,qc_assessment:CRITICAL
+OBKR_76.AG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA,Germany,3863.0,23762.0,low_snps:23762
+OBKR_82.AG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA,Germany,3908.0,16236.0,low_snps:16236
+OBKR_84.AG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA,Germany,3875.0,23270.0,low_snps:23270
+OBKR_86_alt.AG.SG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA,Germany,3926.0,466089.0,qc_assessment:CRITICAL
+OBKR_95.AG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA,Germany,3917.0,28984.0,low_snps:28984
+OTTM_100.AG.SG,Germany_OberottmarshausenKiesgrubeLauter_MBA,Germany,3435.0,10010.0,low_snps:10010
+OTTM_109.AG.SG,Germany_OberottmarshausenKiesgrubeLauter_MBA,Germany,3589.0,25328.0,low_snps:25328
+OTTM_110.AG.SG,Germany_OberottmarshausenKiesgrubeLauter_MBA,Germany,3421.0,7913.0,low_snps:7913
+OTTM_79.AG.SG,Germany_OberottmarshausenKiesgrubeLauter_MBA,Germany,3435.0,13484.0,low_snps:13484
+OTTM_92.AG.SG,Germany_OberottmarshausenKiesgrubeLauter_MBA,Germany,3342.0,16785.0,low_snps:16785
+OTTM_94.AG.SG,Germany_OberottmarshausenKiesgrubeLauter_MBA,Germany,3333.0,10261.0,low_snps:10261
+OTTM_97.AG.SG,Germany_OberottmarshausenKiesgrubeLauter_MBA-o,Germany,3528.0,25617.0,low_snps:25617
+POST_16.AG,Germany_HaunstettenPostillionstrasse_EBA,Germany,3922.0,23327.0,low_snps:23327
+POST_2.AG,Germany_HaunstettenPostillionstrasse_EBA,Germany,3971.0,22961.0,low_snps:22961
+POST_85.AG,Germany_HaunstettenPostillionstrasse_EBA,Germany,3946.0,21251.0,low_snps:21251
+UNTA121_FK61.AG,Germany_HaunstettenUntererTalweg121_CordedWare,Germany,4795.0,20474.0,low_snps:20474
+UNTA58_149.AG,Germany_HaunstettenUntererTalweg5862_EBA,Germany,3904.0,26220.0,low_snps:26220
+WEHR_1474_alt.AG.SG,Germany_WehringenHochfeld_EBA,Germany,3924.0,498463.0,qc_assessment:CRITICAL
+WEHR_1564.AG.SG,Germany_WehringenHochfeld_EBA,Germany,3899.0,308267.0,qc_assessment:CRITICAL
+KOB003.AG,Czechia_N_TRB,Czechia,5600.0,287466.0,qc_assessment:CRITICAL
+MIG012.AG,Czechia_EBA_Unetice,Czechia,3800.0,322040.0,qc_assessment:CRITICAL
+I3049.SG,England_N,United Kingdom,4480.0,29533.0,qc_assessment:CRITICAL
+I3023.AG.SG,Wales_N,United Kingdom,5300.0,127872.0,qc_assessment:CRITICAL
+I3065.AG.SG,Scotland_Mesolithic,United Kingdom,6290.0,27520.0,low_snps:27520
+WEZ16.SG,Germany_Tollensebattlefield_BA-1,Germany,5050.0,17212.0,low_snps:17212
+WEZ48.SG,Germany_Tollensebattlefield_BA,Germany,3200.0,14391.0,low_snps:14391
+WEZ74.SG,Germany_Tollensebattlefield_BA,Germany,3200.0,24597.0,low_snps:24597
+PAPV_137.SG,Panama_Colonial-oEurope,Panama,990.0,8326.0,low_snps:8326
+PAPV_26.SG,Panama_Colonial-oEastAsia,Panama,425.0,5978.0,qc_assessment:CRITICAL
+PAPV_27.SG,Panama_Colonial-oNativeAmerican,Panama,425.0,16664.0,low_snps:16664
+PAPV_52.SG,Panama_Colonial-oAfrica,Panama,300.0,1798.0,qc_assessment:CRITICAL
+PAPV_53.SG,Panama_Colonial-oAfrica,Panama,300.0,1996.0,qc_assessment:CRITICAL
+PAPV_61.SG,Panama_Colonial-oAfrica,Panama,300.0,1724.0,qc_assessment:CRITICAL
+PAPV_93.SG,Panama_Colonial-oEurope,Panama,300.0,11930.0,low_snps:11930
+JP14.SG,Ireland_MN,Ireland,5483.0,1150071.0,qc_assessment:CRITICAL
+AH117_18R21266.SG,China_Shaanxi_Wuzhuangguoliang_LN,China,4785.0,17969.0,low_snps:17969
+S91.EC,China_Shaanxi_Wuzhuangguoliang_LN,China,5050.0,22023.0,low_snps:22023
+vbj015.SG,Sweden_PittedWare,Sweden,4865.0,21542.0,low_snps:21542
+vbj018.SG,Sweden_PittedWare,Sweden,4868.0,903960.0,qc_assessment:CRITICAL
+RISE1283.SG,Denmark_Djursland_SingleGraveCulture,Denmark,4383.0,6915.0,low_snps:6915
+DA161.SG,Russia_Alan-o,Russia,1300.0,146371.0,qc_assessment:CRITICAL
+DA92.SG,Kazakhstan_IA_Nomad,Kazakhstan,1899.0,376530.0,qc_assessment:CRITICAL
+ETR004.AG,Italy_Tuscany_EarlyMedieval,Italy,1000.0,22674.0,low_snps:22674
+MAS001.AG,Italy_Tuscany_IA_c_IA_d_Etruscan-oLevant,Italy,2136.0,426401.0,qc_assessment:CRITICAL
+VEN001.AG,Italy_Basilicata,Italy,1225.0,609296.0,qc_assessment:CRITICAL
+ASH066.AG,Israel_IA1,Israel,3184.0,160422.0,qc_assessment:CRITICAL
+CROI1-4.SG,France_GrandEst_HautRhin_IA,France,2650.0,91494.0,qc_assessment:CRITICAL
+IAM.3.WGC.SG,Morocco_EN,Morocco,7210.0,15191.0,low_snps:15191
+MX298.AG,Switzerland_EBA-2,Switzerland,4461.0,19241.0,low_snps:19241
+gun002_Rodriguez.SG,Canary_Guanche,Canary Islands,851.0,198767.0,qc_assessment:CRITICAL
+gun012.SG,Canary_Guanche,Canary Islands,1324.0,428384.0,qc_assessment:CRITICAL
+SF11.SG,Sweden_Mesolithic-o,Sweden,8892.0,112423.0,qc_assessment:CRITICAL
+bab001_alt.SG,SouthAfrica_2000BP,South Africa,2037.0,736154.0,qc_assessment:CRITICAL
+doo001.SG,SouthAfrica_2000BP,South Africa,2039.0,1196.0,qc_assessment:CRITICAL
+SFI-11.SG,Lebanon_EarlyRoman,Lebanon,1984.0,125470.0,qc_assessment:CRITICAL
+MJ-36.SG,Ukraine_Roman_BuhDniester-o,Ukraine,1628.0,22438.0,low_snps:22438
+MJ-53.SG,Kazakhstan_Tasmola-2,Kazakhstan,2250.0,27442.0,low_snps:27442
+ARS004.AG,Mongolia_Khovsgol_LBA-6,Mongolia,2983.0,434277.0,qc_assessment:CRITICAL
+PTO001.AG,Russia_Buryatia_EIA,Russia,2932.0,21030.0,low_snps:21030
+BIY001.AG,Russia_EIA_IA_Sargatka,Russia,2307.0,118204.0,qc_assessment:CRITICAL
+BIY006.AG,Russia_EIA_IA_Sargatka,Russia,2150.0,6364.0,low_snps:6364
+BIY010.AG,Russia_EIA_IA_Sargatka,Russia,2150.0,23227.0,low_snps:23227
+CLK001.AG,Kazakhstan_IA_Sarmatian,Kazakhstan,2400.0,143887.0,qc_assessment:CRITICAL
+KOK001.AG,Russia_Omsk_IA-1,Russia,2250.0,22766.0,low_snps:22766
+KOK003.AG,Russia_Omsk_IA-3,Russia,2250.0,21887.0,low_snps:21887
+SHD002.AG,Russia_Kurgan_EIA_IA,Russia,2300.0,5901.0,low_snps:5901
+VOR003a.AG,Russia_EIA_IA_Sargatka-o,Russia,2250.0,12265.0,low_snps:12265
+bla001.SG,Russia_Amur_EarlyMedieval,Russia,1299.0,487387.0,qc_assessment:CRITICAL
+brn001.SG,Russia_ZabaykalskyKrai_N-1,Russia,7334.0,26930.0,low_snps:26930
+brn002.SG,Russia_ZabaykalskyKrai_N,Russia,6061.0,91911.0,qc_assessment:CRITICAL
+brn003.SG,Russia_ZabaykalskyKrai_N,Russia,6550.0,1094256.0,qc_assessment:CRITICAL
+brn008.SG,Russia_ZabaykalskyKrai_N-2,Russia,7379.0,1021475.0,qc_assessment:CRITICAL
+irk007.SG,Russia_Irkutsk_EN,Russia,8801.0,1002080.0,qc_assessment:CRITICAL
+irk00x.SG,Russia_ZabaykalskyKrai_Mesolithic,Russia,8419.0,781415.0,qc_assessment:CRITICAL
+irk022.SG,Russia_Irkutsk_EBA,Russia,4251.0,1147386.0,qc_assessment:CRITICAL
+irk025.SG,Russia_Irkutsk_EBA,Russia,4350.0,1149621.0,qc_assessment:CRITICAL
+irk030.SG,Russia_Irkutsk_N,Russia,5969.0,1148639.0,qc_assessment:CRITICAL
+irk032.SG,Russia_Irkutsk_Medieval,Russia,613.0,459637.0,qc_assessment:CRITICAL
+irk033.SG,Russia_Irkutsk_N,Russia,4858.0,544078.0,qc_assessment:CRITICAL
+irk034.SG,Russia_Irkutsk_N,Russia,5525.0,1116129.0,qc_assessment:CRITICAL
+irk036.SG,Russia_Irkutsk_EBA,Russia,4720.0,1149817.0,qc_assessment:CRITICAL
+irk040.SG,Russia_Irkutsk_N,Russia,5559.0,1144564.0,qc_assessment:CRITICAL
+irk057.SG,Russia_Irkutsk_EBA,Russia,4380.0,104843.0,qc_assessment:CRITICAL
+irk061.SG,Russia_Irkutsk_EBA,Russia,4341.0,1148342.0,qc_assessment:CRITICAL
+irk068.SG,Russia_Irkutsk_EBA,Russia,4468.0,1143898.0,qc_assessment:CRITICAL
+irk071.SG,Russia_Irkutsk_N,Russia,5132.0,1043301.0,qc_assessment:CRITICAL
+irk075.SG,Russia_Irkutsk_N,Russia,5397.0,1149165.0,qc_assessment:CRITICAL
+kra001.SG,Russia_KrasnoyarskKrai_BA,Russia,4170.0,1149876.0,qc_assessment:CRITICAL
+N4b2.SG,Russia_Sakha_LN,Russia,4200.0,1127298.0,qc_assessment:CRITICAL
+N5a.SG,Russia_Sakha_MN,Russia,6232.0,205350.0,qc_assessment:CRITICAL
+geo017.SG,Georgia_Doghlauri_LBA,Georgia,3164.0,29820.0,low_snps:29820
+gur016.SG,Georgia_Nazarlebi_LBA,Georgia,3200.0,10551.0,low_snps:10551
+sha012.SG,Iran_ShahTepe_BA,Iran,5100.0,713575.0,qc_assessment:CRITICAL
+cim358.SG,Moldova_Cimmerian,Moldova,2822.0,101814.0,qc_assessment:CRITICAL
+kzb004.SG,Russia_Bashkortostan_LBA,Russia,3661.0,20526.0,low_snps:20526
+scy006.WGC,Ukraine_EIA_Scythian,Ukraine,2550.0,16464.0,low_snps:16464
+scy304.SG,Moldova_Scythian,Moldova,2213.0,85677.0,qc_assessment:CRITICAL
+scy305.SG,Moldova_Scythian,Moldova,2254.0,196006.0,qc_assessment:CRITICAL
+scy332.SG,Moldova_Scythian-3,Moldova,1616.0,13830.0,low_snps:13830
+vik_2072.SG,Sweden_Viking,Sweden,973.0,12627.0,low_snps:12627
+vik_84035.SG,Sweden_Viking,Sweden,1061.0,208256.0,qc_assessment:CRITICAL
+vik_97029.SG,Sweden_Viking,Sweden,900.0,27467.0,low_snps:27467
+vik_bns023.SG,Sweden_Viking,Sweden,900.0,19933.0,low_snps:19933
+C2057.AG,China_Xinjiang_Sandaohaizi_IA,China,2351.0,4823.0,qc_assessment:CRITICAL
+C3319.AG,China_Xinjiang_Caishichang_IA-oWestEurasia,China,2351.0,544558.0,qc_assessment:CRITICAL
+C628.AG,China_Xinjiang_Tangbalesayi_IA_Wusun_possible,China,2185.0,236046.0,qc_assessment:CRITICAL
+C783.AG,China_Xinjiang_Tangbalesayi_Historical_Nomad,China,950.0,166203.0,qc_assessment:CRITICAL
+C1660.AG,China_Xinjiang_Ayousaigoukou_IA-oEastAsia,China,2550.0,208380.0,qc_assessment:CRITICAL
+C3665.AG,China_Xinjiang_ZhagunlukeZaghunluq_IA,China,2175.0,23160.0,low_snps:23160
+C3654.AG,China_Xinjiang_ZhagunlukeZaghunluq_IA,China,2175.0,27344.0,low_snps:27344
+C401.AG,China_Xinjiang_Hetian_Antiquity,China,1650.0,25533.0,low_snps:25533
+C402.AG,China_Xinjiang_Hetian_Antiquity,China,1650.0,24979.0,low_snps:24979
+C3624.AG,China_Xinjiang_ShanpulaSampula_Antiquity,China,1800.0,18964.0,low_snps:18964
+C3625.AG,China_Xinjiang_ShanpulaSampula_Antiquity,China,1800.0,199123.0,qc_assessment:CRITICAL
+kum4.SG,Turkey_N,Turkey,6550.0,10536.0,low_snps:10536
+JK1963.AG,Finland_Levanluhta,Finland,1400.0,20646.0,low_snps:20646
+JK1967.AG,Finland_Levanluhta,Finland,1400.0,10632.0,low_snps:10632
+JK2066.AG,Finland_Levanluhta-2,Finland,1400.0,8322.0,low_snps:8322
+JK2067.AG,Finland_Levanluhta-2,Finland,1400.0,4815.0,low_snps:4815
+tai001.SG,Taiwan_8000BP,Taiwan,8195.0,8978.0,low_snps:8978
+pcw062.SG,Poland_CordedWare-o,Poland,4300.0,16392.0,low_snps:16392
+SMP5.SG,Peru_6800BP,Peru,6831.0,27582.0,qc_assessment:CRITICAL
+C2.AG,Nepal_IA,Nepal,2725.0,2004.0,qc_assessment:CRITICAL
+M241.AG,Nepal_LIA_EMiddleKingdoms,Nepal,2275.0,9076.0,low_snps:9076
+S36.SG,Nepal_Mustang_SamdzongTomb_MiddleKingdom,Nepal,1275.0,21018.0,low_snps:21018
+NE57.AG,China_AmurRiverBasin_Mesolithic,China,11026.0,10740.0,low_snps:10740
+NE36.AG,China_AmurRiverBasin_Mesolithic,China,10673.0,8949.0,low_snps:8949
+NE44.AG,China_AmurRiverBasin_N,China,9232.0,5532.0,low_snps:5532
+NE18.AG,China_AmurRiverBasin_N,China,7062.0,2608.0,low_snps:2608
+NE61.AG,China_AmurRiverBasin_BA,China,3421.0,28025.0,low_snps:28025
+JK2839.AG,Italy_Sardinia_BA_Nuragic_Nuragic-o,Italy,3111.0,151780.0,qc_assessment:CRITICAL
+JK2744.AG,Italy_Sardinia_BA_IA_a_Nuragic-o,Italy,2988.0,11297.0,low_snps:11297
+VK116.SG,Norway_Medieval,Norway,750.0,7151.0,low_snps:7151
+VK125.SG,Norway_Medieval-o,Norway,750.0,2938.0,low_snps:2938
+VK135.SG,Denmark_Viking,Denmark,1000.0,12743.0,low_snps:12743
+VK140.SG,Denmark_Viking,Denmark,1000.0,18900.0,low_snps:18900
+VK149.SG,England_Viking,United Kingdom,1025.0,3429.0,low_snps:3429
+VK161.SG,Russia_EarlyMedieval_Viking_OldRus,Russia,850.0,27875.0,low_snps:27875
+VK163.SG,England_Viking,United Kingdom,1025.0,9906.0,low_snps:9906
+VK180.SG,Greenland_EarlyNorse,Greenland,900.0,10369.0,low_snps:10369
+VK182.SG,Greenland_EarlyNorse,Greenland,900.0,12446.0,low_snps:12446
+VK185.SG,Greenland_EarlyNorse,Greenland,900.0,3148.0,low_snps:3148
+VK200.SG,Poland_Viking,Poland,1059.0,22240.0,low_snps:22240
+VK206.SG,Scotland_Viking,United Kingdom,1000.0,10761.0,low_snps:10761
+VK252.SG,Russia_Viking,Russia,950.0,2354.0,qc_assessment:CRITICAL
+VK253.SG,Russia_EarlyMedieval_Viking_OldRus-o,Russia,950.0,3690.0,low_snps:3690
+VK267.SG,Sweden_Viking,Sweden,1000.0,28600.0,low_snps:28600
+VK270.SG,Sweden_Viking,Sweden,1000.0,18746.0,low_snps:18746
+VK304.SG,Sweden_Viking,Sweden,900.0,12831.0,low_snps:12831
+VK339.SG,Denmark_Viking,Denmark,1075.0,14896.0,low_snps:14896
+VK359.SG,Sweden_EarlyViking,Sweden,1200.0,6705.0,low_snps:6705
+VK411.SG,Denmark_Viking,Denmark,1000.0,23143.0,low_snps:23143
+VK421.SG,Norway_Viking,Norway,950.0,17529.0,low_snps:17529
+VK437.SG,Sweden_Viking,Sweden,975.0,28413.0,low_snps:28413
+VK467.SG,Sweden_Viking,Sweden,975.0,13547.0,low_snps:13547
+VK74.SG,Greenland_LateNorse,Greenland,776.0,3374.0,low_snps:3374
+VK76.SG,Greenland_LateNorse,Greenland,878.0,3123.0,low_snps:3123
+VK77.SG,Greenland_LateNorse,Greenland,845.0,4963.0,low_snps:4963
+VK86.SG,Denmark_Viking,Denmark,1075.0,10057.0,low_snps:10057
+HH-10.SG,Hungary_LateAvar,Hungary,1231.0,875513.0,qc_assessment:CRITICAL
+HMSZ-50.SG,Hungary_Commoner,Hungary,1021.0,513264.0,qc_assessment:CRITICAL
+IBE-116.SG,Hungary_EarlyArpadian,Hungary,900.0,1016077.0,qc_assessment:CRITICAL
+IBE-90.SG,Hungary_EarlyArpadian,Hungary,900.0,722546.0,qc_assessment:CRITICAL
+K1-10.SG,Hungary_Elite,Hungary,1025.0,1031732.0,qc_assessment:CRITICAL
+K2-16.SG,Hungary_Elite,Hungary,1025.0,870261.0,qc_assessment:CRITICAL
+K2-52.SG,Hungary_Elite,Hungary,1025.0,777407.0,qc_assessment:CRITICAL
+K2-61.SG,Hungary_Elite,Hungary,1025.0,900832.0,qc_assessment:CRITICAL
+KeF2-1045.SG,Hungary_Elite,Hungary,975.0,240980.0,qc_assessment:CRITICAL
+KH-500.SG,Hungary_Elite,Hungary,975.0,626383.0,qc_assessment:CRITICAL
+KV-3369.SG,Hungary_Elite_EarlyAvar-oHighEastAsia,Hungary,1417.0,608593.0,qc_assessment:CRITICAL
+MH-137.SG,Hungary_EarlyArpadian,Hungary,900.0,200426.0,qc_assessment:CRITICAL
+MH1-9.SG,Hungary_Elite,Hungary,1000.0,687599.0,qc_assessment:CRITICAL
+PLE-384.SG,Hungary_EarlyArpadian,Hungary,875.0,1002331.0,qc_assessment:CRITICAL
+PV-205.SG,Hungary_LateAvar-oLowEastAsia,Hungary,1226.0,1128492.0,qc_assessment:CRITICAL
+SH-81.SG,Hungary_Conqueror_Commoner,Hungary,975.0,626892.0,qc_assessment:CRITICAL
+VPB-167.SG,Hungary_Elite,Hungary,1025.0,683755.0,qc_assessment:CRITICAL
+VPB-279.SG,Hungary_Carolingian,Hungary,1100.0,93810.0,qc_assessment:CRITICAL
+VPB-310.SG,Hungary_Elite,Hungary,1008.0,767912.0,qc_assessment:CRITICAL
+Phl534.WGC,Philippines_RedSlippedPottery,Philippines,1783.0,22240.0,low_snps:22240
+Donkalnis4.AG,Lithuania_Mesolithic,Lithuania,7823.0,22101.0,low_snps:22101
+Kivutkalns194.AG,Latvia_LBA_FlatGraves,Latvia,2298.0,132007.0,qc_assessment:CRITICAL
+AITI_36.AG.SG,Germany_KleinaitingenGewerbegebietNord_EBA,Germany,3836.0,21160.0,low_snps:21160
+OTTM_141A.AG.SG,Germany_OberottmarshausenKiesgrubeLauter_MBA,Germany,3515.0,5437.0,low_snps:5437
+CAO018.AG,Cuba_PreCeramic-Dup,Cuba,3150.0,39836.0,qc_assessment:CRITICAL
+PCA009.AG,PuertoRico_Ceramic-o,Puerto Rico,1132.0,235372.0,qc_assessment:CRITICAL
+PCA010.AG,PuertoRico_Ceramic,Puerto Rico,1175.0,13928.0,low_snps:13928
+PDI003.AG,PuertoRico_Ceramic-o,Puerto Rico,925.0,178797.0,qc_assessment:CRITICAL
+SM-M7X.SG,China_Shanxi_Shengedaliang_LN,China,4050.0,25486.0,low_snps:25486
+MAL006.AG,Vanuatu_2700BP,Vanuatu,2665.0,8050.0,low_snps:8050
+MAL008.AG,Vanuatu_2200BP,Vanuatu,2238.0,19595.0,low_snps:19595
+TAP002.AG,FrenchPolynesia_200BP,French Polynesia,203.0,10703.0,low_snps:10703
+TAP004.AG,FrenchPolynesia_200BP,French Polynesia,228.0,20831.0,low_snps:20831
+TON001.AG,Tonga_2500BP,Tonga,2625.0,63004.0,qc_assessment:CRITICAL
+SCH004.AG,Germany_Schwetzingen_EN,Germany,7050.0,18275.0,low_snps:18275
+TGM008.AG,Germany_Tangermunde_LN,Germany,5107.0,14165.0,low_snps:14165
+XN168.AG,Germany_StuttgartMuhlhausen1_EN_LBK,Germany,7093.0,275887.0,qc_assessment:CRITICAL
+XN180.AG,Germany_StuttgartMuhlhausen1_EN_LBK,Germany,7068.0,193399.0,qc_assessment:CRITICAL
+XN191.AG,Germany_StuttgartMuhlhausen2_EN,Germany,7199.0,24625.0,low_snps:24625
+FLR008.AG,France_Calvados_N_Norman,France,6183.0,184745.0,qc_assessment:CRITICAL
+FLR009.AG,France_Calvados_N_Norman,France,5806.0,122885.0,qc_assessment:CRITICAL
+FLR012.AG,France_Calvados_N_Norman,France,5844.0,10184.0,low_snps:10184
+A1803.AG,Hungary_Transtisza_EarlyAvar-oHighEastAsia,Hungary,1300.0,13607.0,low_snps:13607
+0LS09.SG,Estonia_EIA_StoneCistGraves,Estonia,2389.0,11430.0,low_snps:11430
+V7.SG,Estonia_EIA_TarandGraves,Estonia,2572.0,17574.0,low_snps:17574
+V8.SG,Estonia_EIA_TarandGraves,Estonia,2462.0,11546.0,low_snps:11546
+VII3.SG,Estonia_EIA_TarandGraves,Estonia,2222.0,12575.0,low_snps:12575
+VIII6.SG,Russia_Roman_TarandGraves,Russia,1775.0,12667.0,low_snps:12667
+X06.SG,Estonia_LBA_StoneCistGraves,Estonia,3046.0,5743.0,low_snps:5743
+X07.SG,Estonia_LBA_StoneCistGraves,Estonia,2950.0,6326.0,low_snps:6326
+X09.SG,Estonia_LBA_TarandGraves-o,Estonia,2740.0,18832.0,low_snps:18832
+X12.SG,Estonia_LBA_StoneCistGraves,Estonia,2767.0,25264.0,low_snps:25264
+X13.SG,Estonia_LBA_StoneCistGraves,Estonia,2583.0,18076.0,low_snps:18076
+X16.SG,Estonia_LBA_StoneCistGraves,Estonia,2936.0,20467.0,low_snps:20467
+X19.SG,Estonia_LBA_StoneCistGraves,Estonia,2750.0,8409.0,low_snps:8409
+HAN003.SG,Russia_Moscow_BA,Russia,4500.0,1076.0,qc_assessment:CRITICAL
+MOT001.SG,Russia_Ivanovo_BA,Russia,4425.0,8697.0,low_snps:8697
+NIK001.SG,Russia_Yaroslavl_EMBA,Russia,4500.0,6190.0,low_snps:6190
+NIK006.SG,Russia_Yaroslav_EMBA-o,Russia,4608.0,5826.0,low_snps:5826
+RDT002.SG,Russia_Moscow_BA,Russia,4364.0,22224.0,low_snps:22224
+TIM001.SG,Russia_Ivanovo_BA,Russia,4300.0,21529.0,low_snps:21529
+TIM002.SG,Russia_Ivanovo_BA,Russia,4300.0,1565.0,qc_assessment:CRITICAL
+TIM003.SG,Russia_Ivanovo_BA-o,Russia,4300.0,5647.0,low_snps:5647
+TIM005.SG,Russia_Ivanovo_EMBA,Russia,4692.0,9149.0,qc_assessment:CRITICAL
+TIM009.SG,Russia_Ivanovo_BA,Russia,4300.0,6044.0,low_snps:6044
+TIM010.SG,Russia_Ivanovo_BA,Russia,4300.0,9615.0,low_snps:9615
+TIM011.SG,Russia_Ivanovo_BA,Russia,4300.0,7117.0,low_snps:7117
+VOR001.SG,Russia_Yaroslavl_EMBA,Russia,4500.0,4379.0,low_snps:4379
+VOR002.SG,Russia_Yaroslavl_EMBA,Russia,4500.0,6526.0,low_snps:6526
+car004.WGC.SG,Ireland_Megalithic,Ireland,5517.0,20905.0,low_snps:20905
+lai001.SG,Scotland_N,United Kingdom,5178.0,188655.0,qc_assessment:CRITICAL
+mid001.SG,Scotland_N,United Kingdom,5173.0,253371.0,qc_assessment:CRITICAL
+GLR003.SG,Italy_EmiliaRomagna,Italy,4723.0,8462.0,low_snps:8462
+LSC011.SG,Italy_Lazio,Italy,4586.0,73206.0,qc_assessment:CRITICAL
+CH-01.SG,USA_1500BP,USA,1469.0,7971.0,qc_assessment:CRITICAL
+CK-03.SG,Canada_ASO_600BP,Canada,667.0,5026.0,low_snps:5026
+LU-01.SG,Canada_ASO_600BP-1,Canada,625.0,5020.0,low_snps:5020
+LU-02.SG,Canada_ASO_600BP-2,Canada,625.0,6183.0,low_snps:6183
+LU-03.SG,Canada_ASO_600BP,Canada,625.0,11479.0,low_snps:11479
+LU-05.SG,Canada_ASO_600BP,Canada,625.0,4624.0,low_snps:4624
+LU-06.SG,Canada_ASO_600BP-o,Canada,625.0,27436.0,low_snps:27436
+PS-04.SG,USA_1500BP,USA,1550.0,4161.0,low_snps:4161
+SC-02.SG,USA_900BP,USA,950.0,9101.0,low_snps:9101
+SN-31.SG,USA_4800BP,USA,4875.0,18533.0,low_snps:18533
+SN-41.SG,USA_4800BP,USA,4875.0,12853.0,low_snps:12853
+SN-43.SG,USA_1600BP,USA,2635.0,28044.0,low_snps:28044
+SN-45.SG,USA_4800BP,USA,4875.0,9207.0,low_snps:9207
+SN-55.SG,USA_4800BP,USA,4875.0,20114.0,low_snps:20114
+SN-56.SG,USA_4800BP,USA,4875.0,18283.0,low_snps:18283
+SN-57.SG,USA_4800BP,USA,4875.0,29510.0,low_snps:29510
+SN-60.SG,USA_4800BP,USA,4475.0,15743.0,qc_assessment:CRITICAL
+2H06.SG,France_GrandEst_MLN,France,5164.0,5283.0,low_snps:5283
+ShukaKaa.SG,USA_Prehistoric,USA,10366.0,26505.0,qc_assessment:CRITICAL
+NEO233.SG,Russia_OldBeringSea_Antiquity,Russia,1744.0,2904.0,low_snps:2904
+ETM003.AG,Syria_EMBA_IA,Syria,2800.0,679.0,qc_assessment:CRITICAL
+ETM015.AG,Syria_EMBA,Syria,3850.0,9673.0,low_snps:9673
+ETM017.AG,Syria_EMBA,Syria,3850.0,848.0,qc_assessment:CRITICAL
+ETM021.AG,Syria_EMBA,Syria,3800.0,3060.0,low_snps:3060
+ETM025.AG,Syria_EMBA,Syria,3800.0,922.0,qc_assessment:CRITICAL
+IKI006.AG,Turkey_C,Turkey,5250.0,25532.0,low_snps:25532
+IKI019.AG,Turkey_C,Turkey,5250.0,29244.0,low_snps:29244
+IKI032.AG,Turkey_C,Turkey,5250.0,2148.0,qc_assessment:CRITICAL
+TIT003.AG,Turkey_EBA,Turkey,4100.0,3759.0,low_snps:3759
+TIT014.AG,Turkey_EBA,Turkey,4100.0,8714.0,low_snps:8714
+TIT015.AG,Turkey_EBA,Turkey,4100.0,3249.0,low_snps:3249
+TIT019.AG,Turkey_EBA,Turkey,4100.0,2104.0,qc_assessment:CRITICAL
+TIT025.AG,Turkey_EBA,Turkey,4100.0,23167.0,low_snps:23167
+AID012.AG,Greece_Peloponnese_LBA,Greece,3375.0,19486.0,low_snps:19486
+APO023.AG,Greece_Crete_Aposelemis_LBA,Greece,3525.0,220146.0,qc_assessment:CRITICAL
+APO038.AG,Greece_Crete_Aposelemis_N,Greece,7925.0,23235.0,low_snps:23235
+HGC036.AG,Greece_Crete_HgCharalambos_EMBA,Greece,4050.0,214992.0,qc_assessment:CRITICAL
+BSK004.AG,Kyrgyzstan_Medieval_BlackDeath-oWestEurasia,Kyrgyzstan,650.0,21508.0,low_snps:21508
+BSK006.AG,Kyrgyzstan_Medieval_BlackDeath,Kyrgyzstan,675.0,2505.0,qc_assessment:CRITICAL
+BSK007.AG,Kyrgyzstan_Medieval_BlackDeath,Kyrgyzstan,652.0,7259.0,qc_assessment:CRITICAL
+NIEcap2.AG,Germany_Niederstotzingen_EarlyMedieval,Germany,1350.0,10013.0,low_snps:10013
+NIEcap10.AG,Germany_Niederstotzingen_EarlyMedieval,Germany,1350.0,12985.0,low_snps:12985
+NIEcap3c.AG,Germany_Niederstotzingen_EarlyMedieval,Germany,1350.0,248889.0,qc_assessment:CRITICAL
+NIEcap5.AG,Germany_Niederstotzingen_EarlyMedieval,Germany,1350.0,2803.0,low_snps:2803
+Sunghir6.SG,Russia_Vladimir_Medieval,Russia,813.0,1140330.0,qc_assessment:CRITICAL
+atp005.SG,Spain_EN,Spain,7069.0,94911.0,qc_assessment:CRITICAL
+esp005.SG,Spain_BA,Spain,3400.0,993145.0,qc_assessment:CRITICAL
+pir001.SG,Spain_BA,Spain,3725.0,213489.0,qc_assessment:CRITICAL
+por002.SG,Spain_C,Spain,5111.0,611562.0,qc_assessment:CRITICAL
+Alh10.SG,Germany_Altheim_EarlyMedieval,Germany,1477.0,1118277.0,qc_assessment:CRITICAL
+BAL003.AG,Spain_Azilian,Spain,11908.0,20551.0,low_snps:20551
+BAL051.AG,Spain_Azilian,Spain,13015.0,340628.0,qc_assessment:CRITICAL
+I1723.AG,Russia_StavropolKrai_Caucasus,Russia,4696.0,83039.0,qc_assessment:CRITICAL
+GaofengNL23.AG,China_Guangxi_GaofengCave_MingDynasty_Qing,China,227.0,11080.0,low_snps:11080
+HuatuyanNL04.AG,China_Guangxi_HuatuyanCave_MingDynasty,China,400.0,14260.0,low_snps:14260
+Yinwang.AG.SG,China_Guangxi_YinwangCave_MingDynasty,China,400.0,10422.0,low_snps:10422
+BalongKD08.AG,China_Guangxi_BalongCave_NorthernAndSouthernDynasties,China,1550.0,27873.0,low_snps:27873
+BalongKD06.AG,China_Guangxi_BalongCave_NorthernAndSouthernDynasties,China,1550.0,24632.0,low_snps:24632
+CSP134.AG,China_Qinghai_Pukagongma,China,2875.0,12205.0,low_snps:12205
+C4563.AG,China_Tibet_Piyangjiweng,China,2250.0,162229.0,qc_assessment:CRITICAL
+LM16.SG,Russia_PrimorskyKrai_N,Russia,6785.0,805413.0,qc_assessment:CRITICAL
+KIN003.AG,DemocraticRepublicoftheCongo_Protohistoric-o,Democratic Republic of the Congo,140.0,20350.0,low_snps:20350
+LUK003.AG,Kenya_PastoralN,Kenya,3536.0,7182.0,low_snps:7182
+NQO002.AG,Botswana_EIA,Botswana,1050.0,14802.0,low_snps:14802
+NYA003.AG,Kenya_LSA_Kansyore,Kenya,3475.0,19508.0,low_snps:19508
+Ash002.SG,Turkey_PPN,Turkey,9483.0,2711.0,low_snps:2711
+Ash040.SG,Turkey_PPN,Turkey,9647.0,2546.0,low_snps:2546
+Ash131.SG,Turkey_PPN,Turkey,9888.0,6595.0,low_snps:6595
+Ash136.SG,Turkey_PPN,Turkey,9827.0,9347.0,low_snps:9347
+CCH289.SG,Turkey_N,Turkey,8661.0,10503.0,low_snps:10503
+CCH311.SG,Turkey_N,Turkey,8500.0,18082.0,low_snps:18082
+cth006.SG,Turkey_N,Turkey,8517.0,18016.0,low_snps:18016
+cth217.SG,Turkey_N,Turkey,8274.0,16081.0,low_snps:16081
+cth728.SG,Turkey_N,Turkey,8568.0,12654.0,low_snps:12654
+cth739.SG,Turkey_N,Turkey,8105.0,24653.0,low_snps:24653
+cth747.SG,Turkey_N,Turkey,8506.0,14222.0,low_snps:14222
+pch034.SG,Turkey_N,Turkey,8500.0,14766.0,low_snps:14766
+KAG001.AG,Russia_Irkutsk_EN,Russia,6856.0,703627.0,qc_assessment:CRITICAL
+UZZ026.AG,Italy_Sicily_Epigravettian,Italy,10666.0,71198.0,qc_assessment:CRITICAL
+11KBM1.SG,China_Xinjiang_Beifang_BA,China,3693.0,163072.0,qc_assessment:CRITICAL
+MZR.SG,China_RedDeerCaveMaludong_LPleistocene-DontUseHighlyProblematic,China,15625.0,50259.0,qc_assessment:CRITICAL
+BB2012.SG,China_Qinghai_DulanWayanReservoirSite_Classical,China,1227.0,17041.0,low_snps:17041
+Denisova11.SG,Russia_Denisova_Neanderthal_Mix,Russia,98700.0,853190.0,reference_or_archaic
+Goyet_final.SG,GoyetCave_Neanderthal,Belgium,42436.0,958375.0,reference_or_archaic
+Les_Cottes_final.SG,LesCottescave_Neanderthal,France,42846.0,757353.0,reference_or_archaic
+Mezmaiskaya2_final.SG,Mezmaiskayacave_Neanderthal,Russia,43449.0,686526.0,reference_or_archaic
+Spy_final.SG,SpyCave_Neanderthal,Belgium,40922.0,425283.0,reference_or_archaic
+VindijaG1_final.SG,VindijaCave_Neanderthal,Croatia,50000.0,528415.0,reference_or_archaic
+RISE139.SG,Poland_EBA_Unetice,Poland,3970.0,25762.0,low_snps:25762
+RISE145.SG,Poland_EBA_Unetice,Poland,4015.0,25307.0,low_snps:25307
+RISE174.SG,Sweden_IA,Sweden,1405.0,630966.0,qc_assessment:CRITICAL
+RISE1.SG,Poland_CordedWare-3,Poland,4675.0,16250.0,low_snps:16250
+RISE207.SG,Sweden_BA,Sweden,3344.0,18514.0,low_snps:18514
+RISE21.SG,Denmark_BA,Denmark,3301.0,26227.0,low_snps:26227
+RISE413.SG,Armenia_NerkinGetashen_MBA,Armenia,3764.0,23332.0,low_snps:23332
+RISE416.SG,Armenia_NerkinGetashen_MBA,Armenia,3477.0,18706.0,low_snps:18706
+RISE42.SG,Denmark_LN-o,Denmark,4021.0,17298.0,low_snps:17298
+RISE524.SG,Russia_LBA_Mezhovka,Russia,3000.0,15562.0,low_snps:15562
+RISE567.SG,Czechia_BellBeaker,Czechia,4250.0,29441.0,low_snps:29441
+RISE595.SG,Montenegro_LBA,Montenegro,3225.0,24049.0,low_snps:24049
+RISE596.SG,Montenegro_IA,Montenegro,2550.0,13813.0,low_snps:13813
+RISE598.SG,Lithuania_LBA,Lithuania,2653.0,16507.0,low_snps:16507
+Chinchorroi15.SG,Chile_EncoC2_LateAntiquity_Chinchorro,Chile,6242.0,7528.0,qc_assessment:CRITICAL
+BC23.SG,Mexico_500BP_Pericues,Mexico,500.0,9111.0,low_snps:9111
+BC27.SG,Mexico_500BP_Pericues,Mexico,500.0,10016.0,low_snps:10016
+BC28.SG,Mexico_500BP_Pericues,Mexico,500.0,9328.0,low_snps:9328
+MA572.SG,Argentina_StraitofMagellan_100BP_Selknam,Argentina,100.0,10342.0,low_snps:10342
+MA575.SG,Argentina_StraitofMagellan_100BP_Selknam,Argentina,100.0,3549.0,low_snps:3549
+AM66.SG,Argentina_StraitofMagellan_100BP_Kaweskar,Argentina,100.0,29055.0,low_snps:29055
+AM72.SG,Argentina_StraitofMagellan_100BP_Kaweskar,Argentina,100.0,4830.0,low_snps:4830
+AM73.SG,Argentina_StraitofMagellan_100BP_Kaweskar,Argentina,100.0,22433.0,low_snps:22433
+ATP20.SG,Spain_C,Spain,4138.0,17249.0,low_snps:17249
+ATP3.SG,Spain_C,Spain,5397.0,22521.0,low_snps:22521
+ANI152.AG,Bulgaria_Varna_C-o,Bulgaria,6462.0,26914.0,low_snps:26914
+ANI153.AG,Bulgaria_Varna_C-2,Bulgaria,6434.0,23823.0,low_snps:23823
+ANI163.AG,Bulgaria_Varna_C,Bulgaria,6569.0,422849.0,qc_assessment:CRITICAL
+Bul8.AG,Bulgaria_BeliBreyag_EBA,Bulgaria,4450.0,18691.0,low_snps:18691
+M240.SG,Nepal_2125BP-o,Nepal,2125.0,17517.0,low_snps:17517
+Sanganji131421-3.SG,Japan_Tohoku_Jomon,Japan,3177.0,6901.0,low_snps:6901
+Sanganji131421-3_alt.SG,Japan_Tohoku_Jomon,Japan,3177.0,14217.0,low_snps:14217
+Sanganji131464_alt.SG,Japan_Tohoku_Jomon,Japan,3280.0,13467.0,low_snps:13467
+KhoesanLeipzigHunter.SG,SouthAfrica_2200BP,South Africa,2245.0,707723.0,qc_assessment:CRITICAL
+Bon005.WGC.SG,Turkey_PPN,Turkey,10220.0,18919.0,low_snps:18919
+Tep001.WGC.SG,Turkey_N-o,Turkey,8518.0,11588.0,low_snps:11588
+Mezmaiskaya1.SG,Mezmaiskayacave_Neanderthal,Russia,65000.0,534468.0,reference_or_archaic
+Ajvide53.SG,Sweden_PittedWare,Sweden,4700.0,26281.0,low_snps:26281
+Ajvide59.SG,Sweden_PittedWare,Sweden,4700.0,3798.0,low_snps:3798
+Gokhem5.SG,Sweden_MN,Sweden,5084.0,20569.0,low_snps:20569
+Gokhem7.SG,Sweden_MN_TRB,Sweden,4755.0,12608.0,low_snps:12608
+Ire8.SG,Sweden_PittedWare-o,Sweden,4575.0,28960.0,low_snps:28960
+StoraForvar11.SG,Sweden_Mesolithic,Sweden,7365.0,86018.0,qc_assessment:CRITICAL
+I10166.AG,NorthMacedonia_Classical_Hellenistic,North Macedonia,2250.0,18016.0,low_snps:18016
+I10333.AG,DominicanRepublic_PreCeramic,Dominican Republic,2500.0,19550.0,low_snps:19550
+I10378.AG,NorthMacedonia_IA,North Macedonia,2550.0,19033.0,low_snps:19033
+I10380.AG,NorthMacedonia_IA,North Macedonia,2550.0,7058.0,low_snps:7058
+I10439.AG,Moldova_BA,Moldova,3950.0,27128.0,low_snps:27128
+I10482.AG,Romania_BA_Arman-o,Romania,3950.0,6310.0,low_snps:6310
+I10551.AG,Tajikistan_BA_Farkhor,Tajikistan,4450.0,12580.0,low_snps:12580
+I10632_d.AG,Russia_Chelyabinsk_N_BA,Russia,5350.0,24302.0,low_snps:24302
+I10854.AG,Spain_Medieval,Spain,908.0,4285.0,low_snps:4285
+I11025.AG,Uzbekistan_BA,Uzbekistan,3400.0,28101.0,low_snps:28101
+I11040.AG,Turkmenistan_BA1-1,Turkmenistan,3850.0,3113.0,low_snps:3113
+I11042.AG,Turkmenistan_BA-1,Turkmenistan,4225.0,19744.0,low_snps:19744
+I11460.AG,Iran_ShahriSokhta_BA2-2,Iran,4600.0,5585.0,low_snps:5585
+I11469.AG,Iran_ShahriSokhta_BA1-1,Iran,5000.0,6878.0,low_snps:6878
+I11480.AG,Iran_ShahriSokhta_BA2-2,Iran,4800.0,24781.0,low_snps:24781
+I11488.AG,Iran_ShahriSokhta_BA2-2,Iran,4600.0,6642.0,low_snps:6642
+I11542.AG,Kazakhstan_LBA,Kazakhstan,3250.0,22283.0,low_snps:22283
+I11553.AG,USA_California_500BP,USA,500.0,13343.0,low_snps:13343
+I11562.AG,Pakistan_LBA,Pakistan,1450.0,1816.0,qc_assessment:CRITICAL
+I11565.AG,Pakistan_LBA,Pakistan,1450.0,10861.0,low_snps:10861
+I11572.AG,England_EarlyMedieval,United Kingdom,1252.0,55013.0,qc_assessment:CRITICAL
+I11575.AG,England_EarlyMedieval,United Kingdom,1350.0,7681.0,low_snps:7681
+I11580.AG,England_EarlyMedieval,United Kingdom,1350.0,27274.0,low_snps:27274
+I11582.AG,England_EarlyMedieval,United Kingdom,1350.0,26272.0,low_snps:26272
+I11866.AG,Slovakia_N_LBK,Slovakia,7100.0,29003.0,low_snps:29003
+I11872.AG,Slovakia_N_LBK,Slovakia,7100.0,18965.0,low_snps:18965
+I11873.AG,Slovakia_N_LBK,Slovakia,7100.0,26960.0,low_snps:26960
+I11948.AG,Turkey_N,Turkey,8300.0,16180.0,low_snps:16180
+I12005.AG,Ukraine_Odessa_EBA_Yamnaya,Ukraine,4850.0,5126.0,low_snps:5126
+I12029.AG,Spain_LateAntiquity,Spain,1392.0,3831.0,low_snps:3831
+I12042.AG,Spain_Punic,Spain,2250.0,13216.0,low_snps:13216
+I12102.AG,Slovakia_EIA_Vekerzug,Slovakia,2525.0,17300.0,low_snps:17300
+I12104.AG,Slovakia_EIA_Vekerzug,Slovakia,2525.0,21251.0,low_snps:21251
+I12140.AG,Pakistan_IA,Pakistan,2850.0,13128.0,low_snps:13128
+I12173.AG,Spain_IA_Tartessian,Spain,2550.0,5383.0,low_snps:5383
+I12234.AG,Ukraine_Odesa_MBA_Babino_MultiCordonedWare,Ukraine,3275.0,22414.0,low_snps:22414
+I12255.AG,Turkmenistan_BA,Turkmenistan,3800.0,2996.0,low_snps:2996
+I12257.AG,Tajikistan_Khatlon_KushanPeriod,Tajikistan,2000.0,5152.0,low_snps:5152
+I12293.AG,Tajikistan_Khatlon_KushanPeriod,Tajikistan,2000.0,26327.0,low_snps:26327
+I12313.AG,Scotland_N,United Kingdom,5550.0,8663.0,low_snps:8663
+I12391.AG,Kenya_IA_Pastoral,Kenya,960.0,23596.0,qc_assessment:CRITICAL
+I12453.AG,Pakistan_IA,Pakistan,2850.0,11801.0,low_snps:11801
+I12466.AG,Pakistan_IA,Pakistan,2850.0,3019.0,low_snps:3019
+I12560.AG,Spain_IA_Tartessian,Spain,2550.0,8661.0,low_snps:8661
+I12605.AG,Argentina_Cordoba_700BP,Argentina,700.0,22570.0,low_snps:22570
+I12611.AG,England_LBA,United Kingdom,2900.0,8209.0,low_snps:8209
+I12612.AG,England_LBA,United Kingdom,2900.0,5284.0,low_snps:5284
+I12613.AG,England_LBA,United Kingdom,2900.0,9770.0,low_snps:9770
+I12621.AG,Ukraine_Odesa_EBA_Catacomb,Ukraine,4440.0,10354.0,low_snps:10354
+I12642.AG,Spain_IA,Spain,2443.0,12717.0,low_snps:12717
+I12643.AG,Spain_IA,Spain,2553.0,6538.0,low_snps:6538
+I12646.AG,Spain_Medieval_Islamic,Spain,750.0,9219.0,low_snps:9219
+I12648.AG,Spain_Medieval_Islamic,Spain,750.0,29315.0,low_snps:29315
+I12650.AG,Spain_Medieval_Islamic,Spain,750.0,7692.0,low_snps:7692
+I12722.AG,Argentina_Formosa_1900BP_Chaco_EarlySubandean,Argentina,1684.0,18885.0,low_snps:18885
+I12750.AG,Argentina_EntreRios_700BP,Argentina,600.0,6445.0,low_snps:6445
+I12766.AG,Argentina_Cordoba_4100BP,Argentina,3682.0,22627.0,low_snps:22627
+I12767.AG,Argentina_Catamarca_1200BP_Agropastoral,Argentina,1150.0,29622.0,low_snps:29622
+I12825.AG,Romania_EBA_Catacomb,Romania,4525.0,170944.0,qc_assessment:CRITICAL
+I12828.AG,Romania_Tei,Romania,3979.0,11150.0,low_snps:11150
+I12834.AG,Bulgaria_Sabrano_EBA_Ezero,Bulgaria,4950.0,10969.0,low_snps:10969
+I12852.AG,Spain_Punic-2,Spain,2250.0,8848.0,low_snps:8848
+I12854.AG,Spain_Punic-1,Spain,2150.0,8190.0,qc_assessment:CRITICAL
+I12855.AG,Spain_EBA,Spain,3775.0,24714.0,low_snps:24714
+I12947.AG,Argentina_EntreRios_700BP_GoyaMalabrigo,Argentina,601.0,3703.0,low_snps:3703
+I12956.AG,Mongolia_EIA_Sagly-4,Mongolia,2326.0,7994.0,low_snps:7994
+I12980.AG,Pakistan_IA,Pakistan,2850.0,25055.0,low_snps:25055
+I13032.AG,Armenia_KarmirBlur_IA_Urartian,Armenia,2789.0,29196.0,low_snps:29196
+I13068.AG,Ukraine_Ternopil_Eneolithic_Trypillia,Ukraine,5675.0,7441.0,low_snps:7441
+I13072.AG,Ukraine_Odessa_EBA_Catacomb,Ukraine,4300.0,4128.0,low_snps:4128
+I13126.AG,Italy_Sicily_IA_a_IA_b_Sicani,Italy,2550.0,3149.0,low_snps:3149
+I13133.AG,Italy_Sicily_IA_a_IA_b_Sicani,Italy,2550.0,13698.0,low_snps:13698
+I13136.AG,Italy_Sicily_IA_a_IA_b_Sicani,Italy,2550.0,5500.0,low_snps:5500
+I13137.AG,Italy_Sicily_IA_a_IA_b_Sicani,Italy,2550.0,3003.0,low_snps:3003
+I13140.AG,Italy_Sicily_IA_a_IA_b_Sicani,Italy,2550.0,25238.0,low_snps:25238
+I13165.AG,Montenegro_MLBA,Montenegro,3175.0,5339.0,low_snps:5339
+I13166.AG,Montenegro_MLBA-o,Montenegro,3175.0,23450.0,low_snps:23450
+I13200.AG,DominicanRepublic_Ceramic,Dominican Republic,800.0,28768.0,low_snps:28768
+I13255.AG,Bahamas_Crooked_Ceramic,Bahamas,750.0,7668.0,low_snps:7668
+I13557.AG,Bahamas_Eleuthera_Ceramic,Bahamas,950.0,22127.0,low_snps:22127
+I13618.AG,England_MBA,United Kingdom,3116.0,6993.0,low_snps:6993
+I13621.AG,France_SouthEast_IA2,France,2250.0,24587.0,low_snps:24587
+I13627.AG,Belgium_N,Belgium,5153.0,27766.0,low_snps:27766
+I13631.AG,Belgium_N,Belgium,4725.0,23915.0,low_snps:23915
+I13681.AG,England_LIA_MIA,United Kingdom,2175.0,6283.0,low_snps:6283
+I13683.AG,England_MIA,United Kingdom,2254.0,6325.0,low_snps:6325
+I13690.AG,England_EIA,United Kingdom,2512.0,15875.0,low_snps:15875
+I13694.AG,Taiwan_IA,Taiwan,1550.0,11737.0,low_snps:11737
+I13696.AG,Taiwan_IA,Taiwan,1550.0,2553.0,low_snps:2553
+I13697.AG,Taiwan_IA,Taiwan,1550.0,11259.0,low_snps:11259
+I13722.AG,Taiwan_Gongguan,Taiwan,1500.0,3333.0,low_snps:3333
+I13740.AG,Bahamas_Eleuthera_Ceramic,Bahamas,825.0,7037.0,low_snps:7037
+I13741.AG,Bahamas_RaggedIslandRange_Ceramic,Bahamas,750.0,16040.0,low_snps:16040
+I13876.AG,Kenya_Swahili,Kenya,150.0,6282.0,low_snps:6282
+I13959.AG,Mongolia_MongunTaiga_LBA-1,Mongolia,3339.0,10584.0,low_snps:10584
+I13970.AG,Tanzania_PastoralN,Tanzania,1950.0,41889.0,qc_assessment:CRITICAL
+I14343_d.AG,Armenia_DzhoghazBerkaber_EBA_KuraAraxes,Armenia,4325.0,17726.0,low_snps:17726
+I14359.AG,England_LIA,United Kingdom,1975.0,18783.0,low_snps:18783
+I14445.AG,Turkey_PPNA,Turkey,10700.0,2569.0,low_snps:2569
+I14464.AG,Slovakia_EIA_Vekerzug,Slovakia,2525.0,8161.0,low_snps:8161
+I14493_d.AG,Vanuatu_400BP,Vanuatu,387.0,6390.0,low_snps:6390
+I14499.AG,Montenegro_MLBA_Cetina-o,Montenegro,3300.0,14645.0,low_snps:14645
+I14540.AG,England_EarlyMedieval,United Kingdom,1350.0,29094.0,low_snps:29094
+I14570.AG,Argentina_SantiagodelEstero_400BP,Argentina,400.0,15556.0,low_snps:15556
+I14636.AG,Turkey_Ancient,Turkey,2500.0,18613.0,low_snps:18613
+I14691.AG,Albania_Cinamak_BA_IA,Albania,3500.0,4280.0,low_snps:4280
+I14773.AG,Russia_PrimorskyKrai_MN,Russia,5625.0,20841.0,low_snps:20841
+I14780.AG,Kenya_Swahili,Kenya,150.0,9546.0,low_snps:9546
+I14816.AG,USA_California_4900BP,USA,4850.0,7936.0,low_snps:7936
+I14817.AG,USA_California_900BP,USA,900.0,19577.0,low_snps:19577
+I14827.AG,USA_California_3400BP,USA,3450.0,9305.0,qc_assessment:CRITICAL
+I14828.AG,USA_California_3400BP,USA,3450.0,9949.0,qc_assessment:CRITICAL
+I14848.AG,Germany_Medieval_Jewish,Germany,625.0,13952.0,low_snps:13952
+I14849.AG,Germany_Medieval_Jewish,Germany,625.0,15108.0,low_snps:15108
+I14854.AG,Germany_Medieval_Jewish,Germany,625.0,15687.0,low_snps:15687
+I14872.AG,Greece_Attica_KolikrepiSpata_BA,Greece,3425.0,27853.0,low_snps:27853
+I14889.AG,Spain_Punic,Spain,2250.0,3979.0,low_snps:3979
+I14891.AG,Spain_Punic_African,Spain,2250.0,6035.0,low_snps:6035
+I14899.AG,Germany_Medieval_Jewish,Germany,625.0,19532.0,low_snps:19532
+I14900.AG,Germany_Medieval_Jewish,Germany,625.0,11279.0,low_snps:11279
+I14905.AG,Bahamas_Eleuthera_Ceramic,Bahamas,825.0,3935.0,low_snps:3935
+I14906.AG,Bahamas_Eleuthera_Ceramic,Bahamas,825.0,5688.0,low_snps:5688
+I14926.AG,Taiwan_IA,Taiwan,1550.0,7729.0,low_snps:7729
+I14927.AG,Taiwan_IA,Taiwan,1550.0,13527.0,low_snps:13527
+I14928.AG,Taiwan_IA,Taiwan,1550.0,7566.0,low_snps:7566
+I14930.AG,Taiwan_IA,Taiwan,1550.0,6093.0,low_snps:6093
+I14937.AG,Taiwan_IA,Taiwan,1550.0,23066.0,low_snps:23066
+I14982.AG,Czechia_IA_Hallstatt-o,Czechia,2625.0,6330.0,low_snps:6330
+I15160.AG,Taiwan_IA,Taiwan,1550.0,11190.0,low_snps:11190
+I15162.AG,Taiwan_IA,Taiwan,1550.0,10130.0,low_snps:10130
+I15164.AG,Taiwan_IA,Taiwan,1550.0,9178.0,low_snps:9178
+I15166.AG,Taiwan_IA,Taiwan,1550.0,12740.0,low_snps:12740
+I15229.AG,DominicanRepublic_Ceramic-oEurope,Dominican Republic,800.0,10156.0,low_snps:10156
+I15485.AG,Serbia_ImperialRoman,Serbia,1750.0,8434.0,qc_assessment:CRITICAL
+I15493.AG,Serbia_LateAntiquity_ImperialRoman,Serbia,1750.0,9564.0,low_snps:9564
+I15497.AG,Serbia_ImperialRoman,Serbia,1750.0,5052.0,low_snps:5052
+I15498.AG,Serbia_LateAntiquity_ImperialRoman,Serbia,1750.0,15049.0,low_snps:15049
+I15501.AG,Serbia_LateAntiquity_ImperialRoman,Serbia,1750.0,12699.0,qc_assessment:CRITICAL
+I15503.AG,Serbia_ImperialRoman,Serbia,1800.0,28100.0,low_snps:28100
+I15505.AG,Serbia_ImperialRoman,Serbia,1750.0,3836.0,low_snps:3836
+I15511.AG,Serbia_LateAntiquity_ImperialRoman,Serbia,1750.0,22037.0,low_snps:22037
+I15512.AG,Serbia_LateAntiquity_ImperialRoman,Serbia,1750.0,9349.0,low_snps:9349
+I15519.AG,Serbia_ImperialRoman,Serbia,1750.0,4528.0,low_snps:4528
+I15523.AG,Serbia_ImperialRoman,Serbia,1700.0,22107.0,low_snps:22107
+I15530.AG,Serbia_ImperialRoman,Serbia,1800.0,8600.0,low_snps:8600
+I15536.AG,Serbia_LateAntiquity_ImperialRoman,Serbia,1750.0,10965.0,low_snps:10965
+I15550.AG,Serbia_Gepids,Serbia,1550.0,17297.0,low_snps:17297
+I15663.AG,Armenia_LoriBerd_LBA_EIA,Armenia,3125.0,3271.0,low_snps:3271
+I15821.AG,Czechia_N,Czechia,7200.0,6408.0,low_snps:6408
+I15848.AG,Bulgaria_Stambolovo_EIA,Bulgaria,2850.0,8933.0,low_snps:8933
+I15944_d.AG,Italy_Sardinia_N,Italy,5575.0,14732.0,low_snps:14732
+I15947.AG,Italy_Sardinia_N,Italy,5575.0,133058.0,qc_assessment:CRITICAL
+I15947_d.AG,Italy_Sardinia_N,Italy,5575.0,20305.0,low_snps:20305
+I16087.AG,Czechia_IA_Hallstatt,Czechia,2625.0,17747.0,low_snps:17747
+I16177.AG,DominicanRepublic_Ceramic,Dominican Republic,875.0,14926.0,low_snps:14926
+I16216.AG,Armenia_BagheriTchala_EIA,Armenia,2875.0,20566.0,low_snps:20566
+I16387.AG,England_LIA_MIA,United Kingdom,2050.0,4939.0,low_snps:4939
+I16390.AG,England_LIA_MIA,United Kingdom,2050.0,15131.0,low_snps:15131
+I16412_d.AG,Scotland_EBA,United Kingdom,3989.0,5053.0,low_snps:5053
+I16436_d.AG,ChannelIslands_C,Channel Islands,5814.0,5100.0,low_snps:5100
+I16471_d.AG,Wales_LIA,United Kingdom,2025.0,6839.0,low_snps:6839
+I16479_d.AG,Wales_MBA,United Kingdom,3250.0,2660.0,low_snps:2660
+I16514.AG,Wales_LIA_MIA,United Kingdom,2226.0,12924.0,low_snps:12924
+I16547.AG,Armenia_Brardzryal_IA_Urartian-o,Armenia,2800.0,6320.0,low_snps:6320
+I16553.AG,Armenia_Brardzryal_IA_Urartian,Armenia,2800.0,28270.0,low_snps:28270
+I16570.AG,Turkey_Ancient,Turkey,2500.0,9442.0,low_snps:9442
+I16574.AG,Turkey_MBA,Turkey,3700.0,2916.0,low_snps:2916
+I16577.AG,Turkey_EBA,Turkey,4450.0,5041.0,low_snps:5041
+I16583.AG,Turkey_ImperialRoman,Turkey,1900.0,10329.0,low_snps:10329
+I16585.AG,Turkey_ImperialRoman-o,Turkey,1900.0,6075.0,low_snps:6075
+I16596.AG,England_LIA_MIA,United Kingdom,2175.0,6187.0,low_snps:6187
+I16609.AG,England_LIA_MIA,United Kingdom,2079.0,26777.0,low_snps:26777
+I16613.AG,England_LIA_MIA,United Kingdom,2148.0,17365.0,low_snps:17365
+I16615.AG,England_LBA,United Kingdom,3030.0,9341.0,low_snps:9341
+I16616.AG,England_MBA,United Kingdom,3273.0,16848.0,low_snps:16848
+I16706.AG,Armenia_Karnut_EBA_KuraAraxes,Armenia,4723.0,17003.0,low_snps:17003
+I16782.AG,France_BA_Protohistoric,France,3950.0,10192.0,low_snps:10192
+I16792.AG,France_BA_Protohistoric_BellBeaker,France,3750.0,15801.0,low_snps:15801
+I16817.AG,Guam_LateUnai-o,Guam,2518.0,3296.0,qc_assessment:CRITICAL
+I16818.AG,Guam_LateUnai,Guam,2550.0,6808.0,qc_assessment:CRITICAL
+I16821.AG,Guam_LateUnai,Guam,2628.0,9830.0,low_snps:9830
+I17033.AG,Argentina_Cordoba_1600BP,Argentina,1772.0,22050.0,low_snps:22050
+I17035.AG,Argentina_Cordoba_600BP,Argentina,575.0,15682.0,low_snps:15682
+I1709.AG,Jordan_PPNB,Jordan,10050.0,20317.0,low_snps:20317
+I17108.AG,Mexico_Tayopa_1000BP,Mexico,1000.0,6974.0,low_snps:6974
+I17112_d.AG,Mexico_Tayopa_1000BP,Mexico,1000.0,6024.0,low_snps:6024
+I17346.AG,Slovakia_N_LBK-o,Slovakia,7100.0,11046.0,low_snps:11046
+I17406.AG,Kenya_Medieval_Swahili,Kenya,500.0,2868.0,low_snps:2868
+I17407.AG,Kenya_Medieval_Swahili,Kenya,500.0,15211.0,low_snps:15211
+I17419.AG,Kenya_Swahili,Kenya,800.0,4500.0,qc_assessment:CRITICAL
+I17451.AG,Sudan_KulubnartiS_Christian,Sudan,1100.0,26170.0,low_snps:26170
+I17499.AG,Armenia_Karnut_EBA_KuraAraxes,Armenia,4950.0,8571.0,low_snps:8571
+I17539.AG,Slovakia_N_LBK,Slovakia,7100.0,5306.0,low_snps:5306
+I17612.AG,Czechia_LBA,Czechia,3050.0,3082.0,low_snps:3082
+I17613.AG,Czechia_IA_LaTene,Czechia,2275.0,27564.0,low_snps:27564
+I17614.AG,Czechia_IA_LaTene,Czechia,2300.0,26178.0,low_snps:26178
+I17622.AG,Albania_Dukat_BA_IA,Albania,3050.0,3216.0,low_snps:3216
+I17623.AG,Albania_Dukat_Medieval,Albania,1050.0,5206.0,low_snps:5206
+I17640.AG,Albania_Cinamak_IA,Albania,2450.0,6317.0,low_snps:6317
+I17669.AG,Czechia_IA_LaTene,Czechia,2250.0,8931.0,low_snps:8931
+I17670.AG,Czechia_MBA_Tumulus,Czechia,3325.0,2724.0,low_snps:2724
+I17671.AG,Czechia_LBA,Czechia,3000.0,3944.0,low_snps:3944
+I17742.AG,Moldova_EBA_Yamnaya,Moldova,4850.0,4206.0,qc_assessment:CRITICAL
+I17879.AG,Italy_Sicily_Himera_IA_b_Greek,Italy,2400.0,18613.0,low_snps:18613
+I17887.AG,Italy_Sicily_Himera_IA_b_Greek,Italy,2400.0,22043.0,low_snps:22043
+I17959.AG,Greece_Kastrouli_IA,Greece,2600.0,15823.0,low_snps:15823
+I17960.AG,Greece_Kastrouli_IA,Greece,2600.0,7426.0,low_snps:7426
+I18067.AG,Belgium_N,Belgium,4900.0,17975.0,low_snps:17975
+I18085.AG,Croatia_MLBA,Croatia,3450.0,4891.0,low_snps:4891
+I18106.AG,Slovakia_N_LBK,Slovakia,7100.0,7291.0,low_snps:7291
+I18204.AG,Spain_Roman-oAfrica2,Spain,1875.0,10188.0,low_snps:10188
+I18216.AG,Hungary_EIA_Mezocsat_Prescythian-3,Hungary,2750.0,11043.0,low_snps:11043
+I10333_alt1.AG,DominicanRepublic_PreCeramic,Dominican Republic,2500.0,5041.0,low_snps:5041
+I18401.AG,Spain_Roman-oAfrica1,Spain,1875.0,23484.0,low_snps:23484
+I18426.AG,France_GrandEst_Aube_LN,France,5396.0,2973.0,qc_assessment:CRITICAL
+I18427.AG,France_GrandEst_Aube_LN,France,5400.0,5829.0,low_snps:5829
+I18440.AG,Guam_LateUnai,Guam,2550.0,15266.0,low_snps:15266
+I18477.AG,DominicanRepublic_Samana_Ceramic,Dominican Republic,1100.0,9599.0,low_snps:9599
+I18502.AG,Guam_LateUnai,Guam,2550.0,7650.0,low_snps:7650
+I18612.AG,Sudan_KulubnartiS_Christian,Sudan,1100.0,27092.0,low_snps:27092
+I18718_d.AG,Croatia_MLBA,Croatia,3100.0,6211.0,low_snps:6211
+I18722.AG,Croatia_MLBA,Croatia,3100.0,65225.0,qc_assessment:CRITICAL
+I18728.AG,Croatia_MLBA,Croatia,3100.0,29794.0,low_snps:29794
+I18736.AG,Croatia_MLBA,Croatia,3100.0,3693.0,low_snps:3693
+I18827.AG,Croatia_MN,Croatia,6450.0,21908.0,low_snps:21908
+I18958.AG,Guam_LateUnai,Guam,2732.0,5191.0,low_snps:5191
+I18988.AG,Hungary_IA_LaTene,Hungary,2200.0,14792.0,low_snps:14792
+I19023_alt1.AG,Croatia_MBA_Cetina-Dup,Croatia,3550.0,5932.0,low_snps:5932
+I19043.AG,England_LIA_MIA-1,United Kingdom,2200.0,16439.0,low_snps:16439
+I19134.AG,Sudan_KulubnartiR_Christian,Sudan,1100.0,21927.0,low_snps:21927
+I19140.AG,Sudan_KulubnartiR_Christian,Sudan,1100.0,23874.0,low_snps:23874
+I19144.AG,Sudan_KulubnartiR_Christian,Sudan,1100.0,23172.0,low_snps:23172
+I19178.AG,Italy_Sicily_IA_c_Punic,Italy,2333.0,8805.0,low_snps:8805
+I19192.AG,Italy_Sicily_IA_a_IA_b_Punic,Italy,2486.0,15244.0,low_snps:15244
+I19209.AG,England_MIA,United Kingdom,2250.0,2856.0,low_snps:2856
+I19225.AG,Argentina_Cordoba_2500BP,Argentina,2395.0,11813.0,low_snps:11813
+I19229.AG,Argentina_Chaco_1400BP_Chaco,Argentina,1500.0,18879.0,low_snps:18879
+I19240.AG,Argentina_Catamarca_1200BP,Argentina,1150.0,4009.0,low_snps:4009
+I19241.AG,Argentina_Catamarca_1200BP,Argentina,1150.0,14677.0,low_snps:14677
+I19244.AG,Argentina_Catamarca_1600BP,Argentina,1700.0,9195.0,low_snps:9195
+I19248.AG,Argentina_EntreRios_700BP_GoyaMalabrigo,Argentina,750.0,28497.0,low_snps:28497
+I19252.AG,Argentina_Jujuy_700BP,Argentina,600.0,4875.0,low_snps:4875
+I19254.TW,Argentina_Jujuy_700BP,Argentina,697.0,52468.0,qc_assessment:CRITICAL
+I19267.AG,Russia_Bashkortostan_Roman_Mazunino,Russia,1450.0,23100.0,low_snps:23100
+I19361.AG,France_GrandEst_IA2,France,2200.0,6725.0,low_snps:6725
+I19368_d.AG,Greece_PalaceofNestor_EIA,Greece,2975.0,23703.0,low_snps:23703
+I19383_d.AG,Kenya_Medieval_Swahili,Kenya,500.0,5709.0,low_snps:5709
+I19385.AG,Kenya_Medieval_Swahili,Kenya,500.0,4581.0,low_snps:4581
+I19388.AG,Kenya_Medieval_Swahili,Kenya,625.0,27130.0,low_snps:27130
+I19390.AG,Kenya_Medieval_Swahili-o,Kenya,500.0,19516.0,low_snps:19516
+I19393.AG,Kenya_Medieval_Swahili,Kenya,625.0,12229.0,low_snps:12229
+I19395.AG,Kenya_Medieval_Swahili,Kenya,500.0,4381.0,low_snps:4381
+I19407.AG,Kenya_Swahili,Kenya,425.0,26217.0,low_snps:26217
+I19418.AG,Kenya_Medieval_Swahili-oEurope,Kenya,388.0,125277.0,qc_assessment:CRITICAL
+I19419.AG,Kenya_Medieval_Swahili,Kenya,425.0,130640.0,qc_assessment:CRITICAL
+I19461.AG,Bulgaria_TellEzero_EBA-oEastAsia,Bulgaria,4325.0,41154.0,qc_assessment:CRITICAL
+I19480.AG,Bulgaria_Kazanlak_LIA,Bulgaria,2325.0,2743.0,low_snps:2743
+I19505.AG,Mexico_550BP_TradicionTrincheras,Mexico,594.0,19609.0,low_snps:19609
+I19588.AG,England_LIA,United Kingdom,2027.0,12089.0,low_snps:12089
+I19611.AG,Turkey_Urartian,Turkey,2750.0,17601.0,low_snps:17601
+I20057.AG,Netherlands_MBA,Netherlands,3112.0,6995.0,low_snps:6995
+I20067.AG,Moldova_EBA_Yamnaya,Moldova,4850.0,8279.0,low_snps:8279
+I20073.AG,Moldova_Eneolithic,Moldova,6353.0,11109.0,low_snps:11109
+I20114.AG,Russia_Samara_Eneolithic_Ekaterinovka-o,Russia,7200.0,28761.0,low_snps:28761
+I20116.AG,Russia_Samara_Eneolithic_Ekaterinovka,Russia,7175.0,17534.0,low_snps:17534
+I20118.AG,Russia_Samara_Eneolithic_Ekaterinovka,Russia,7200.0,20940.0,low_snps:20940
+I20158.AG,Russia_Samara_EBA_Yamnaya,Russia,4842.0,17696.0,low_snps:17696
+I20161.AG,Italy_Sicily_Himera_IA_b_Greek-oAegean,Italy,2500.0,18840.0,low_snps:18840
+I20503.AG,Czechia_IA_LaTene,Czechia,2250.0,8028.0,low_snps:8028
+I20507.AG,Czechia_IA_LaTene,Czechia,2250.0,6060.0,low_snps:6060
+I20510.AG,Czechia_IA_LaTene,Czechia,2250.0,21116.0,low_snps:21116
+I20516.AG,Czechia_LBA,Czechia,3000.0,6016.0,low_snps:6016
+I20520.AG,Czechia_IA_LaTene,Czechia,2250.0,2721.0,low_snps:2721
+I20598.AG,England_EarlyMedieval_Saxon,United Kingdom,1400.0,18029.0,low_snps:18029
+I20600.AG,England_EarlyMedieval_Saxon,United Kingdom,1400.0,6074.0,low_snps:6074
+I20604.AG,England_EarlyMedieval_Saxon,United Kingdom,1450.0,2963.0,low_snps:2963
+I20648_d.AG,England_EarlyMedieval_Saxon,United Kingdom,1450.0,20008.0,low_snps:20008
+I20657_d.AG,England_EarlyMedieval_Saxon,United Kingdom,1450.0,15152.0,low_snps:15152
+I20663.AG,England_EarlyMedieval_Saxon,United Kingdom,1450.0,11462.0,low_snps:11462
+I20665_d.AG,England_EarlyMedieval_Saxon,United Kingdom,1450.0,27874.0,low_snps:27874
+I20687.AG,Yemen_Medieval_Soqotri,Yemen,850.0,5230.0,low_snps:5230
+I20688.AG,Yemen_Medieval_Soqotri,Yemen,850.0,16599.0,low_snps:16599
+I20711.AG,Yemen_Medieval_Soqotri,Yemen,1000.0,12500.0,low_snps:12500
+I20722.AG,Yemen_Medieval_Soqotri,Yemen,900.0,15618.0,low_snps:15618
+I20724.AG,Yemen_Medieval_Soqotri,Yemen,825.0,15889.0,low_snps:15889
+I20735_d.AG,Spain_LBA-2,Spain,3100.0,14520.0,low_snps:14520
+I11681_alt.AG,Hungary_IA_Scythian,Hungary,2400.0,9350.0,low_snps:9350
+I20811.AG,France_GrandEst_IA2,France,2200.0,10063.0,low_snps:10063
+I20816.AG,France_GrandEst_IA2,France,2200.0,3590.0,low_snps:3590
+I20828.AG,France_GrandEst_IA2,France,2200.0,7134.0,low_snps:7134
+I20890.AG,Russia_Chelyabinsk_Eneolithic_Kulmetovskiy,Russia,6100.0,4290.0,low_snps:4290
+I21110.AG,Yemen_Medieval_Soqotri,Yemen,900.0,11836.0,low_snps:11836
+I21111.AG,Yemen_Medieval_Soqotri,Yemen,900.0,13457.0,low_snps:13457
+I21249.AG,USA_California_1000BP_Chumash_Barbareno,USA,950.0,6696.0,low_snps:6696
+I21400.AG,France_GrandEst_IA2,France,2200.0,19676.0,low_snps:19676
+I21401.AG,France_GrandEst_IA2,France,2200.0,5376.0,low_snps:5376
+I21565.AG,Belgium_N,Belgium,4900.0,3276.0,low_snps:3276
+I21568.AG,Belgium_N,Belgium,4900.0,4782.0,low_snps:4782
+I21772.AG,Hungary_MN_AVK,Hungary,7075.0,8221.0,low_snps:8221
+I21831.AG,Romania_C_Bodrogkeresztur,Romania,5900.0,6549.0,low_snps:6549
+I21832.AG,Romania_C_Bodrogkeresztur,Romania,5900.0,13809.0,low_snps:13809
+I21834.AG,Romania_C_Bodrogkeresztur,Romania,5900.0,12006.0,low_snps:12006
+I21854.AG,Italy_Sicily_IA_b_IA_c_Punic,Italy,2380.0,25685.0,low_snps:25685
+I21963.AG,Italy_Sardinia_IA_b_Punic_Nuragic,Italy,2450.0,9685.0,low_snps:9685
+I21968.AG,Italy_Sicily_IA_b_Punic,Italy,2500.0,16142.0,low_snps:16142
+I21986.AG,Italy_Sardinia_IA_c_Punic_Nuragic,Italy,2250.0,8571.0,low_snps:8571
+I22081.AG,Spain_LatePunic,Spain,2151.0,9223.0,low_snps:9223
+I22086.AG,Spain_LatePunic,Spain,2151.0,8729.0,low_snps:8729
+I22240.AG,Italy_Sicily_MBA-oSteppe,Italy,3585.0,4196.0,low_snps:4196
+I22245.AG,Italy_Sicily_BA_IA_Unknown,Italy,3150.0,25685.0,low_snps:25685
+I22264.AG,Israel_Phoenician,Israel,2600.0,10113.0,low_snps:10113
+I22276.AG,Israel_Phoenician,Israel,2550.0,2667.0,low_snps:2667
+I23550.AG,Kenya_Medieval_Swahili,Kenya,700.0,21892.0,low_snps:21892
+I23551.AG,Kenya_Medieval_Swahili,Kenya,500.0,11875.0,low_snps:11875
+I23554.AG,Kenya_Medieval_Swahili,Kenya,500.0,8573.0,low_snps:8573
+I23657.AG,Kenya_Medieval_Swahili,Kenya,500.0,5342.0,low_snps:5342
+I24263.AG,Guam_Latte,Guam,600.0,599691.0,qc_assessment:CRITICAL
+I24344.AG,Croatia_LBA_EIA,Croatia,2900.0,11499.0,low_snps:11499
+I24493.TW,Tunisia_Punic,Tunisia,2500.0,9591.0,low_snps:9591
+I24514.AG,USA_NorthernMariana_Latte_Chamoru,USA,500.0,814516.0,qc_assessment:CRITICAL
+I24541.AG,Belize_11700BP_Archaic_Maya,Belize,11700.0,2759.0,low_snps:2759
+I24661.AG,Kenya_Medieval_Swahili,Kenya,500.0,4359.0,low_snps:4359
+I24662.AG,Kenya_Medieval_Swahili,Kenya,500.0,6376.0,low_snps:6376
+I24663.AG,Kenya_Medieval_Swahili,Kenya,500.0,10692.0,low_snps:10692
+I24665.AG,Kenya_Medieval_Swahili,Kenya,500.0,7340.0,low_snps:7340
+I24883.AG,Croatia_EIA,Croatia,2750.0,21172.0,low_snps:21172
+I24975.AG,Kenya_Medieval_Swahili,Kenya,500.0,21652.0,low_snps:21652
+I25347.AG,Austria_N_LBK,Austria,7100.0,26411.0,qc_assessment:CRITICAL
+I25349.AG,Austria_N_LBK,Austria,6981.0,81694.0,qc_assessment:CRITICAL
+I25523.AG,Hungary_LBA_IA,Hungary,2950.0,15450.0,low_snps:15450
+I26224.AG,Kazakhstan_KumsayKyrykOba_EBA_Yamnaya-o,Kazakhstan,4900.0,18642.0,low_snps:18642
+I26289.AG,Kazakhstan_KumsayKyrykOba_EBA_Yamnaya,Kazakhstan,4900.0,5495.0,low_snps:5495
+I26630.AG,ChannelIslands_EIA_LaTene,Channel Islands,2483.0,18125.0,low_snps:18125
+I27077.AG,Spain_LatePunic,Spain,2250.0,24637.0,low_snps:24637
+I27608.AG,Spain_Punic,Spain,2350.0,3754.0,low_snps:3754
+I27612.AG,Spain_Punic,Spain,2350.0,7858.0,qc_assessment:CRITICAL
+I25333_d.AG,Austria_N_LBK,Austria,7150.0,19409.0,low_snps:19409
+I27800.AG,Austria_N_LBK,Austria,7100.0,10595.0,low_snps:10595
+I27982.AG,Ukraine_Zaporizhia_N_DnieperDonets_MtCemetery,Ukraine,7250.0,24532.0,low_snps:24532
+I27986.AG,Ukraine_Zaporizhia_N_DnieperDonets_MtCemetery,Ukraine,6625.0,21884.0,low_snps:21884
+I27992.AG,Ukraine_Zaporizhia_N_DnieperDonets_MtCemetery,Ukraine,7250.0,16349.0,low_snps:16349
+I27995.AG,Ukraine_Zaporizhia_N_DnieperDonets_MtCemetery,Ukraine,7200.0,15851.0,low_snps:15851
+I28503.AG,Tunisia_Punic,Tunisia,2337.0,15506.0,low_snps:15506
+I28626.TW,Tunisia_Punic,Tunisia,2250.0,9121.0,low_snps:9121
+I28627.TW,Tunisia_Punic,Tunisia,2250.0,5587.0,low_snps:5587
+I29565.TW,Russia_Rostov_BA_LateYamnaya,Russia,4500.0,26678.0,low_snps:26678
+I30080.TW,Spain_Punic,Spain,2350.0,11603.0,low_snps:11603
+I32297.TW,Serbia_Medieval_Byzantine_Slav,Serbia,750.0,3876.0,low_snps:3876
+I3294.AG,Turkey_BA,Turkey,4300.0,2998.0,low_snps:2998
+I33314.TW,Russia_Kalmykia_EBA_Yamnaya,Russia,4400.0,3037.0,low_snps:3037
+I34287.TW,Croatia_Roman_LateAntiquity-oNorthEurope,Croatia,1550.0,5922.0,low_snps:5922
+I34291.TW,Croatia_Roman_LateAntiquity,Croatia,1550.0,2901.0,low_snps:2901
+I35080.TW,Croatia_LateAntiquity,Croatia,1600.0,3416.0,low_snps:3416
+I34470.TW,Argentina_Cordoba_800BP,Argentina,750.0,12239.0,low_snps:12239
+I34939.TW,Argentina_BuenosAires_400BP,Argentina,420.0,12124.0,low_snps:12124
+I34944.TW,Argentina_BuenosAires_900BP,Argentina,925.0,4144.0,low_snps:4144
+I34945.TW,Argentina_BuenosAires_900BP,Argentina,925.0,7660.0,low_snps:7660
+I34948.TW,Argentina_BuenosAires_900BP,Argentina,925.0,29500.0,low_snps:29500
+I34949.TW,Argentina_BuenosAires_900BP,Argentina,609.0,15868.0,low_snps:15868
+I7260.AG,Italy_Sicily_IA_b_IA_c_Punic,Italy,2300.0,16825.0,low_snps:16825
+I7262.AG,Italy_Sicily_IA_b_IA_c_Punic,Italy,2300.0,22342.0,low_snps:22342
+I0861_d.AG,Israel_Natufian,Israel,12700.0,15770.0,low_snps:15770
+I12608.AG,England_LBA,United Kingdom,2929.0,28589.0,low_snps:28589
+I13142.AG,Italy_Sicily_IA_a_IA_b_Sicani,Italy,2550.0,23642.0,low_snps:23642
+I13531.AG,Greece_Kastrouli_BA,Greece,3200.0,26553.0,low_snps:26553
+I13532.AG,Greece_Kastrouli_BA,Greece,3143.0,16304.0,low_snps:16304
+I13976.AG,Tanzania_LSA,Tanzania,18500.0,1353.0,qc_assessment:CRITICAL
+I16469.AG,England_LBA,United Kingdom,2950.0,378191.0,qc_assessment:CRITICAL
+I17878.AG,Italy_Sicily_Himera_IA_b_Greek,Italy,2400.0,25346.0,low_snps:25346
+I17881.AG,Italy_Sicily_Himera_IA_b_Greek,Italy,2400.0,20496.0,low_snps:20496
+I18101_d.AG,Hungary_LateC_Yamnaya,Hungary,4725.0,12353.0,low_snps:12353
+I18200.AG,Spain_LatePunic-o,Spain,2250.0,271220.0,qc_assessment:CRITICAL
+I19487.AG,Bulgaria_Svilengrad_EIA,Bulgaria,2750.0,22835.0,low_snps:22835
+I19488.AG,Bulgaria_Svilengrad_EIA-o,Bulgaria,2750.0,27688.0,low_snps:27688
+I19495.AG,Bulgaria_KapitanAndreevo_EIA,Bulgaria,2750.0,15525.0,low_snps:15525
+I19497.AG,Bulgaria_KapitanAndreevo_EIA,Bulgaria,2750.0,28039.0,low_snps:28039
+I19549.AG,Tanzania_Swahili,Tanzania,297.0,253887.0,qc_assessment:CRITICAL
+I35544.TW,Netherlands_MN,Netherlands,5650.0,26008.0,low_snps:26008
+I3883.AG,Iraq_Shanidar_PPNB-o,Iraq,10281.0,14886.0,low_snps:14886
+I3883_alt.AG,Iraq_Shanidar_PPNB-o,Iraq,10281.0,25217.0,low_snps:25217
+I5265.AG,Vanuatu_3000BP,Vanuatu,2950.0,13540.0,low_snps:13540
+I5267.AG,Vanuatu_3000BP,Vanuatu,2990.0,9137.0,low_snps:9137
+I5268.AG,Vanuatu_3000BP,Vanuatu,2885.0,4072.0,low_snps:4072
+I6188.AG,Vanuatu_2400BP,Vanuatu,2400.0,24583.0,low_snps:24583
+I6443.AG,Iraq_PPNA-o,Iraq,10700.0,10100.0,low_snps:10100
+I7010.AG,Belgium_N,Belgium,5800.0,29489.0,low_snps:29489
+I7073.AG,Turkey_EBA,Turkey,4796.0,15833.0,low_snps:15833
+I7980.AG,DominicanRepublic_PreCeramic-oEurope,Dominican Republic,250.0,18364.0,low_snps:18364
+I8435.AG,Turkey_PPNA,Turkey,10700.0,4841.0,low_snps:4841
+I8843.AG,Iraq_PPN,Iraq,9450.0,6362.0,low_snps:6362
+I8901.AG,Kenya_IA_Pastoral-o,Kenya,1009.0,25175.0,low_snps:25175
+I8936.AG,Iraq_PPN,Iraq,9450.0,4578.0,low_snps:4578
+I8955.AG,Iraq_PPN,Iraq,9450.0,13784.0,low_snps:13784
+Denisova.SG,Russia_Denisova,Russia,63900.0,574194.0,reference_or_archaic
+AltaiNeanderthal.DG,Altai_Neanderthal,Russia,110450.0,1149663.0,reference_or_archaic
+AltaiNeanderthal_snpAD.DG,Altai_Neanderthal,Russia,110450.0,1061534.0,reference_or_archaic
+Ancestor.REF,Ancestor,..,0.0,1135001.0,reference_or_archaic
+Chagyrskaya8.SG,ChagyrskayaCave_Neanderthal,Russia,80000.0,1061448.0,reference_or_archaic
+Chimp.REF,Chimp,..,0.0,1102442.0,reference_or_archaic
+S95.EC,China_Shaanxi_Wuzhuangguoliang_LN,China,5050.0,21891.0,low_snps:21891
+18R21265.EC,China_Shaanxi_Wuzhuangguoliang_LN,China,5050.0,10765.0,low_snps:10765
+S94.EC,China_Shaanxi_Wuzhuangguoliang_LN,China,5050.0,7577.0,low_snps:7577
+S96.EC,China_Shaanxi_Wuzhuangguoliang_LN,China,5050.0,7168.0,low_snps:7168
+S118.EC,China_Shaanxi_Wuzhuangguoliang_LN,China,5050.0,15792.0,low_snps:15792
+Denisova3.DG,Russia_Denisova,Russia,63900.0,1149356.0,reference_or_archaic
+Denisova3_snpAD.DG,Russia_Denisova,Russia,63900.0,1061350.0,reference_or_archaic
+Gorilla.REF,Gorilla,..,0.0,1054589.0,reference_or_archaic
+I9128.AG,Greece_Crete_MoniOdigitria_BA,Greece,3900.0,17038.0,low_snps:17038
+I18498.AG,Guam_PreLattePeriod_LateUnai,Guam,2742.0,24666.0,low_snps:24666
+I18446_d.AG,Guam_LateUnai,Guam,2632.0,4937.0,low_snps:4937
+I18504.AG,Guam_PreLattePeriod_LateUnai,Guam,2550.0,11653.0,low_snps:11653
+Href.REF,hg19ref,..,0.0,1150639.0,reference_or_archaic
+GRS-A1.SG,Iceland_Christian,Iceland,1025.0,214083.0,qc_assessment:CRITICAL
+BI16.SG,Karitiana,Brazil,0.0,1149592.0,qc_assessment:CRITICAL
+yak030.SG,Russia_Sakha_IA,Russia,2606.0,74979.0,qc_assessment:CRITICAL
+MK5012.AG,Russia_MBA_Catacomb-o,Russia,4615.0,10050.0,low_snps:10050
+Ash133.SG,Turkey_PPN-o,Turkey,9845.0,28880.0,low_snps:28880
+Ash129.SG,Turkey_PPN,Turkey,9837.0,17838.0,low_snps:17838
+Ash128.SG,Turkey_PPN,Turkey,10018.0,13701.0,low_snps:13701
+Vindija.DG,VindijaCave_Neanderthal,Croatia,50000.0,1061414.0,reference_or_archaic
+NAG037.AG.SG,Japan_Nagabaka_2800BP,Japan,2401.0,20394.0,low_snps:20394
+YAK002.AG.SG,Japan_Yayoi,Japan,2100.0,27874.0,low_snps:27874
+F9_new.SG,Italy_Lazio_ImperialRoman_Roman,Italy,1800.0,6393.0,low_snps:6393
+KD042.SG,Scotland_IA,United Kingdom,1825.0,25382.0,low_snps:25382
+KD046.SG,Scotland_MBA,United Kingdom,3425.0,2729.0,low_snps:2729
+KD048.SG,Scotland_MBA,United Kingdom,3414.0,2354.0,qc_assessment:CRITICAL
+KD051.SG,Scotland_MBA,United Kingdom,3604.0,1326.0,qc_assessment:CRITICAL
+KD052.SG,Scotland_MBA,United Kingdom,3425.0,2315.0,qc_assessment:CRITICAL
+KD058.SG,Scotland_MBA,United Kingdom,3489.0,17769.0,low_snps:17769
+KD066.SG,Scotland_MBA,United Kingdom,3425.0,5526.0,low_snps:5526
+KD071.SG,England_IA,United Kingdom,2275.0,15453.0,low_snps:15453
+KD072.SG,England_IA,United Kingdom,2275.0,12779.0,low_snps:12779
+Chagyrskaya8.DG,ChagyrskayaCave_Neanderthal,Russia,80000.0,1061448.0,reference_or_archaic
+snb017.SG,Sweden_IA,Sweden,1475.0,241231.0,qc_assessment:CRITICAL
+11R.SG,Mexico_Medieval,Mexico,1175.0,7745.0,low_snps:7745
+E19CdV.SG,Mexico_Medieval,Mexico,1225.0,28321.0,low_snps:28321
+E2.SG,Mexico_Medieval,Mexico,1225.0,12362.0,low_snps:12362
+E4CdV.SG,Mexico_Medieval,Mexico,1175.0,14879.0,low_snps:14879
+E4.SG,Mexico_Medieval,Mexico,1225.0,14436.0,low_snps:14436
+E7CdV.SG,Mexico_Medieval,Mexico,1350.0,28865.0,low_snps:28865
+MOM6.SG,Mexico_PreColumbian-6,Mexico,850.0,13316.0,low_snps:13316
+ktg001.SG,Morocco_EN,Morocco,7345.0,11153.0,low_snps:11153
+skh002.SG,Morocco_MN,Morocco,6620.0,641817.0,qc_assessment:CRITICAL
+skh003.SG,Morocco_MN,Morocco,6231.0,80920.0,qc_assessment:CRITICAL
+I19398_d.AG,Kenya_Medieval_Swahili,Kenya,369.0,8002.0,low_snps:8002
+I1368.TW,Vanuatu_2900BP,Vanuatu,2870.0,18717.0,low_snps:18717
+I19479.TW,Bulgaria_Kazanlak_LIA,Bulgaria,2025.0,10026.0,low_snps:10026
+I19479.AG,Bulgaria_Kazanlak_LIA,Bulgaria,2025.0,2933.0,low_snps:2933
+I19479.AG.TW,Bulgaria_Kazanlak_LIA,Bulgaria,2025.0,12928.0,low_snps:12928
+I20167.AG,Italy_Sicily_Himera_IA_b_Greek-oEast,Italy,2500.0,12308.0,low_snps:12308
+I12233.AG,Ukraine_Odesa_EBA_Yamnaya,Ukraine,4905.0,27170.0,low_snps:27170
+I13890.TW,England_EN_Megalithic,United Kingdom,5600.0,16357.0,low_snps:16357
+I13897.TW,England_EN_Megalithic,United Kingdom,5600.0,14813.0,low_snps:14813
+I12704.AG,Ukraine_Odesa_Eneolithic,Ukraine,6338.0,6814.0,low_snps:6814
+I13024.AG,Netherlands_Mesolithic_Swifterbant,Netherlands,7655.0,8838.0,low_snps:8838
+I21391.AG,England_EN_Megalithic,United Kingdom,5600.0,27397.0,low_snps:27397
+I21392.TW,England_EN_Megalithic,United Kingdom,5680.0,20270.0,low_snps:20270
+I21392.AG,England_EN_Megalithic,United Kingdom,5680.0,2032.0,qc_assessment:CRITICAL
+I21392.AG.TW,England_EN_Megalithic,United Kingdom,5680.0,22256.0,low_snps:22256
+I1690.TW,Israel_Natufian,Israel,12700.0,114743.0,qc_assessment:CRITICAL
+I1690_alt.AG,Israel_Natufian,Israel,12700.0,66145.0,qc_assessment:CRITICAL
+I1690.AG.TW,Israel_Natufian,Israel,12700.0,171428.0,qc_assessment:CRITICAL
+I20072.AG,Moldova_Eneolithic_Cernavoda_Skelya_SeredniiStih_II,Moldova,6168.0,12371.0,low_snps:12371
+I5894.AG,Ukraine_DonetsBasin_Eneolithic_SeredniiStih,Ukraine,6561.0,17573.0,low_snps:17573
+I1685_alt.AG,Israel_Natufian,Israel,12700.0,115088.0,qc_assessment:CRITICAL
+I1685.AG.TW,Israel_Natufian,Israel,12700.0,161880.0,qc_assessment:CRITICAL
+I19020.TW,Croatia_MBA_Cetina-Dup,Croatia,3750.0,23274.0,low_snps:23274
+I19020.AG,Croatia_MBA_Cetina-Dup,Croatia,3750.0,29053.0,low_snps:29053
+I19264.TW,Russia_Bashkortostan_Roman_Bakhmutinsky_Mazuninsky,Russia,1450.0,8343.0,low_snps:8343
+I19264.AG,Russia_Bashkortostan_Roman_Bakhmutinsky_Mazuninsky,Russia,1450.0,14743.0,low_snps:14743
+I19264.AG.TW,Russia_Bashkortostan_Roman_Bakhmutinsky_Mazuninsky,Russia,1450.0,22910.0,low_snps:22910
+I11850.AG,Ukraine_Odesa_EBA,Ukraine,4699.0,10277.0,low_snps:10277
+I19016.TW,Croatia_MBA_Cetina,Croatia,3750.0,17589.0,low_snps:17589
+I19016.AG,Croatia_MBA_Cetina,Croatia,3750.0,3361.0,low_snps:3361
+I19016.AG.TW,Croatia_MBA_Cetina,Croatia,3750.0,20904.0,low_snps:20904
+I12493.AG,Russia_Voronezh_N,Russia,7450.0,8499.0,low_snps:8499
+I12617.AG,Ukraine_Odesa_EBA_Catacomb_Yamnaya_possible,Ukraine,4644.0,23241.0,low_snps:23241
+ukr104.AG,Ukraine_Kirovohrad_Eneolithic_SeredniiStih,Ukraine,6120.0,22971.0,low_snps:22971
+I1690_d.AG.TW,Israel_Natufian,Israel,12700.0,21624.0,low_snps:21624
+I1685_d.AG,Israel_Natufian,Israel,12700.0,15728.0,low_snps:15728
+I1685_d.AG.TW,Israel_Natufian,Israel,12700.0,21036.0,low_snps:21036
+NEO183_d.AG,Russia_Eneolithic_Volosovo-Dup,Russia,5707.0,22382.0,low_snps:22382
+KDR001.SG,Sudan_MiddleHolocene-1,Sudan,4026.0,534.0,qc_assessment:CRITICAL
+NEV014.AG,Turkey_PPN,Turkey,10296.0,26358.0,low_snps:26358
+NEO1.SG,Denmark_LateMesolithic_Ertebolle,Denmark,6934.0,9949.0,low_snps:9949
+NEO41.SG,Denmark_EN,Denmark,5519.0,25603.0,low_snps:25603
+NEO496.SG,Ukraine_Mesolithic,Ukraine,11275.0,10959.0,low_snps:10959
+NEO13.SG,Denmark_EarlyMesolithic_Maglemose,Denmark,9604.0,18038.0,low_snps:18038
+NEO566.SG,Denmark_EN,Denmark,5340.0,17116.0,low_snps:17116
+NEO580.SG,Denmark_MN_possible,Denmark,4584.0,10382.0,low_snps:10382
+NEO61.SG,Russia_Murmansk_MBA,Russia,3545.0,29227.0,low_snps:29227
+NEO7.SG,Denmark_EN_N_TRB,Denmark,5223.0,11633.0,low_snps:11633
+NEO817.SG,Iran_TepeGuran_EN_PPN,Iran,9347.0,22947.0,low_snps:22947
+NEO915.SG,Russia_Novosibirsk_N,Russia,6249.0,18106.0,low_snps:18106
+NEO102.SG,Russia_KrasnoyarskKrai_LN,Russia,6019.0,29085.0,low_snps:29085
+NEO961.SG,Denmark_MN,Denmark,5132.0,23310.0,low_snps:23310
+NEO3.SG,Denmark_LateMesolithic_Ertebolle,Denmark,6300.0,27867.0,low_snps:27867
+BK3A.SG,Crimea_BuranKayaIII_EarlyUP,Crimea,36257.0,24987.0,low_snps:24987
+poz1039.SG,Poland_BA,Poland,4113.0,280576.0,qc_assessment:CRITICAL
+poz230.SG,Poland_BA,Poland,3823.0,407777.0,qc_assessment:CRITICAL
+poz296.SG,Ukraine_BialyPotok_BA_Komarow,Ukraine,3477.0,270417.0,qc_assessment:CRITICAL
+poz462.SG,Poland_BA,Poland,3815.0,37670.0,qc_assessment:CRITICAL
+poz498.SG,Poland_BA_LTrzciniec,Poland,3233.0,687947.0,qc_assessment:CRITICAL
+poz502.SG,Poland_BA,Poland,3815.0,186759.0,qc_assessment:CRITICAL
+poz506.SG,Poland_BA_Trzciniec,Poland,3207.0,45551.0,qc_assessment:CRITICAL
+poz507.SG,Poland_BA_Trzciniec,Poland,3263.0,474825.0,qc_assessment:CRITICAL
+poz514.SG,Poland_BA,Poland,3300.0,46446.0,qc_assessment:CRITICAL
+poz530.SG,Poland_BA,Poland,4116.0,22691.0,low_snps:22691
+poz533.SG,Poland_BA,Poland,4113.0,31254.0,qc_assessment:CRITICAL
+poz534.SG,Poland_BA,Poland,3150.0,33353.0,qc_assessment:CRITICAL
+poz537.SG,Poland_BA,Poland,3929.0,36650.0,qc_assessment:CRITICAL
+poz543.SG,Poland_BA_Trzciniec,Poland,3298.0,46235.0,qc_assessment:CRITICAL
+poz555.SG,Poland_BA_Trzciniec,Poland,3350.0,43557.0,qc_assessment:CRITICAL
+poz556.SG,Poland_BA,Poland,4155.0,116401.0,qc_assessment:CRITICAL
+poz557.SG,Poland_BA,Poland,4012.0,87064.0,qc_assessment:CRITICAL
+poz559.SG,Poland_BA,Poland,4150.0,22096.0,low_snps:22096
+poz583.SG,Poland_BA_Trzciniec,Poland,3349.0,108118.0,qc_assessment:CRITICAL
+poz643.SG,Ukraine_Beremiany_BA_Komarow-oEEF,Ukraine,3769.0,207043.0,qc_assessment:CRITICAL
+poz649.SG,Poland_BA_Trzciniec,Poland,3325.0,85496.0,qc_assessment:CRITICAL
+poz651.SG,Poland_BA_Trzciniec,Poland,3420.0,133603.0,qc_assessment:CRITICAL
+poz655.SG,Poland_BA_Trzciniec,Poland,3359.0,218522.0,qc_assessment:CRITICAL
+poz658.SG,Poland_BA_Trzciniec,Poland,3286.0,490903.0,qc_assessment:CRITICAL
+poz667.SG,Poland_BA_Trzciniec,Poland,3471.0,217611.0,qc_assessment:CRITICAL
+poz675.SG,Poland_BA_Trzciniec,Poland,3450.0,270547.0,qc_assessment:CRITICAL
+poz684.SG,Poland_BA_Trzciniec,Poland,3271.0,279832.0,qc_assessment:CRITICAL
+poz690.SG,Poland_BA_Trzciniec,Poland,3286.0,257786.0,qc_assessment:CRITICAL
+poz693.SG,Poland_BA_Trzciniec,Poland,3450.0,276317.0,qc_assessment:CRITICAL
+poz694.SG,Poland_BA_Trzciniec,Poland,3277.0,293557.0,qc_assessment:CRITICAL
+poz700.SG,Poland_BA_Trzciniec,Poland,3258.0,666056.0,qc_assessment:CRITICAL
+poz711.SG,Poland_BA_Trzciniec,Poland,3417.0,351850.0,qc_assessment:CRITICAL
+poz712.SG,Poland_BA_Trzciniec,Poland,3286.0,231019.0,qc_assessment:CRITICAL
+poz715.SG,Poland_BA_Trzciniec,Poland,3300.0,94541.0,qc_assessment:CRITICAL
+poz717.SG,Poland_BA_Trzciniec,Poland,3245.0,112247.0,qc_assessment:CRITICAL
+poz719.SG,Poland_BA_Trzciniec,Poland,3302.0,285382.0,qc_assessment:CRITICAL
+poz720.SG,Poland_BA_Trzciniec,Poland,3239.0,442338.0,qc_assessment:CRITICAL
+poz745.SG,Poland_BA_Trzciniec,Poland,3375.0,46788.0,qc_assessment:CRITICAL
+poz746.SG,Poland_BA_Trzciniec,Poland,3375.0,54778.0,qc_assessment:CRITICAL
+poz747.SG,Poland_BA_Trzciniec,Poland,3329.0,282390.0,qc_assessment:CRITICAL
+poz748.SG,Poland_BA_Trzciniec,Poland,3430.0,240799.0,qc_assessment:CRITICAL
+poz758.SG,Poland_BA,Poland,4125.0,132173.0,qc_assessment:CRITICAL
+poz788.SG,Poland_BA,Poland,3788.0,816949.0,qc_assessment:CRITICAL
+poz790.SG,Poland_BA,Poland,4122.0,853142.0,qc_assessment:CRITICAL
+poz792.SG,Poland_BA,Poland,3728.0,136890.0,qc_assessment:CRITICAL
+poz794.SG,Poland_BA,Poland,3765.0,1021604.0,qc_assessment:CRITICAL
+L8623.AG,Uzbekistan_Antiquity,Uzbekistan,2000.0,20427.0,low_snps:20427
+L8000.AG,Uzbekistan_Antiquity,Uzbekistan,2000.0,13827.0,low_snps:13827
+L8666.AG,Uzbekistan_Antiquity,Uzbekistan,2000.0,8780.0,low_snps:8780
+L8662.AG,Uzbekistan_HephthalitePeriod,Uzbekistan,1425.0,12059.0,low_snps:12059
+L8625.AG,Uzbekistan_Antiquity,Uzbekistan,2000.0,20909.0,low_snps:20909
+L6299.AG,Uzbekistan_Antiquity,Uzbekistan,2000.0,4624.0,low_snps:4624
+L8631.AG,Uzbekistan_Antiquity,Uzbekistan,1925.0,10100.0,low_snps:10100
+L8633.AG,Uzbekistan_Antiquity,Uzbekistan,2000.0,5960.0,low_snps:5960
+buk012.SG,Romania_EN,Romania,7503.0,15800.0,low_snps:15800
+I6662.SG,Romania_EN-Dup,Romania,7418.0,27153.0,low_snps:27153
+buk018.SG,Romania_N_Boian,Romania,6778.0,22548.0,low_snps:22548
+buk029.SG,Romania_Eneolithic_LN_Boian,Romania,6581.0,21101.0,low_snps:21101
+buk033.SG,Romania_Eneolithic_LN_Boian,Romania,6584.0,4961.0,low_snps:4961
+buk040.SG,Romania_Eneolithic_LN_Boian,Romania,6977.0,19003.0,low_snps:19003
+lbk101.SG,Poland_N_ELBK,Poland,6100.0,12163.0,low_snps:12163
+poz121.SG,Poland_N_LLBK_LLengyel,Poland,6143.0,24087.0,low_snps:24087
+rom046.SG,Romania_villageIclod_Eneolithic_LN,Romania,6578.0,15203.0,low_snps:15203
+I5878.SG,Ukraine_Kirovohrad_N-Dup,Ukraine,7139.0,231721.0,qc_assessment:CRITICAL
+ukr040.SG,Ukraine_N,Ukraine,6299.0,19694.0,low_snps:19694
+ukr144.SG,Ukraine_N,Ukraine,7027.0,323783.0,qc_assessment:CRITICAL
+GLN210.AG.SG,France_Yonne_N,France,6550.0,17036.0,low_snps:17036
+GLN219.AG,France_Yonne_N,France,6700.0,13055.0,low_snps:13055
+GLN221A.AG,France_Yonne_N,France,6550.0,13354.0,low_snps:13354
+GLN223.AG.SG,France_Yonne_N,France,6593.0,3503.0,low_snps:3503
+GLN225.AG.SG,France_Yonne_N,France,6550.0,16317.0,low_snps:16317
+GLN227.AG.SG,France_Yonne_N,France,6550.0,17647.0,low_snps:17647
+GLN229.AG.SG,France_Yonne_N,France,6550.0,10069.0,low_snps:10069
+GLN231A.AG.SG,France_Yonne_N,France,6673.0,5971.0,low_snps:5971
+GLN232C.AG.SG,France_Yonne_N,France,6550.0,10560.0,low_snps:10560
+GLN243B.AG.SG,France_Yonne_N,France,6671.0,7434.0,low_snps:7434
+GLN248.AG.SG,France_Yonne_N,France,6550.0,17226.0,low_snps:17226
+GLN256.AG.SG,France_Yonne_N,France,6550.0,26033.0,low_snps:26033
+GLN268B.AG,France_Yonne_N,France,6725.0,21067.0,low_snps:21067
+GLN270A.AG,France_Yonne_N,France,6550.0,14848.0,qc_assessment:CRITICAL
+GLN287.AG.SG,France_Yonne_N,France,6550.0,18993.0,low_snps:18993
+GLN292.AG,France_Yonne_N,France,6550.0,8850.0,low_snps:8850
+GLN294.AG.SG,France_Yonne_N,France,6558.0,4639.0,low_snps:4639
+GLN299.AG.SG,France_Yonne_N,France,6550.0,26295.0,low_snps:26295
+GLN313.AG.SG,France_Yonne_N,France,6550.0,5077.0,low_snps:5077
+GLN314.AG,France_Yonne_N,France,6550.0,12275.0,low_snps:12275
+GLN317.AG.SG,France_Yonne_N,France,6615.0,19278.0,low_snps:19278
+GLN318.AG,France_Yonne_N,France,6550.0,7795.0,low_snps:7795
+STH_213.SG,SaintHelena,Saint Helena,60.0,357512.0,qc_assessment:CRITICAL
+STH_245.SG,SaintHelena,Saint Helena,60.0,263468.0,qc_assessment:CRITICAL
+STH_248.SG,SaintHelena,Saint Helena,60.0,200605.0,qc_assessment:CRITICAL
+STH_253.SG,SaintHelena,Saint Helena,60.0,307648.0,qc_assessment:CRITICAL
+STH_254.SG,SaintHelena,Saint Helena,60.0,93088.0,qc_assessment:CRITICAL
+STH_281.SG,SaintHelena,Saint Helena,60.0,89964.0,qc_assessment:CRITICAL
+STH_289.SG,SaintHelena,Saint Helena,60.0,178555.0,qc_assessment:CRITICAL
+STH_344.SG,SaintHelena,Saint Helena,60.0,175416.0,qc_assessment:CRITICAL
+STH_351.SG,SaintHelena,Saint Helena,60.0,102587.0,qc_assessment:CRITICAL
+STH_358.SG,SaintHelena,Saint Helena,60.0,211970.0,qc_assessment:CRITICAL
+STH_415.SG,SaintHelena,Saint Helena,60.0,102583.0,qc_assessment:CRITICAL
+STH_436.SG,SaintHelena,Saint Helena,60.0,123284.0,qc_assessment:CRITICAL
+STH_441.SG,SaintHelena,Saint Helena,60.0,256305.0,qc_assessment:CRITICAL
+STH_460.SG,SaintHelena,Saint Helena,60.0,164340.0,qc_assessment:CRITICAL
+STH_499.SG,SaintHelena,Saint Helena,60.0,163589.0,qc_assessment:CRITICAL
+STH_514.SG,SaintHelena,Saint Helena,60.0,160810.0,qc_assessment:CRITICAL
+STH_520.SG,SaintHelena,Saint Helena,60.0,91342.0,qc_assessment:CRITICAL
+LAR14.SG,France_FrenchAlps,France,321.0,29105.0,low_snps:29105
+LAR26.SG,France_FrenchAlps,France,321.0,23203.0,low_snps:23203
+LAR27.SG,France_FrenchAlps,France,321.0,21174.0,low_snps:21174
+LAR31.SG,France_FrenchAlps,France,321.0,26542.0,low_snps:26542
+LAR9.SG,France_FrenchAlps,France,321.0,20738.0,low_snps:20738
+PCA0032.SG,Poland_IA_Wielbark,Poland,2026.0,27994.0,low_snps:27994
+PCA0037.SG,Poland_IA_Wielbark,Poland,1800.0,25562.0,low_snps:25562
+PCA0038.SG,Poland_IA_Wielbark,Poland,1750.0,5157.0,low_snps:5157
+PCA0047.SG,Poland_IA_Wielbark,Poland,1883.0,10392.0,low_snps:10392
+PCA0057.SG,Poland_IA_Wielbark,Poland,1889.0,14692.0,low_snps:14692
+PCA0060_d.SG,Poland_IA_Wielbark,Poland,1825.0,7645.0,low_snps:7645
+PCA0091.SG,Poland_IA_Wielbark,Poland,1650.0,3492.0,low_snps:3492
+PCA0099.SG,Poland_IA_Wielbark,Poland,1650.0,2687.0,low_snps:2687
+PCA0105.SG,Poland_IA_Wielbark,Poland,1650.0,24345.0,low_snps:24345
+PCA0109.SG,Poland_IA_Wielbark,Poland,1650.0,2720.0,low_snps:2720
+PCA0150.SG,Poland_IA,Poland,1000.0,15924.0,low_snps:15924
+PCA0158.SG,Poland_IA,Poland,850.0,308874.0,qc_assessment:CRITICAL
+PCA0158_d.SG,Poland_IA,Poland,850.0,4278.0,low_snps:4278
+PCA0162.SG,Poland_IA,Poland,850.0,17498.0,low_snps:17498
+PCA0165.SG,Poland_EarlySlav,Poland,850.0,232836.0,qc_assessment:CRITICAL
+PCA0228.SG,Poland_IA,Poland,850.0,25231.0,low_snps:25231
+PCA0230.SG,Poland_IA,Poland,850.0,11347.0,low_snps:11347
+PCA0233.SG,Poland_IA,Poland,850.0,26101.0,low_snps:26101
+PCA0239.SG,Poland_IA,Poland,850.0,6063.0,low_snps:6063
+PCA0241.SG,Poland_IA,Poland,850.0,23734.0,low_snps:23734
+PCA0245.SG,Poland_IA,Poland,850.0,20193.0,low_snps:20193
+PCA0247.SG,Poland_IA,Poland,850.0,28523.0,low_snps:28523
+PCA0255.SG,Poland_IA,Poland,850.0,26459.0,low_snps:26459
+PCA0299.SG,Poland_IA,Poland,850.0,24372.0,low_snps:24372
+PCA0305.SG,Poland_IA,Poland,850.0,10323.0,low_snps:10323
+PCA0306.SG,Poland_IA,Poland,850.0,5259.0,low_snps:5259
+PCA0311.SG,Poland_IA,Poland,850.0,9863.0,low_snps:9863
+PCA0315.SG,Poland_IA,Poland,850.0,10826.0,low_snps:10826
+PCA0316.SG,Poland_IA,Poland,850.0,22921.0,low_snps:22921
+PCA0318.SG,Poland_IA,Poland,850.0,8918.0,low_snps:8918
+PCA0320.SG,Poland_IA,Poland,850.0,2543.0,low_snps:2543
+PCA0322.SG,Poland_IA,Poland,850.0,11112.0,low_snps:11112
+PCA0323.SG,Poland_IA,Poland,850.0,18346.0,low_snps:18346
+PCA0329.SG,Poland_IA,Poland,850.0,7853.0,low_snps:7853
+PCA0337.SG,Poland_IA,Poland,850.0,4078.0,low_snps:4078
+PCA0338.SG,Poland_IA,Poland,850.0,15872.0,low_snps:15872
+PCA0342.SG,Poland_IA,Poland,850.0,27578.0,low_snps:27578
+PCA0353.SG,Poland_IA,Poland,850.0,27350.0,low_snps:27350
+PCA0378.SG,Poland_EarlyMedieval_Slav,Poland,850.0,22304.0,low_snps:22304
+PCA0379.SG,Poland_EarlyMedieval_Slav,Poland,850.0,7952.0,low_snps:7952
+PCA0380.SG,Poland_EarlyMedieval_Slav,Poland,850.0,23217.0,low_snps:23217
+PCA0385.SG,Poland_EarlyMedieval_Slav,Poland,850.0,13936.0,low_snps:13936
+PCA0386.SG,Poland_EarlyMedieval_Slav,Poland,850.0,20876.0,low_snps:20876
+PCA0388.SG,Poland_EarlyMedieval_Slav,Poland,702.0,10877.0,low_snps:10877
+PCA0389.SG,Poland_EarlyMedieval_Slav,Poland,850.0,3064.0,low_snps:3064
+PCA0390.SG,Poland_EarlyMedieval_Slav,Poland,850.0,17626.0,low_snps:17626
+PCA0393.SG,Poland_EarlyMedieval_Slav,Poland,850.0,4373.0,low_snps:4373
+PCA0398.SG,Poland_EarlyMedieval_Slav,Poland,850.0,7575.0,low_snps:7575
+PCA0403.SG,Poland_EarlyMedieval_Slav,Poland,850.0,25102.0,low_snps:25102
+PCA0404.SG,Poland_EarlyMedieval_Slav,Poland,850.0,7710.0,low_snps:7710
+PCA0407.SG,Poland_EarlyMedieval_Slav,Poland,850.0,13628.0,low_snps:13628
+PCA0415.SG,Poland_EarlyMedieval_Slav,Poland,850.0,29369.0,low_snps:29369
+PCA0416.SG,Poland_EarlyMedieval_Slav,Poland,850.0,24444.0,low_snps:24444
+PCA0417.SG,Poland_EarlyMedieval_Slav,Poland,850.0,16551.0,low_snps:16551
+PCA0418.SG,Poland_EarlyMedieval_Slav,Poland,850.0,20643.0,low_snps:20643
+PCA0424.SG,Poland_EarlyMedieval_Slav,Poland,850.0,17343.0,low_snps:17343
+PCA0455.SG,Poland_IA_Wielbark,Poland,1750.0,5884.0,low_snps:5884
+PCA0457.SG,Poland_IA_Wielbark,Poland,1750.0,4196.0,low_snps:4196
+PCA0485.SG,Poland_Roman_Wielbark,Poland,1750.0,2796.0,low_snps:2796
+PCA0489.SG,Poland_Roman_Wielbark,Poland,1750.0,22349.0,low_snps:22349
+PCA0490.SG,Poland_Roman_Wielbark,Poland,1750.0,3334.0,low_snps:3334
+PCA0494.SG,Poland_Roman_Wielbark,Poland,1750.0,27647.0,low_snps:27647
+PCA0500.SG,Poland_Roman_Wielbark,Poland,1750.0,16464.0,low_snps:16464
+PCA0502.SG,Poland_IA,Poland,850.0,11415.0,low_snps:11415
+PCA0503.SG,Poland_IA,Poland,850.0,11391.0,low_snps:11391
+PCA0504.SG,Poland_IA,Poland,850.0,2678.0,low_snps:2678
+PCA0512.SG,Poland_IA,Poland,850.0,15375.0,low_snps:15375
+PCA0517.SG,Poland_IA,Poland,850.0,13017.0,low_snps:13017
+PCA0520.SG,Poland_IA,Poland,850.0,10814.0,low_snps:10814
+PCA0522.SG,Poland_Roman_Wielbark,Poland,1750.0,27239.0,low_snps:27239
+PCA0527.SG,Poland_IA_Wielbark,Poland,1750.0,17583.0,low_snps:17583
+PCA0528.SG,Poland_IA_Wielbark,Poland,1750.0,5605.0,low_snps:5605
+PCA0543.SG,Poland_IA,Poland,850.0,6552.0,low_snps:6552
+PCA0554.SG,Poland_IA,Poland,936.0,19496.0,low_snps:19496
+PCA0557.SG,Poland_IA,Poland,850.0,10288.0,low_snps:10288
+PCA0558.SG,Poland_IA,Poland,850.0,19753.0,low_snps:19753
+PCA0559.SG,Poland_IA,Poland,850.0,13441.0,low_snps:13441
+PCA0560.SG,Poland_IA,Poland,850.0,12477.0,low_snps:12477
+PCA0562.SG,Poland_IA,Poland,850.0,27939.0,low_snps:27939
+PCA0565.SG,Poland_IA,Poland,850.0,23077.0,low_snps:23077
+PCA0572.SG,Poland_IA,Poland,963.0,12734.0,low_snps:12734
+tev002_France.SG,France_Mesolithic,France,7375.0,1880.0,qc_assessment:CRITICAL
+WOL001.AG,Austria_Mesolithic,Austria,8784.0,209539.0,qc_assessment:CRITICAL
+WOL001_d.AG,Austria_Mesolithic,Austria,8784.0,18125.0,low_snps:18125
+DOG004_d.AG,Netherlands_Mesolithic,Netherlands,10067.0,10513.0,low_snps:10513
+DON005.AG,Lithuania_Mesolithic,Lithuania,8373.0,291606.0,qc_assessment:CRITICAL
+GOY001_d.AG,Belgium_Gravettian,Belgium,27442.0,5185.0,low_snps:5185
+GOY007_d.AG,Belgium_Gravettian,Belgium,27792.0,14919.0,low_snps:14919
+GOY009.AG,Belgium_Gravettian,Belgium,26150.0,255173.0,qc_assessment:CRITICAL
+GOY009_d.AG,Belgium_Gravettian,Belgium,26150.0,8386.0,low_snps:8386
+GOY014_d.AG,Belgium_Gravettian,Belgium,27926.0,5392.0,low_snps:5392
+BRM001.AG,Germany_WeyheDreye_LN-oOberkassel2,Germany,5789.0,103192.0,qc_assessment:CRITICAL
+LMA001_d.AG,France_Magdalenian,France,18077.0,23863.0,low_snps:23863
+LPI002_d.AG,France_Occitanie_Solutrean,France,23478.0,21591.0,low_snps:21591
+MAZ001_d.AG,Poland_Magdalenian,Poland,18272.0,2791.0,low_snps:2791
+MUR005.AG,Russia_Tatarstan_Eneolithic,Russia,6425.0,392843.0,qc_assessment:CRITICAL
+MUR005_d.AG,Russia_Tatarstan_Eneolithic,Russia,6425.0,26472.0,low_snps:26472
+MUR007_d.AG,Russia_Tatarstan_Eneolithic,Russia,6425.0,24175.0,low_snps:24175
+MUR017_d.AG,Russia_Tatarstan_Eneolithic,Russia,6425.0,11644.0,low_snps:11644
+PRD001_d.AG,Italy_FriuliVeneziaGiulia_Epigravettian,Italy,12991.0,24786.0,low_snps:24786
+RIE002_d.AG,Spain_Solutrean,Spain,20872.0,5192.0,low_snps:5192
+RIP001.AG,Italy_Veneto_Epigravettian,Italy,16736.0,651634.0,qc_assessment:CRITICAL
+VO1001.AG,Ukraine_N,Ukraine,7458.0,167543.0,qc_assessment:CRITICAL
+VO1001_d.AG,Ukraine_N,Ukraine,7458.0,13803.0,low_snps:13803
+VO1003.AG,Ukraine_N,Ukraine,7475.0,542882.0,qc_assessment:CRITICAL
+VSL003_d.AG,Ukraine_Mesolithic,Ukraine,10358.0,19836.0,low_snps:19836
+VSL004_d.AG,Ukraine_Mesolithic,Ukraine,10350.0,23506.0,low_snps:23506
+WCX002.AG,Belgium_Mesolithic,Belgium,10495.0,374354.0,qc_assessment:CRITICAL
+WCX004.AG,Belgium_Mesolithic,Belgium,10471.0,171219.0,qc_assessment:CRITICAL
+HNJ005.AG,Hungary_MiddleAvar-oLowEastAsia,Hungary,1250.0,16604.0,low_snps:16604
+HNJ009.AG,Hungary_MiddleAvar,Hungary,1250.0,23864.0,low_snps:23864
+KFJ002.AG,Hungary_LateAvar-oHighEastAsia,Hungary,1175.0,13934.0,low_snps:13934
+KUP013.AG,Hungary_Avar-oLowEastAsia,Hungary,1350.0,14814.0,low_snps:14814
+RKF022.AG,Hungary_EarlyAvar-oLowEastAsia,Hungary,1370.0,7319.0,low_snps:7319
+RKF082.AG,Hungary_Avar-oLowEastAsia,Hungary,1350.0,5786.0,low_snps:5786
+RKF085.AG,Hungary_EarlyAvar-oLowEastAsia,Hungary,1325.0,16368.0,low_snps:16368
+RKF086.AG,Hungary_EarlyAvar-oLowEastAsia,Hungary,1325.0,19541.0,low_snps:19541
+RKF119.AG,Hungary_MiddleAvar-oLowEastAsia,Hungary,1175.0,6586.0,low_snps:6586
+RKF123.AG,Hungary_MiddleAvar,Hungary,1175.0,4871.0,low_snps:4871
+RKF128.AG,Hungary_EarlyAvar,Hungary,1325.0,28181.0,low_snps:28181
+RKF167.AG,Hungary_MiddleAvar,Hungary,1233.0,13137.0,low_snps:13137
+RKF171.AG,Hungary_Avar-oLowEastAsia,Hungary,1350.0,1087.0,qc_assessment:CRITICAL
+RKF225.AG,Hungary_EarlyAvar,Hungary,1325.0,6666.0,low_snps:6666
+RKF233.AG,Hungary_EarlyMiddleAvar-oLowEastAsia,Hungary,1300.0,4559.0,low_snps:4559
+RKF236.AG,Hungary_EarlyMiddleAvar,Hungary,1300.0,8564.0,low_snps:8564
+RKF252.AG,Hungary_Avar-oLowEastAsia,Hungary,1350.0,3375.0,low_snps:3375
+RKF261.AG,Hungary_Avar,Hungary,1350.0,23713.0,low_snps:23713
+DUN001.AG,Germany_Dunum_Medieval_Saxon,Germany,1050.0,417983.0,qc_assessment:CRITICAL
+UZZ040.AG,Italy_Sicily_Mesolithic,Italy,8279.0,265446.0,qc_assessment:CRITICAL
+APO037.AG,Greece_Crete_Aposelemis_N,Greece,7981.0,157466.0,qc_assessment:CRITICAL
+GoyetQ-2.AG,Belgium_Magdalenian,Belgium,15077.0,408814.0,qc_assessment:CRITICAL
+DA41.SG,Mongolia_Khovsgol_XiongnuPeriod-oEurope,Mongolia,2148.0,649295.0,qc_assessment:CRITICAL
+DA144.SG,Russia_Sarmatian,Russia,2300.0,343785.0,qc_assessment:CRITICAL
+I1369.AG.BY,Vanuatu_2900BP,Vanuatu,2885.0,29350.0,low_snps:29350
+C3324_d.AG,China_Xinjiang_IA_Yuezhi_Scythian,China,2245.0,9380.0,low_snps:9380
+esp005_d.SG,Spain_BA,Spain,3400.0,15828.0,low_snps:15828
+CGG100797.SG,Denmark_Medieval,Denmark,600.0,300593.0,qc_assessment:CRITICAL
+CGG100914.SG,Denmark_Medieval,Denmark,575.0,28704.0,low_snps:28704
+PIE009.AG,Romania_C_Gumelnita,Romania,6464.0,27519.0,low_snps:27519
+PTK001.AG,Bulgaria_PetkoKaravelovo_C,Bulgaria,6494.0,424283.0,qc_assessment:CRITICAL
+GoyetQ56-16_d.AG,Belgium_Gravettian,Belgium,26300.0,7786.0,low_snps:7786
+LesCloseaux13_d.AG,France_Mesolithic,France,9933.0,6643.0,low_snps:6643
+Ofnet_d.AG,Germany_Ofnet_Mesolithic,Germany,8277.0,4712.0,low_snps:4712
+Paglicci108_d.AG,Italy_Apulia_Gravettian-o,Italy,27900.0,3215.0,low_snps:3215
+Brillenhohle_d.AG,Germany_BrillenhohleAchValley_Magdalenian,Germany,14817.0,22816.0,low_snps:22816
+CIO001_d.AG,Romania_UP,Romania,32669.0,13519.0,low_snps:13519
+Vestonice15_d.AG,Czechia_Gravettian,Czechia,30981.0,20152.0,low_snps:20152
+GoyetQ53-1_d.AG,Belgium_Gravettian,Belgium,28082.0,10589.0,low_snps:10589
+LRO001_d.AG,France_Gravettian,France,27674.0,8149.0,low_snps:8149
+Paglicci133_d.AG,Italy_Apulia_Gravettian,Italy,32886.0,26522.0,low_snps:26522
+BRM001_d.AG,Germany_WeyheDreye_LN-oOberkassel2,Germany,5789.0,13217.0,low_snps:13217
+Brillenhohle.AG,Germany_BrillenhohleAchValley_Magdalenian,Germany,14817.0,238287.0,qc_assessment:CRITICAL
+Burkhardtshohle.AG,Germany_Westerheim_Magdalenian-oWHG,Germany,14620.0,156532.0,qc_assessment:CRITICAL
+CIO001.AG,Romania_UP,Romania,32669.0,145985.0,qc_assessment:CRITICAL
+Chaudardes1.AG,France_Mesolithic,France,8193.0,277335.0,qc_assessment:CRITICAL
+DOG009.AG,Netherlands_Mesolithic,Netherlands,8813.0,739738.0,qc_assessment:CRITICAL
+DOG010.AG,Netherlands_Mesolithic,Netherlands,8699.0,641884.0,qc_assessment:CRITICAL
+GOY001.AG,Belgium_Gravettian,Belgium,27442.0,297571.0,qc_assessment:CRITICAL
+GOY007.AG,Belgium_Gravettian,Belgium,27792.0,427128.0,qc_assessment:CRITICAL
+GoyetQ53-1.AG,Belgium_Gravettian,Belgium,28082.0,165520.0,qc_assessment:CRITICAL
+LMA001.AG,France_Magdalenian,France,18077.0,130939.0,qc_assessment:CRITICAL
+RIE002.AG,Spain_Solutrean,Spain,20872.0,427090.0,qc_assessment:CRITICAL
+LRO001.AG,France_Gravettian,France,27674.0,74221.0,qc_assessment:CRITICAL
+LPI002.AG,France_Occitanie_Solutrean,France,23478.0,561583.0,qc_assessment:CRITICAL
+MAZ001.AG,Poland_Magdalenian,Poland,18272.0,521274.0,qc_assessment:CRITICAL
+MAZ003.AG,Poland_Magdalenian,Poland,15572.0,706193.0,qc_assessment:CRITICAL
+Paglicci133_alt.AG,Italy_Apulia_Gravettian,Italy,32886.0,78761.0,qc_assessment:CRITICAL
+I13976.SG,Tanzania_LSA,Tanzania,18500.0,281.0,qc_assessment:CRITICAL
+AA7-738.AG.BY.AA,Bulgaria_BachoKiroCave_IUP,Bulgaria,43250.0,5505.0,qc_assessment:CRITICAL
+CC7-2289.AG.BY.AA,Bulgaria_BachoKiroCave_IUP,Bulgaria,43689.0,875.0,qc_assessment:CRITICAL
+Oase1.AG.BY.AA,Romania_IUP,Romania,39982.0,255760.0,qc_assessment:CRITICAL
+I22284.AG,Israel_Phoenician,Israel,2650.0,10456.0,low_snps:10456
+CGG105976.SG,Sweden_N_possible,Sweden,5075.0,1619.0,qc_assessment:CRITICAL
+CGG105983.SG,Sweden_N_possible,Sweden,5075.0,4504.0,low_snps:4504
+CGG106001.SG,Sweden_N,Sweden,4958.0,9884.0,low_snps:9884
+CGG106007.SG,Sweden_Nastegarden_Steppe-oSteppe2,Sweden,3743.0,1314.0,qc_assessment:CRITICAL
+fra001.SG,Sweden_N,Sweden,5038.0,13224.0,low_snps:13224
+FRA302.SG,Sweden_Fralsegarden_EBA-oSteppe2,Sweden,3937.0,18875.0,low_snps:18875
+gok020.SG,Sweden_N_possible,Sweden,4925.0,6678.0,low_snps:6678
+Gok4.SG,Sweden_N,Sweden,4950.0,26724.0,low_snps:26724
+HJE002.SG,Sweden_N,Sweden,5162.0,26289.0,low_snps:26289
+HJE004.SG,Sweden_N,Sweden,5075.0,18161.0,low_snps:18161
+HOL001_Sweden.SG,Sweden_N,Sweden,4730.0,13890.0,low_snps:13890
+ROS001.SG,Sweden_Rossberga_N,Sweden,5053.0,13481.0,low_snps:13481
+ROS002.SG,Sweden_Rossberga_N,Sweden,5146.0,19962.0,low_snps:19962
+ROS007.SG,Sweden_Rossberga_N,Sweden,5053.0,14515.0,low_snps:14515
+ROS008_Sweden.SG,Sweden_Rossberga_N,Sweden,4955.0,19384.0,low_snps:19384
+ros012.SG,Sweden_Rossberga_N_possible,Sweden,4950.0,5314.0,low_snps:5314
+ROS036.SG,Sweden_Rossberga_N,Sweden,5122.0,26769.0,low_snps:26769
+YCH004.IM,Mexico_LateClassic,Mexico,1075.0,26496.0,low_snps:26496
+YCH006.IM,Mexico_LateClassic,Mexico,1075.0,5755.0,low_snps:5755
+YCH015.IM,Mexico_LateClassic,Mexico,1075.0,19005.0,low_snps:19005
+YCH021.IM,Mexico_LateClassic,Mexico,1075.0,20750.0,low_snps:20750
+YCH023.IM,Mexico_LateClassic,Mexico,1075.0,9568.0,low_snps:9568
+YCH025.AG,Mexico_LateClassic,Mexico,1075.0,3589.0,low_snps:3589
+YCH026.IM,Mexico_LateClassic,Mexico,1075.0,4889.0,low_snps:4889
+YCH028.IM,Mexico_LateClassic,Mexico,1075.0,26941.0,low_snps:26941
+YCH029.AG,Mexico_LateClassic,Mexico,1075.0,3003.0,low_snps:3003
+YCH031.IM,Mexico_LateClassic,Mexico,1075.0,23710.0,low_snps:23710
+YCH032.IM,Mexico_LateClassic,Mexico,1075.0,2764.0,low_snps:2764
+YCH037.IM,Mexico_LateClassic,Mexico,1227.0,28505.0,low_snps:28505
+YCH038.AG,Mexico_LateClassic,Mexico,1075.0,3549.0,low_snps:3549
+YCH039.IM,Mexico_LateClassic,Mexico,1075.0,23519.0,low_snps:23519
+YCH043.IM,Mexico_LateClassic,Mexico,1075.0,26477.0,low_snps:26477
+YCH044.AG,Mexico_LateClassic,Mexico,1075.0,2437.0,qc_assessment:CRITICAL
+YCH045.IM,Mexico_LateClassic,Mexico,1075.0,19325.0,low_snps:19325
+YCH052.IM,Mexico_LateClassic,Mexico,1075.0,2616.0,low_snps:2616
+YCH053.IM,Mexico_LateClassic,Mexico,1075.0,17594.0,low_snps:17594
+YCH055.IM,Mexico_LateClassic,Mexico,1075.0,4825.0,low_snps:4825
+MBG001.AG,Germany_Magdalenenberg_IA_Hallstatt,Germany,2525.0,17757.0,low_snps:17757
+MBG011.AG,Germany_Magdalenenberg_IA_Hallstatt,Germany,2525.0,24748.0,low_snps:24748
+MBG012.AG,Germany_Magdalenenberg_IA_Hallstatt,Germany,2525.0,23451.0,low_snps:23451
+MBG014.AG,Germany_Magdalenenberg_IA_Hallstatt,Germany,2525.0,18837.0,low_snps:18837
+9NP002.AG,Russia_MLBA_Caucasus,Russia,3925.0,6908.0,low_snps:6908
+ARO012.AG,Georgia_Arukhlo2_N_Caucasus,Georgia,7650.0,1733.0,qc_assessment:CRITICAL
+AY2006.AG,Russia_Eneolithic_Caucasus,Russia,6150.0,1364.0,qc_assessment:CRITICAL
+BOE002.AG,Iran_BozoodpeyGhaleBen_MBA_Caucasus,Iran,5198.0,23918.0,low_snps:23918
+BOK004.AG,Russia_MBA_Caucasus,Russia,4900.0,5377.0,low_snps:5377
+BOK014.AG,Russia_MBA_Caucasus,Russia,4600.0,11663.0,low_snps:11663
+ERG007.AG,Russia_MBA_Caucasus,Russia,4600.0,18622.0,low_snps:18622
+ERG012.AG,Russia_MLBA_Caucasus,Russia,4275.0,29155.0,low_snps:29155
+ESY010.AG,Russia_MLBA_Caucasus,Russia,2987.0,9639.0,low_snps:9639
+GIN005.AG,Russia_MLBA_Caucasus,Russia,3576.0,27144.0,low_snps:27144
+KMK001.AG,Russia_MBA_Caucasus,Russia,4693.0,6992.0,low_snps:6992
+KMM022.AG,Russia_MBA_Caucasus,Russia,4701.0,4125.0,low_snps:4125
+MK5007.AG,Russia_Eneolithic_EBA_Caucasus,Russia,5665.0,23530.0,low_snps:23530
+MK5022.AG,Russia_MBA_Caucasus,Russia,4316.0,1235.0,qc_assessment:CRITICAL
+SUS001.AG,Russia_Adygea_MLBA,Russia,3525.0,2200.0,qc_assessment:CRITICAL
+SUS006.AG,Russia_MLBA,Russia,3296.0,4934.0,low_snps:4934
+SUS008.AG,Russia_Adygea_MLBA,Russia,3525.0,3518.0,low_snps:3518
+XXX001.AG,Georgia_BalitshiDzedzvebiIII1_MBA_Caucasus,Georgia,4900.0,1000359.0,qc_assessment:CRITICAL
+cambridgeshire1157.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,6807.0,low_snps:6807
+cambridgeshire1203.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,11338.0,low_snps:11338
+cambridgeshire1207.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,3956.0,low_snps:3956
+cambridgeshire1219.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,4098.0,low_snps:4098
+cambridgeshire1222.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,5283.0,low_snps:5283
+cambridgeshire1238.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,18282.0,low_snps:18282
+cambridgeshire1251.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,9781.0,low_snps:9781
+cambridgeshire1262.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,14129.0,low_snps:14129
+cambridgeshire1263.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,5312.0,low_snps:5312
+cambridgeshire1267.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,13936.0,low_snps:13936
+cambridgeshire1270.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,3412.0,low_snps:3412
+cambridgeshire1272.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,11668.0,low_snps:11668
+cambridgeshire1274.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,10106.0,low_snps:10106
+cambridgeshire131.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,22997.0,low_snps:22997
+cambridgeshire154.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,8081.0,low_snps:8081
+cambridgeshire347.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,3482.0,low_snps:3482
+cambridgeshire410.SG,England_Cambridgeshire_EarlyModern,United Kingdom,700.0,23891.0,low_snps:23891
+cambridgeshire411.SG,England_Cambridgeshire_EarlyModern,United Kingdom,700.0,14453.0,low_snps:14453
+cambridgeshire418.SG,England_Cambridgeshire_EarlyModern,United Kingdom,700.0,7317.0,low_snps:7317
+cambridgeshire439.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,2612.0,low_snps:2612
+cambridgeshire441.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,2711.0,low_snps:2711
+cambridgeshire497.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,4629.0,low_snps:4629
+cambridgeshire498.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,10097.0,low_snps:10097
+cambridgeshire500.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,12935.0,low_snps:12935
+cambridgeshire504.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,15570.0,low_snps:15570
+cambridgeshire507.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,26111.0,low_snps:26111
+cambridgeshire513.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,5359.0,low_snps:5359
+cambridgeshire517.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,5365.0,low_snps:5365
+cambridgeshire523.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,4999.0,low_snps:4999
+cambridgeshire524.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,13493.0,low_snps:13493
+cambridgeshire701.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,29310.0,low_snps:29310
+cambridgeshire709.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,4076.0,low_snps:4076
+cambridgeshire710.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,5126.0,low_snps:5126
+cambridgeshire716.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,12932.0,low_snps:12932
+cambridgeshire731.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,15454.0,low_snps:15454
+cambridgeshire735.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,4272.0,low_snps:4272
+cambridgeshire738.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,2526.0,low_snps:2526
+cambridgeshire752.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,16321.0,low_snps:16321
+cambridgeshire755.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,4176.0,low_snps:4176
+cambridgeshire766.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,27648.0,low_snps:27648
+cambridgeshire775.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,8809.0,low_snps:8809
+cambridgeshire783.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,7350.0,low_snps:7350
+cambridgeshire908.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,4117.0,low_snps:4117
+cambridgeshire909B.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,700.0,10288.0,low_snps:10288
+cambridgeshire913.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,22577.0,low_snps:22577
+cambridgeshire917.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,5834.0,low_snps:5834
+cambridgeshire933.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,23368.0,low_snps:23368
+cambridgeshire934.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,22201.0,low_snps:22201
+cambridgeshire935.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,9169.0,low_snps:9169
+cambridgeshire942.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,21768.0,low_snps:21768
+cambridgeshire948.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,12259.0,low_snps:12259
+cambridgeshire951.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,16025.0,low_snps:16025
+cambridgeshire954.SG,England_Cambridgeshire_Medieval,United Kingdom,700.0,8154.0,low_snps:8154
+CAM006.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,6088.0,low_snps:6088
+CAM007.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,19503.0,low_snps:19503
+J03.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,19145.0,low_snps:19145
+J13.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,6116.0,low_snps:6116
+J17_Hui.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,2635.0,low_snps:2635
+J19.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,22271.0,low_snps:22271
+J24.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,20810.0,low_snps:20810
+J25.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,19180.0,low_snps:19180
+J26.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,9115.0,low_snps:9115
+J31.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,8061.0,low_snps:8061
+J33_Hui.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,16728.0,low_snps:16728
+J36_Hui.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,6164.0,low_snps:6164
+J41.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,10645.0,low_snps:10645
+J43.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,8159.0,low_snps:8159
+J53.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,9415.0,low_snps:9415
+J54.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,5462.0,low_snps:5462
+J57.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,6520.0,low_snps:6520
+J64.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,12472.0,low_snps:12472
+J72.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,7477.0,low_snps:7477
+J74.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,4019.0,low_snps:4019
+J79.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,5051.0,low_snps:5051
+J81.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,6162.0,low_snps:6162
+J82.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,27618.0,low_snps:27618
+J84.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,6683.0,low_snps:6683
+J85.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,4333.0,low_snps:4333
+J87.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,16136.0,low_snps:16136
+JDS136.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,24999.0,low_snps:24999
+PSN027.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,27483.0,low_snps:27483
+STI004.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,3724.0,low_snps:3724
+STI006.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,3186.0,low_snps:3186
+STI007.SG,England_Cambridgeshire_Medieval_EarlyModern,United Kingdom,225.0,13395.0,low_snps:13395
+Mandrin_1600.WGC.SG,France_GrotteMandrin_Neanderthal,France,53950.0,850951.0,reference_or_archaic
+fra004_France_d.SG,France_SaintLupienReze_Medieval,France,1467.0,27102.0,low_snps:27102
+fra008_France.SG,France_Medieval,France,975.0,98572.0,qc_assessment:CRITICAL
+fra008_France_d.SG,France_Medieval,France,975.0,17022.0,low_snps:17022
+fra017_France.SG,France_Medieval,France,1300.0,143239.0,qc_assessment:CRITICAL
+fra017_France_d.SG,France_Medieval,France,1300.0,9769.0,low_snps:9769
+Lib8al.SG,Russia_EIA_Koban,Russia,2650.0,12301.0,low_snps:12301
+CSK031.AG,Austria_Avar,Austria,1250.0,2527.0,low_snps:2527
+CSK066.AG,Austria_Avar,Austria,1250.0,4742.0,low_snps:4742
+CSK072.AG,Austria_Avar,Austria,1250.0,8343.0,low_snps:8343
+CSK081.AG,Austria_Avar,Austria,1250.0,6565.0,low_snps:6565
+LEO016.AG,Austria_Avar,Austria,1225.0,2632.0,low_snps:2632
+LEO042.AG,Austria_Avar,Austria,1225.0,21881.0,low_snps:21881
+LEO043.AG,Austria_Avar,Austria,1225.0,5645.0,low_snps:5645
+LEO084.AG,Austria_Avar,Austria,1225.0,25778.0,low_snps:25778
+LEO118_alt3.AG,Austria_Avar-1,Austria,1225.0,25083.0,low_snps:25083
+LEO122.AG,Austria_Avar,Austria,1225.0,27694.0,low_snps:27694
+LEO123.AG,Austria_Avar,Austria,1225.0,22279.0,low_snps:22279
+LEO130.AG,Austria_Avar-3,Austria,1225.0,21057.0,low_snps:21057
+LEO146.AG,Austria_Avar,Austria,1225.0,7247.0,low_snps:7247
+LEO149.AG,Austria_Avar,Austria,1225.0,15208.0,low_snps:15208
+LEO150.AG,Austria_Avar,Austria,1225.0,8280.0,low_snps:8280
+MGS004.AG,Austria_Avar,Austria,1225.0,5541.0,low_snps:5541
+MGS041.AG,Austria_Avar,Austria,1225.0,9536.0,low_snps:9536
+MGS042.AG,Austria_Avar,Austria,1225.0,23240.0,low_snps:23240
+MGS043.AG,Austria_Avar,Austria,1225.0,4875.0,low_snps:4875
+MGS058.AG,Austria_Avar,Austria,1225.0,22234.0,low_snps:22234
+MGS061.AG,Austria_Avar,Austria,1225.0,7002.0,low_snps:7002
+MGS072.AG,Austria_Avar-2,Austria,1225.0,16790.0,low_snps:16790
+MGS095.AG,Austria_Avar,Austria,1225.0,11727.0,low_snps:11727
+MGS121.AG,Austria_Avar,Austria,1225.0,20364.0,low_snps:20364
+MGS136.AG,Austria_Avar,Austria,1225.0,4990.0,low_snps:4990
+MGS168.AG,Austria_Avar,Austria,1225.0,6071.0,low_snps:6071
+MGS170.AG,Austria_Avar,Austria,1225.0,12007.0,low_snps:12007
+MGS195.AG,Austria_Avar,Austria,1225.0,16980.0,low_snps:16980
+MGS208.AG,Austria_Avar,Austria,1225.0,28982.0,low_snps:28982
+MGS210.AG,Austria_Avar,Austria,1225.0,27633.0,low_snps:27633
+MGS250.AG,Austria_Avar,Austria,1225.0,4238.0,low_snps:4238
+MGS252.AG,Austria_Avar,Austria,1225.0,24472.0,low_snps:24472
+MGS254.AG,Austria_Avar,Austria,1225.0,3727.0,low_snps:3727
+MGS257.AG,Austria_Avar,Austria,1225.0,16063.0,low_snps:16063
+MGS259.AG,Austria_Avar,Austria,1225.0,15631.0,low_snps:15631
+MGS278.AG,Austria_Avar,Austria,1225.0,10767.0,low_snps:10767
+MGS279.AG,Austria_Avar,Austria,1225.0,17931.0,low_snps:17931
+MGS304.AG,Austria_Avar,Austria,1225.0,13796.0,low_snps:13796
+MGS330.AG,Austria_Avar,Austria,1225.0,8695.0,low_snps:8695
+MGS340.AG,Austria_Avar,Austria,1225.0,9875.0,low_snps:9875
+MGS349.AG,Austria_Avar,Austria,1225.0,26739.0,low_snps:26739
+MGS351.AG,Austria_Avar,Austria,1225.0,7920.0,low_snps:7920
+MGS356.AG,Austria_Avar,Austria,1225.0,15278.0,low_snps:15278
+MGS360.AG,Austria_Avar,Austria,1225.0,4746.0,low_snps:4746
+MGS362.AG,Austria_Avar,Austria,1225.0,6669.0,low_snps:6669
+MGS364.AG,Austria_Avar,Austria,1225.0,3028.0,low_snps:3028
+MGS367.AG,Austria_Avar,Austria,1225.0,11807.0,low_snps:11807
+MGS368.AG,Austria_Avar,Austria,1225.0,4355.0,low_snps:4355
+MGS369.AG,Austria_Avar,Austria,1225.0,23185.0,low_snps:23185
+MGS371.AG,Austria_Avar,Austria,1225.0,15013.0,low_snps:15013
+MGS373.AG,Austria_Avar,Austria,1225.0,21103.0,low_snps:21103
+MGS374.AG,Austria_Avar,Austria,1225.0,8425.0,low_snps:8425
+MGS375.AG,Austria_Avar,Austria,1225.0,8302.0,low_snps:8302
+MGS376.AG,Austria_Avar,Austria,1225.0,7972.0,low_snps:7972
+MGS377.AG,Austria_Avar,Austria,1225.0,2991.0,low_snps:2991
+MGS381.AG,Austria_Avar,Austria,1225.0,4449.0,low_snps:4449
+MGS383.AG,Austria_Avar,Austria,1225.0,14799.0,low_snps:14799
+MGS387.AG,Austria_Avar,Austria,1225.0,12587.0,low_snps:12587
+MGS390.AG,Austria_Avar,Austria,1225.0,8733.0,low_snps:8733
+MGS391.AG,Austria_Avar,Austria,1225.0,10262.0,low_snps:10262
+MGS393.AG,Austria_Avar,Austria,1225.0,25149.0,low_snps:25149
+MGS400.AG,Austria_Avar,Austria,1225.0,12725.0,low_snps:12725
+MGS401.AG,Austria_Avar,Austria,1225.0,29613.0,low_snps:29613
+MGS406.AG,Austria_Avar,Austria,1225.0,10851.0,low_snps:10851
+MGS408.AG,Austria_Avar,Austria,1225.0,26375.0,low_snps:26375
+MGS409.AG,Austria_Avar,Austria,1225.0,16435.0,low_snps:16435
+MGS412.AG,Austria_Avar,Austria,1225.0,11342.0,low_snps:11342
+MGS416.AG,Austria_Avar,Austria,1225.0,4341.0,low_snps:4341
+MGS418.AG,Austria_Avar,Austria,1225.0,5897.0,low_snps:5897
+MGS425.AG,Austria_Avar,Austria,1225.0,10535.0,low_snps:10535
+MGS427.AG,Austria_Avar,Austria,1225.0,16209.0,low_snps:16209
+MGS428.AG,Austria_Avar,Austria,1225.0,22818.0,low_snps:22818
+MGS431.AG,Austria_Avar,Austria,1225.0,3735.0,low_snps:3735
+MGS435.AG,Austria_Avar,Austria,1225.0,27344.0,low_snps:27344
+MGS441.AG,Austria_Avar,Austria,1225.0,4448.0,low_snps:4448
+MGS442.AG,Austria_Avar,Austria,1225.0,2719.0,low_snps:2719
+MGS444.AG,Austria_Avar,Austria,1225.0,13935.0,low_snps:13935
+MGS448.AG,Austria_Avar,Austria,1225.0,5822.0,low_snps:5822
+MGS454.AG,Austria_Avar,Austria,1225.0,3632.0,low_snps:3632
+MGS456.AG,Austria_Avar,Austria,1225.0,6754.0,low_snps:6754
+MGS467.AG,Austria_Avar,Austria,1225.0,6411.0,low_snps:6411
+MGS469.AG,Austria_Avar,Austria,1225.0,5040.0,low_snps:5040
+MGS475.AG,Austria_Avar,Austria,1225.0,3072.0,low_snps:3072
+MGS476.AG,Austria_Avar,Austria,1225.0,8570.0,low_snps:8570
+MGS481.AG,Austria_Avar,Austria,1225.0,17720.0,low_snps:17720
+MGS485.AG,Austria_Avar,Austria,1225.0,6536.0,low_snps:6536
+MGS491.AG,Austria_Avar,Austria,1225.0,22655.0,low_snps:22655
+UKR005_Saag.SG,Ukraine_IA_Hallstatt_Thracian,Ukraine,2750.0,17977.0,low_snps:17977
+UKR055-I.SG,Ukraine_BA,Ukraine,3646.0,24030.0,low_snps:24030
+UKR070.SG,Ukraine_GoldenHorde_LateMedieval,Ukraine,650.0,23498.0,low_snps:23498
+SWA002.AG,Netherlands_EMN_Swifterbant,Netherlands,6050.0,2192.0,qc_assessment:CRITICAL
+SWA004.AG,Netherlands_EMN_Swifterbant,Netherlands,6050.0,7359.0,low_snps:7359
+RNI006.AG,Germany_Ranis_IUP,Germany,45875.0,24130.0,low_snps:24130
+RNI084.AG,Germany_Ranis_IUP,Germany,45875.0,2974.0,low_snps:2974
+RNI087.AG,Germany_Ranis_IUP,Germany,45875.0,28576.0,low_snps:28576
+I2312.AG,Iran_BeltCave_Mesolithic,Iran,11950.0,365954.0,qc_assessment:CRITICAL
+LEO032.AG,Austria_Avar-2,Austria,1225.0,18872.0,low_snps:18872
+LEO076.AG,Austria_Avar-1,Austria,1225.0,19435.0,low_snps:19435
+LEO130_alt.AG,Austria_Avar-3,Austria,1225.0,24687.0,low_snps:24687
+MGS072_alt.AG,Austria_Avar-2,Austria,1225.0,20521.0,low_snps:20521
+BRE021.AG,Kazakhstan_Berel_Hunnic-o,Kazakhstan,1650.0,164878.0,qc_assessment:CRITICAL
+HDB001.AG,Hungary_HajduboszormenyVidizug_Hunnic,Hungary,1525.0,17395.0,low_snps:17395
+TGB013.AG,Hungary_TiszagyendaBuszerzo_Hunnic-2,Hungary,1450.0,20469.0,low_snps:20469
+OAK003.AG,SouthAfrica_LateHolocene,South Africa,6229.0,732361.0,qc_assessment:CRITICAL
+OAK004.AG,SouthAfrica_OakhurstRockshelter_LateHolocene,South Africa,6792.0,473.0,qc_assessment:CRITICAL
+OAK009.AG,SouthAfrica_OakhurstRockshelter_LateHolocene,South Africa,612.0,1670.0,low_snps:1670
+OAK011.AG,SouthAfrica_OakhurstRockshelter_LateHolocene,South Africa,5565.0,1023.0,qc_assessment:CRITICAL
+OAK015.AG,SouthAfrica_OakhurstRockshelter_LateHolocene,South Africa,10256.0,8182.0,low_snps:8182
+ldo041.SG,Spain_LateAntiquity_Christian,Spain,1200.0,19277.0,low_snps:19277
+ldo061.SG,Spain_LateAntiquity_Christian,Spain,1200.0,14887.0,low_snps:14887
+ldo242.SG,Spain_LateAntiquity_Christian,Spain,1200.0,27513.0,low_snps:27513
+ldo252.SG,Spain_LateAntiquity_Christian,Spain,1200.0,20812.0,low_snps:20812
+DCP1.AA,Russia_DenisovaCave,Russia,24003.0,66486.0,reference_or_archaic
+EV15B.SG,Italy_Monteriggioni_IA_Etruscan,Italy,2549.0,8116.0,low_snps:8116
+EV16C.SG,Italy_Monteriggioni_IA_Etruscan,Italy,2549.0,12782.0,low_snps:12782
+PF10.SG,Italy_Pesaro_LateAntiquity,Italy,1350.0,28074.0,low_snps:28074
+PF16.SG,Italy_Pesaro_LateAntiquity,Italy,1350.0,14449.0,low_snps:14449
+PF17.SG,Italy_Pesaro_LateAntiquity,Italy,1350.0,4713.0,low_snps:4713
+PF20.SG,Italy_Pesaro_LateAntiquity,Italy,1350.0,21361.0,low_snps:21361
+PF26.SG,Italy_Pesaro_LateAntiquity,Italy,1350.0,18452.0,low_snps:18452
+PF5.SG,Italy_Pesaro_LateAntiquity,Italy,1350.0,21945.0,low_snps:21945
+PF7.SG,Italy_Pesaro_LateAntiquity,Italy,1350.0,10523.0,low_snps:10523
+PF9.SG,Italy_Pesaro_LateAntiquity,Italy,1350.0,3373.0,low_snps:3373
+PN10.SG,Italy_Novilara_IA_Piceni,Italy,2624.0,24544.0,low_snps:24544
+PN13_Italy.SG,Italy_Novilara_IA_Piceni,Italy,2624.0,3622.0,low_snps:3622
+PN145.SG,Italy_Novilara_IA_Piceni,Italy,2674.0,15314.0,low_snps:15314
+PN155A.SG,Italy_Novilara_IA_Piceni,Italy,2624.0,11177.0,low_snps:11177
+PN155B.SG,Italy_Novilara_IA_Piceni,Italy,2599.0,27827.0,low_snps:27827
+PN183.SG,Italy_Novilara_IA_Piceni,Italy,2649.0,25849.0,low_snps:25849
+PN22.SG,Italy_Novilara_IA_Piceni,Italy,2599.0,13360.0,low_snps:13360
+PN46.SG,Italy_Novilara_IA_Piceni,Italy,2574.0,5483.0,low_snps:5483
+PN47.SG,Italy_Novilara_IA_Piceni,Italy,2599.0,6040.0,low_snps:6040
+PN52.SG,Italy_Novilara_IA_Piceni,Italy,2599.0,16264.0,low_snps:16264
+PN54.SG,Italy_Novilara_IA_Piceni,Italy,2649.0,3707.0,low_snps:3707
+PN55.SG,Italy_Novilara_IA_Piceni,Italy,2650.0,4993.0,low_snps:4993
+PN57.SG,Italy_Novilara_IA_Piceni,Italy,2574.0,14190.0,low_snps:14190
+PN62.SG,Italy_Novilara_IA_Piceni,Italy,2574.0,10429.0,low_snps:10429
+PSD1.SG,Italy_Sirolo_IA_Piceni,Italy,2549.0,4972.0,low_snps:4972
+PSD4.SG,Italy_Sirolo_IA_Piceni,Italy,2549.0,24536.0,low_snps:24536
+PSD5.SG,Italy_Sirolo_IA_Piceni,Italy,2549.0,3024.0,low_snps:3024
+PSD6.SG,Italy_Sirolo_IA_Piceni,Italy,2549.0,4430.0,low_snps:4430
+ZH1540.SG,Brazil_SouthSantaCatarina_LateHolocene_1700BP_HG,Brazil,1663.0,6258.0,low_snps:6258
+BQ4622.AG,China_BeiQian_Longshan,China,5300.0,3748.0,low_snps:3748
+XJS4345.AG,China_Jinan_Xiaojingshan_EBA,China,4850.0,27394.0,low_snps:27394
+YJC4338.AG,China_Jining_YinJiaCheng_Longshan,China,4300.0,8756.0,low_snps:8756
+YJC4340.AG,China_Jining_YinJiaCheng_Longshan,China,4408.0,15436.0,low_snps:15436
+ROT013.AG,Russia_Rostovka_EMBA_Irtysh_SeimaTurbino,Russia,3975.0,25365.0,low_snps:25365
+KOS018.SG,Belgium_EarlyMedieval,Belgium,1250.0,2530.0,low_snps:2530
+KOS039.SG,Belgium_EarlyMedieval_Merovingian,Belgium,1220.0,23052.0,low_snps:23052
+OLV051.SG,Belgium_Medieval,Belgium,950.0,215294.0,qc_assessment:CRITICAL
+GBSL7_alt4.AG,China_Tibet_Gebusailu_IA,China,2550.0,19485.0,low_snps:19485
+IRN26.SG,Iran_LiarsangBon_Parthian,Iran,2100.0,631.0,qc_assessment:PROVISIONAL_CRITICAL
+IRN28.SG,Iran_LiarsangBon_Parthian,Iran,2100.0,507.0,qc_assessment:PROVISIONAL_CRITICAL
+IRN61.TW,Unknown_Achaemenid,..,2267.0,22030.0,low_snps:22030
+IRN77.SG,Iran_Vestemin_MiddlePeriod_Sasanian,Iran,2280.0,509.0,qc_assessment:PROVISIONAL_CRITICAL
+Kanam.SG,India_Kanam_MiddleAges,India,2307.0,4149.0,low_snps:4149
+Lippa2.SG,India_Lippa_Classical,India,1300.0,1954.0,low_snps:1954
+GEN94.SG,Hungary_BalatonkereszturRetidulo_EBA_II_EncrustedPottery,Hungary,3624.0,3693.0,low_snps:3693
+BK2.SG,Hungary_BalatonkereszturRetidulo_EBA_I_Kisapostag,Hungary,3920.0,14312.0,low_snps:14312
+BK3.SG,Hungary_BalatonkereszturRetidulo_EBA_I_Kisapostag,Hungary,5100.0,28572.0,low_snps:28572
+BK4.SG,Hungary_BalatonkereszturRetidulo_EBA_I_Kisapostag,Hungary,5100.0,13417.0,low_snps:13417
+CGG_2_021902.SG,Hungary_Madaras_MigrationPeriod_Sarmatian,Hungary,1557.0,21101.0,low_snps:21101
+CGG_2_100145.SG,Denmark_LillestrandBogensesb21_PreImperialRoman,Denmark,2217.0,21685.0,low_snps:21685
+CGG_2_105323.SG,Denmark_Lundbjerggard_Roman,Denmark,1693.0,17880.0,low_snps:17880
+CGG_2_105337.SG,Denmark_OverVindinge_LN,Denmark,4472.0,26731.0,low_snps:26731
+CGG_2_105639.SG,Norway_Skjeggesnes_EBA,Norway,3349.0,17415.0,low_snps:17415
+CGG_2_106210.SG,Sweden_Asslerod_LN,Sweden,4345.0,15823.0,low_snps:15823
+CGG_2_106490.SG,Denmark_StubberupOuesogn_PreImperialRoman,Denmark,2148.0,14234.0,low_snps:14234
+CGG_2_106496.SG,Denmark_SonderupXI_PreImperialRoman,Denmark,2253.0,29417.0,low_snps:29417
+CGG_2_106518.SG,Denmark_Stalmosegard_EarlyRoman,Denmark,1776.0,19274.0,low_snps:19274
+CGG_2_106526.SG,Denmark_Lygtebaek_EIA,Denmark,2900.0,25991.0,low_snps:25991
+CGG_2_106527.SG,Denmark_Tollestrup_Mose_LBA,Denmark,3350.0,11471.0,low_snps:11471
+CGG_2_106528.SG,Denmark_Tollestrup_Mose_LBA,Denmark,3350.0,18929.0,low_snps:18929
+CGG_2_106530.SG,Denmark_AalstrupMellergaard_EIA,Denmark,2900.0,27422.0,low_snps:27422
+CGG_2_106821.SG,Denmark_Engbjerg_Roman,Denmark,1686.0,24957.0,low_snps:24957
+CGG_2_106835.SG,Denmark_Hojstrupvej_Viking_Viking,Denmark,974.0,18781.0,low_snps:18781
+CGG_2_107043.SG,Norway_SkeieKlepp_IA_EarlyGermanic,Norway,1380.0,24644.0,low_snps:24644
+CGG_2_107388.SG,Denmark_Asnaes_Roman,Denmark,1764.0,15867.0,low_snps:15867
+CGG_2_107439.SG,Denmark_Osjergaard_LateRoman,Denmark,1541.0,28464.0,low_snps:28464
+CGG_2_107469.SG,Denmark_Borritshoved_EarlyRoman,Denmark,2900.0,19032.0,low_snps:19032
+CGG_2_107471.SG,Denmark_Bulbjerg_Roman,Denmark,2900.0,27110.0,low_snps:27110
+CGG_2_107474.SG,Denmark_Bulbjerg_Roman,Denmark,1686.0,23975.0,low_snps:23975
+CGG_2_107483.SG,Denmark_Hvidovre_EarlyRoman,Denmark,1764.0,20190.0,low_snps:20190
+CGG_2_107487.SG,Denmark_MosedeFort_EarlyRoman,Denmark,1764.0,12144.0,low_snps:12144
+CGG_2_107496.SG,Denmark_MosedeFort_EarlyRoman,Denmark,1764.0,17874.0,low_snps:17874
+CGG_2_107497.SG,Denmark_MosedeFort_EarlyRoman,Denmark,1764.0,14858.0,low_snps:14858
+CGG_2_107531.SG,Denmark_GadevangMose_PreImperialRoman,Denmark,2900.0,21832.0,low_snps:21832
+CGG_2_107739.SG,Netherlands_ValkenburgMarktveld_Roman,Netherlands,1711.0,29233.0,low_snps:29233
+CpM11.SG,Honduras_Copan_Classic_Maya,Honduras,1230.0,5187.0,low_snps:5187
+NBR008.AG,PapuaNewGuinea_Nebira_LateMedieval,Papua New Guinea,475.0,11577.0,low_snps:11577
+NBR022.AG,PapuaNewGuinea_Nebira_LateMedieval,Papua New Guinea,475.0,19395.0,low_snps:19395
+TIL001.AG,PapuaNewGuinea_Tilu_Medieval,Papua New Guinea,595.0,11271.0,low_snps:11271
+TIL004.AG,PapuaNewGuinea_Tilu_Medieval,Papua New Guinea,600.0,3636.0,low_snps:3636
+WAT006.AG,PapuaNewGuinea_ReberRakival_IA,Papua New Guinea,2400.0,15673.0,low_snps:15673
+Denisova25.SG,Russia_DenisovaCave_MPleistocene,Russia,185000.0,1058890.0,reference_or_archaic
+LP112_14.TW,Portugal_KingdomOfPortugal,Portugal,200.0,3841.0,low_snps:3841
+LP114_8.TW,Portugal_KingdomOfPortugal,Portugal,650.0,9081.0,low_snps:9081
+LP115_13.TW,Portugal_KingdomOfPortugal,Portugal,650.0,6216.0,low_snps:6216
+LP115_14.TW,Portugal_BA,Portugal,800.0,8727.0,low_snps:8727
+LP116_4.TW,Portugal_KingdomOfPortugal,Portugal,650.0,3429.0,low_snps:3429
+LP116_6.TW,Portugal_BA,Portugal,800.0,13863.0,low_snps:13863
+LP116_7.TW,Portugal_KingdomOfPortugal,Portugal,800.0,16258.0,low_snps:16258
+LP117_4.TW,Portugal_EarlyMedieval,Portugal,1250.0,15519.0,low_snps:15519
+LP117_6.TW,Portugal_Reconquista,Portugal,950.0,4065.0,low_snps:4065
+LP123_12.TW,Portugal_Reconquista,Portugal,1000.0,3528.0,low_snps:3528
+LP128_1.TW,Portugal_PostMedieval,Portugal,300.0,5033.0,low_snps:5033
+CAN.002.SG,Spain_PuntaAzul_LateMiddleAges,Spain,537.0,23927.0,low_snps:23927
+CAN.009.SG,Spain_ElHormiguero_MiddleAges,Spain,686.0,7032.0,low_snps:7032
+CAN.010.SG,Spain_ElHormiguero_LateAntiquity,Spain,1526.0,4131.0,low_snps:4131
+CAN.012.SG,Spain_ElHormiguero_MiddleAges,Spain,731.0,17385.0,low_snps:17385
+CAN.013.SG,Spain_Guayadeque_EarlyMiddleAges,Spain,1139.0,4562.0,low_snps:4562
+CAN.014.SG,Spain_Guayadeque_LateAntiquity,Spain,1615.0,21238.0,low_snps:21238
+CAN.020.SG,Spain_Cuermeja_LateMiddleAges,Spain,601.0,2963.0,low_snps:2963
+CAN.027.SG,Spain_Antoncojo_EarlyMiddleAges,Spain,1026.0,21172.0,low_snps:21172
+CAN.028.SG,Spain_BarrancoMajona_LateMiddleAges,Spain,530.0,7212.0,low_snps:7212
+CAN.030.SG,Spain_BarrancoMajona_LateMiddleAges,Spain,606.0,10531.0,low_snps:10531
+CAN.031.SG,Spain_Gerian_MiddleAges,Spain,747.0,28774.0,low_snps:28774
+CAN.034.SG,Spain_HuertodelosMorales_LateAntiquity,Spain,1241.0,15537.0,low_snps:15537
+CAN.035.SG,Spain_LosPasitos_MiddleAges,Spain,753.0,3701.0,low_snps:3701
+CAN.040.SG,Spain_Angostura_LateMiddleAges,Spain,626.0,3954.0,low_snps:3954
+CAN.041.SG,Spain_Arenas_MiddleAges,Spain,678.0,8384.0,low_snps:8384
+CAN.045.SG,Spain_ElPortillo_LateMiddleAges,Spain,436.0,5439.0,low_snps:5439
+XSM-M12-2.AG,China_Henan_Xisima_LShang,China,3098.0,29001.0,low_snps:29001
+XSM-M85-1.AG,China_Henan_Xisima_LShang,China,3098.0,22321.0,low_snps:22321
+BaiyangcunM12_3_LowCov.AG,China_MLBA,China,3300.0,23987.0,low_snps:23987
+BaiyangcunM12_LowCov.AG,China_MLBA,China,3300.0,2735.0,low_snps:2735
+BaiyangcunM15_d_LowCov_d.AG,China_MLBA,China,3300.0,19764.0,low_snps:19764
+BaiyangcunM17_LowCov.AG,China_MLBA,China,3300.0,5366.0,low_snps:5366
+DadunziW27_Com.AG,China_BA_Roman,China,2875.0,24932.0,low_snps:24932
+DayindongM10_LowCov.AG,China_LBA,China,3300.0,4203.0,low_snps:4203
+DayindongM11_LowCov.AG,China_LBA,China,3300.0,3965.0,low_snps:3965
+DuiziM77_1_LowCov.AG,China_BA_Roman,China,2875.0,5553.0,low_snps:5553
+DuiziM77_2_Com.AG,China_BA_Roman,China,2875.0,11053.0,low_snps:11053
+DuiziM91_12_LowCov.AG,China_BA_Roman,China,2875.0,18745.0,low_snps:18745
+DuiziM94_1_3_LowCov.AG,China_BA_Roman,China,2875.0,1642.0,qc_assessment:PROVISIONAL_CRITICAL
+DuiziM94_2_Com.AG,China_BA_Roman,China,2875.0,14683.0,low_snps:14683
+GaozhaiM3_1_Com.AG,China_IA_Hellenistic,China,2300.0,12594.0,low_snps:12594
+GaozhaiM4_17_LowCov.AG,China_IA_Hellenistic,China,2300.0,23275.0,low_snps:23275
+JinlianshanM15_4_8_LowCov.AG,China_Roman_LateAntiquity,China,1700.0,11051.0,low_snps:11051
+JinlianshanM22_LowCov.AG,China_Roman_LateAntiquity,China,1700.0,5892.0,low_snps:5892
+JinlianshanM29_4_1_LowCov.AG,China_Roman_LateAntiquity,China,1700.0,12342.0,low_snps:12342
+JinlianshanM29_4_3_Com.AG,China_IA_Hellenistic,China,2241.0,23777.0,low_snps:23777
+JinlianshanM67_1_LowCov.AG,China_Roman_LateAntiquity,China,1700.0,2632.0,low_snps:2632
+XingyiM9_LowCov.AG,China_EBA,China,4763.0,26625.0,low_snps:26625
+XueshanM25_LowCov.AG,China_LBA_EIA,China,2950.0,2221.0,low_snps:2221
+BLG-M13-56.SG,China_Baligang_LN_Yangshao,China,6950.0,11213.0,low_snps:11213
+cch017.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,18041.0,low_snps:18041
+cch073.SG,Turkey_Catalhoyuk_N,Turkey,8500.0,5877.0,low_snps:5877
+cch076.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,27555.0,low_snps:27555
+cch080.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,29919.0,low_snps:29919
+CCH083.SG,Turkey_Catalhoyuk_EN,Turkey,8688.0,2635.0,low_snps:2635
+cch097.SG,Turkey_Catalhoyuk_LN,Turkey,8425.0,18306.0,low_snps:18306
+cch104.SG,Turkey_Catalhoyuk_EN,Turkey,8688.0,20075.0,low_snps:20075
+cch106.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,17563.0,low_snps:17563
+cch107.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,4480.0,low_snps:4480
+cch124.SG,Turkey_Catalhoyuk_MN,Turkey,8600.0,24368.0,low_snps:24368
+cch126.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,18686.0,low_snps:18686
+cch134.SG,Turkey_Catalhoyuk_LN,Turkey,8338.0,23867.0,low_snps:23867
+cch154.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,19062.0,low_snps:19062
+cch156.SG,Turkey_Catalhoyuk_LN,Turkey,8375.0,17822.0,low_snps:17822
+cch157.SG,Turkey_Catalhoyuk_LN,Turkey,8375.0,16426.0,low_snps:16426
+cch159.SG,Turkey_Catalhoyuk_LN,Turkey,8425.0,5250.0,low_snps:5250
+cch169.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,2817.0,low_snps:2817
+cch173.SG,Turkey_Catalhoyuk_EarlyC_LN,Turkey,8075.0,23317.0,low_snps:23317
+cch282.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,18888.0,low_snps:18888
+cch292.SG,Turkey_Catalhoyuk_LN,Turkey,8313.0,18239.0,low_snps:18239
+cch329.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,4090.0,low_snps:4090
+cch330.SG,Turkey_Catalhoyuk_MN,Turkey,8600.0,17718.0,low_snps:17718
+cch335.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,15568.0,low_snps:15568
+cch352.SG,Turkey_Catalhoyuk_C,Turkey,7725.0,25922.0,low_snps:25922
+cch461.SG,Turkey_Catalhoyuk_MN,Turkey,8600.0,11323.0,low_snps:11323
+cch476.SG,Turkey_Catalhoyuk_LN,Turkey,8425.0,27482.0,low_snps:27482
+cch495.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,25947.0,low_snps:25947
+cch508.SG,Turkey_Catalhoyuk_MN,Turkey,8500.0,28932.0,low_snps:28932
+cch531.SG,Turkey_Catalhoyuk_MN,Turkey,8600.0,18091.0,low_snps:18091
+95JJLM20.AG,China_LN_Xiaoheyan,China,4559.0,15537.0,low_snps:15537
+98JJLM09.AG,China_LN_Xiaoheyan,China,4559.0,18817.0,low_snps:18817
+95JJLM28.AG,China_LN_Xiaoheyan,China,4559.0,10156.0,low_snps:10156
+95JJLM29.AG,China_LN_Xiaoheyan,China,4559.0,7445.0,low_snps:7445
+95JJLM58.AG,China_LN_Xiaoheyan,China,4559.0,21842.0,low_snps:21842
+95JJLM20-1.AG,China_LN_Xiaoheyan,China,4559.0,28674.0,low_snps:28674
+STMM12.AG,China_Sitaimengguying_EN,China,7550.0,1155.0,qc_assessment:PROVISIONAL_CRITICAL
+YCH017_alt.IM,Mexico_LateClassic,Mexico,1075.0,54616.0,qc_assessment:PROVISIONAL_CRITICAL
+YCH017_d.IM,Mexico_LateClassic,Mexico,1075.0,7796.0,qc_assessment:PROVISIONAL_CRITICAL
+C4565.AG,China_Tibet_Piyangjiweng,China,2259.0,822114.0,qc_assessment:PROVISIONAL_CRITICAL
+bab001.SG,SouthAfrica_2000BP,South Africa,2037.0,346604.0,qc_assessment:PROVISIONAL_CRITICAL
+BOE002_alt.AG,Iran_BozoodpeyGhaleBen_MBA_Caucasus,Iran,5198.0,24369.0,qc_assessment:PROVISIONAL_CRITICAL
+BOE002_d.AG,Iran_BozoodpeyGhaleBen_MBA_Caucasus,Iran,5198.0,5915.0,low_snps:5915
+C1658_alt.AG,China_Xinjiang_Ayousaigoukou_IA,China,2248.0,522380.0,qc_assessment:PROVISIONAL_CRITICAL
+C1658_d.AG,China_Xinjiang_Ayousaigoukou_IA,China,2248.0,27290.0,low_snps:27290
+C205.AG,China_Qinghai_Zongri,China,3975.0,910615.0,qc_assessment:PROVISIONAL_CRITICAL
+C390_alt2.AG,China_Xinjiang_Hetian_Antiquity,China,1650.0,734581.0,qc_assessment:PROVISIONAL_CRITICAL
+IAM.6_alt.WGC.SG,Morocco_EN,Morocco,6802.0,314470.0,qc_assessment:PROVISIONAL_CRITICAL
+IAM.6_d.WGC.SG,Morocco_EN,Morocco,6802.0,68266.0,qc_assessment:PROVISIONAL_CRITICAL
+JBT001.AG,Brazil_SouthSantaCatarina_LateHolocene_2400BP_HG,Brazil,2397.0,326529.0,qc_assessment:PROVISIONAL_CRITICAL
+KD-29_OBH-52_twins.SG,Hungary_MiddleLateAvar,Hungary,1241.0,1129516.0,qc_assessment:PROVISIONAL_CRITICAL
+KFJ014.AG,Hungary_MiddleLateAvar,Hungary,1200.0,1049402.0,qc_assessment:PROVISIONAL_CRITICAL
+KPT002_alt.AG,Russia_Irkutsk_EBA,Russia,3931.0,676829.0,qc_assessment:PROVISIONAL_CRITICAL
+Kretuonas2.AG,Lithuania_EMN_Narva,Lithuania,6350.0,685255.0,qc_assessment:PROVISIONAL_CRITICAL
+Kretuonas2_d.AG,Lithuania_EMN_Narva,Lithuania,6350.0,6762.0,qc_assessment:PROVISIONAL_CRITICAL
+L5138.AG,Uzbekistan_Antiquity,Uzbekistan,2051.0,779274.0,qc_assessment:PROVISIONAL_CRITICAL
+L5138_d.AG,Uzbekistan_Antiquity,Uzbekistan,2051.0,279158.0,qc_assessment:PROVISIONAL_CRITICAL
+LAN009.SG,Sweden_N,Sweden,4895.0,274857.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO010_alt.AG,Austria_Avar,Austria,1225.0,742248.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO010_d.AG,Austria_Avar,Austria,1225.0,181389.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO035_alt2.AG,Austria_Avar,Austria,1225.0,803458.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO035_d.AG,Austria_Avar,Austria,1225.0,275970.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO055_alt2.AG,Austria_Avar,Austria,1225.0,878852.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO055_d.AG,Austria_Avar,Austria,1225.0,275594.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO056_alt2.AG,Austria_Avar,Austria,1225.0,724369.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO056_d.AG,Austria_Avar,Austria,1225.0,256666.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO056_alt5.AG,Austria_Avar,Austria,1225.0,148943.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO056_alt4_d.AG,Austria_Avar,Austria,1225.0,29729.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO111_alt.AG,Austria_Avar,Austria,1225.0,542060.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO111_d.AG,Austria_Avar,Austria,1225.0,104951.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO118_alt2.AG,Austria_Avar,Austria,1225.0,780424.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO118_d.AG,Austria_Avar,Austria,1225.0,217864.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO119.AG,Austria_Avar,Austria,1225.0,592203.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO133_alt3.AG,Austria_Avar,Austria,1225.0,164547.0,qc_assessment:PROVISIONAL_CRITICAL
+LEO133_d.AG,Austria_Avar,Austria,1225.0,29976.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS021.AG,Austria_Avar,Austria,1225.0,827574.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS029_alt.AG,Austria_Avar,Austria,1225.0,674116.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS029_d.AG,Austria_Avar,Austria,1225.0,235886.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS047_alt.AG,Austria_Avar,Austria,1225.0,607838.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS047_d.AG,Austria_Avar,Austria,1225.0,171118.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS064_alt2.AG,Austria_Avar,Austria,1225.0,372898.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS064_d.AG,Austria_Avar,Austria,1225.0,83730.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS104.AG,Austria_Avar,Austria,1225.0,808739.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS172_alt.AG,Austria_Avar,Austria,1225.0,769362.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS172_d.AG,Austria_Avar,Austria,1225.0,162523.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS326_alt.AG,Austria_Avar,Austria,1225.0,519086.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS332_alt2.AG,Austria_Avar,Austria,1225.0,197709.0,qc_assessment:PROVISIONAL_CRITICAL
+MGS352_alt2.AG,Austria_Avar,Austria,1225.0,598662.0,qc_assessment:PROVISIONAL_CRITICAL
+PES001_alt.SG,Russia_Peschanitsa_Mesolithic,Russia,12711.0,1147659.0,qc_assessment:PROVISIONAL_CRITICAL
+poz529_alt2.SG,Poland_BA,Poland,3899.0,269659.0,qc_assessment:PROVISIONAL_CRITICAL
+R3476.SG,Lebanon_Chhim_Medieval,Lebanon,1438.0,935452.0,qc_assessment:PROVISIONAL_CRITICAL
+R9818.SG,Lebanon_Chhim_Medieval,Lebanon,1331.0,979705.0,qc_assessment:PROVISIONAL_CRITICAL
+SN-01.SG,USA_1600BP,USA,3150.0,236512.0,qc_assessment:PROVISIONAL_CRITICAL
+UGU002_alt2.AG,Mongolia_Selenge_XiongnuPeriod,Mongolia,1927.0,108382.0,qc_assessment:PROVISIONAL_CRITICAL
+S120_18R21267_d.WGC,China_Shaanxi_Wuzhuangguoliang_LN,China,5050.0,19129.0,low_snps:19129
+YCH017_d.AG,Mexico_LateClassic,Mexico,1075.0,11509.0,low_snps:11509
+FRA034_alt2.SG,Sweden_N,Sweden,4914.0,870797.0,qc_assessment:PROVISIONAL_CRITICAL
+FRA034_d.SG,Sweden_N,Sweden,4914.0,234421.0,qc_assessment:PROVISIONAL_CRITICAL
+Sanganji131464.SG,Japan_Tohoku_Jomon,Japan,3280.0,15171.0,low_snps:15171
+S120_18R21267.EC,China_Shaanxi_Wuzhuangguoliang_LN,China,5050.0,19124.0,low_snps:19124
+vbj006.SG,Sweden_PittedWare,Sweden,4898.0,1103499.0,qc_assessment:PROVISIONAL_CRITICAL
+I42332.TW,Argentina_SantaFe_1700BP_GoyaMalabrigo,Argentina,1850.0,18488.0,low_snps:18488
+I42333.TW,Argentina_SantaFe_LateHolocene_GoyaMalabrigo,Argentina,400.0,8842.0,low_snps:8842
+I42408.TW,Argentina_SantaFe_1700BP_GoyaMalabrigo,Argentina,1533.0,6586.0,low_snps:6586
+I42336.TW,Argentina_EntreRios_LateHolocene_GoyaMalabrigo,Argentina,975.0,26954.0,low_snps:26954
+I34842.TW,Argentina_Jujuy_700BP,Argentina,725.0,25691.0,low_snps:25691
+I42409.TW,Argentina_SantaFe_LateHolocene_Esperanza,Argentina,950.0,17042.0,low_snps:17042
+AITI_77A_alt.AG.SG,Germany_KleinaitingenGewerbegebietNord_EBA,Germany,3828.0,24294.0,low_snps:24294
+POST_140_alt.AG.SG,Germany_HaunstettenPostillionstrasse_EBA,Germany,3944.0,27200.0,low_snps:27200
+OBKR_2_alt.AG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA,Germany,3906.0,29722.0,low_snps:29722
+OBKR_66_alt.AG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA,Germany,3918.0,24253.0,low_snps:24253
+OBKR_93_alt.AG,Germany_KonigsbrunnObereKreuzstrasseBaugebiet110_EBA,Germany,3933.0,18286.0,low_snps:18286
+POST_12_alt.AG,Germany_HaunstettenPostillionstrasse_MBA,Germany,4036.0,6587.0,low_snps:6587
+UNTA58_147_alt.AG,Germany_HaunstettenUntererTalweg5862_EBA,Germany,3922.0,12536.0,low_snps:12536
+I16456.AG,England_LIA_MIA,United Kingdom,2050.0,24862.0,low_snps:24862
+I16459.AG,England_LBA,United Kingdom,2950.0,382197.0,qc_assessment:PROVISIONAL_CRITICAL
+I6882.AG,Russia_Rostov_EBA_Don_Yamnaya,Russia,4850.0,334297.0,qc_assessment:PROVISIONAL_CRITICAL
+I7862.AG,Moldova_MBA,Moldova,3456.0,181688.0,qc_assessment:PROVISIONAL_CRITICAL
+L5692.AG,China_Fujian_Xitoucun_LN,China,4500.0,15921.0,low_snps:15921
+L5696.AG,China_Fujian_Tanshishan_LN,China,4350.0,19372.0,low_snps:19372
+L5698.AG,China_Fujian_Tanshishan_LN,China,4287.0,20567.0,low_snps:20567
+L5703.AG,China_Fujian_Xitoucun_LN,China,4571.0,19554.0,low_snps:19554
+I10632.AG,Russia_Chelyabinsk_N_BA,Russia,5350.0,451776.0,qc_assessment:PROVISIONAL_CRITICAL
+I16436.AG,ChannelIslands_C,Channel Islands,5814.0,139125.0,qc_assessment:PROVISIONAL_CRITICAL
+I16471.AG,Wales_LIA,United Kingdom,2025.0,450902.0,qc_assessment:PROVISIONAL_CRITICAL
+I17112.AG,Mexico_Tayopa_1000BP,Mexico,1000.0,82782.0,qc_assessment:PROVISIONAL_CRITICAL
+I18718.AG,Croatia_MLBA,Croatia,3100.0,73414.0,qc_assessment:PROVISIONAL_CRITICAL
+I18801.AG,Bulgaria_Mogila_EBA_Yamnaya,Bulgaria,4775.0,618586.0,qc_assessment:PROVISIONAL_CRITICAL
+I20322.AG,Turkey_OttomanPeriod_ArabGraves,Turkey,475.0,859598.0,qc_assessment:PROVISIONAL_CRITICAL
+I20648.AG,England_EarlyMedieval_Saxon,United Kingdom,1450.0,203023.0,qc_assessment:PROVISIONAL_CRITICAL
+I20657.AG,England_EarlyMedieval_Saxon,United Kingdom,1450.0,447357.0,qc_assessment:PROVISIONAL_CRITICAL
+I20665.AG,England_EarlyMedieval_Saxon,United Kingdom,1450.0,288716.0,qc_assessment:PROVISIONAL_CRITICAL
+I20735.AG,Spain_LBA,Spain,3100.0,419060.0,qc_assessment:PROVISIONAL_CRITICAL
+I25333.AG,Austria_N_LBK,Austria,7150.0,566853.0,qc_assessment:PROVISIONAL_CRITICAL
+I19398.AG,Kenya_Medieval_Swahili,Kenya,369.0,139191.0,qc_assessment:PROVISIONAL_CRITICAL
+Ostuni2.AG,Italy_Apulia_Gravettian,Italy,29116.0,11678.0,low_snps:11678
+Continenza.AG,Italy_Abruzzo_Epigravettian,Italy,10875.0,6340.0,low_snps:6340
+HohleFels79.AG,Germany_HohleFelsAchValley_Magdalenian,Germany,14691.0,9107.0,low_snps:9107
+Iboussieres39.AG,France_Occitanie_Gard_Mesolithic,France,11741.0,7403.0,low_snps:7403
+I9057.AG,Brazil_SouthSantaCatarina_LateHolocene_2400BP_HG,Brazil,2436.0,21857.0,low_snps:21857
+I16412.AG,Scotland_EBA,United Kingdom,3989.0,53916.0,qc_assessment:PROVISIONAL_CRITICAL
+I16479.AG,Wales_MBA,United Kingdom,3250.0,140425.0,qc_assessment:PROVISIONAL_CRITICAL
+I18414.AG,Croatia_MLBA,Croatia,3100.0,716003.0,qc_assessment:PROVISIONAL_CRITICAL
+I19383.AG,Kenya_Medieval_Swahili,Kenya,500.0,131684.0,qc_assessment:PROVISIONAL_CRITICAL

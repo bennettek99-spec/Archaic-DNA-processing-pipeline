@@ -1,0 +1,53 @@
+Phase 2 dataset preparation — panel 1240k scope global
+Retained — by continent:
+  Eurasia              17,861  (present-day: 2,418)
+  Americas              1,984  (present-day: 810)
+  Africa                1,004  (present-day: 689)
+  Oceania                 255  (present-day: 49)
+  Unknown                   5  (present-day: 0)
+
+anno rows: 23,089   genotyped: 23,089
+RETAINED (Eurasian ancient, QC-pass): 21,109
+EXCLUDED: 1,980
+
+Exclusion reasons (grouped):
+  low_snps                  1,500
+  qc_assessment               458
+  reference_or_archaic         22
+
+Retained — non-fatal flags:
+  low_power                 3,702
+  no_coords                   755
+  questionable                742
+
+Retained — by era (BP):
+  0-3k (hist/IA-MBA)       13,370
+  3-5k (Neo-EBA)            3,912
+  5-8k (Neolithic)          3,179
+  8-12k (Meso/EpiPal)         532
+  12k+ (UP)                   115
+  no_date                       0
+
+Retained — top 15 countries:
+  Russia                    1,762
+  Hungary                   1,411
+  China                     1,397
+  United Kingdom            1,324
+  Italy                       864
+  Austria                     749
+  Spain                       707
+  Germany                     660
+  Denmark                     613
+  France                      584
+  USA                         563
+  Pakistan                    510
+  Czechia                     478
+  Turkey                      467
+  Belgium                     445
+
+Retained — SNP coverage quartiles:
+    0%  30,033
+   25%  333,593
+   50%  734,514
+   75%  1,033,055
+  100%  1,150,339

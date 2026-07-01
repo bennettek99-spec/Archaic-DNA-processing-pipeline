@@ -214,6 +214,85 @@ python mutation_diversity.py # worldwide diversity -> DIVERSITY_REPORT.md + repo
   serial-founder gradient (r=−0.74), and a 1240K-vs-Human-Origins cross-check that *demonstrates*
   SNP-ascertainment bias (the San jump from #17 to #4).
 
+## Sub-study: >5% archaic-ancestry survey (Eurasia + whole AADR)
+
+```bash
+python high_archaic_survey.py     # Eurasia (15,443 ancients) -> reports/high_archaic_survey/
+
+python phase2_prepare.py --panel 1240k --scope global       # keep present-day + all continents
+python phase3_estimate.py --panel 1240k \
+       --meta results/phase2_1240k_global_metadata.csv \
+       --out  results/phase3_1240k_global_estimates.csv     # only the new non-Eurasian genomes
+python global_archaic_survey.py   # whole AADR (21,109 genomes) -> reports/global_archaic_survey/
+```
+
+Asks a simple absolute-threshold question distinct from Phase 6's conditioned outlier
+search: who, across the AADR, carries **>5% archaic ancestry**? **Eurasia** (15,443
+ancients): 110 raw crossings but **0 of 9,252 high-confidence genomes** — every crossing
+is a low-coverage artifact (median 21,604 SNPs vs 272,044 panel-wide); the one individual
+whose 95% CI excludes 5% is **Oase1** (9.8%, a documented recent-Neanderthal-ancestor
+case, see below). Neanderthal ancestry is elevated (~2.5–3.2%) in the earliest Upper
+Paleolithic (Bacho Kiro, Goyet, Muierii2, Ust'-Ishim), settling to the ~2.1% Holocene
+baseline. A relative Denisovan D-statistic recovers a coherent Island Southeast Asian
+cluster (3 Indonesian genomes).
+
+Extending to the **whole AADR** (21,109 genomes, all continents, present-day included) via
+a new `phase2_prepare.py --scope global` mode (keeps present-day + every continent, tags
+`continent`/`is_modern`; `phase3_estimate.py --meta` lets Phase 3 run against that
+metadata, reusing already-computed Eurasian estimates and only estimating the newcomers)
+adds two things: an out-of-Africa **negative control** — mean α=0.29%, the most-negative
+Denisovan affinity of any continent, on data never used to calibrate the estimator — and
+the global **archaic maximum**: **Oceania** (highest Neanderthal at 2.3% *and* 31.8% of
+genomes flagged Denisovan, up to Z=7.2 in Papuans). Still 0 high-confidence genomes exceed
+5% Neanderthal on any continent, but Oceanians are the only humans whose *combined*
+Neanderthal+Denisovan ancestry robustly clears 5%.
+
+Full write-ups (paper-style: Abstract → Conclusion, reproducible Methods, figures) and
+rendered PDFs:
+- **`reports/high_archaic_survey/PAPER.md`** / `Eurasia_high_archaic_survey.pdf`
+- **`reports/global_archaic_survey/PAPER_global.md`** / `Global_archaic_survey.pdf`
+
+## Sub-study: Oase1 haplotype segment analysis (+ BAM pipeline)
+
+```bash
+python oase1_haplotype.py                    # array-resolution segments -> reports/oase1_haplotype/
+bash oase1_bam_pipeline/run_oase1_hmmix.sh   # full read-level hmmix pipeline (Linux/macOS/WSL)
+```
+
+Oase1's genome-wide Neanderthal proportion (9.8% ± 2.2%) cannot by itself distinguish a
+recent Neanderthal ancestor from an unusual background — the discriminator is *segment
+length*. Using Oase1's 1240K genotypes (both AADR libraries merged), the in-panel
+Altai/Vindija/African references, and the panel's own genetic map, a 2-state Viterbi HMM
+finds Oase1's Neanderthal ancestry sits in **9 segments totalling 122 cM, longest 36.5 cM
+(chr5) and 30.4 cM (chr9)** — no penecontemporaneous ~2% Eurasian (Ust'-Ishim, Kostenki14,
+Loschbour) has a single segment over 18.5 cM. The longest-segment length implies a
+Neanderthal ancestor within ~3 generations (an upper bound, since array density fragments
+true blocks), consistent with Fu et al.'s (2015) published estimate of 4–6 generations
+from the original shotgun genome.
+
+A complete, runnable **read-level pipeline** (`oase1_bam_pipeline/`, using `hmmix` — Skov
+et al. 2018) is provided for full-resolution confirmation: it downloads the Oase1 reads
+from ENA **PRJEB8987**, calls variants against hg19, and runs `create_ingroup` → `train`
+(haploid) → `decode -admixpop` to segment and annotate each block's archaic source
+(Neanderthal vs Denisovan). Requires `samtools`/`bcftools`/`hmmix` on Linux/macOS/WSL —
+not available on this project's Windows dev box, hence the separate script rather than a
+direct run.
+
+Full write-up: **`reports/oase1_haplotype/PAPER_oase1.md`** / `Oase1_haplotype_analysis.pdf`.
+
+## Rendering a paper to PDF
+
+`make_pdf.py` is a generic Markdown→PDF renderer (reportlab Platypus): headings, tables,
+bullet lists, fenced code blocks, horizontal rules, markdown/bare hyperlinks, and inline
+`![caption](figure.png)` images (resolved relative to the source `.md`'s own directory).
+
+```bash
+python make_pdf.py reports/high_archaic_survey/PAPER.md reports/high_archaic_survey/Eurasia_high_archaic_survey.pdf
+python make_pdf.py reports/global_archaic_survey/PAPER_global.md reports/global_archaic_survey/Global_archaic_survey.pdf
+python make_pdf.py reports/oase1_haplotype/PAPER_oase1.md reports/oase1_haplotype/Oase1_haplotype_analysis.pdf
+python make_pdf.py                                        # legacy default: PAPER.md -> reports/Etruscan_paper.pdf
+```
+
 ## Layout
 
 ```
@@ -238,6 +317,12 @@ generate_report.py    self-contained HTML executive summary  -> reports/
 etruscan_study.py     focused Etruscan sub-study              -> reports/etruscan_report.html
 run_pipeline.py       orchestrator (Phases 2→9 + report)
 probe_eastasian.py    methods probe (differential-statistic outgroup choice)
+high_archaic_survey.py    >5% archaic survey, Eurasia    -> reports/high_archaic_survey/
+global_archaic_survey.py  >5% archaic survey, whole AADR -> reports/global_archaic_survey/
+  (needs phase2_prepare.py --scope global + phase3_estimate.py --meta, see above)
+oase1_haplotype.py         Oase1 array-resolution segment/karyogram analysis -> reports/oase1_haplotype/
+oase1_bam_pipeline/        runnable read-level hmmix pipeline (Linux/macOS/WSL; see its README.md)
+make_pdf.py                generic Markdown -> PDF renderer (any PAPER*.md, not just the Etruscan one)
 tests/test_stats.py   pytest unit tests for the f-statistics
 results/   figures/   reports/             outputs
 ```

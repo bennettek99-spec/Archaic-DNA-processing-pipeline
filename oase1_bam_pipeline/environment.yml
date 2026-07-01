@@ -1,0 +1,15 @@
+name: oase1-hmmix
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - python>=3.9
+  - samtools
+  - bcftools
+  - vcftools
+  - curl
+  - numpy
+  - pandas
+  - pip
+  - pip:
+      - hmmix

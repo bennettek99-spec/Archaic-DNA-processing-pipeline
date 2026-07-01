@@ -24,7 +24,7 @@ Inclusion logic, in order (first failing gate wins as the exclusion reason):
 Retained samples additionally carry non-fatal flags: low_power, questionable,
 no_date, no_coords.
 """
-import os, sys, csv, argparse
+import os, sys, argparse
 import numpy as np
 import pandas as pd
 

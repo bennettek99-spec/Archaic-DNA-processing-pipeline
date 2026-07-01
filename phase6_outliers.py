@@ -121,13 +121,12 @@ def main():
     # ---- interpretable predictive model (Phase 5): weighted ridge, CV R^2 ------
     Xr = X[ref]
     yr = df["alpha_adj"].values[ref]
-    wr = w[ref]
     ridge = Ridge(alpha=1.0)
     r2 = cross_val_score(ridge, Xr, yr, cv=5, scoring="r2")
     print(f"  predictive model (ridge on PCs+geo+time) 5-fold R^2 = "
           f"{r2.mean():.3f} +/- {r2.std():.3f}")
-    print(f"    (low R^2 is expected & honest: within-ancestry Neanderthal variation "
-          f"is small and largely measurement noise)")
+    print("    (low R^2 is expected & honest: within-ancestry Neanderthal variation "
+          "is small and largely measurement noise)")
 
     # ---- outputs --------------------------------------------------------------
     rpath = os.path.join(RESULTS, f"phase6_{args.panel}_residuals.csv")

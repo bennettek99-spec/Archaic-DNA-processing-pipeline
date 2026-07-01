@@ -19,13 +19,12 @@ configuration, so cross-paper comparison is about (a) the right ballpark (~2% fo
 typical non-Africans), (b) relative ordering / correlation, and (c) the standout
 cases (Oase1 high, Yoruba ~0, Papuan Denisovan high) — not identical decimals.
 """
-import os, sys, csv
+import os, sys
 import numpy as np
 import pandas as pd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from scipy import stats as sstats
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.panel import Panel
@@ -66,7 +65,6 @@ def main():
     cfg = PANELS[PANEL]
     print(f"External validation on {PANEL} panel\n")
     panel = Panel(cfg["prefix"])
-    starts = st.block_starts(panel.n_snp, N_BLOCKS)
     block = st.assign_blocks(panel.n_snp, N_BLOCKS)
 
     spec = {k: cfg["refs"][k] for k in ["Altai", "Vindija", "Denisova", "Chimp", "Mbuti"]}
@@ -112,8 +110,8 @@ def main():
              + "  vs published 6-9% (Fu 2015)")
     K.append(f"        single most elevated sample; D_Nea Z={oase['D_Nea_Z']:.1f}"
              + (f"/{od['D_Nea_Z']:.1f}" if od is not None else "")
-             + f" (significant). Damage-restriction RAISES it (removes modern")
-    K.append(f"        contamination that dilutes archaic signal) -> recovers the published 6-9% -> CONFIRMED")
+             + " (significant). Damage-restriction RAISES it (removes modern")
+    K.append("        contamination that dilutes archaic signal) -> recovers the published 6-9% -> CONFIRMED")
     ui = R[R["name"] == "Ust_Ishim"].iloc[0]
     K.append(f"[Ust-Ishim] {ui['my_Nea']:.2f}±{ui['my_SE']:.2f}% vs published 2.3% (Fu 2014), "
              f"{int(ui['nSNP']):,} SNP -> {'MATCH' if abs(ui['my_Nea']-2.3)<2*ui['my_SE'] else 'offset'}")
@@ -186,7 +184,7 @@ def main():
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "VALIDATION.md"),
               "w", encoding="utf-8") as fh:
         fh.write("\n".join(md) + "\n")
-    print(f"\nWrote results/validation_vs_published.csv, figures/fig7_validation_vs_published.png, VALIDATION.md")
+    print("\nWrote results/validation_vs_published.csv, figures/fig7_validation_vs_published.png, VALIDATION.md")
 
 
 if __name__ == "__main__":

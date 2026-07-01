@@ -25,7 +25,7 @@ from scipy import stats as sstats
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.panel import Panel
-from archaic import loci as L, profiles as pf
+from archaic import loci as L
 from archaic.refs import PANELS
 
 PANEL = "1240k"
@@ -64,7 +64,6 @@ def main():
     rows = L.panel_rows_in_window(panel, *WIN)
     info = L.archaic_informative(panel, rows, refs)
     ar_rows, ar_a1, p_afr = info["rows"], info["arch_is_a1"], info["p_afr"]
-    snp = panel.snp.loc[ar_rows]
     print(f"FADS window SNPs: {len(rows)}; archaic-informative: {len(ar_rows)}")
 
     # cohorts: Italy vs Europe, per time bin
@@ -122,7 +121,7 @@ def main():
         return beta[1] * 1000, p, len(d)
     it_slope, it_p, it_n = trend(ita)
     eu_slope, eu_p, eu_n = trend(eur)
-    print(f"\nFADS archaic-allele trend (per kyr, controlling genome-wide Nea + PC1):")
+    print("\nFADS archaic-allele trend (per kyr, controlling genome-wide Nea + PC1):")
     print(f"  Italy:  {it_slope*100:+.3f} pp/kyr  p={it_p:.4f}  (n={it_n})")
     print(f"  Europe: {eu_slope*100:+.3f} pp/kyr  p={eu_p:.4f}  (n={eu_n})")
 

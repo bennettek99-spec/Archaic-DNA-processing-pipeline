@@ -45,7 +45,6 @@ def main():
     an = pd.read_csv(os.path.join(RESULTS, f"phase4_{PANEL}_analysis.csv"))[
         ["genetic_id", "locality", "hapconx_contam", "angsd_contam", "coverage"]]
     df = df.merge(pc, on="genetic_id").merge(an, on="genetic_id").reset_index(drop=True)
-    ids_np = df["genetic_id"].to_numpy(dtype=object)
     n_hc = int(df["high_conf"].sum())
     zc = stats.norm.isf(0.025 / n_hc)
 
@@ -78,7 +77,6 @@ def main():
 
         # heuristic explanations
         gl = str(r["group_id"]).lower()
-        anc = [a for a in ANCESTRY_FLAGS if a in gl]
         tech = []
         if r["alpha_nSNP"] < 300_000: tech.append(f"modest coverage ({int(r['alpha_nSNP']):,} SNP)")
         if "AG" == r["data_type"]: tech.append("pseudo-haploid capture (.AG)")

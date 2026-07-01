@@ -94,7 +94,6 @@ def main():
     # weighted regression alpha ~ age across individuals
     xa = ita["date_bp"].values.astype(float)
     ya = ita["alpha_Nea"].values
-    wa = ita["weight"].values
     msk = np.isfinite(xa) & np.isfinite(ya)
     slope, intercept, r, p_time, _ = sstats.linregress(xa[msk], ya[msk])
     A.to_csv(os.path.join(OUT, "A_genomewide_over_time.csv"), index=False)
@@ -125,10 +124,6 @@ def main():
           f"ancestry-conditioning (=> explained by ancestry)")
 
     # ===================== C. locus-level archaic alleles over time ============
-    # per-individual genome-wide archaic score (covariate to isolate locus-specific change)
-    gw = ita.set_index("genetic_id")["alpha_Nea"]
-    ita_cols = {gid: panel._id_to_col[gid] for gid in ita["genetic_id"]
-                if gid in panel._id_to_col}
     C_rows = []
     locus_bin_freq = {}     # gene -> {bin: archaic freq}
     for gene, chrom, start, end, pheno, ref in L.LOCI:

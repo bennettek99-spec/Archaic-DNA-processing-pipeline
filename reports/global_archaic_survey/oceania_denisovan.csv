@@ -1,0 +1,82 @@
+genetic_id,group_id,country,continent,is_modern,lat,lon,date_bp,alpha_Nea,alpha_SE,alpha_nSNP,D_Den_Z,high_conf
+A_Papuan-16.DG,Papuan-Discovery,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.031006,0.004357,505773,7.243,True
+HGDP00542.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.029377,0.004502,467875,6.408,True
+S_Papuan-5.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.027751,0.004969,495146,6.061,True
+S_Bougainville-2.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.03195,0.004792,494394,5.967,True
+B_Australian-4.DG,Australian,Australia,Oceania,True,-13.0,143.0,0.0,0.030362,0.005007,494752,5.963,True
+S_Papuan-3.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.034551,0.00553,494697,5.857,True
+S_Papuan-4.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.027108,0.004586,494726,5.684,True
+HGDP00545.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.025569,0.0051,466293,5.563,True
+S_Papuan-1.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.034945,0.005011,494530,5.56,True
+HGDP00656.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.030912,0.004773,468695,5.558,True
+HGDP00541.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.033124,0.005568,466526,5.521,True
+HGDP00543.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.026356,0.004694,466825,5.287,True
+HGDP00550.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.033244,0.005054,466335,5.237,True
+PA86.SG,Australia_PreEuropean,Australia,Oceania,False,-19.95,147.04,850.0,0.030411,0.004648,476864,5.23,True
+S_Papuan-2.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.028883,0.005258,494550,5.224,True
+B_Papuan-15.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.025715,0.004827,494427,5.195,True
+S_Papuan-10.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.02971,0.004921,494850,5.112,True
+HGDP00544.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.025323,0.004729,466744,5.073,True
+S_Papuan-6.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.031283,0.005176,494720,4.998,True
+S_Papuan-13.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.033589,0.005353,494504,4.961,True
+S_Papuan-14.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.029946,0.005172,494889,4.954,True
+I5259.AG,Vanuatu_500BP,Vanuatu,Oceania,False,-17.63795,168.20555,480.0,0.027277,0.004853,356880,4.885,True
+S_Papuan-9.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.024714,0.004897,494898,4.856,True
+HGDP00552.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.032465,0.00548,468713,4.843,True
+B_Australian-3.DG,Australian,Australia,Oceania,True,-13.0,143.0,0.0,0.027413,0.005274,494111,4.829,True
+HGDP00553.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.027601,0.005134,467910,4.827,True
+HGDP00540.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.028089,0.005466,468727,4.811,True
+HGDP00787.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.022525,0.004857,468342,4.797,True
+HGDP00546.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.024749,0.004998,468040,4.779,True
+HGDP00554.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.029606,0.005217,468498,4.617,True
+HGDP00547.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.029711,0.005366,466990,4.602,True
+HGDP00551.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.023817,0.004975,467791,4.602,True
+S_Papuan-12.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.030177,0.005291,493761,4.586,True
+HGDP00788.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.026636,0.004335,467531,4.58,True
+S_Papuan-8.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.026807,0.005366,494766,4.548,True
+S_Papuan-7.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.027699,0.004988,495134,4.475,True
+HGDP00556.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.029714,0.005295,467734,4.405,True
+S_Papuan-11.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.031798,0.005488,494493,4.384,True
+MH8.SG,Australia_PreEuropean,Australia,Oceania,False,-12.044,141.893,850.0,0.029572,0.00523,463645,4.302,True
+I4105.AG,Vanuatu_150BP,Vanuatu,Oceania,False,-16.89,168.3,150.0,0.03397,0.006248,436085,4.292,True
+HGDP00660.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.031092,0.005076,466209,4.269,True
+HGDP00549.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.025098,0.005517,467624,4.239,True
+HGDP01027.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.02756,0.00478,468376,4.228,True
+HGDP00548.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.026927,0.005066,468756,4.191,True
+I4451.AG,Vanuatu_2300BP,Vanuatu,Oceania,False,-17.689401,168.289509,2260.0,0.01567,0.006645,331957,4.138,True
+HGDP00555.DG,Papuan,Papua New Guinea,Oceania,True,-4.0,143.0,0.0,0.03017,0.005806,466768,4.137,True
+I4419.AG,Vanuatu_150BP,Vanuatu,Oceania,False,-17.801781,168.522778,140.0,0.028012,0.005455,322070,4.108,True
+S_Bougainville-1.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.03176,0.004836,470922,3.998,True
+ERI009.AG,PapuaNewGuinea_Eriama_EarlyModern,Papua New Guinea,Oceania,False,-9.21,147.13,390.0,0.03416,0.006719,337412,3.864,True
+HGDP00663.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.026027,0.004871,467927,3.807,True
+I4106.AG,Vanuatu_150BP,Vanuatu,Oceania,False,-16.89,168.3,140.0,0.029259,0.005078,441321,3.762,True
+I10967.AG,Vanuatu_200BP-oPolynesian,Vanuatu,Oceania,False,-17.611529,168.241268,156.0,0.027368,0.007632,206492,3.648,True
+WAT003.AG,PapuaNewGuinea_ReberRakival_Medieval,Papua New Guinea,Oceania,False,-4.09,152.07,570.0,0.0158,0.005568,274471,3.588,True
+HGDP00655.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.026759,0.004775,467561,3.583,True
+HGDP00661.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.026603,0.004797,468458,3.487,True
+FUT007.AG,Vanuatu_1200BP,Vanuatu,Oceania,False,-19.519667,170.226106,1204.0,0.026301,0.00642,179788,3.409,False
+TAN001.AG,Vanuatu_200BP,Vanuatu,Oceania,False,-19.5,169.33,202.0,0.02431,0.007372,281963,3.356,False
+I41054.TW,Palau_Ngkeklau_1400BP,Palau,Oceania,False,7.5927213,134.638359,1400.0,0.024593,0.005604,391454,3.348,True
+MAL007.AG,Vanuatu_2000BP,Vanuatu,Oceania,False,-16.073881,167.447786,2038.0,0.01949,0.008116,180715,3.328,False
+HGDP00491.DG,Nasioi,Papua New Guinea,Oceania,True,-6.480001,155.83,0.0,0.030586,0.00409,467276,3.328,True
+I3921.AG,Vanuatu_1300BP,Vanuatu,Oceania,False,-16.711,168.133,1260.0,0.023041,0.005318,448705,3.306,True
+ERI002.AG,PapuaNewGuinea_Eriama_EarlyModern,Papua New Guinea,Oceania,False,-9.21,147.13,290.0,0.020667,0.006554,274875,3.291,True
+I4096.AG,Vanuatu_1300BP,Vanuatu,Oceania,False,-16.711,168.133,1305.0,0.022471,0.00461,432935,3.247,True
+NBR015.AG,PapuaNewGuinea_Nebira_Medieval,Papua New Guinea,Oceania,False,-9.24,147.03,500.0,0.025077,0.005822,234680,3.162,True
+WAT001.AG,PapuaNewGuinea_ReberRakival_Medieval,Papua New Guinea,Oceania,False,-4.09,152.07,610.0,0.015352,0.005534,277242,3.138,True
+FUT002.AG,Vanuatu_1200BP,Vanuatu,Oceania,False,-19.519667,170.226106,1238.0,0.021943,0.005144,279232,3.115,True
+I14493.AG,Vanuatu_400BP,Vanuatu,Oceania,False,-17.638593,168.155767,387.0,0.019339,0.006253,225970,3.036,False
+ERI005.AG,PapuaNewGuinea_Eriama_Modern,Papua New Guinea,Oceania,False,-9.21,147.13,140.0,0.021595,0.006476,245520,3.022,True
+I4450.AG,Vanuatu_150BP,Vanuatu,Oceania,False,-17.678839,168.534731,215.0,0.022434,0.0054,350825,3.014,True
+MAL004.AG,Vanuatu_2600BP,Vanuatu,Oceania,False,-16.073881,167.447786,2567.0,0.016361,0.00544,307542,2.939,True
+ERI007.AG,PapuaNewGuinea_Eriama_Modern,Papua New Guinea,Oceania,False,-9.21,147.13,150.0,0.023812,0.007127,290022,2.873,True
+I41043.TW,Palau_OmedokelCave_1400BP,Palau,Oceania,False,7.2270517,134.399355,1355.0,0.027261,0.004696,494009,2.871,True
+NBR006.AG,PapuaNewGuinea_Nebira_LateMedieval,Papua New Guinea,Oceania,False,-9.24,147.03,475.0,0.028313,0.006646,241853,2.849,True
+HGDP00664.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.025039,0.005884,468073,2.777,True
+I10966.AG,Vanuatu_400BP-o,Vanuatu,Oceania,False,-17.611529,168.241268,400.0,0.0232,0.005744,285664,2.728,True
+NBR016.AG,PapuaNewGuinea_Nebira_LateMedieval,Papua New Guinea,Oceania,False,-9.24,147.03,475.0,0.022329,0.006562,269060,2.722,True
+ERI008.AG,PapuaNewGuinea_Eriama_Modern,Papua New Guinea,Oceania,False,-9.21,147.13,155.0,0.023062,0.006909,288547,2.684,True
+I42656.TW,Palau_KororQuarry_1500BP,Palau,Oceania,False,7.3517537,134.498934,1464.0,0.026747,0.005537,406620,2.671,True
+HGDP00662.DG,Nasioi,Papua New Guinea,Oceania,True,-6.48,155.83,0.0,0.026128,0.004912,467561,2.66,True
+I4425.AG,Vanuatu_150BP,Vanuatu,Oceania,False,-17.652345,168.402102,135.0,0.02753,0.006091,300111,2.614,True
+I30477.TW,FederatedStatesofMicronesia_SaudeleurDynasty,Federated States of Micronesia,Oceania,False,6.845103,158.335876,246.0,0.029293,0.005387,445095,2.527,True

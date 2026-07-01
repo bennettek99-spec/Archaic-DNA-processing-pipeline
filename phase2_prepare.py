@@ -81,12 +81,18 @@ def continent(country, lat, lon):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--panel", choices=list(PANELS), default="1240k")
+    ap.add_argument("--scope", choices=["eurasia", "global"], default="eurasia",
+                    help="'eurasia' = original QC (ancient Eurasians only); "
+                         "'global' = keep present-day + all continents, "
+                         "record continent/is_modern (for whole-AADR survey)")
     args = ap.parse_args()
     cfg = PANELS[args.panel]
     prefix = cfg["prefix"]
     snps_col = cfg["snps_col"]
+    is_global = args.scope == "global"
+    tag = f"{args.panel}_global" if is_global else args.panel
 
-    print(f"Phase 2 — panel={args.panel}  prefix={prefix}")
+    print(f"Phase 2 — panel={args.panel}  scope={args.scope}  prefix={prefix}")
     ind = le.read_ind(prefix + ".ind")
     have_geno = set(ind["id"].values)
     print(f"  individuals with genotypes: {len(have_geno):,}")
@@ -118,11 +124,11 @@ def main():
         # 3. ancient vs present-day
         is_modern = (np.isfinite(date_bp) and date_bp < 50) or \
                     ((not np.isfinite(date_bp)) and gid.endswith(".HO"))
-        if is_modern:
+        if is_modern and not is_global:
             drop("present_day"); continue
         # 4. continent
         cont = continent(r["country"], lat, lon)
-        if cont != "Eurasia":
+        if cont != "Eurasia" and not is_global:
             drop(f"non_eurasian:{cont}"); continue
         # 5. quality assessment
         assess = (r["assessment"] or "").strip()
@@ -146,6 +152,7 @@ def main():
         rows.append(dict(
             genetic_id=gid, group_id=grp, locality=r["locality"],
             country=r["country"], lat=lat, lon=lon,
+            continent=cont, is_modern=bool(is_modern),
             date_bp=date_bp, date_sd=r["date_sd"], full_date=r["full_date"],
             coverage=r["coverage"], snps_hit=nsnp, mol_sex=r["mol_sex"],
             assessment=assess, angsd_contam=r["angsd"], hapconx_contam=r["hapconx"],
@@ -157,14 +164,20 @@ def main():
     exc = pd.DataFrame(excluded)
 
     # ----------------------------------------------------------------- outputs
-    mpath = os.path.join(RESULTS, f"phase2_{args.panel}_metadata.csv")
-    epath = os.path.join(RESULTS, f"phase2_{args.panel}_excluded.csv")
+    mpath = os.path.join(RESULTS, f"phase2_{tag}_metadata.csv")
+    epath = os.path.join(RESULTS, f"phase2_{tag}_excluded.csv")
     meta.to_csv(mpath, index=False)
     exc.to_csv(epath, index=False)
 
     # summary
     lines = []
-    lines.append(f"Phase 2 dataset preparation — panel {args.panel}")
+    lines.append(f"Phase 2 dataset preparation — panel {args.panel} scope {args.scope}")
+    if is_global and len(meta):
+        lines.append("Retained — by continent:")
+        for ct, n in meta["continent"].value_counts().items():
+            nmod = int(meta[(meta.continent == ct)]["is_modern"].sum())
+            lines.append(f"  {str(ct):20s} {n:6,d}  (present-day: {nmod:,})")
+        lines.append("")
     lines.append(f"anno rows: {len(ann):,}   genotyped: {len(have_geno):,}")
     lines.append(f"RETAINED (Eurasian ancient, QC-pass): {len(meta):,}")
     lines.append(f"EXCLUDED: {len(exc):,}")
@@ -200,7 +213,7 @@ def main():
             lines.append(f"  {int(k*100):3d}%  {int(v):,}")
 
     summary = "\n".join(lines)
-    spath = os.path.join(RESULTS, f"phase2_{args.panel}_summary.txt")
+    spath = os.path.join(RESULTS, f"phase2_{tag}_summary.txt")
     with open(spath, "w", encoding="utf-8") as fh:
         fh.write(summary + "\n")
     print("\n" + summary)

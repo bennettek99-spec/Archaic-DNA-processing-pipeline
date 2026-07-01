@@ -1,0 +1,12 @@
+region,n_total,n_raw_over5,n_highconf_over5,n_CI_sig_over5,n_denisovan_flag,pct_raw_over5
+Europe,11747,87,0,1,20,0.74
+East Asia,1022,7,0,0,1,0.68
+Central Asia / Steppe,793,6,0,0,1,0.76
+Caucasus / W. Central Asia,788,3,0,0,0,0.38
+South Asia,386,2,0,0,0,0.52
+Near East / Anatolia,368,2,0,0,0,0.54
+Unknown,51,2,0,0,0,3.92
+Siberia,211,1,0,0,0,0.47
+Africa,3,0,0,0,0,0.0
+Island SE Asia / Oceania,25,0,0,0,3,0.0
+Other Eurasia,49,0,0,0,0,0.0

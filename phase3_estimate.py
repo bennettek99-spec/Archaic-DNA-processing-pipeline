@@ -39,10 +39,13 @@ def main():
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--chunk", type=int, default=128)
     ap.add_argument("--out", default="")
+    ap.add_argument("--meta", default="",
+                    help="override Phase-2 metadata CSV (e.g. the global scope one)")
     args = ap.parse_args()
     cfg = PANELS[args.panel]
 
-    meta = pd.read_csv(os.path.join(RESULTS, f"phase2_{args.panel}_metadata.csv"))
+    meta_path = args.meta or os.path.join(RESULTS, f"phase2_{args.panel}_metadata.csv")
+    meta = pd.read_csv(meta_path)
     ids = meta["genetic_id"].tolist()
     if args.limit:
         ids = ids[:args.limit]

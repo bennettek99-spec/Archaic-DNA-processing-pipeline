@@ -10,7 +10,7 @@ Anatolians/Steppe), maps genetic distances, and combines this with the
 individual-outlier and locus-selection results into a research-paper-style
 document: PAPER.md + reports/etruscan_paper.html (figures fig_p1..fig_p4).
 """
-import os, sys, json, datetime, html
+import os, sys, datetime, html
 import numpy as np
 import pandas as pd
 import matplotlib

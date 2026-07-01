@@ -14,7 +14,7 @@ included only if its source files exist, so this works "for each run".
 
     python generate_report.py --panel 1240k
 """
-import os, sys, argparse, base64, html, datetime
+import os, argparse, base64, html, datetime
 import numpy as np
 import pandas as pd
 from scipy import stats as sstats
@@ -117,7 +117,6 @@ def main():
         zc = sstats.norm.isf(0.025 / n)
         n_sig = int((np.abs(z) > zc).sum())
         max_z = float(np.abs(z).max())
-        p95 = np.nanpercentile(np.abs(z), 95)
         tp = hc.sort_values("z_resid", ascending=False).head(8)
         tn = hc.sort_values("z_resid").head(8)
         def crows(df):

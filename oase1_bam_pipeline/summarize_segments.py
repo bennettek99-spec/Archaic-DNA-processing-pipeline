@@ -69,10 +69,10 @@ print(f"mean of top-3 segments  : {top3:.1f} cM")
 print(f"segments > 50 cM        : {(length_cm > 50).sum()}   (Fu et al. recent-ancestry criterion)")
 print(f"segments > 30 cM        : {(length_cm > 30).sum()}")
 if n:
-    print(f"\nGenerations to Neanderthal ancestor (L ~= 100/g):")
+    print("\nGenerations to Neanderthal ancestor (L ~= 100/g):")
     print(f"  from longest  : g ~= {100/longest:.1f}")
     print(f"  from top-3    : g ~= {100/top3:.1f}")
-    print(f"  (Fu et al. 2015 estimate: 4-6 generations)")
+    print("  (Fu et al. 2015 estimate: 4-6 generations)")
 if src:
     tot_src = sum(v for _, v in src) or 1
     print("\nArchaic-source composition of segments (SNP matches):")

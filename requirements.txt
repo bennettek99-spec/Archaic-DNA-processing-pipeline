@@ -9,5 +9,4 @@ msprime>=1.3
 # PDF manuscript rendering
 reportlab>=4.0
 pypdf>=4.0
-# tests
-pytest>=7.0
+# dev/test tools (pytest, pyflakes) live in requirements-dev.txt

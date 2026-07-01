@@ -5,7 +5,7 @@ Concordance: this pipeline vs ADMIXTOOLS 2 (Maier et al. 2023), computed on the
 same PLINK export (export_plink.py). Run tools/admixtools_concordance.R first.
 Produces results/concordance_summary.csv and figures/fig_concordance.png.
 """
-import os, sys
+import os
 import numpy as np
 import pandas as pd
 import matplotlib

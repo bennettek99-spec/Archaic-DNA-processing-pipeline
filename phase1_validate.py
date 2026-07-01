@@ -37,7 +37,6 @@ Published anchors for context (same f4-ratio family of estimators):
   Sikora 2017; Raghavan 2014). Papuans carry ~3-5% Denisovan; West Eurasians ~0.
 """
 import os, sys, csv
-import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.panel import Panel
@@ -190,7 +189,7 @@ def main():
     checks.append(("G6 Denisovan: D_Den(Papuan) >> D_Den(French)",
                    f"Papuan={by['Papuan']['D_Den']:.4f} vs "
                    f"French={by['French']['D_Den']:.4f}",
-                   by["Papuan"]["D_Den"] > by["French"]["D_Den"]))
+                   den_ok))
 
     print("\nVALIDATION GATE")
     print("-" * 100)

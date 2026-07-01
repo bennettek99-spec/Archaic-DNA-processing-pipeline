@@ -16,7 +16,6 @@ downstream tools can group individuals.
 """
 import os, sys, argparse
 import numpy as np
-import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.panel import Panel
@@ -72,7 +71,6 @@ def main():
     args = ap.parse_args()
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     panel = Panel(PANELS[args.panel]["prefix"])
-    meta_path = os.path.join("results", f"phase2_{args.panel}_metadata.csv")
 
     # gather columns + clean labels (first curated match wins; cap per population)
     gl = panel.ind["pop"].str.lower()

@@ -9,7 +9,6 @@ mean dosage / 2 over non-missing genotypes; a SNP with no data in a population i
 NaN there and is dropped from any statistic that needs that population.
 """
 from __future__ import annotations
-import os
 import numpy as np
 from . import lib_eigenstrat as le
 

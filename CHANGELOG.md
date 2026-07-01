@@ -1,6 +1,36 @@
 # Changelog
 
-## [Unreleased]
+## [0.3.0] — Reproducibility, CLI, and housekeeping
+
+### Added
+- **Synthetic-data smoke test** (`archaic/synthetic.py`, `archaic/smoke.py`,
+  `tests/test_smoke_synthetic.py`): builds a small, fully synthetic
+  AADR-shaped panel (.ind/.snp/.geno) with a known Neanderthal-admixture
+  fraction and runs it through the real `Panel`/`PackedGeno`/`stats` code
+  path, checking that the estimator recovers a sane, correctly-signed
+  archaic-ancestry signal. This is secondary to, and does not replace, the
+  AADR-based pipeline or the coalescent-simulation validation
+  (`validate_simulation.py`) — its only job is to catch reader/estimator
+  plumbing regressions in seconds, in CI or for anyone without a copy of the
+  (non-redistributable) AADR data. Run via `pytest` or
+  `archaic-pipeline smoke-test`.
+- **Unit tests for `archaic/lib_eigenstrat.py`** (`tests/test_lib_eigenstrat.py`,
+  11 tests): the packed TGENO/GENO binary reader had zero coverage despite
+  being the most fragile, bit-arithmetic-heavy code in the pipeline. Covers
+  exact round-trip for both packed layouts, arbitrary/unsorted SNP+individual
+  selection, chunked vs. unchunked reads, missing-genotype coding, and
+  corrupt-file-size / unknown-magic error paths.
+- **CLI entry point** (`archaic/cli.py`, `archaic-pipeline` console script):
+  `archaic-pipeline validate|prepare|estimate|...|all --panel 1240k` or
+  `archaic-pipeline smoke-test`, instead of `python phase3_estimate.py`.
+  Pure dispatch to the existing phase scripts — no behaviour change, just a
+  shorter invocation once the package is installed (`pip install -e .`).
+- **Logging** (`archaic/log_utils.py`): timestamped, level-controlled
+  (`ARCHAIC_LOG_LEVEL` env var) progress logging for the orchestrator
+  (`run_pipeline.py`) and the long-running Phase 3 estimation loop
+  (`phase3_estimate.py`, ETA per chunk). Phase/report scripts keep using
+  plain `print()` for their tabular results and markdown bodies by design —
+  that's their actual output, not a diagnostic log.
 
 ### Fixed
 - `phase1_validate.py`: validation gate G6 (Denisovan check) was computing a

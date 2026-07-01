@@ -161,8 +161,41 @@ hard-coded in the code.
 ```bash
 pip install -e .                            # installable package (pyproject.toml)
 python run_pipeline.py --panel 1240k        # Phases 2→9 + HTML report, in order
-python -m pytest tests/ -q                  # unit tests (math, simulation, kinship, config)
+python -m pytest tests/ -q                  # unit tests (math, simulation, kinship, config, eigenstrat, smoke)
 ```
+
+`pip install -e .` also registers an `archaic-pipeline` console script that
+dispatches to the same phase scripts (equivalent to the calls above, just
+shorter once installed):
+
+```bash
+archaic-pipeline validate --panel 1240k     # phase1_validate.py
+archaic-pipeline all --panel 1240k          # run_pipeline.py (Phases 2→9 + report)
+archaic-pipeline smoke-test                 # synthetic-data plumbing check, see below
+```
+
+Progress logging (the orchestrator and Phase 3's per-chunk ETA) is timestamped
+and level-controlled via `ARCHAIC_LOG_LEVEL` (default `INFO`); the phase/report
+scripts' own tabular output (validation gates, markdown reports) is unaffected
+— that's their actual output, not a diagnostic log:
+
+```bash
+ARCHAIC_LOG_LEVEL=DEBUG python run_pipeline.py --panel 1240k
+```
+
+### Synthetic-data smoke test (no AADR data needed)
+
+The full pipeline needs the real (large, non-redistributable) AADR download —
+so out of the box, nobody who clones this repo without a copy of that data can
+run anything end-to-end. `archaic-pipeline smoke-test` (or `pytest`, which
+runs it automatically as `tests/test_smoke_synthetic.py`) builds a small
+synthetic AADR-shaped panel with a known Neanderthal-admixture fraction
+(`archaic/synthetic.py`), writes it as real TGENO files, and runs it through
+the actual `Panel`/`PackedGeno`/`stats` code — the shared engine every phase
+is built on — checking that the estimator recovers a sane, correctly-signed
+signal. It is **secondary** to the AADR-based pipeline and is not a substitute
+for the scientific validation in `VALIDATION.md` / `SIMULATION_VALIDATION.md`;
+its only job is to catch reader/estimator plumbing regressions in seconds.
 
 ## Validation & robustness (for reuse / publication)
 
@@ -311,6 +344,10 @@ archaic/
   simulate.py         msprime coalescent simulation with known archaic introgression
   kinship.py          READ-style relatedness / duplicate detection and pruning
   config.py           load paths + thresholds from config.yaml (nothing hard-coded)
+  synthetic.py        build a synthetic AADR-shaped panel (no real AADR data needed)
+  smoke.py            synthetic-data plumbing smoke test (secondary to the real pipeline)
+  log_utils.py        timestamped progress logging (ARCHAIC_LOG_LEVEL)
+  cli.py              `archaic-pipeline` console-script dispatch
 phase1_validate.py … phase9_robustness.py   the nine pipeline stages
 etruscan_study.py / etruscan_paper.py        Etruscan sub-study + manuscript (PAPER.md)
 validate_simulation.py                       ground-truth simulation validation

@@ -27,6 +27,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.panel import Panel
 from archaic import stats as st
 from archaic.refs import PANELS
+from archaic.log_utils import get_logger
+
+log = get_logger("archaic.phase3")
 
 RESULTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 N_BLOCKS = 50
@@ -49,16 +52,16 @@ def main():
     ids = meta["genetic_id"].tolist()
     if args.limit:
         ids = ids[:args.limit]
-    print(f"Phase 3 — panel={args.panel}  samples={len(ids):,}  chunk={args.chunk}")
+    log.info(f"Phase 3 — panel={args.panel}  samples={len(ids):,}  chunk={args.chunk}")
 
     panel = Panel(cfg["prefix"])
     starts = st.block_starts(panel.n_snp, N_BLOCKS)
 
-    print("Reference allele frequencies (computed once)...")
+    log.info("Reference allele frequencies (computed once)...")
     rf, ri = panel.frequencies({k: cfg["refs"][k] for k in
                                 ["Altai", "Vindija", "Denisova", "Chimp", "Mbuti"]})
     for k in ["Altai", "Vindija", "Denisova", "Chimp", "Mbuti"]:
-        print(f"  {k:9s} SNPs={ri[k]['n_snp_covered']:,}")
+        log.info(f"  {k:9s} SNPs={ri[k]['n_snp_covered']:,}")
 
     # reference-only per-SNP constants (float32); NaN propagates where a ref is missing
     pAlt = rf["Altai"].astype(F); pChi = rf["Chimp"].astype(F)
@@ -74,7 +77,7 @@ def main():
     use = [(i, col_of[i]) for i in ids if i in col_of]
     missing = [i for i in ids if i not in col_of]
     if missing:
-        print(f"  WARNING: {len(missing)} ids not in .ind (skipped)")
+        log.warning(f"{len(missing)} ids not in .ind (skipped)")
 
     out_path = args.out or os.path.join(RESULTS, f"phase3_{args.panel}_estimates.csv")
     fields = ["genetic_id", "alpha_Nea", "alpha_SE", "alpha_nSNP",
@@ -89,7 +92,7 @@ def main():
     if done_ids:
         before = len(use)
         use = [(i, c) for (i, c) in use if i not in done_ids]
-        print(f"  resume: {len(done_ids):,} done, {len(use):,}/{before:,} remaining")
+        log.info(f"resume: {len(done_ids):,} done, {len(use):,}/{before:,} remaining")
     fh = open(out_path, "a", newline="")
     writer = csv.DictWriter(fh, fieldnames=fields)
     if not done_ids:
@@ -131,9 +134,9 @@ def main():
             ))
         done += len(chunk); fh.flush()
         rate = done / (time.time() - t0)
-        print(f"  {done:,}/{len(use):,}  ({rate:.0f}/s, ETA {(len(use)-done)/rate/60:.1f} min)")
+        log.info(f"{done:,}/{len(use):,}  ({rate:.0f}/s, ETA {(len(use)-done)/rate/60:.1f} min)")
     fh.close()
-    print(f"\nDone in {(time.time()-t0)/60:.1f} min -> {out_path}")
+    log.info(f"Done in {(time.time()-t0)/60:.1f} min -> {out_path}")
 
 
 if __name__ == "__main__":

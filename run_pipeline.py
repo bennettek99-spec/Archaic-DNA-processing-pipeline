@@ -9,7 +9,12 @@ Each phase is resumable/idempotent, so re-running skips finished work.
     python run_pipeline.py --panel 1240k
     python run_pipeline.py --panel 1240k --from 4   # resume at Phase 4
 """
-import os, sys, subprocess, argparse, time
+import os, sys, subprocess, argparse
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from archaic.log_utils import get_logger, StepTimer
+
+log = get_logger("archaic.run_pipeline")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 STEPS = [
@@ -36,14 +41,12 @@ def main():
             continue
         cmd = [sys.executable, os.path.join(HERE, script)]
         cmd += ([args.panel] if flags == ["POS"] else ["--panel", args.panel])
-        print(f"\n{'='*70}\n# Phase {ph}: {script}\n{'='*70}", flush=True)
-        t0 = time.time()
-        r = subprocess.run(cmd, env=env)
-        if r.returncode != 0:
-            print(f"!! Phase {ph} failed (exit {r.returncode}); stopping.")
-            sys.exit(r.returncode)
-        print(f"   done in {(time.time()-t0)/60:.1f} min")
-    print("\nPipeline complete. See reports/ and results/.")
+        with StepTimer(log, f"Phase {ph}: {script}"):
+            r = subprocess.run(cmd, env=env)
+            if r.returncode != 0:
+                log.error(f"Phase {ph} failed (exit {r.returncode}); stopping.")
+                sys.exit(r.returncode)
+    log.info("Pipeline complete. See reports/ and results/.")
 
 
 if __name__ == "__main__":

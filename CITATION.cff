@@ -7,7 +7,7 @@ authors:
     given-names: Bennett
 repository-code: "https://github.com/bennettek99-spec/Archaic-DNA-processing-pipeline"
 license: MIT
-version: 0.2.0
+version: 0.3.0
 keywords:
   - archaeogenetics
   - ancient DNA

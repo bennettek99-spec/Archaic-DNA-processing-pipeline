@@ -31,29 +31,21 @@
   Bronze-Age steppe cultures 86%, Sardinia lowest at 11%, Finland/Russia
   highest at ~62-66%). Outputs `results/ancestry/`, `reports/ancestry/`
   (4 figures, `PAPER_ancestry.md`, `Ancestry_admixture_survey.pdf`).
-- **`personal_ancestry.py`**: runs the same engine on a personal
-  direct-to-consumer genome (via the existing `archaic/consumer_dna.py`
-  alignment) as one more cohort alongside the modern reference populations.
-  Unlike the archaic match-rate estimator, ordinary qpAdm runs directly on a
-  consumer array's ~150-250k overlapping SNPs with no special marker
-  curation. Documents a genuine single-genome failure mode (automatic model
-  selection can favour a technically-"feasible" but badly-fitting model over
-  a far-better-fitting "infeasible" one when a genome is too sparse to
-  cleanly separate correlated sources) — see
-  `reports/personal_genome/PAPER_personal_ancestry.md`.
 - **`tests/test_ancestry.py`** (7 tests): synthetic-data correctness for the
   new qpAdm/ancestry modules, including a regression guard proving the
   vectorised block-sum jackknife exactly matches a naive brute-force
   recomputation, and a model-competition test confirming the true generating
   model is ranked first.
-- `archaic-pipeline ancestry` / `archaic-pipeline personal-ancestry` CLI
-  subcommands (`archaic/cli.py`).
+- `archaic-pipeline ancestry` CLI subcommand (`archaic/cli.py`).
 
 ### Changed
-- README: two new sub-study sections (ancestry admixture, personal-genome
-  ancestry) plus documentation for the previously-undocumented
-  `personal_genome_study.py` archaic sub-study and `archaic/consumer_dna.py`
-  (both already in the repo from an earlier session but never written up).
+- README: new sub-study section for the ancestry-admixture survey.
+
+### Removed
+- The personal consumer-DNA analysis capability (archaic and ancestry
+  estimates for an individual's own direct-to-consumer genotype file) and all
+  associated results/reports have been removed from this repository and its
+  history for privacy.
 
 ## [0.3.0] — Reproducibility, CLI, and housekeeping
 

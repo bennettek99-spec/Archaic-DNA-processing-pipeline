@@ -1,0 +1,32 @@
+{
+  "name": "Bennett",
+  "panel": "1240k",
+  "method": "calibrated archaic-allele match rate",
+  "Nea_pct": 2.2544576792926683,
+  "Nea_SE": 0.16623118297855466,
+  "Nea_match": 18.14720812182741,
+  "Nea_match_se": 1.4588890876433065,
+  "n_marker_snps": 394,
+  "calib_slope": 0.13778826249172949,
+  "calib_intercept": -0.24601459688973248,
+  "calib_r": 0.9902042569434263,
+  "Den_match": 14.102564102564102,
+  "Den_base_westeur": 16.764907912784444,
+  "Den_papuan": 19.40722358532441,
+  "west_eur_mean": 2.0822452805694085,
+  "f4ratio_pct": 0.030042227116851734,
+  "f4ratio_se": 0.7801334116411331,
+  "f4ratio_nsnp": 70495,
+  "D_Nea_Z": 2.710839491316265,
+  "D_Den_Z": 0.3277835347933652,
+  "r_coding_check": 0.6394038767757633,
+  "align": {
+    "consumer_snps": 560853,
+    "panel_autosomal_snps": 1150639,
+    "matched_by_position": 164427,
+    "strand_ambiguous_dropped": 503,
+    "mismatch_dropped": 0,
+    "strand_flipped": 0,
+    "usable_snps": 163924
+  }
+}

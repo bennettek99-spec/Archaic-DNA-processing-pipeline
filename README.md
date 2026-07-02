@@ -317,6 +317,57 @@ direct run.
 
 Full write-up: **`reports/oase1_haplotype/PAPER_oase1.md`** / `Oase1_haplotype_analysis.pdf`.
 
+## Sub-study: West-Eurasian ancestry admixture (Steppe/Yamnaya, WHG, EHG, CHG, Anatolian farmer, …)
+
+```bash
+python ancestry_decomposition.py     # 18 ancient/modern cohorts -> reports/ancestry/
+python personal_ancestry.py <raw_dna_file> --name You   # your own genome vs the same cohorts
+```
+
+Adds the complementary question to the archaic side of this pipeline: of what **human** source
+populations is a genome a mixture? `archaic/ancestry.py` is a verified source-population library
+(WHG, EHG, CHG, Anatolia_N, Iran_N, Levant_N/Natufian, Steppe_Yamnaya, ANE — each an AADR
+`group_id` predicate checked against the local release) built on a new `archaic/qpadm.py`: the
+classic unconstrained "rotating outgroup" f4-ratio qpAdm (Haak et al. 2015) plus a
+simplex-constrained ("supervised admixture") variant that always returns a valid [0,1]-bounded
+mixture, both block-jackknifed. Five candidate models (3-source `west3` through 5-source `deep5`)
+are competed per target and ranked by fit.
+
+Applied to a chronological transect of 9 ancient European cohorts (early farmers → Iron Age Italy)
+plus 9 modern populations, it reproduces the textbook Steppe-migration signal with **no manual
+tuning**: Steppe/Yamnaya ancestry is ~0–3% in the early farmers, spikes to **73% in Corded Ware**
+and **86% in the Bronze-Age steppe cultures that generated it** (Sintashta/Andronovo/Srubnaya),
+correctly dips in Bronze-Age Italy (still farmer-dominated), and settles at ~27–29% in
+Etruscans/Imperial Romans, sitting inside a modern cline from Sardinia (10%, lowest) to
+Finland/Russia (~62–66%, highest). Full write-up: **`reports/ancestry/PAPER_ancestry.md`** /
+`Ancestry_admixture_survey.pdf`.
+
+`personal_ancestry.py` runs the identical engine on a personal direct-to-consumer genome (aligned
+via `archaic/consumer_dna.py`, the same alignment already used for the personal archaic estimator
+below) as one more cohort alongside the modern reference populations — and, unlike the archaic
+estimator, ordinary qpAdm runs directly on a consumer array's ~150–250k overlapping SNPs with no
+special marker curation. It also documents a real single-genome failure mode: automatic model
+selection can pick a technically-"feasible" but badly-fitting model over a much-better-fitting
+"infeasible" one when a genome is too sparse to cleanly separate correlated sources — worth
+reading before trusting any single-genome "best model" output. Write-up:
+**`reports/personal_genome/PAPER_personal_ancestry.md`** / `Personal_ancestry_admixture.pdf`.
+
+## Sub-study: personal-genome archaic ancestry (consumer DNA)
+
+```bash
+python personal_genome_study.py <raw_dna_file> --name You
+```
+
+Runs a MyHeritage/23andMe/AncestryDNA raw file through this pipeline as one more "test population"
+(`archaic/consumer_dna.py` aligns diploid calls to the panel by chromosome/position with
+strand-flip resolution). The ancient-genome f4-ratio **does not work on consumer arrays** — too
+few archaic-informative sites survive the overlap, and it collapses toward zero even for
+populations known to be ~2% Neanderthal. The valid, powered statistic instead is a **calibrated
+archaic-allele match rate**: curated Neanderthal marker alleles (derived, carried by both Altai
+and Vindija, African-rare), internally calibrated to a percentage against reference populations of
+known ancestry measured on the *identical* SNP set. Full write-up:
+**`reports/personal_genome/PAPER_personal.md`** / `Archaic_introgression_personal_genome.pdf`.
+
 ## Rendering a paper to PDF
 
 `make_pdf.py` is a generic Markdown→PDF renderer (reportlab Platypus): headings, tables,
@@ -327,6 +378,8 @@ bullet lists, fenced code blocks, horizontal rules, markdown/bare hyperlinks, an
 python make_pdf.py reports/high_archaic_survey/PAPER.md reports/high_archaic_survey/Eurasia_high_archaic_survey.pdf
 python make_pdf.py reports/global_archaic_survey/PAPER_global.md reports/global_archaic_survey/Global_archaic_survey.pdf
 python make_pdf.py reports/oase1_haplotype/PAPER_oase1.md reports/oase1_haplotype/Oase1_haplotype_analysis.pdf
+python make_pdf.py reports/ancestry/PAPER_ancestry.md reports/ancestry/Ancestry_admixture_survey.pdf
+python make_pdf.py reports/personal_genome/PAPER_personal_ancestry.md reports/personal_genome/Personal_ancestry_admixture.pdf
 python make_pdf.py                                        # legacy default: PAPER.md -> reports/Etruscan_paper.pdf
 ```
 
@@ -348,6 +401,9 @@ archaic/
   smoke.py            synthetic-data plumbing smoke test (secondary to the real pipeline)
   log_utils.py        timestamped progress logging (ARCHAIC_LOG_LEVEL)
   cli.py              `archaic-pipeline` console-script dispatch
+  qpadm.py            constrained + unconstrained qpAdm (source-ancestry mixture fitting)
+  ancestry.py         verified West-Eurasian source-population library + model competition
+  consumer_dna.py     align a personal DTC genotype file to the panel (build37, chrom+pos)
 phase1_validate.py … phase9_robustness.py   the nine pipeline stages
 etruscan_study.py / etruscan_paper.py        Etruscan sub-study + manuscript (PAPER.md)
 validate_simulation.py                       ground-truth simulation validation
@@ -363,8 +419,12 @@ global_archaic_survey.py  >5% archaic survey, whole AADR -> reports/global_archa
   (needs phase2_prepare.py --scope global + phase3_estimate.py --meta, see above)
 oase1_haplotype.py         Oase1 array-resolution segment/karyogram analysis -> reports/oase1_haplotype/
 oase1_bam_pipeline/        runnable read-level hmmix pipeline (Linux/macOS/WSL; see its README.md)
+ancestry_decomposition.py  Steppe/WHG/EHG/CHG/farmer admixture survey     -> reports/ancestry/
+personal_ancestry.py       same ancestry engine on a personal DTC genome  -> reports/personal_genome/
+personal_genome_study.py   personal-genome archaic (Neanderthal/Denisovan) estimate -> reports/personal_genome/
 make_pdf.py                generic Markdown -> PDF renderer (any PAPER*.md, not just the Etruscan one)
 tests/test_stats.py   pytest unit tests for the f-statistics
+tests/test_ancestry.py     pytest unit tests for qpadm.py / ancestry.py (synthetic data)
 results/   figures/   reports/             outputs
 ```
 

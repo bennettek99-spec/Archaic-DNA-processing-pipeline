@@ -37,6 +37,8 @@ SCRIPTS = {
     "robustness": "phase9_robustness.py",
     "report": "generate_report.py",
     "all": "run_pipeline.py",
+    "ancestry": "ancestry_decomposition.py",
+    "personal-ancestry": "personal_ancestry.py",
 }
 
 

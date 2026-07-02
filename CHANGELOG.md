@@ -1,5 +1,60 @@
 # Changelog
 
+## [0.4.0] — West-Eurasian ancestry admixture (Steppe/Yamnaya, WHG, EHG, CHG, …)
+
+### Added
+- **`archaic/qpadm.py`**: a constrained ("supervised admixture") qpAdm solver
+  (`qpadm_constrained`, simplex-bounded via SciPy SLSQP) alongside the existing
+  unconstrained "rotating outgroup" f4-ratio qpAdm (Haak et al. 2015), plus
+  `compete_models`/`archaic.ancestry.decompose_best` to rank several candidate
+  source models per target. **Performance rewrite**: every f4 term needed by
+  the linear system, and by each of the 50 leave-one-block-out jackknife
+  replicates, is now computed via one block-sum table per term
+  (`_build_system`) instead of being recomputed from scratch inside the
+  jackknife loop — ~50x fewer full-genome scans, verified bit-identical to
+  the naive per-block recomputation (`tests/test_ancestry.py`). This is what
+  makes an 18-target × 5-model competition (90 fits, ~476k SNPs each) run in
+  minutes instead of hours.
+- **`archaic/ancestry.py`**: a verified West-Eurasian source-population
+  library (WHG, EHG, CHG, Anatolia_N, Iran_N, Levant_N/Natufian,
+  Steppe_Yamnaya, ANE — each an AADR `group_id` predicate checked against the
+  local 1240K release for correctness and zero source/target overlap),
+  cohort resolution (kinship-pruned mean-genome profiles), five candidate
+  admixture models (`west3` through `deep5`), and `decompose`/`decompose_best`
+  high-level entry points.
+- **`ancestry_decomposition.py`**: applies the engine to a chronological
+  transect of 9 ancient European cohorts (Balkans Neolithic → Imperial Roman)
+  plus 9 modern populations, competing all 5 models per target and reporting
+  a fixed reference model (`west3`) for direct cross-target comparison,
+  alongside each cohort's group-level Neanderthal ancestry. Reproduces the
+  Steppe-migration signal with no manual tuning (Corded Ware 73% Steppe,
+  Bronze-Age steppe cultures 86%, Sardinia lowest at 11%, Finland/Russia
+  highest at ~62-66%). Outputs `results/ancestry/`, `reports/ancestry/`
+  (4 figures, `PAPER_ancestry.md`, `Ancestry_admixture_survey.pdf`).
+- **`personal_ancestry.py`**: runs the same engine on a personal
+  direct-to-consumer genome (via the existing `archaic/consumer_dna.py`
+  alignment) as one more cohort alongside the modern reference populations.
+  Unlike the archaic match-rate estimator, ordinary qpAdm runs directly on a
+  consumer array's ~150-250k overlapping SNPs with no special marker
+  curation. Documents a genuine single-genome failure mode (automatic model
+  selection can favour a technically-"feasible" but badly-fitting model over
+  a far-better-fitting "infeasible" one when a genome is too sparse to
+  cleanly separate correlated sources) — see
+  `reports/personal_genome/PAPER_personal_ancestry.md`.
+- **`tests/test_ancestry.py`** (7 tests): synthetic-data correctness for the
+  new qpAdm/ancestry modules, including a regression guard proving the
+  vectorised block-sum jackknife exactly matches a naive brute-force
+  recomputation, and a model-competition test confirming the true generating
+  model is ranked first.
+- `archaic-pipeline ancestry` / `archaic-pipeline personal-ancestry` CLI
+  subcommands (`archaic/cli.py`).
+
+### Changed
+- README: two new sub-study sections (ancestry admixture, personal-genome
+  ancestry) plus documentation for the previously-undocumented
+  `personal_genome_study.py` archaic sub-study and `archaic/consumer_dna.py`
+  (both already in the repo from an earlier session but never written up).
+
 ## [0.3.0] — Reproducibility, CLI, and housekeeping
 
 ### Added

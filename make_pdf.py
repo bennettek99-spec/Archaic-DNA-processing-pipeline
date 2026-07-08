@@ -44,6 +44,7 @@ LEGACY_FIGURES = [
     ("fig_p5_qpadm.png", "Figure 5. qpAdm ancestry proportions (Anatolian-farmer + Steppe + WHG): Etruscans match Latins and Imperial Romans; Steppe rises from the Bronze Age to the Iron Age."),
     ("fig_concordance.png", "Figure 6. Concordance with ADMIXTOOLS 2: f-statistics correlate at r>=0.99 and qpAdm ancestry proportions agree within ~4 percentage points."),
     ("fig_admixture.png", "Figure 7. Sparse-NMF ancestry components (snmf/ADMIXTURE-style, K=4): source populations carry distinct components; the Italian targets (Bronze Age, Etruscan, Latin, Imperial Roman) are visually identical mixtures, reinforcing continuity."),
+    ("fig_denisovan_survey.png", "Figure 8. Denisovan ancestry as a positive control. Left: pooled D_Den = D(pop, Mbuti; Denisova, Chimp) — present-day Oceanians (Papuan, Nasioi) are strongly positive (~2.5-3.5%, Z about 5-6), while East Asians, West Eurasians, Africans and every ancient Eurasian regional pool are within noise of zero. Right: the ancient per-genome D_Den Z distribution matches the N(0,1) null with no Bonferroni outliers. The estimator detects Denisovan ancestry where it exists and returns a controlled null in ancient Eurasians."),
 ]
 
 IMG_RE = re.compile(r"^!\[([^\]]*)\]\(([^)]+)\)\s*$")

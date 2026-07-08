@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "archaic-introgression"
-version = "0.4.0"
+version = "0.5.0"
 description = "Modular archaeogenetics pipeline for detecting unexpected archaic (Neanderthal/Denisovan) introgression in ancient Eurasian genomes"
 readme = "README.md"
 requires-python = ">=3.10"

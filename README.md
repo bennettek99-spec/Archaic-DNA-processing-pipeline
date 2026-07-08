@@ -341,6 +341,45 @@ Etruscans/Imperial Romans, sitting inside a modern cline from Sardinia (10%, low
 Finland/Russia (~62–66%, highest). Full write-up: **`reports/ancestry/PAPER_ancestry.md`** /
 `Ancestry_admixture_survey.pdf`.
 
+## Sub-study: positional & Denisovan extensions
+
+```bash
+python local_archaic_scan.py --panel 1240k    # genome-wide desert/peak scan -> LOCAL_ARCHAIC_REPORT.md
+python denisovan_survey.py    --panel 1240k    # Denisovan survey + control   -> DENISOVAN_REPORT.md
+python xchrom_depletion.py    --panel ho       # X-vs-autosome depletion       -> XCHROM_REPORT.md
+```
+
+Three additions that push past the single genome-wide Neanderthal number, each kept strictly
+AADR-native — and each honest about where the ascertained, pseudo-haploid AADR panel *cannot*
+carry an analysis (a documented outcome, not a failure).
+
+* **Local archaic-affinity scan** (`local_archaic_scan.py`). A windowed archaic-allele-frequency
+  landscape across the autosomes — the AADR-native stand-in for a haplotype HMM caller
+  (Sprime/hmmix/IBDmix), which needs whole-genome variant discovery and diploid/phased calls the
+  1240K capture panel does not provide (the read-level `oase1_bam_pipeline/` is the only place
+  hmmix can run here). The **peak** direction works as a positive control — BNC2, OCA2-HERC2,
+  FADS, HLA and the keratin cluster all land in the top percentiles — but published Neanderthal
+  **deserts are not recovered** (Mann-Whitney p≈0.47): windowed archaic-allele frequency is
+  dominated by shared ancestral variation, exactly as `FADS_REPORT.md` warned. Reported as such.
+
+* **Denisovan survey** (`denisovan_survey.py`). Promotes the pipeline's D_Den affinity to a
+  first-class analysis with a **validated positive control**: pooled D_Den recovers the known
+  Denisovan ancestry of Oceanians (Papuan Z≈+6), fading to ~0 in West Eurasians and Africans.
+  Against that calibrated scale, ancient Eurasians are a *controlled* null — no west→east gradient,
+  no Bonferroni outliers — i.e. a real absence, not a lack of power. The Denisovan counterpart to
+  `FINDINGS.md`. Includes an EPAS1 vignette (`archaic/loci.py::denisovan_informative`).
+
+* **X-chromosome depletion** (`xchrom_depletion.py`). The autosomal f4-ratio reproduces the
+  expected ~2–3% Neanderthal, but the X arm is **inconclusive on AADR by construction**: 1240K has
+  *zero* outgroup X genotypes (Chimp/Gorilla/Ancestor all blank on the X), and HO — the only panel
+  whose Chimp covers the X — has just ~1.7k usable X SNPs, so α(X)'s standard error is ~17× the
+  autosomal one and floored by X-SNP count (pooling cannot help). The script refuses to run on a
+  panel whose outgroup lacks X coverage. A clean example of the pipeline's ethos applied to a
+  data-limited question.
+
+Shared plumbing: `archaic/cohort.py` (`pooled_freq`, RAM-safe streaming pooled frequencies) and
+`archaic/windows.py` (tested sliding-window aggregator).
+
 ## Rendering a paper to PDF
 
 `make_pdf.py` is a generic Markdown→PDF renderer (reportlab Platypus): headings, tables,
@@ -375,6 +414,8 @@ archaic/
   cli.py              `archaic-pipeline` console-script dispatch
   qpadm.py            constrained + unconstrained qpAdm (source-ancestry mixture fitting)
   ancestry.py         verified West-Eurasian source-population library + model competition
+  cohort.py           RAM-safe streaming pooled allele frequencies for large cohorts
+  windows.py          genomic sliding-window aggregator (desert/peak scans)
 phase1_validate.py … phase9_robustness.py   the nine pipeline stages
 etruscan_study.py / etruscan_paper.py        Etruscan sub-study + manuscript (PAPER.md)
 validate_simulation.py                       ground-truth simulation validation
@@ -391,9 +432,13 @@ global_archaic_survey.py  >5% archaic survey, whole AADR -> reports/global_archa
 oase1_haplotype.py         Oase1 array-resolution segment/karyogram analysis -> reports/oase1_haplotype/
 oase1_bam_pipeline/        runnable read-level hmmix pipeline (Linux/macOS/WSL; see its README.md)
 ancestry_decomposition.py  Steppe/WHG/EHG/CHG/farmer admixture survey     -> reports/ancestry/
+local_archaic_scan.py      genome-wide windowed archaic desert/peak scan  -> LOCAL_ARCHAIC_REPORT.md
+denisovan_survey.py        Denisovan survey + present-day positive control -> DENISOVAN_REPORT.md
+xchrom_depletion.py        X-vs-autosome Neanderthal depletion (HO panel)  -> XCHROM_REPORT.md
 make_pdf.py                generic Markdown -> PDF renderer (any PAPER*.md, not just the Etruscan one)
 tests/test_stats.py   pytest unit tests for the f-statistics
 tests/test_ancestry.py     pytest unit tests for qpadm.py / ancestry.py (synthetic data)
+tests/test_cohort.py · tests/test_windows.py · tests/test_loci_denisovan.py   unit tests (new modules)
 results/   figures/   reports/             outputs
 ```
 

@@ -83,6 +83,45 @@ def archaic_informative(panel, snp_rows, refs, arch_thresh=0.9, afr_thresh=0.1):
                 p_arch=p_arch[keep], p_afr=p_afr[keep])
 
 
+def denisovan_informative(panel, snp_rows, refs, den_thresh=0.9, afr_thresh=0.1,
+                          nea_max=0.5):
+    """Denisovan-SPECIFIC informative SNPs: the Denisovan is ~fixed for an allele
+    that is ~absent in Africans AND not carried by the Neanderthals, so the site
+    marks the Denisovan lineage specifically (not archaic-shared / deep ILS).
+
+    Mirrors archaic_informative() but for Denisova, with the extra Neanderthal-
+    exclusion (nea_max). Returns dict: rows, den_is_a1 (archaic allele == allele1),
+    p_den, p_afr, p_nea (allele1 freqs at kept rows). As with the Neanderthal
+    version these are putative markers, not proof (ILS can mimic them)."""
+    cols_den = panel.cols_for(**refs["Denisova"])
+    cols_alt = panel.cols_for(**refs["Altai"])
+    cols_vin = panel.cols_for(**refs["Vindija"])
+    cols_afr = np.concatenate([panel.cols_for(**refs["Mbuti"]),
+                               panel.cols_for(**refs["Yoruba"])])
+    need = np.unique(np.concatenate([cols_den, cols_alt, cols_vin, cols_afr]))
+    G = panel.pg.read(snp_rows, need)
+    Gf = G.astype(np.float32); Gf[G < 0] = np.nan
+    pos = {c: i for i, c in enumerate(need)}
+
+    def freq(cols):
+        idx = [pos[c] for c in cols]
+        with np.errstate(invalid="ignore"):
+            return np.nanmean(Gf[:, idx], axis=1) / 2.0
+    p_den = freq(cols_den)
+    p_afr = freq(cols_afr)
+    p_nea = np.nanmean(np.vstack([freq(cols_alt), freq(cols_vin)]), axis=0)
+
+    den_a1 = p_den > 0.5
+    den_extreme = np.where(den_a1, p_den, 1 - p_den)
+    afr_of_den = np.where(den_a1, p_afr, 1 - p_afr)
+    nea_of_den = np.where(den_a1, p_nea, 1 - p_nea)
+    keep = (den_extreme >= den_thresh) & (afr_of_den <= afr_thresh) \
+        & (nea_of_den <= nea_max) \
+        & np.isfinite(p_den) & np.isfinite(p_afr) & np.isfinite(p_nea)
+    return dict(rows=snp_rows[keep], den_is_a1=den_a1[keep],
+                p_den=p_den[keep], p_afr=p_afr[keep], p_nea=p_nea[keep])
+
+
 def archaic_allele_freq(panel, snp_rows, arch_is_a1, cols):
     """Mean archaic-allele frequency per SNP for a cohort (individual cols).
 

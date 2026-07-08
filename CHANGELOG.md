@@ -1,5 +1,48 @@
 # Changelog
 
+## [0.5.0] — Positional & Denisovan extensions
+
+Three AADR-native additions that move beyond the single genome-wide Neanderthal
+number, plus honest documentation of where the ascertained pseudo-haploid AADR
+data cannot support an analysis (an outcome, not a bug).
+
+### Added
+- **`archaic/cohort.py`** (`pooled_freq`): RAM-safe *streaming* pooled allele
+  frequency, so a cohort of thousands can be pooled over 1.2M SNPs without the
+  ~18 GB one-shot read `panel.frequencies` would need. Verified bit-identical to
+  `panel.frequencies` for any chunk size (`tests/test_cohort.py`).
+- **`archaic/windows.py`**: pure, tested genomic sliding-window aggregator
+  (`window_scan`, `robust_z`, `empirical_p`) for position-resolved scans
+  (`tests/test_windows.py`).
+- **`local_archaic_scan.py`**: genome-wide windowed archaic-affinity landscape
+  (desert/peak map) built on the archaic-informative-allele machinery. Chosen
+  *instead of* a haplotype HMM caller (Sprime/hmmix/IBDmix), which cannot run on
+  ascertained pseudo-haploid AADR data. Honest outcome: the **peak** direction
+  recovers known adaptive-introgression loci (BNC2, OCA2-HERC2, FADS, HLA, KRT in
+  the top percentiles) as a positive control, but published Neanderthal
+  **deserts** are *not* recovered (Mann-Whitney p≈0.47) — windowed archaic-allele
+  frequency is ILS-dominated (cf. FADS_REPORT.md). Reported accordingly
+  (`LOCAL_ARCHAIC_REPORT.md`, `results/figures/fig_local_archaic_scan.png`).
+- **`xchrom_depletion.py`**: X-vs-autosome Neanderthal f4-ratio depletion. The
+  autosomal arm reproduces the expected ~2–3%, but the analysis is **inconclusive
+  on AADR by construction**: 1240K has *zero* outgroup X genotypes (Chimp.REF,
+  Gorilla.REF, Ancestor.REF all blank on X), and HO — the only panel whose Chimp
+  covers the X — yields just ~1.7k usable X SNPs, so α(X)'s SE is ~17x the
+  autosomal one and floored by X SNP count (pooling cannot help). Refuses to run
+  on a panel whose outgroup lacks X. Documented as a data limitation
+  (`XCHROM_REPORT.md`).
+- **`denisovan_survey.py`** + **`archaic/loci.py::denisovan_informative`**:
+  Denisovan-ancestry survey with a *validated positive control*. The pooled
+  D_Den statistic recovers the known Denisovan ancestry of Oceanians (Papuan
+  Z≈+6), grading to ~0 in West Eurasians/Africans; against that calibrated scale,
+  ancient Eurasians are a **controlled null** (no gradient, no Bonferroni
+  outliers) — the Denisovan counterpart to `FINDINGS.md`, strengthened by an
+  explicit power anchor. Includes an EPAS1 vignette. Outputs
+  `results/denisovan_1240k_{survey,outliers}.csv`,
+  `results/figures/fig_denisovan_survey.png`, `DENISOVAN_REPORT.md`.
+- **Tests** (`tests/test_cohort.py`, `tests/test_windows.py`,
+  `tests/test_loci_denisovan.py`): 9 new unit tests, all passing.
+
 ## [0.4.0] — West-Eurasian ancestry admixture (Steppe/Yamnaya, WHG, EHG, CHG, …)
 
 ### Added

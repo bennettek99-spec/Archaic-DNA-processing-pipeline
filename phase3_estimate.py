@@ -44,6 +44,8 @@ def main():
     ap.add_argument("--out", default="")
     ap.add_argument("--meta", default="",
                     help="override Phase-2 metadata CSV (e.g. the global scope one)")
+    ap.add_argument("--transversions-only", action="store_true",
+                    help="use only transversion SNPs for a damage-robust comparison run")
     args = ap.parse_args()
     cfg = PANELS[args.panel]
 
@@ -54,7 +56,7 @@ def main():
         ids = ids[:args.limit]
     log.info(f"Phase 3 — panel={args.panel}  samples={len(ids):,}  chunk={args.chunk}")
 
-    panel = Panel(cfg["prefix"])
+    panel = Panel(cfg["prefix"], transversions_only=args.transversions_only)
     starts = st.block_starts(panel.n_snp, N_BLOCKS)
 
     log.info("Reference allele frequencies (computed once)...")
@@ -79,7 +81,9 @@ def main():
     if missing:
         log.warning(f"{len(missing)} ids not in .ind (skipped)")
 
-    out_path = args.out or os.path.join(RESULTS, f"phase3_{args.panel}_estimates.csv")
+    default_name = (f"phase3_{args.panel}_transversions_estimates.csv"
+                    if args.transversions_only else f"phase3_{args.panel}_estimates.csv")
+    out_path = args.out or os.path.join(RESULTS, default_name)
     fields = ["genetic_id", "alpha_Nea", "alpha_SE", "alpha_nSNP",
               "D_Nea", "D_Nea_SE", "D_Nea_Z", "D_Nea_nSNP",
               "D_Den", "D_Den_SE", "D_Den_Z", "D_Den_nSNP"]

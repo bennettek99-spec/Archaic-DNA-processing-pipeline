@@ -1,0 +1,6 @@
+threshold_pct,observed_positive,published_positive,agreement,false_positive,false_negative
+1.5,16,16,1.0,0,0
+2.0,14,12,0.7647058823529411,3,1
+2.5,5,6,0.7058823529411765,2,3
+3.0,3,3,1.0,0,0
+5.0,2,2,1.0,0,0

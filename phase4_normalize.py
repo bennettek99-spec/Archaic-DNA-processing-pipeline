@@ -75,14 +75,36 @@ def main():
 
     # high-confidence subset for individual-level work (group-level uses all)
     hi_snp = cfg["snp_lowpower"]
+    min_cov = cfg.get("high_conf_min_coverage", 0.02)
+    max_contam = cfg.get("high_conf_max_contam_lb", 0.02)
+    max_damage = cfg.get("high_conf_max_damage", 0.30)
+    cov_ok = df["coverage"].isna() | (df["coverage"] >= min_cov)
+    contam_ok = df["contam_lb"].isna() | (df["contam_lb"] <= max_contam)
+    damage_ok = df["damage"].isna() | (df["damage"] <= max_damage)
     df["high_conf"] = (df["alpha_nSNP"] >= hi_snp) & \
-                      (~df["flags"].fillna("").str.contains("questionable"))
+                      (~df["flags"].fillna("").str.contains("questionable")) & \
+                      cov_ok & contam_ok & damage_ok
+    df["high_conf_fail_reasons"] = ""
+    df.loc[df["alpha_nSNP"] < hi_snp, "high_conf_fail_reasons"] += "low_snps;"
+    df.loc[df["flags"].fillna("").str.contains("questionable"), "high_conf_fail_reasons"] += "questionable;"
+    df.loc[~cov_ok, "high_conf_fail_reasons"] += "low_coverage;"
+    df.loc[~contam_ok, "high_conf_fail_reasons"] += "contamination;"
+    df.loc[~damage_ok, "high_conf_fail_reasons"] += "damage;"
+    df["high_conf_fail_reasons"] = df["high_conf_fail_reasons"].str.rstrip(";")
 
     # --- bias diagnostics -----------------------------------------------------
     R = []
     R.append(f"Phase 4 bias / normalisation report — panel {args.panel}")
-    R.append(f"samples: {len(df):,}   high-confidence (>= {hi_snp:,} SNP, not questionable): "
+    R.append(f"samples: {len(df):,}   high-confidence (QC gates below): "
              f"{int(df['high_conf'].sum()):,}")
+    R.append(f"high-confidence technical gates: coverage>={min_cov}, "
+             f"contam_lb<={max_contam}, damage<={max_damage} when metadata are present")
+    fail = df.loc[~df["high_conf"], "high_conf_fail_reasons"]
+    fail = fail[fail != ""].str.split(";").explode()
+    if len(fail):
+        R.append("high-confidence exclusions by technical gate:")
+        for reason, n in fail.value_counts().items():
+            R.append(f"  {reason:18s} {n:6,d}")
     R.append("")
     R.append("Weighted mean alpha_Nea overall: "
              f"{wmean(df['alpha_Nea'].values, df['weight'].values)*100:.3f}%")

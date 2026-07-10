@@ -217,7 +217,7 @@ def make_figures(A, ita, etr, C, locus_bin_freq, slope, intercept):
     # B: outliers vs ancestry
     fig, ax = plt.subplots(figsize=(7, 4.3))
     c = np.where(etr["is_o"], "#d62728", "#1f77b4")
-    sc = ax.scatter(etr["PC1"], etr["z_within_etr"], c=c, s=36, edgecolor="k", lw=0.3)
+    ax.scatter(etr["PC1"], etr["z_within_etr"], c=c, s=36, edgecolor="k", lw=0.3)
     for _, r in etr[etr["z_within_etr"].abs() > 1.8].iterrows():
         ax.annotate(str(r["genetic_id"])[:10], (r["PC1"], r["z_within_etr"]),
                     fontsize=7, xytext=(3, 2), textcoords="offset points")

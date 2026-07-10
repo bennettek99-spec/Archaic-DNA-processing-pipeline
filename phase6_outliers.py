@@ -35,24 +35,18 @@ Outputs:
 import os, sys, argparse
 import numpy as np
 import pandas as pd
-from scipy.spatial import cKDTree
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import cross_val_score
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.refs import PANELS
+from archaic.neighborhood import feature_matrix, local_residual_stats
 
 RESULTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 PCS = [f"PC{i}" for i in range(1, 7)]
 FEATURES = PCS + ["lon", "lat", "date_bp"]
 FEAT_WEIGHT = {**{p: 1.0 for p in PCS}, "lon": 0.5, "lat": 0.5, "date_bp": 0.7}
 K = 80
-
-
-def zscore(x):
-    x = x.astype(np.float64)
-    mu, sd = np.nanmean(x), np.nanstd(x)
-    return (x - mu) / (sd if sd > 0 else 1.0)
 
 
 def main():
@@ -76,47 +70,24 @@ def main():
     df["alpha_adj"] = df["alpha_Nea"] - df["data_type"].map(off).fillna(0.0)
 
     # 2. feature space (z-scored, weighted); impute missing coords to median
-    X = np.column_stack([
-        zscore(df[f].fillna(df[f].median()).values) * FEAT_WEIGHT[f] for f in FEATURES
-    ])
+    X = feature_matrix(df, FEATURES, FEAT_WEIGHT)
 
     # 3-4. neighbourhood expectation on the HIGH-CONFIDENCE reference set
     ref = df["high_conf"].values
     ids_np = df["genetic_id"].to_numpy(dtype=object)
-    Xref = X[ref]
-    a_ref = df["alpha_adj"].values[ref]
-    se_ref = df["alpha_SE"].values[ref]
-    id_ref = ids_np[ref]
     print(f"  high-confidence reference samples: {ref.sum():,}")
 
-    tree = cKDTree(Xref)
-    kq = args.k + 1                                   # +1 to drop self
-    dist, idx = tree.query(X, k=kq)                   # (n, kq)
-
-    A = a_ref[idx]                                    # neighbour alpha_adj
-    SE = se_ref[idx]
-    Wn = 1.0 / np.clip(SE, 1e-4, None) ** 2
-    self_mask = id_ref[idx] == ids_np[:, None]
-    Wn = np.where(self_mask, 0.0, Wn)
-
-    Wsum = Wn.sum(1)
-    expected = (Wn * A).sum(1) / Wsum                 # precision-weighted local mean
-    # weighted variance of neighbours around the local mean
-    var_obs = (Wn * (A - expected[:, None]) ** 2).sum(1) / Wsum
-    mean_meas_var = (Wn * SE ** 2).sum(1) / Wsum
-    sigma_bio2 = np.clip(var_obs - mean_meas_var, 0.0, None)
-    se_expected2 = var_obs / args.k
-
-    se_self = df["alpha_SE"].values
-    denom = np.sqrt(se_self ** 2 + sigma_bio2 + se_expected2)
-    residual = df["alpha_adj"].values - expected
-    z = residual / denom
+    stats = local_residual_stats(df, X, ref, ids_np, args.k)
+    expected = stats["expected"]
+    residual = stats["residual"]
+    z = stats["z"]
 
     df["expected_Nea"] = expected
     df["residual_Nea"] = residual
     df["z_resid"] = z
-    df["sigma_bio_local"] = np.sqrt(sigma_bio2)
-    df["n_neighbors_eff"] = (Wsum ** 2) / (Wn ** 2).sum(1)   # effective neighbour count
+    df["sigma_bio_local"] = stats["sigma_bio"]
+    df["se_expected"] = stats["se_expected"]
+    df["n_neighbors_eff"] = stats["n_neighbors_eff"]
 
     # ---- interpretable predictive model (Phase 5): weighted ridge, CV R^2 ------
     Xr = X[ref]
@@ -133,7 +104,8 @@ def main():
     keep_cols = ["genetic_id", "group_id", "country", "lat", "lon", "date_bp",
                  "data_type", "alpha_Nea", "alpha_adj", "alpha_SE", "alpha_nSNP",
                  "high_conf", "expected_Nea", "residual_Nea", "z_resid",
-                 "sigma_bio_local", "n_neighbors_eff", "D_Nea_Z", "D_Den_Z", "flags"]
+                 "sigma_bio_local", "se_expected", "n_neighbors_eff",
+                 "D_Nea_Z", "D_Den_Z", "flags"]
     df[keep_cols].to_csv(rpath, index=False)
 
     cand = df[df["high_conf"]].copy()
@@ -155,6 +127,7 @@ def main():
     txt.append(f"high-confidence eligible: {len(cand):,}   K={args.k}   "
                f"data-type offsets: " + ", ".join(f"{k}:{v*100:+.2f}pp" for k, v in off.items() if abs(v) > 1e-9))
     txt.append("z = (observed_adj - expected) / sqrt(SE_self^2 + bio_scatter^2 + SE_expected^2)")
+    txt.append("SE_expected uses the precision-weighted effective neighbour count, not nominal K.")
     txt.append("HYPOTHESES ONLY — Phase 7 investigates each, Phase 9 tests robustness.")
     txt.append("")
     txt.append("=== MORE Neanderthal than expected (top 25 positive z) ===")

@@ -38,7 +38,7 @@ Usage:
   python denisovan_survey.py --panel 1240k
   python denisovan_survey.py --panel 1240k --min-snps 100000
 """
-import os, sys, time, argparse
+import os, sys, argparse
 import numpy as np
 import pandas as pd
 from scipy import stats as sps

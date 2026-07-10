@@ -46,6 +46,9 @@ def main():
     ap.add_argument("--panel", choices=list(PANELS), default="1240k")
     ap.add_argument("--nsnp", type=int, default=30000)
     ap.add_argument("--k", type=int, default=10)
+    ap.add_argument("--offset-frac", type=float, default=0.0,
+                    help="shift the even SNP grid by this fraction of one step for PCA-subset robustness")
+    ap.add_argument("--out", default="", help="optional output CSV path")
     args = ap.parse_args()
     cfg = PANELS[args.panel]
 
@@ -55,7 +58,10 @@ def main():
 
     panel = Panel(cfg["prefix"])
     # even autosomal SNP subset
-    sub = np.linspace(0, panel.n_snp - 1, args.nsnp).astype(np.int64)
+    step = panel.n_snp / max(args.nsnp, 1)
+    sub = np.floor(np.arange(args.nsnp) * step + args.offset_frac * step).astype(np.int64)
+    sub = np.clip(sub, 0, panel.n_snp - 1)
+    sub = np.unique(sub)
     snp_rows = panel.snp_rows[sub]
     cols = np.array([panel._id_to_col[i] for i in ids], dtype=np.int64)
 
@@ -87,7 +93,7 @@ def main():
 
     pcs = pd.DataFrame(PC, columns=[f"PC{i+1}" for i in range(args.k)])
     pcs.insert(0, "genetic_id", ids)
-    out = os.path.join(RESULTS, f"phase5_{args.panel}_pca.csv")
+    out = args.out or os.path.join(RESULTS, f"phase5_{args.panel}_pca.csv")
     pcs.to_csv(out, index=False)
 
     # ---- sanity checks -------------------------------------------------------

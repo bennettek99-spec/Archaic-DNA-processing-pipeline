@@ -3,7 +3,8 @@
 # any machine — no paths are hard-coded in the code.
 
 # Directory holding the AADR EIGENSTRAT/TGENO files (.geno/.snp/.ind/.anno).
-aadr_dir: "C:/Users/benne/aadr_v66"
+# Set this in a machine-local config, or export ARCHAIC_AADR_DIR.
+aadr_dir: "/path/to/aadr"
 
 # Panels: <prefix> is the filename stem inside aadr_dir; QC thresholds per panel.
 panels:
@@ -12,11 +13,17 @@ panels:
     snps_col: "snps_ho"
     snp_floor: 15000
     snp_lowpower: 100000
+    high_conf_min_coverage: 0.02
+    high_conf_max_contam_lb: 0.02
+    high_conf_max_damage: 0.30
   1240k:
     prefix: "v66.p1_1240K"
     snps_col: "snps_1240k"
     snp_floor: 30000
     snp_lowpower: 200000
+    high_conf_min_coverage: 0.02
+    high_conf_max_contam_lb: 0.02
+    high_conf_max_damage: 0.30
 
 # Output directory (relative to the repo root).
 results_dir: "results"

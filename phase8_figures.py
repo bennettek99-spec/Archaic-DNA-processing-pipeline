@@ -100,7 +100,7 @@ def main():
     labs = ["0–3k", "3–5k", "5–8k", "8–12k", "12k+ (UP)"]
     hc["era"] = pd.cut(hc["date_bp"], bins=bins, labels=labs, right=False)
     data = [hc.loc[hc["era"] == l, "alpha_Nea"].dropna()*100 for l in labs]
-    parts = ax.violinplot(data, showmedians=True)
+    ax.violinplot(data, showmedians=True)
     ax.set_xticks(range(1, len(labs)+1)); ax.set_xticklabels(labs)
     ax.set_xlabel("era (years BP)"); ax.set_ylabel("Neanderthal %"); ax.set_ylim(0, 4.5)
     ax.set_title("Neanderthal ancestry through time (high-confidence)")

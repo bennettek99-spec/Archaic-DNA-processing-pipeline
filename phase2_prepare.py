@@ -55,27 +55,31 @@ _AFRICA = ("morocco", "algeria", "tunisia", "libya", "egypt", "sudan",
            "liberia", "gabon", "central african", "swahili")
 
 
-def continent(country, lat, lon):
+def continent_info(country, lat, lon):
     c = (country or "").lower()
     for kw in _OCEANIA:
         if kw in c:
-            return "Oceania"
+            return "Oceania", False
     for kw in _AMERICAS:
         if kw in c:
-            return "Americas"
+            return "Americas", False
     for kw in _AFRICA:
         if kw in c:
-            return "Africa"
+            return "Africa", False
     if np.isfinite(lat) and np.isfinite(lon):
         if lon <= -28:
-            return "Americas"
+            return "Americas", False
         if lat <= -10 and lon >= 100:
-            return "Oceania"
-        return "Eurasia"
+            return "Oceania", False
+        return "Eurasia", False
     # no country match and no coords: leave to caller (Unknown)
     if c and c not in ("nan", "..", ""):
-        return "Eurasia"   # country given but unrecognised -> assume Eurasia, flag
-    return "Unknown"
+        return "Eurasia", True   # country given but unrecognised -> assume Eurasia, flag
+    return "Unknown", True
+
+
+def continent(country, lat, lon):
+    return continent_info(country, lat, lon)[0]
 
 
 def main():
@@ -127,7 +131,7 @@ def main():
         if is_modern and not is_global:
             drop("present_day"); continue
         # 4. continent
-        cont = continent(r["country"], lat, lon)
+        cont, cont_uncertain = continent_info(r["country"], lat, lon)
         if cont != "Eurasia" and not is_global:
             drop(f"non_eurasian:{cont}"); continue
         # 5. quality assessment
@@ -149,10 +153,13 @@ def main():
             flags.append("no_date")
         if not (np.isfinite(lat) and np.isfinite(lon)):
             flags.append("no_coords")
+        if cont_uncertain:
+            flags.append("continent_uncertain")
         rows.append(dict(
             genetic_id=gid, group_id=grp, locality=r["locality"],
             country=r["country"], lat=lat, lon=lon,
             continent=cont, is_modern=bool(is_modern),
+            continent_uncertain=bool(cont_uncertain),
             date_bp=date_bp, date_sd=r["date_sd"], full_date=r["full_date"],
             coverage=r["coverage"], snps_hit=nsnp, mol_sex=r["mol_sex"],
             assessment=assess, angsd_contam=r["angsd"], hapconx_contam=r["hapconx"],

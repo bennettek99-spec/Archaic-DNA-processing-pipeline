@@ -1,5 +1,36 @@
 # Changelog
 
+## [Unreleased] - Robust outlier model and portability hardening
+
+### Added
+- **`archaic/neighborhood.py`**: shared local-neighbour residual model for Phase 6
+  and Phase 9. The expected-value uncertainty now uses the precision-weighted
+  effective neighbour count instead of the nominal K, so a few high-coverage
+  neighbours cannot make the expected mean look more certain than it is.
+- **Phase 9 robustness perturbations**: duplicate-library-root pruning, feature
+  weight perturbations (ancestry-only, equal geo/time, weaker PCs), optional
+  alternate PCA files (`phase5_pca.py --offset-frac ... --out ...`), and focused
+  local READ-style kinship pruning around the nominal top candidates.
+- **High-confidence technical gates** in `config.yaml` / `phase4_normalize.py`:
+  SNP count remains the main floor, with available coverage, contamination lower
+  bound, and damage metadata now used to exclude technically risky genomes from
+  individual-level outlier calls.
+- **Continent-audit metadata** in Phase 2: retained samples now record
+  `continent_uncertain`, and unrecognized-country Eurasia fallbacks are surfaced
+  in the sample flags.
+
+### Changed
+- Removed developer-machine AADR paths from built-in defaults. A fresh checkout now
+  requires `aadr_dir` in config, `ARCHAIC_CONFIG`, or `ARCHAIC_AADR_DIR`, and fails
+  with a setup message if none is configured. `config.local.yaml` is auto-detected
+  and ignored for machine-local paths.
+- `phase5_pca.py` can write alternate PCA files from shifted even-SNP grids for
+  PCA-subset sensitivity checks.
+
+### Fixed
+- Removed lingering unused bindings flagged by `pyflakes` in `denisovan_survey.py`,
+  `etruscan_study.py`, and `phase8_figures.py`.
+
 ## [0.5.0] — Positional & Denisovan extensions
 
 Three AADR-native additions that move beyond the single genome-wide Neanderthal

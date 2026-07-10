@@ -12,12 +12,19 @@ from __future__ import annotations
 import numpy as np
 from . import lib_eigenstrat as le
 
-DEFAULT_PREFIX = r"C:\Users\benne\aadr_v66\v66.p1_HO"
 AUTOSOMES = {str(c) for c in range(1, 23)}
 
 
 class Panel:
-    def __init__(self, prefix: str = DEFAULT_PREFIX, autosomes_only: bool = True):
+    def __init__(self, prefix: str, autosomes_only: bool = True):
+        if not prefix:
+            raise ValueError("Panel requires an explicit EIGENSTRAT prefix.")
+        norm = prefix.replace("\\", "/")
+        if norm.startswith("/path/to/aadr") or norm.startswith("C:/path/to/aadr"):
+            raise RuntimeError(
+                "AADR data directory is not configured. Set aadr_dir in config.yaml, "
+                "set ARCHAIC_CONFIG to a machine-local config, or set ARCHAIC_AADR_DIR."
+            )
         self.prefix = prefix
         self.snp = le.read_snp(prefix + ".snp")
         self.ind = le.read_ind(prefix + ".ind")

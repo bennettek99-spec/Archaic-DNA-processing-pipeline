@@ -146,15 +146,18 @@ modern populations): see **`VALIDATION.md`** — r=0.87 (0.96 excl. Oase1) vs pu
 
 ## Configure (no hard-coded paths)
 
-Point the pipeline at your AADR download by editing **`config.yaml`** (or set
-`ARCHAIC_CONFIG=/path/to/your.yaml`):
+Point the pipeline at your AADR download by editing **`config.yaml`**, setting
+`ARCHAIC_CONFIG=/path/to/your.yaml`, or exporting `ARCHAIC_AADR_DIR`. The
+checked-in config is a template; personal paths belong in an ignored
+`config.local.yaml` (auto-detected when present) or an environment variable:
 
 ```yaml
 aadr_dir: "/path/to/aadr"      # folder with v66.p1_1240K.{geno,snp,ind,anno}
 ```
 
-Everything else (panel prefixes, QC thresholds) is in the same file; nothing is
-hard-coded in the code.
+Everything else (panel prefixes, QC thresholds, high-confidence gates) is in the
+same file. If no AADR directory is configured, the pipeline fails fast with a
+setup message rather than silently falling back to a developer-specific path.
 
 ## Full pipeline (one command)
 
@@ -213,6 +216,10 @@ python tools/compare_admixtools.py          # concordance vs ADMIXTOOLS 2
 - **Kinship** (`archaic.kinship.prune`) — READ-style relatedness/duplicate removal
   before group estimates (e.g. flags the Tarquinia necropolis family clusters among
   the Etruscans: 75 → 69 independent, 1 duplicate + 6 first-degree).
+- **Outlier robustness** (`phase9_robustness.py`) - perturbs neighbour count,
+  reference subsamples, SNP floor, feature weights, duplicate-library pruning,
+  optional alternate PCA files (`phase5_pca.py --offset-frac ... --out ...`), and
+  focused local READ-style pruning around the nominal top candidates.
 - **Release** — `pip`-installable, `CITATION.cff`, `.zenodo.json`, CI; see `RELEASING.md`
   for minting a Zenodo DOI.
 

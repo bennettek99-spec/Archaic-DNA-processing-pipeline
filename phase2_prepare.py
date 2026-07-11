@@ -30,6 +30,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic import lib_eigenstrat as le, anno as anno_mod
+from archaic.manifest import manifest_record, write_frozen_manifest
 from archaic.refs import PANELS, NONHUMAN_OR_REF
 
 RESULTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
@@ -106,7 +107,7 @@ def main():
     print(f"  snps column in use: {snps_col} "
           f"(non-null: {ann[snps_col].notna().sum():,})")
 
-    rows, excluded = [], []
+    rows, excluded, manifest_rows = [], [], []
     for _, r in ann.iterrows():
         gid = r["genetic_id"]
         grp = (r["group_id"] or "")
@@ -117,6 +118,9 @@ def main():
         def drop(reason):
             excluded.append(dict(genetic_id=gid, group_id=grp, country=r["country"],
                                  date_bp=date_bp, snps=nsnp, reason=reason))
+            manifest_rows.append(manifest_record(
+                r, panel=args.panel, panel_prefix=prefix, snps_col=snps_col,
+                status="excluded", exclusion_reason=reason))
 
         # 1. genotypes present
         if gid not in have_geno:
@@ -166,6 +170,9 @@ def main():
             damage=r["damage"], y_hap=r["y_hap"], mt_hap=r["mt_hap"],
             flags=";".join(flags),
         ))
+        manifest_rows.append(manifest_record(
+            r, panel=args.panel, panel_prefix=prefix, snps_col=snps_col,
+            status="retained", exclusion_reason="", notes=";".join(flags)))
 
     meta = pd.DataFrame(rows)
     exc = pd.DataFrame(excluded)
@@ -173,8 +180,10 @@ def main():
     # ----------------------------------------------------------------- outputs
     mpath = os.path.join(RESULTS, f"phase2_{tag}_metadata.csv")
     epath = os.path.join(RESULTS, f"phase2_{tag}_excluded.csv")
+    fmpath = os.path.join(RESULTS, f"phase2_{tag}_sample_manifest.csv")
     meta.to_csv(mpath, index=False)
     exc.to_csv(epath, index=False)
+    manifest_sha = write_frozen_manifest(manifest_rows, fmpath)
 
     # summary
     lines = []
@@ -188,6 +197,8 @@ def main():
     lines.append(f"anno rows: {len(ann):,}   genotyped: {len(have_geno):,}")
     lines.append(f"RETAINED (Eurasian ancient, QC-pass): {len(meta):,}")
     lines.append(f"EXCLUDED: {len(exc):,}")
+    lines.append(f"FROZEN MANIFEST: {os.path.basename(fmpath)}")
+    lines.append(f"MANIFEST SHA256: {manifest_sha}")
     lines.append("")
     lines.append("Exclusion reasons (grouped):")
     er = exc["reason"].str.replace(r":.*$", "", regex=True)
@@ -224,7 +235,7 @@ def main():
     with open(spath, "w", encoding="utf-8") as fh:
         fh.write(summary + "\n")
     print("\n" + summary)
-    print(f"\nWrote:\n  {mpath}\n  {epath}\n  {spath}")
+    print(f"\nWrote:\n  {mpath}\n  {epath}\n  {fmpath}\n  {fmpath}.sha256\n  {spath}")
 
 
 if __name__ == "__main__":

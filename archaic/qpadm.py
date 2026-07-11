@@ -107,6 +107,72 @@ def _gls_fit(sys_, a_rest):
     return chi2, dof, p
 
 
+def _rank_approx(M, rank):
+    """Best rank-r approximation by SVD."""
+    if rank <= 0:
+        return np.zeros_like(M)
+    U, S, Vt = np.linalg.svd(M, full_matrices=False)
+    r = min(rank, len(S))
+    return (U[:, :r] * S[:r]) @ Vt[:r, :]
+
+
+def _f4_matrix_system(freq, lefts, rights, block, n_blocks):
+    """Build qpWave's f4 matrix and leave-one-block-out replicates.
+
+    Matrix entries are f4(L_i, L0; R_j, R0), i>0, j>0.  A low-rank matrix means
+    the left populations are related to the right outgroups through only a small
+    number of ancestry streams.
+    """
+    L0, Li = lefts[0], lefts[1:]
+    R0, Rj = rights[0], rights[1:]
+    need = list(lefts) + list(rights)
+    mask = np.all([np.isfinite(freq[p]) for p in need], axis=0)
+    total_cnt = float(mask.sum())
+    cnt_block = np.bincount(block, weights=mask.astype(np.float64), minlength=n_blocks)
+    quads = [(l, L0, r, R0) for l in Li for r in Rj]
+    bsum = _block_sums(freq, quads, mask, block, n_blocks)
+    full = (bsum.sum(0) / total_cnt).reshape(len(Li), len(Rj))
+    denom = total_cnt - cnt_block
+    valid = denom >= MIN_SNP_PER_LOO
+    with np.errstate(invalid="ignore", divide="ignore"):
+        loo_flat = (bsum.sum(0)[None, :] - bsum) / denom[:, None]
+    loo_flat = np.where(valid[:, None], loo_flat, np.nan)
+    loo = loo_flat.reshape(n_blocks, len(Li), len(Rj))
+    return dict(matrix=full, loo=loo, valid=valid, n_snp=int(total_cnt),
+                lefts=list(lefts), rights=list(rights))
+
+
+def qpwave(freq, lefts, rights, block, n_blocks=50, max_rank=None):
+    """Simplified qpWave rank tests for left/right population sets.
+
+    Returns one row per tested rank with chi-square p-value.  This is a pure
+    Python companion diagnostic; authoritative publication runs should still be
+    cross-checked against ADMIXTOOLS 2.
+    """
+    if len(lefts) < 2 or len(rights) < 2:
+        return []
+    sys_ = _f4_matrix_system(freq, lefts, rights, block, n_blocks)
+    M = sys_["matrix"]
+    nr, nc = M.shape
+    max_rank = min(nr, nc) - 1 if max_rank is None else min(max_rank, min(nr, nc) - 1)
+    out = []
+    loo = np.array([sys_["loo"][b] for b in range(n_blocks) if sys_["valid"][b]])
+    B = len(loo)
+    for rank in range(max_rank + 1):
+        resid = (M - _rank_approx(M, rank)).reshape(-1)
+        lr = np.array([(m - _rank_approx(m, rank)).reshape(-1) for m in loo])
+        dof = (nr - rank) * (nc - rank)
+        if B > 1 and dof > 0:
+            cov = (B - 1) / B * np.cov(lr.T, bias=True) * B
+            chi2 = float(resid @ np.linalg.pinv(np.atleast_2d(cov)) @ resid)
+            p = _chi2_sf(chi2, dof)
+        else:
+            chi2 = float("nan"); p = float("nan")
+        out.append(dict(rank=rank, chi2=chi2, dof=dof, p=p,
+                        n_snp=sys_["n_snp"], n_left=len(lefts), n_right=len(rights)))
+    return out
+
+
 def qpadm(freq, target, sources, outgroups, block, n_blocks=50):
     """Return dict(sources, weights, se, chi2, dof, p, n_snp). freq must contain
     target, every source and every outgroup as per-SNP allele-frequency arrays."""

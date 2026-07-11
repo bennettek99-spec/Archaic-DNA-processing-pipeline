@@ -33,6 +33,7 @@ from scipy import stats as sstats
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.panel import Panel
 from archaic import loci as L
+from archaic import cohort_rules
 from archaic.refs import PANELS
 
 PANEL = "1240k"
@@ -74,14 +75,21 @@ def main():
     res = pd.read_csv(os.path.join(RESULTS, f"phase6_{PANEL}_residuals.csv"))
     pcs = pd.read_csv(os.path.join(RESULTS, f"phase5_{PANEL}_pca.csv"))
     df = res.merge(pcs, on="genetic_id")
+    if "archaeological_cohort" not in df.columns:
+        df = cohort_rules.apply_cohort_rules(df)
+    if "population_test_keep" not in df.columns:
+        df = cohort_rules.add_population_test_keep(df)
     df["weight"] = 1.0 / df["alpha_SE"].clip(lower=1e-4) ** 2
 
-    ita = df[(df["country"] == "Italy") & df["date_bp"].between(800, 7000)].copy()
+    pop_keep = df["population_test_keep"].fillna(True).astype(bool)
+    ita = df[(df["country"] == "Italy") & df["date_bp"].between(800, 7000) & pop_keep].copy()
     ita["bin"] = ita["date_bp"].map(bin_of)
-    etr = df[df["group_id"].str.contains("Etruscan", case=False, na=False)].copy()
+    etr_all = df[df["archaeological_cohort"].eq("Etruscan_context")].copy()
+    etr = etr_all[etr_all["population_test_keep"].fillna(True).astype(bool)].copy()
     etr["is_o"] = etr["group_id"].str.contains("-o", na=False)
     print(f"Italian transect: {len(ita)}  |  Etruscans: {len(etr)} "
-          f"({int(etr['is_o'].sum())} AADR ancestry-outliers '-o')")
+          f"({int(etr['is_o'].sum())} AADR ancestry-outliers '-o'; "
+          f"{len(etr_all) - len(etr)} duplicate-library exclusions)")
 
     # ===================== A. genome-wide archaic ancestry over time ===========
     A_rows = []

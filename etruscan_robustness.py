@@ -13,7 +13,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.panel import Panel
-from archaic import stats as st, kinship as kin, profiles as pf
+from archaic import stats as st, kinship as kin, profiles as pf, cohort_rules
 from archaic.refs import PANELS
 
 PANEL = "1240k"
@@ -31,9 +31,13 @@ def main():
     panel = Panel(PANELS[PANEL]["prefix"]); refs = PANELS[PANEL]["refs"]
     block = st.assign_blocks(panel.n_snp, 50)
     meta = pd.read_csv(os.path.join(RESULTS, f"phase4_{PANEL}_analysis.csv"))
+    if "archaeological_cohort" not in meta.columns:
+        meta = cohort_rules.apply_cohort_rules(meta)
+    if "population_test_keep" not in meta.columns:
+        meta = cohort_rules.add_population_test_keep(meta)
     refcols = {k: panel.cols_for(**refs[k]) for k in ["Altai", "Vindija", "Chimp", "Mbuti"]}
 
-    etr = meta[meta["group_id"].str.contains("Etruscan", case=False, na=False)]
+    etr = meta[meta["archaeological_cohort"].eq("Etruscan_context")]
     ids = [i for i in etr["genetic_id"] if i in panel._id_to_col]
     cols = np.array([panel._id_to_col[i] for i in ids], np.int64)
     idc = {v: k for k, v in panel._id_to_col.items()}

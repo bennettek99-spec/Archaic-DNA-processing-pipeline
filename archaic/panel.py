@@ -11,12 +11,14 @@ NaN there and is dropped from any statistic that needs that population.
 from __future__ import annotations
 import numpy as np
 from . import lib_eigenstrat as le
+from . import snp_filters
 
 AUTOSOMES = {str(c) for c in range(1, 23)}
 
 
 class Panel:
-    def __init__(self, prefix: str, autosomes_only: bool = True):
+    def __init__(self, prefix: str, autosomes_only: bool = True,
+                 transversions_only: bool = False):
         if not prefix:
             raise ValueError("Panel requires an explicit EIGENSTRAT prefix.")
         norm = prefix.replace("\\", "/")
@@ -35,6 +37,8 @@ class Panel:
             keep = self.snp["chrom"].isin(AUTOSOMES).to_numpy()
         else:
             keep = np.ones(len(self.snp), dtype=bool)
+        if transversions_only:
+            keep = keep & np.asarray(snp_filters.transversion_mask(self.snp), dtype=bool)
         self.snp_rows = np.where(keep)[0].astype(np.int64)
         self.n_snp = len(self.snp_rows)
 

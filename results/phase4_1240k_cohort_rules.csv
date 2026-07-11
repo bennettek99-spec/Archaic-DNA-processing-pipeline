@@ -1,0 +1,6 @@
+cohort,inclusion_rule
+Etruscan_context,group_id contains Etruscan; 2300-3200 BP preferred for Iron Age Etruria
+Latin_context,Latini/Latin/Lazio Iron Age labels excluding Etruscan; 2300-3200 BP
+Preceding_Bronze_Age_Italy,Italy Bronze Age labels (_BA/_EBA/_MBA/_LBA) or Italy 3200-4500 BP
+Imperial_Roman_context,Imperial Roman / Roman Italy labels; 1700-2300 BP
+Early_Medieval_Italy,Italy Late Antique / Medieval labels or Italy 800-1700 BP

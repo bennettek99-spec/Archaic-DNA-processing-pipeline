@@ -41,9 +41,22 @@ KEY VALIDATION TESTS
 
 Correlation mine vs published: r=0.866 (all 16), r=0.959 (excl. Oase1)
 Within published range (+/- 1 SE): 16/17 samples
+[all] MAE=0.61pp, bias=+0.17pp, coverage(pub range + 1SE)=0.94, Bland-Altman limits=[-1.74, +2.08]pp
+[exclude_recent_neanderthal_ancestor_Oase1] MAE=0.38pp, bias=+0.17pp, coverage(pub range + 1SE)=0.93, Bland-Altman limits=[-0.87, +1.22]pp
 ```
 
 ![validation](figures/fig7_validation_vs_published.png)
+
+![bland-altman](figures/fig8_validation_bland_altman.png)
+
+## Validation metrics beyond correlation
+
+| set | n | MAE (pp) | bias (pp) | CI coverage (+1SE) | Bland-Altman limits (pp) |
+|---|---:|---:|---:|---:|---|
+| all | 17 | 0.61 | +0.17 | 0.94 | [-1.74, +2.08] |
+| exclude_recent_neanderthal_ancestor_Oase1 | 15 | 0.38 | +0.17 | 0.93 | [-0.87, +1.22] |
+
+Oase1 is reported both included and excluded under the predefined rule `recent_neanderthal_ancestor`, because its long Neanderthal haplotypes make it a positive control rather than a representative background-ancestry sample.
 
 **Verdict:** the pipeline reproduces published Neanderthal estimates across the
 literature anchors (r=0.87 overall, 0.96 excluding the Oase1 leverage

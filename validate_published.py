@@ -29,6 +29,7 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.panel import Panel
 from archaic import stats as st
+from archaic import validation as val
 from archaic.refs import PANELS
 
 RESULTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
@@ -82,7 +83,10 @@ def main():
         rows.append(dict(name=name, category=cat, n_ind=info[name]["n_ind"],
                          my_Nea=a["theta"]*100, my_SE=a["se"]*100, nSNP=a["n_used"],
                          D_Nea=dn["theta"], D_Nea_Z=dn["z"], D_Den=dd["theta"], D_Den_Z=dd["z"],
-                         pub_Nea=pub, pub_lo=prange[0], pub_hi=prange[1], source=src, den_note=denote))
+                         pub_Nea=pub, pub_lo=prange[0], pub_hi=prange[1], source=src,
+                         den_note=denote,
+                         predefined_exclusion_rule=(
+                             "recent_neanderthal_ancestor" if name.startswith("Oase1") else "")))
     R = pd.DataFrame(rows)
 
     # ---- table ----------------------------------------------------------------
@@ -132,10 +136,29 @@ def main():
     r_noo = np.corrcoef(cno["my_Nea"], cno["pub_Nea"])[0, 1]
     n_inrange = int(((R["pub_lo"]-R["my_SE"] <= R["my_Nea"]) &
                      (R["my_Nea"] <= R["pub_hi"]+R["my_SE"])).sum())
+    metrics = pd.DataFrame([
+        val.validation_summary(R, label="all"),
+        val.validation_summary(
+            R[R["predefined_exclusion_rule"] != "recent_neanderthal_ancestor"],
+            label="exclude_recent_neanderthal_ancestor_Oase1",
+        ),
+    ])
+    sens = val.threshold_sensitivity(R, thresholds=(1.5, 2.0, 2.5, 3.0, 5.0))
+    ba = val.bland_altman_table(R)
+    metrics.to_csv(os.path.join(RESULTS, "validation_metrics.csv"), index=False)
+    sens.to_csv(os.path.join(RESULTS, "validation_threshold_sensitivity.csv"), index=False)
+    ba.to_csv(os.path.join(RESULTS, "validation_bland_altman.csv"), index=False)
+
     K.append("")
     K.append(f"Correlation mine vs published: r={r_all:.3f} (all {len(comp)}), "
              f"r={r_noo:.3f} (excl. Oase1)")
     K.append(f"Within published range (+/- 1 SE): {n_inrange}/{len(R)} samples")
+    for _, m in metrics.iterrows():
+        K.append(f"[{m['set']}] MAE={m['mae_pct_points']:.2f}pp, "
+                 f"bias={m['bias_pct_points']:+.2f}pp, "
+                 f"coverage(pub range + 1SE)={m['ci_coverage_pub_range_plus_1se']:.2f}, "
+                 f"Bland-Altman limits=[{m['bland_altman_lower']:+.2f}, "
+                 f"{m['bland_altman_upper']:+.2f}]pp")
     print("\n" + "\n".join(K))
 
     # ---- scatter figure -------------------------------------------------------
@@ -158,6 +181,25 @@ def main():
     ax.legend(); ax.grid(alpha=0.3); fig.tight_layout()
     fig.savefig(f"{FIG}/fig7_validation_vs_published.png", dpi=150); plt.close(fig)
 
+    # Bland-Altman diagnostic: method difference vs method mean.
+    fig, ax = plt.subplots(figsize=(6.6, 4.8))
+    diff = ba["method_diff"].to_numpy(float)
+    bias = float(np.mean(diff))
+    sd = float(np.std(diff, ddof=1))
+    ax.scatter(ba["method_mean"], ba["method_diff"], s=36, alpha=0.85)
+    for _, r in ba.iterrows():
+        ax.annotate(r["name"], (r["method_mean"], r["method_diff"]), fontsize=7,
+                    xytext=(4, 3), textcoords="offset points")
+    ax.axhline(bias, color="k", lw=1, label=f"bias {bias:+.2f} pp")
+    ax.axhline(bias + 1.96 * sd, color="grey", ls="--", lw=1)
+    ax.axhline(bias - 1.96 * sd, color="grey", ls="--", lw=1,
+               label="95% limits of agreement")
+    ax.set_xlabel("mean of published and pipeline Neanderthal %")
+    ax.set_ylabel("pipeline - published Neanderthal %")
+    ax.set_title("Bland-Altman validation diagnostic")
+    ax.legend(fontsize=8); ax.grid(alpha=0.3); fig.tight_layout()
+    fig.savefig(f"{FIG}/fig8_validation_bland_altman.png", dpi=150); plt.close(fig)
+
     R.to_csv(os.path.join(RESULTS, "validation_vs_published.csv"), index=False)
 
     # ---- VALIDATION.md --------------------------------------------------------
@@ -174,6 +216,20 @@ def main():
                   f"| {r['source']} | {r['D_Nea_Z']:.1f} | {r['D_Den_Z']:.1f} |")
     md += ["", "## Key tests", "```", *K, "```", "",
            "![validation](figures/fig7_validation_vs_published.png)", "",
+           "![bland-altman](figures/fig8_validation_bland_altman.png)", "",
+           "## Validation metrics beyond correlation",
+           "",
+           "| set | n | MAE (pp) | bias (pp) | CI coverage (+1SE) | Bland-Altman limits (pp) |",
+           "|---|---:|---:|---:|---:|---|"]
+    for _, m in metrics.iterrows():
+        md.append(f"| {m['set']} | {int(m['n'])} | {m['mae_pct_points']:.2f} "
+                  f"| {m['bias_pct_points']:+.2f} | "
+                  f"{m['ci_coverage_pub_range_plus_1se']:.2f} | "
+                  f"[{m['bland_altman_lower']:+.2f}, {m['bland_altman_upper']:+.2f}] |")
+    md += ["", "Oase1 is reported both included and excluded under the predefined rule "
+           "`recent_neanderthal_ancestor`, because its long Neanderthal haplotypes make it "
+           "a positive control rather than a representative background-ancestry sample.",
+           "",
            "**Verdict:** the pipeline reproduces published Neanderthal estimates across the",
            f"literature anchors (r={r_all:.2f} overall, {r_noo:.2f} excluding the Oase1 leverage",
            "point), quantitatively matches the high-coverage controls (Ust'-Ishim 2.3%, "
@@ -184,7 +240,10 @@ def main():
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "VALIDATION.md"),
               "w", encoding="utf-8") as fh:
         fh.write("\n".join(md) + "\n")
-    print("\nWrote results/validation_vs_published.csv, figures/fig7_validation_vs_published.png, VALIDATION.md")
+    print("\nWrote results/validation_vs_published.csv, results/validation_metrics.csv, "
+          "results/validation_threshold_sensitivity.csv, results/validation_bland_altman.csv, "
+          "figures/fig7_validation_vs_published.png, figures/fig8_validation_bland_altman.png, "
+          "VALIDATION.md")
 
 
 if __name__ == "__main__":

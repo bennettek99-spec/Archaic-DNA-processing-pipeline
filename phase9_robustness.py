@@ -16,6 +16,7 @@ estimates):
   * neighbour count K in {40, 80, 160}
   * reference-set 50% random subsample (x3 seeds)
   * tighter high-confidence SNP floor (>= 400k usable SNPs)
+  * leave out one high-sample archaeological site/locality at a time
   * bootstrap of the reference pool (B=100) -> empirical null for max|z|
 
 Output: results/phase9_<panel>_robustness.txt
@@ -137,6 +138,39 @@ def main():
         line(f"reference 50% subsample (seed {s})", residual_z(df, X, rm, ids_np, 80))
     tight = hc & (df["alpha_nSNP"].values >= 400_000)
     line(f"tight floor >=400k SNP (n={tight.sum()})", residual_z(df, X, tight, ids_np, 80))
+
+    if "locality" in df.columns:
+        sites = df.loc[hc, "locality"].fillna("").astype(str)
+        sites = sites[sites != ""].value_counts().head(10)
+        for site, n_site in sites.items():
+            if n_site < 5:
+                continue
+            loo_site = hc & (df["locality"].fillna("").astype(str).values != site)
+            label = f"leave out site: {site[:18]} (n={n_site})"
+            line(label, residual_z(df, X, loo_site, ids_np, 80))
+
+    tv_path = os.path.join(RESULTS, f"phase3_{args.panel}_transversions_estimates.csv")
+    if os.path.exists(tv_path):
+        tv = pd.read_csv(tv_path, usecols=["genetic_id", "alpha_Nea", "alpha_SE", "alpha_nSNP"])
+        cmp = df[["genetic_id", "alpha_Nea", "high_conf"]].merge(
+            tv, on="genetic_id", suffixes=("", "_tv")
+        )
+        cmp = cmp[cmp["high_conf"]]
+        if len(cmp):
+            complete = len(tv) >= len(df)
+            delta = (cmp["alpha_Nea_tv"] - cmp["alpha_Nea"]) * 100
+            R.append("")
+            R.append("(a2) TRANSVERSION-ONLY comparison:")
+            if not complete:
+                R.append("  status: PARTIAL run only; exploratory, not publication-grade")
+            R.append(f"  matched high-confidence samples: {len(cmp):,}")
+            R.append(f"  median delta(tv - all SNPs): {delta.median():+.3f} pp")
+            R.append(f"  MAE delta: {delta.abs().mean():.3f} pp")
+            R.append(f"  corr(all, transversion): {cmp['alpha_Nea'].corr(cmp['alpha_Nea_tv']):.3f}")
+    else:
+        R.append("")
+        R.append("(a2) TRANSVERSION-ONLY comparison: not run")
+        R.append(f"  To add it: python phase3_estimate.py --panel {args.panel} --transversions-only")
 
     for pca_path in args.alt_pca:
         alt = pd.read_csv(pca_path)

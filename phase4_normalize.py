@@ -25,6 +25,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from archaic.refs import PANELS
+from archaic import cohort_rules
 
 RESULTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 
@@ -92,6 +93,12 @@ def main():
     df.loc[~damage_ok, "high_conf_fail_reasons"] += "damage;"
     df["high_conf_fail_reasons"] = df["high_conf_fail_reasons"].str.rstrip(";")
 
+    # Archaeological cohorts are assigned before result inspection. Published
+    # group labels remain metadata; these broad inclusion rules drive population
+    # tests and duplicate-library pruning.
+    df = cohort_rules.apply_cohort_rules(df)
+    df = cohort_rules.add_population_test_keep(df)
+
     # --- bias diagnostics -----------------------------------------------------
     R = []
     R.append(f"Phase 4 bias / normalisation report — panel {args.panel}")
@@ -108,6 +115,18 @@ def main():
     R.append("")
     R.append("Weighted mean alpha_Nea overall: "
              f"{wmean(df['alpha_Nea'].values, df['weight'].values)*100:.3f}%")
+    R.append("")
+    R.append("(0) predefined archaeological cohorts for population tests:")
+    cr = df[df["archaeological_cohort"].fillna("") != ""]
+    if len(cr):
+        R.append(f"  {'cohort':30s} {'n':>6s} {'test_keep':>10s}")
+        for cohort, g in cr.groupby("archaeological_cohort"):
+            R.append(f"  {cohort:30s} {len(g):6,d} {int(g['population_test_keep'].sum()):10,d}")
+    else:
+        R.append("  no samples matched the predefined Etruscan/Italian cohort rules")
+    dup_drop = int((~df["population_test_keep"]).sum())
+    R.append(f"  duplicate-library exclusions before population tests: {dup_drop:,}")
+    R.append("  published group labels are retained as metadata, not accepted as conclusions.")
     R.append("")
     R.append("(1) alpha_Nea by sequencing data type (pseudo-haploid AG vs diploid DG/SG):")
     R.append(f"  {'type':6s} {'n':>6s} {'wmean_alpha%':>12s} {'med_SNP':>10s} {'med_SE%':>8s}")
@@ -141,10 +160,12 @@ def main():
 
     apath = os.path.join(RESULTS, f"phase4_{args.panel}_analysis.csv")
     rpath = os.path.join(RESULTS, f"phase4_{args.panel}_bias_report.txt")
+    cpath = os.path.join(RESULTS, f"phase4_{args.panel}_cohort_rules.csv")
     df.to_csv(apath, index=False)
+    cohort_rules.rules_table().to_csv(cpath, index=False)
     with open(rpath, "w", encoding="utf-8") as fh:
         fh.write(report + "\n")
-    print(f"\nWrote:\n  {apath}\n  {rpath}")
+    print(f"\nWrote:\n  {apath}\n  {rpath}\n  {cpath}")
 
 
 if __name__ == "__main__":

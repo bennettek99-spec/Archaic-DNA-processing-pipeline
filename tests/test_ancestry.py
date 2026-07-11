@@ -119,6 +119,15 @@ def test_weights_dict_flattens_constrained_result():
     assert abs(total - 1.0) < 1e-6
 
 
+def test_qpwave_returns_rank_tests():
+    freq, block, _ = _synthetic_freq(seed=7)
+    rows = qp.qpwave(freq, ["Target", "S1", "S2"], ["R0", "R1", "R2", "R3"], block, 50)
+    assert rows
+    assert {r["rank"] for r in rows} == {0, 1}
+    assert all(r["n_snp"] > 0 for r in rows)
+    assert all(r["dof"] > 0 for r in rows)
+
+
 if __name__ == "__main__":
     tests = [v for k, v in list(globals().items()) if k.startswith("test_")]
     for t in tests:

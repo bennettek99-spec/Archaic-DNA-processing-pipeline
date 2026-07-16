@@ -1,0 +1,172 @@
+{
+  "analysis": "denisovan_genome",
+  "generated_utc": "2026-07-16T22:50:53.196375+00:00",
+  "command": "python -m archaic.denisovan_genome --panel 1240k --target Denisova3.DG --output C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome",
+  "panel": "1240k",
+  "panel_prefix": "C:/Users/benne/aadr_v66\\v66.p1_1240K",
+  "target": "Denisova3.DG",
+  "target_genotype_sha256": "68eb8f6e3681156f72f40e5df10afbbb73b7328171dc7db8a2fcb0b7ed6ce5e4",
+  "autosomal_panel_sites": 1150639,
+  "transversion_panel_sites": 228560,
+  "n_blocks": 50,
+  "missing_optional_samples": [],
+  "frequency_profiles": {
+    "Target": {
+      "n": 1,
+      "n_snp": 1149356
+    },
+    "Denisova_replicate": {
+      "n": 1,
+      "n_snp": 574194
+    },
+    "Denisova_alt_calls": {
+      "n": 1,
+      "n_snp": 1061350
+    },
+    "Denisova11_F1": {
+      "n": 1,
+      "n_snp": 853190
+    },
+    "Denisova25": {
+      "n": 1,
+      "n_snp": 1058890
+    },
+    "Altai_Neanderthal": {
+      "n": 1,
+      "n_snp": 1149663
+    },
+    "Chagyrskaya_Neanderthal": {
+      "n": 1,
+      "n_snp": 1061448
+    },
+    "Vindija_Neanderthal": {
+      "n": 1,
+      "n_snp": 528415
+    },
+    "Chimp": {
+      "n": 1,
+      "n_snp": 1102442
+    },
+    "Mbuti": {
+      "n": 15,
+      "n_snp": 1146566
+    },
+    "Yoruba": {
+      "n": 127,
+      "n_snp": 1150545
+    },
+    "Papuan": {
+      "n": 32,
+      "n_snp": 1146597
+    },
+    "French": {
+      "n": 31,
+      "n_snp": 1146591
+    }
+  },
+  "transversion_frequency_profiles": {
+    "Target": {
+      "n": 1,
+      "n_snp": 228107
+    },
+    "Denisova_replicate": {
+      "n": 1,
+      "n_snp": 106726
+    },
+    "Denisova_alt_calls": {
+      "n": 1,
+      "n_snp": 208464
+    },
+    "Denisova11_F1": {
+      "n": 1,
+      "n_snp": 204757
+    },
+    "Denisova25": {
+      "n": 1,
+      "n_snp": 208091
+    },
+    "Altai_Neanderthal": {
+      "n": 1,
+      "n_snp": 228242
+    },
+    "Chagyrskaya_Neanderthal": {
+      "n": 1,
+      "n_snp": 208548
+    },
+    "Vindija_Neanderthal": {
+      "n": 1,
+      "n_snp": 144819
+    },
+    "Chimp": {
+      "n": 1,
+      "n_snp": 218089
+    },
+    "Mbuti": {
+      "n": 15,
+      "n_snp": 227076
+    },
+    "Yoruba": {
+      "n": 127,
+      "n_snp": 228533
+    },
+    "Papuan": {
+      "n": 32,
+      "n_snp": 227094
+    },
+    "French": {
+      "n": 31,
+      "n_snp": 227090
+    }
+  },
+  "input_provenance": {
+    ".geno": {
+      "path": "C:\\Users\\benne\\aadr_v66\\v66.p1_1240K.geno",
+      "size_bytes": 7117276654,
+      "mtime_utc": "2026-06-29T16:27:37.671885+00:00",
+      "sha256": null
+    },
+    ".snp": {
+      "path": "C:\\Users\\benne\\aadr_v66\\v66.p1_1240K.snp",
+      "size_bytes": 77679819,
+      "mtime_utc": "2026-06-29T16:10:30.710522+00:00",
+      "sha256": "1189e253b82058822fddabc4966c1448dea70373a96c40106e720bedd93b55bf"
+    },
+    ".ind": {
+      "path": "C:\\Users\\benne\\aadr_v66\\v66.p1_1240K.ind",
+      "size_bytes": 1017460,
+      "mtime_utc": "2026-06-29T16:10:26.703018+00:00",
+      "sha256": "c7500f8d337a42833d034800f989e1c6419855a6427769cc74de9d0a8bf76f98"
+    },
+    ".anno": {
+      "path": "C:\\Users\\benne\\aadr_v66\\v66.p1_1240K.anno",
+      "size_bytes": 13443726,
+      "mtime_utc": "2026-06-29T16:10:31.957706+00:00",
+      "sha256": null
+    }
+  },
+  "software": {
+    "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "module_sha256": "373a7a2c8ed60eff12eb1e2d34fee2b23a227cd250f7a1153cc7293ade9e9f66"
+  },
+  "interpretation_boundaries": [
+    "Denisova3.DG and Denisova.SG are call sets from the same biological specimen.",
+    "No Denisovan or combined archaic ancestry percentage is identifiable here.",
+    "Reference-defined marker sharing is a lineage fingerprint, not an ancestry proportion.",
+    "Denisova25.SG has a provisional AADR/publication status and is interpreted accordingly."
+  ],
+  "outputs": {
+    "qc": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\sample_qc.tsv",
+    "pairwise": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\pairwise_comparisons.tsv",
+    "fstats": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\fstats.tsv",
+    "sensitivity": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\transversion_sensitivity.tsv",
+    "marker": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\denisovan_marker_sharing.tsv",
+    "chromosomes": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\chromosome_robustness.tsv",
+    "figure": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\denisovan_genome_summary.png",
+    "manifest": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\run_manifest.json",
+    "report": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\report.html",
+    "results": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\RESULTS.md"
+  }
+}

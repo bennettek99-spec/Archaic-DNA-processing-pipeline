@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased
+
+- Added `archaic.denisovan_genome` / `archaic-denisovan`, a reference-aware
+  Denisova 3 workflow with genotype QC, same-specimen replicate concordance,
+  Denisovan/Neanderthal lineage tests, Denisova 11 F1 controls, transversion and
+  chromosome sensitivity, reference-defined marker fingerprints, machine-readable
+  provenance, and a self-contained HTML report. The module deliberately does not
+  turn reference-dependent archaic statistics into a Denisovan percentage.
+- Added `python -m archaic.highest_archaic`, a resumable all-AADR extreme scan
+  with distribution-aware confidence sets, lower-bound ranking, explicit
+  artifact scoring, top-candidate genotype sensitivity controls, twelve figures,
+  per-candidate reports, deterministic seeds, dry-run/subset modes, and tests.
+- Extended AADR annotation parsing with master ID, publication/DOI, and library
+  type fields. Denisovan and combined percentages remain deliberately null
+  because the validated `D_Den` statistic is a relative affinity, not a calibrated
+  ancestry proportion.
+
 ## [Unreleased] - Robust outlier model and portability hardening
 
 ### Added

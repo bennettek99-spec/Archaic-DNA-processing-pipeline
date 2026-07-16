@@ -1,0 +1,50 @@
+panel: 1240k
+seed: 20260714
+top_n: 25
+n_jackknife_blocks: 50
+
+analysis_sets:
+  broad:
+    min_informative_snps: 10000
+  high_confidence:
+    min_informative_snps: 200000
+    min_coverage: 0.02
+    max_contamination: 0.02
+    max_damage: 0.30
+    max_ci_width: 0.06
+  elite_confidence:
+    informative_snp_quantile: 0.75
+    se_quantile: 0.25
+    min_jackknife_blocks: 45
+
+time_periods:
+  - [0, 1500, Historical/Recent]
+  - [1500, 3000, Iron Age/Classical]
+  - [3000, 5200, Bronze Age/Chalcolithic]
+  - [5200, 10000, Neolithic]
+  - [10000, 15000, Mesolithic/Epipalaeolithic]
+  - [15000, 50000, Upper Palaeolithic]
+  - [50000, 1000000, Earlier than 50 ka]
+
+sensitivity:
+  enabled: true
+  top_candidates: 10
+  bootstrap_replicates: 200
+  subsampling_replicates: 200
+  common_snp_floor: 30000
+  max_candidates: 40
+
+# The validated Denisovan result is a relative D-statistic, not a percentage.
+denisovan_calibration:
+  enabled: false
+
+artifact_weights:
+  low_information: 25
+  uncertainty: 20
+  contamination: 12
+  damage: 10
+  missing_qc: 8
+  transversion_instability: 10
+  reference_instability: 5
+  chromosome_instability: 5
+  block_influence: 5

@@ -50,12 +50,26 @@ def main(argv=None):
         sub.add_parser(name, help=f"run {SCRIPTS[name]}",
                        add_help=False)
     sub.add_parser("smoke-test", help="synthetic-data plumbing check (no AADR data needed)")
+    sub.add_parser("highest-archaic", help="credibility-aware all-AADR extreme scan")
+    sub.add_parser(
+        "denisovan-genome",
+        help="reference-aware Denisovan genome analysis",
+        add_help=False,
+    )
 
     args, rest = ap.parse_known_args(argv)
 
     if args.command == "smoke-test":
         from .smoke import run_smoke_test
         sys.exit(0 if run_smoke_test() else 1)
+
+    if args.command == "highest-archaic":
+        from .highest_archaic import main as highest_main
+        sys.exit(highest_main(rest))
+
+    if args.command == "denisovan-genome":
+        from .denisovan_genome import main as denisovan_main
+        sys.exit(denisovan_main(rest))
 
     script = os.path.join(REPO_ROOT, SCRIPTS[args.command])
     if not os.path.exists(script):

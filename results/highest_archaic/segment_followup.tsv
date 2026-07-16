@@ -1,0 +1,12 @@
+segment_sample	canonical_id	n_segments	total_segment_length	mean_segment_length	max_segment_length	length_unit	chromosome_distribution	majority_assignment	genetic_id	segment_status	source
+Oase1	Oase1	9.0	122.26	13.584444444444445	36.48	cM	1:1;12:2;2:1;3:1;5:1;6:2;9:1	unassigned	Oase1_d.AG.BY.AA	existing_array_proxy	C:\Users\benne\OneDrive\Desktop\Archaic Genomics Pipeline\archaic-introgression\reports\oase1_haplotype\oase1_segments.csv
+	SB605								SB605.SG	not_available: validated general caller/read data required	
+	RISE503								RISE503.SG	not_available: validated general caller/read data required	
+	Sumidouro6								Sumidouro6_d.SG	not_available: validated general caller/read data required	
+	SB676								SB676.SG	not_available: validated general caller/read data required	
+	cambridgeshire47								cambridgeshire47.SG	not_available: validated general caller/read data required	
+	DA231								DA231.SG	not_available: validated general caller/read data required	
+	RISE502								RISE502.SG	not_available: validated general caller/read data required	
+	RISE1280								RISE1280.SG	not_available: validated general caller/read data required	
+	DA45								DA45_d.SG	not_available: validated general caller/read data required	
+	TK5-8								TK5-8.AG	not_available: validated general caller/read data required	

@@ -1,0 +1,7 @@
+genetic_id	group_id	locality	country	continent	is_modern	lat	lon	date_bp	coverage	snps_hit	mol_sex	assessment	angsd_contam	hapconx_contam	damage	alpha_Nea	alpha_SE	alpha_nSNP	D_Den	D_Den_SE	D_Den_Z	D_Den_nSNP
+RAW1.AG	Europe_Test_UP	Site A	France	Eurasia	False	46	2	30000	0.01	50000	M	Pass	[0.01,0.03]		0.20	0.090	0.030	15000	0.001	0.010	0.1	14000
+HC1.SG	Europe_Test_BA	Site B	Germany	Eurasia	False	51	10	4000	1.2	600000	F	Pass	[0.002,0.006]		0.02	0.050	0.005	350000	0.004	0.004	1.0	400000
+HC2.SG	Asia_Test_UP	Site C	China	Eurasia	False	35	110	40000	1.0	650000	M	Pass	[0.001,0.004]		0.03	0.041	0.004	410000	0.012	0.003	4.0	430000
+DEN1.SG	Papua_Test	Site D	Papua New Guinea	Oceania	False	-6	145	1000	1.5	700000	F	Pass	[0.002,0.005]		0.02	0.030	0.004	450000	0.030	0.004	7.5	460000
+CONTAM.AG	Europe_Test_IA	Site E	Italy	Eurasia	False	42	12	2500	0.2	250000	M	Pass	[0.08,0.10]		0.10	0.060	0.012	210000	0.003	0.009	0.3	190000
+MODERN.HO	Modern		France	Eurasia	True	48	2	0	20	1000000	U	Pass				0.020	0.003	500000	0.001	0.003	0.3	500000

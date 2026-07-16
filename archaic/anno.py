@@ -45,6 +45,9 @@ _FIELDS = {
     "damage":       lambda h: h.startswith("damage rate in first"),
     "y_hap":        lambda h: h.startswith("y haplogroup in terminal"),
     "mt_hap":       lambda h: h.startswith("mtdna haplogroup"),
+    "publication":   lambda h: h.startswith("first publication:"),
+    "publication_doi": lambda h: h.startswith("doi for publication"),
+    "library_type":  lambda h: h.startswith("library type"),
 }
 
 _NUM = ["lat", "lon", "date_bp", "date_sd", "coverage",
@@ -83,7 +86,8 @@ def load_anno(path: str) -> pd.DataFrame:
         if c in df:
             df[c] = df[c].map(_num)
     # tidy strings
-    for c in ("genetic_id", "group_id", "locality", "country", "assessment"):
+    for c in ("genetic_id", "master_id", "group_id", "locality", "country",
+              "assessment", "publication", "publication_doi", "library_type"):
         if c in df:
             df[c] = df[c].astype(str).str.strip()
     df["_col_index"] = idx  # provenance (which header each field came from)

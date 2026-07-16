@@ -1,0 +1,51 @@
+{
+  "study": "PRJEB10597",
+  "publication": "Meyer et al. 2016, Nature 531:504-507",
+  "method": "Published L35/MQ30 BAMs; AADR 1240K-targeted deterministic pseudo-haploid calls; Phase-3 f4/D estimators",
+  "limits": [
+    "Not a whole-genome call set or a replacement for the AADR panel.",
+    "Sparse coverage means individual estimates are exploratory.",
+    "The transition/transversion comparison is a damage-sensitivity check, not full ancient-DNA authentication."
+  ],
+  "filters": {
+    "min_mapping_quality": 30,
+    "min_base_quality": 30
+  },
+  "inputs": [
+    {
+      "sample": "femurXIII",
+      "file": "femurXIII.L35MQ30.bam",
+      "bytes": 13779378,
+      "md5": "09d66d541a63b4e93bee59ad505770dd",
+      "ena_run": "ERR995357"
+    },
+    {
+      "sample": "femur_fragment",
+      "file": "femur_fragment.L35MQ30.bam",
+      "bytes": 15517579,
+      "md5": "f21cd599ad206caeda0b24be5f180a8c",
+      "ena_run": "ERR995361"
+    },
+    {
+      "sample": "incisor",
+      "file": "incisor.L35MQ30.bam",
+      "bytes": 55948406,
+      "md5": "660f1ab7f5ced32eb32169f0b71d6492",
+      "ena_run": "ERR995358"
+    },
+    {
+      "sample": "scapula",
+      "file": "scapula.L35MQ30.bam",
+      "bytes": 8325626,
+      "md5": "0b70f2c1597e2d461094786e40b89c39",
+      "ena_run": "ERR995359"
+    },
+    {
+      "sample": "molar",
+      "file": "molar.L35MQ30.bam",
+      "bytes": 5155276,
+      "md5": "9ecb7d4c628f812d62ba15a72df03f56",
+      "ena_run": "ERR995360"
+    }
+  ]
+}

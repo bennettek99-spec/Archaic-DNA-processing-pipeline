@@ -1,7 +1,9 @@
-Phase 2 dataset preparation — panel 1240k
+Phase 2 dataset preparation — panel 1240k scope eurasia
 anno rows: 23,089   genotyped: 23,089
 RETAINED (Eurasian ancient, QC-pass): 15,443
 EXCLUDED: 7,646
+FROZEN MANIFEST: phase2_1240k_sample_manifest.csv
+MANIFEST SHA256: 466c65fe5340585655fefe5603b1a5405834c422ab1bbcd1a7aaed59e662fde2
 
 Exclusion reasons (grouped):
   present_day               3,967
@@ -14,6 +16,7 @@ Retained — non-fatal flags:
   low_power                 3,299
   questionable                634
   no_coords                    51
+  continent_uncertain          51
 
 Retained — by era (BP):
   0-3k (hist/IA-MBA)        7,934

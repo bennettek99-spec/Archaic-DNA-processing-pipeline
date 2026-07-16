@@ -1,0 +1,25 @@
+mode	sample	label	reference_defined_markers	n_callable_markers	mean_denisovan_marker_allele	is_admixture_percentage
+all_snps	Denisova_replicate	Denisova 3 (SG technical replicate)	12180	12180	1.0	False
+all_snps	Denisova_alt_calls	Denisova 3 (snpAD alternate calls)	12180	11569	0.9103206845881234	False
+all_snps	Target	Denisova 3 (30.7x diploid target)	12180	12180	0.9073070607553366	False
+all_snps	Denisova25	Denisova 25 (provisional, 185 ka)	12180	11441	0.8075343064417446	False
+all_snps	Denisova11_F1	Denisova 11 (Neanderthal-Denisovan F1)	12180	8973	0.4764292878635908	False
+all_snps	Papuan	Papuan	12180	12126	0.088440530145433	False
+all_snps	Chagyrskaya_Neanderthal	Chagyrskaya Neanderthal	12180	11567	0.07815336733811706	False
+all_snps	French	French	12180	12127	0.05613827146236488	False
+all_snps	Altai_Neanderthal	Altai Neanderthal	12180	12179	0.05575170375236062	False
+all_snps	Vindija_Neanderthal	Vindija Neanderthal	12180	5682	0.03695881731784583	False
+all_snps	Yoruba	Yoruba	12180	12180	0.03669181209797734	False
+all_snps	Mbuti	Mbuti	12180	12127	0.018975363822978434	False
+transversions_only	Denisova_replicate	Denisova 3 (SG technical replicate)	1998	1998	1.0	False
+transversions_only	Denisova_alt_calls	Denisova 3 (snpAD alternate calls)	1998	1883	0.9697291556027615	False
+transversions_only	Target	Denisova 3 (30.7x diploid target)	1998	1998	0.964964964964965	False
+transversions_only	Denisova25	Denisova 25 (provisional, 185 ka)	1998	1869	0.8721241305510968	False
+transversions_only	Denisova11_F1	Denisova 11 (Neanderthal-Denisovan F1)	1998	1803	0.5036051026067665	False
+transversions_only	Papuan	Papuan	1998	1988	0.09602583114102753	False
+transversions_only	Chagyrskaya_Neanderthal	Chagyrskaya Neanderthal	1998	1882	0.09404888416578108	False
+transversions_only	Altai_Neanderthal	Altai Neanderthal	1998	1998	0.07807807807807808	False
+transversions_only	French	French	1998	1988	0.06343485765398987	False
+transversions_only	Vindija_Neanderthal	Vindija Neanderthal	1998	1310	0.04351145038167939	False
+transversions_only	Yoruba	Yoruba	1998	1998	0.04101448060149463	False
+transversions_only	Mbuti	Mbuti	1998	1988	0.019863900526143775	False

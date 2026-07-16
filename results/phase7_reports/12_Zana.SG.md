@@ -1,6 +1,6 @@
 # Candidate 12: Zana.SG
 
-> **Status: HYPOTHESIS, not a discovery.** |z|=2.90 < Bonferroni z*=4.55; does not survive multiple-testing correction.
+> **Status: HYPOTHESIS, not a discovery.** |z|=2.96 < Bonferroni z*=4.54; does not survive multiple-testing correction.
 
 ## Evidence (measured)
 - **Group / culture:** Georgia_Tkhina_19thCentury-oAfrican
@@ -8,21 +8,21 @@
 - **Country:** Georgia    **Coordinates:** nan, nan
 - **Date:** 60 BP
 - **Observed Neanderthal:** 0.41% (adj 0.24%, SE 0.59%)
-- **Expected (ancestry+geo+time):** 1.95%  → residual -1.71 pp,  **z = -2.90**
-- **Quality:** 479,008 usable SNP, data type SG, contamination n/a (female), flags: no_coords
+- **Expected (ancestry+geo+time):** 1.98%  → residual -1.74 pp,  **z = -2.96**
+- **Quality:** 479,008 usable SNP, data type SG, contamination n/a (female), flags: no_coords;continent_uncertain
 - **Neanderthal D Z:** -0.7   **Denisovan D Z:** -1.6
 
 ## Genetically nearest neighbours (the expectation)
 | neighbour | group | Neanderthal% | SNP |
 |---|---|---|---|
-| LP115_5.TW | Portugal_Islamic | 2.29 | 358,811 |
 | EAS003.SG | England_Saxon-oAfrica | 2.20 | 329,488 |
-| gun011.SG | Canary_Guanche | 1.76 | 490,446 |
-| I8369.AG.TW | Turkey_Medieval_Byzantine | 2.13 | 495,295 |
+| LP115_5.TW | Portugal_Islamic | 2.29 | 358,811 |
 | R10667.SG | Austria_ImperialRoman-oAfrica-oLevan | 0.76 | 434,986 |
-| R10503.SG | Portugal_LateAntiquity_Roman-oAfrica | 1.21 | 451,663 |
-| I8369.TW | Turkey_Medieval_Byzantine | 2.14 | 491,073 |
-| I22232.AG | Italy_Sicily_IA_b_Punic | 1.55 | 226,814 |
+| gun011.SG | Canary_Guanche | 1.76 | 490,446 |
+| I22113.AG | Italy_Sardinia_Roman_IA_c_Punic_IA_d | 1.28 | 326,465 |
+| I4246.AG | Spain_C-oAfrica | 0.86 | 306,222 |
+| I12844.AG | Italy_Sicily_IA_b_IA_c_Punic | 1.58 | 378,989 |
+| I26775.AG | Croatia_ImperialRoman-oAfrica | 1.39 | 347,745 |
 
 ## Possible biological explanations
 - AADR-flagged ancestry OUTLIER ('-o') — atypical ancestry for its context

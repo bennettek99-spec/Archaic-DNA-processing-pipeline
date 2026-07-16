@@ -1,7 +1,23 @@
 Phase 4 bias / normalisation report — panel 1240k
-samples: 15,443   high-confidence (>= 200,000 SNP, not questionable): 9,252
+samples: 15,443   high-confidence (QC gates below): 9,075
+high-confidence technical gates: coverage>=0.02, contam_lb<=0.02, damage<=0.3 when metadata are present
+high-confidence exclusions by technical gate:
+  low_snps            5,870
+  questionable          634
+  damage                500
+  contamination         106
 
 Weighted mean alpha_Nea overall: 2.116%
+
+(0) predefined archaeological cohorts for population tests:
+  cohort                              n  test_keep
+  Early_Medieval_Italy              130        130
+  Etruscan_context                   75         75
+  Imperial_Roman_context             89         89
+  Latin_context                       5          5
+  Preceding_Bronze_Age_Italy        130        122
+  duplicate-library exclusions before population tests: 8
+  published group labels are retained as metadata, not accepted as conclusions.
 
 (1) alpha_Nea by sequencing data type (pseudo-haploid AG vs diploid DG/SG):
   type        n wmean_alpha%    med_SNP  med_SE%
@@ -15,11 +31,11 @@ Weighted mean alpha_Nea overall: 2.116%
 
 (2) directional bias: weighted corr(alpha_Nea, covariate)
     |r| small => estimate not systematically driven by that technical axis
-  log10 usable SNPs            r_all=-0.021   r_highconf=+0.055
-  mean coverage                r_all=-0.022   r_highconf=-0.012
-  DNA damage rate              r_all=+0.067   r_highconf=+0.032
-  contamination lower bound    r_all=+0.015   r_highconf=-0.051
-  sample age (BP)              r_all=-0.015   r_highconf=-0.027
+  log10 usable SNPs            r_all=-0.021   r_highconf=+0.057
+  mean coverage                r_all=-0.022   r_highconf=-0.009
+  DNA damage rate              r_all=+0.067   r_highconf=-0.082
+  contamination lower bound    r_all=+0.015   r_highconf=-0.052
+  sample age (BP)              r_all=-0.015   r_highconf=-0.046
 
 Interpretation: a non-trivial r in r_all that SHRINKS in r_highconf indicates a
 low-coverage artifact (handled by the SNP floor + precision weighting). A covariate

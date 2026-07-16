@@ -268,6 +268,9 @@ python phase3_estimate.py --panel 1240k \
        --meta results/phase2_1240k_global_metadata.csv \
        --out  results/phase3_1240k_global_estimates.csv     # only the new non-Eurasian genomes
 python global_archaic_survey.py   # whole AADR (21,109 genomes) -> reports/global_archaic_survey/
+
+# Credibility-aware extreme scan (all ancient AADR individuals + sensitivity)
+python -m archaic.highest_archaic --config configs/highest_archaic.yaml --resume
 ```
 
 Asks a simple absolute-threshold question distinct from Phase 6's conditioned outlier
@@ -295,6 +298,8 @@ Full write-ups (paper-style: Abstract → Conclusion, reproducible Methods, figu
 rendered PDFs:
 - **`reports/high_archaic_survey/PAPER.md`** / `Eurasia_high_archaic_survey.pdf`
 - **`reports/global_archaic_survey/PAPER_global.md`** / `Global_archaic_survey.pdf`
+- **`reports/highest_archaic_ancestry_report.md`** — raw vs credible maxima,
+  Denisovan-affinity ranking, artifact audit, and candidate sensitivity results
 
 ## Sub-study: Oase1 haplotype segment analysis (+ BAM pipeline)
 

@@ -1,0 +1,114 @@
+{
+  "input_digest": "990022da7610b6ce26ededc047419864969741598469d0bbd5d88d916a69e301",
+  "metadata": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\phase4_1240k_global_analysis.csv",
+  "panel_prefix": "C:\\Users\\benne\\aadr_v66\\v66.p1_1240K",
+  "config": {
+    "panel": "1240k",
+    "seed": 20260714,
+    "top_n": 25,
+    "n_jackknife_blocks": 50,
+    "analysis_sets": {
+      "broad": {
+        "min_informative_snps": 10000
+      },
+      "high_confidence": {
+        "min_informative_snps": 200000,
+        "min_coverage": 0.02,
+        "max_contamination": 0.02,
+        "max_damage": 0.3,
+        "max_ci_width": 0.06
+      },
+      "elite_confidence": {
+        "informative_snp_quantile": 0.75,
+        "se_quantile": 0.25,
+        "min_jackknife_blocks": 45
+      }
+    },
+    "time_periods": [
+      [
+        0,
+        1500,
+        "Historical/Recent"
+      ],
+      [
+        1500,
+        3000,
+        "Iron Age/Classical"
+      ],
+      [
+        3000,
+        5200,
+        "Bronze Age/Chalcolithic"
+      ],
+      [
+        5200,
+        10000,
+        "Neolithic"
+      ],
+      [
+        10000,
+        15000,
+        "Mesolithic/Epipalaeolithic"
+      ],
+      [
+        15000,
+        50000,
+        "Upper Palaeolithic"
+      ],
+      [
+        50000,
+        1000000,
+        "Earlier than 50 ka"
+      ]
+    ],
+    "sensitivity": {
+      "enabled": true,
+      "top_candidates": 10,
+      "bootstrap_replicates": 200,
+      "subsampling_replicates": 200,
+      "common_snp_floor": 30000,
+      "max_candidates": 40
+    },
+    "denisovan_calibration": {
+      "enabled": false
+    },
+    "artifact_weights": {
+      "low_information": 25,
+      "uncertainty": 20,
+      "contamination": 12,
+      "damage": 10,
+      "missing_qc": 8,
+      "transversion_instability": 10,
+      "reference_instability": 5,
+      "chromosome_instability": 5,
+      "block_influence": 5
+    }
+  },
+  "n_ancient": 17143,
+  "thresholds": {
+    "broad_min_snps": 10000,
+    "high_min_snps": 200000,
+    "elite_min_snps": 364961,
+    "elite_max_se": 0.005657,
+    "high_max_ci_width": 0.06
+  },
+  "denisovan_percentage_identifiable": false,
+  "outputs": [
+    "highest_neanderthal_raw.tsv",
+    "highest_neanderthal_credible.tsv",
+    "highest_denisovan_raw.tsv",
+    "highest_denisovan_credible.tsv",
+    "highest_combined_archaic.tsv",
+    "highest_lower_confidence_bound.tsv",
+    "regional_archaic_maxima.tsv",
+    "temporal_archaic_maxima.tsv",
+    "suspicious_outliers.tsv",
+    "excluded_samples.tsv",
+    "top_candidate_sensitivity_tests.tsv",
+    "all_sample_archaic_estimates.tsv",
+    "highest_transversion_only.tsv",
+    "highest_damage_corrected.tsv",
+    "highest_geotemporal_residual.tsv"
+  ],
+  "seed": 20260714
+}

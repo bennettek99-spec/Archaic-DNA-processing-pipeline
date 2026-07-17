@@ -1,8 +1,11 @@
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
 from archaic.denisovan_genome import (
     _marker_sharing,
+    _portable_path,
     _transversion_sensitivity,
     genotype_pair_metrics,
 )
@@ -10,6 +13,13 @@ from archaic.denisovan_genome import (
 
 class _DummyPanel:
     n_snp = 5
+
+
+def test_public_provenance_paths_do_not_leak_external_directories(tmp_path):
+    external = tmp_path.parent / "private" / "v66.p1_1240K.geno"
+    assert _portable_path(external) == "v66.p1_1240K.geno"
+    local = Path.cwd() / "results" / "denisovan_genome"
+    assert _portable_path(local) == "results/denisovan_genome"
 
 
 def test_genotype_pair_metrics_handles_missing_and_dosage_distance():

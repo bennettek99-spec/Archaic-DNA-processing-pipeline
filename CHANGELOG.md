@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [0.6.0] - 2026-07-17
+
+### Added
+
 - Added `archaic.denisovan_genome` / `archaic-denisovan`, a reference-aware
   Denisova 3 workflow with genotype QC, same-specimen replicate concordance,
   Denisovan/Neanderthal lineage tests, Denisova 11 F1 controls, transversion and
@@ -16,10 +20,19 @@
   type fields. Denisovan and combined percentages remain deliberately null
   because the validated `D_Den` statistic is a relative affinity, not a calibrated
   ancestry proportion.
+- Replaced the monolithic project README with a concise onboarding page and a
+  structured documentation set covering setup, methods, interpretation, studies,
+  reports, and evidence labels.
+- Added a data/artifact policy documenting the intentionally retained PRJEB10597
+  BAM files, accessions, publisher MD5 values, repository SHA-256 values, and
+  exploratory evidence boundary.
+- Added contribution, security, conduct, issue, pull-request, and dependency
+  maintenance files for the public GitHub repository.
+- Added repository documentation/version checks and Windows smoke coverage to CI.
 
-## [Unreleased] - Robust outlier model and portability hardening
+### Robust outlier model and portability hardening
 
-### Added
+#### Added
 - **`archaic/neighborhood.py`**: shared local-neighbour residual model for Phase 6
   and Phase 9. The expected-value uncertainty now uses the precision-weighted
   effective neighbour count instead of the nominal K, so a few high-coverage
@@ -36,7 +49,7 @@
   `continent_uncertain`, and unrecognized-country Eurasia fallbacks are surfaced
   in the sample flags.
 
-### Changed
+#### Changed
 - Removed developer-machine AADR paths from built-in defaults. A fresh checkout now
   requires `aadr_dir` in config, `ARCHAIC_CONFIG`, or `ARCHAIC_AADR_DIR`, and fails
   with a setup message if none is configured. `config.local.yaml` is auto-detected
@@ -44,7 +57,7 @@
 - `phase5_pca.py` can write alternate PCA files from shifted even-SNP grids for
   PCA-subset sensitivity checks.
 
-### Fixed
+#### Fixed
 - Removed lingering unused bindings flagged by `pyflakes` in `denisovan_survey.py`,
   `etruscan_study.py`, and `phase8_figures.py`.
 

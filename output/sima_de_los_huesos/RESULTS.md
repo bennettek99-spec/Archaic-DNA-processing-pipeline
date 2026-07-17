@@ -39,7 +39,7 @@ lineage, while avoiding an overclaim from a sparse, very ancient sample.
 
 ```powershell
 $env:PYTHONPATH='tmp/sima_deps'
-& 'C:\Users\benne\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' `
+python `
   tools\sima_de_los_huesos_scan.py `
   --bam-dir data\sima_de_los_huesos_prjeb10597 `
   --output output\sima_de_los_huesos

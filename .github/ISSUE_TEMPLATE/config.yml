@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/bennettek99-spec/Archaic-DNA-processing-pipeline/security/advisories/new
+    about: Report vulnerabilities or sensitive data exposure privately.

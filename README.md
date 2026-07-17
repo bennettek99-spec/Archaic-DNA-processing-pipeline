@@ -20,6 +20,20 @@ ascertainment, and reference choice are surfaced rather than hidden.
 > Denisovan percentage. The pipeline therefore does not calculate a combined
 > Neanderthal-plus-Denisovan percentage.
 
+## Featured example: Global AADR survey
+
+**[Open the Global AADR Survey (PDF)](reports/global_archaic_survey/Global_archaic_survey.pdf)**
+
+This end-to-end example applies the pipeline to 21,109 quality-passing ancient
+and present-day AADR genomes across Africa, the Americas, Eurasia, and Oceania.
+It demonstrates global Neanderthal estimates, relative Denisovan-affinity
+controls, coverage-aware filtering, artifact auditing, continental comparisons,
+and publication-style reporting while preserving the interpretation boundary
+above.
+
+[Read the paper-style report](reports/global_archaic_survey/PAPER_global.md) or
+[browse its supporting outputs](reports/global_archaic_survey/).
+
 ## Status
 
 - The core estimator passes seven AADR-based validation gates and is checked

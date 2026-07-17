@@ -111,7 +111,7 @@ ax.axvline(5, color="#d7301f", ls="--", lw=1)
 ax.set_xlabel("Neanderthal ancestry $\\alpha$ (%)")
 ax.set_ylabel("Denisovan affinity  D_Den_Z")
 ax.set_title("The archaic-ancestry plane: Oceania occupies its own high-Denisovan corner\n"
-             "(Neanderthal alone never clears 5%; Oceanians add substantial Denisovan)")
+             "(Neanderthal alone never clears 5%; Denisovan is relative affinity only)")
 ax.set_xlim(-3, 8)
 ax.legend(markerscale=2)
 fig.tight_layout(); fig.savefig(f"{OUT}/fig_g3_archaic_scatter.png"); plt.close(fig)

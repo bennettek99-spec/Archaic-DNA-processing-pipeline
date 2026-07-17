@@ -1,6 +1,6 @@
 """
-archaic — genome-wide detection of unexpected archaic introgression in ancient
-Eurasian genomes (AADR).
+archaic — credibility-aware Neanderthal and Denisovan-affinity analysis in
+ancient and present-day genomes from AADR.
 
 Package layout:
   lib_eigenstrat.py  — memory-mapped reader for AADR EIGENSTRAT/TGENO files.
@@ -10,4 +10,4 @@ Package layout:
 
 See README.md for the method, citations, and validation results.
 """
-__version__ = "0.5.0"
+__version__ = "0.6.0"

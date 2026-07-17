@@ -45,9 +45,9 @@ Within published range (+/- 1 SE): 16/17 samples
 [exclude_recent_neanderthal_ancestor_Oase1] MAE=0.38pp, bias=+0.17pp, coverage(pub range + 1SE)=0.93, Bland-Altman limits=[-0.87, +1.22]pp
 ```
 
-![validation](figures/fig7_validation_vs_published.png)
+![Validation estimates versus published values](results/figures/fig7_validation_vs_published.png)
 
-![bland-altman](figures/fig8_validation_bland_altman.png)
+![Bland-Altman validation plot](results/figures/fig8_validation_bland_altman.png)
 
 ## Validation metrics beyond correlation
 

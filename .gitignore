@@ -1,11 +1,16 @@
 # Python
+.venv/
 __pycache__/
 *.py[cod]
 *.egg-info/
+build/
+dist/
 .pytest_cache/
+.coverage
+htmlcov/
 .ipynb_checkpoints/
 
-# Large AADR genotype data — lives outside the repo (C:\Users\benne\aadr_v66\).
+# Large AADR genotype data lives outside the repository.
 # Guard against accidentally committing any copy.
 config.local.yaml
 *.geno
@@ -16,6 +21,13 @@ config.local.yaml
 *.tar.gz
 *.md5sum
 
+# Prevent additional alignment files from being committed accidentally. The
+# five already-tracked PRJEB10597 BAMs are documented exceptions in DATA.md.
+*.bam
+*.bai
+*.cram
+*.crai
+
 # run logs
 results/*.log
 
@@ -25,3 +37,6 @@ Thumbs.db
 results/plink/
 results/f2_admixtools/
 results/lea/*.geno
+tmp/
+output/pdf/
+reports/etruscan_publication/

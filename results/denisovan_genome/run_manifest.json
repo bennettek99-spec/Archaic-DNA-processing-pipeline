@@ -1,9 +1,9 @@
 {
   "analysis": "denisovan_genome",
   "generated_utc": "2026-07-16T22:50:53.196375+00:00",
-  "command": "python -m archaic.denisovan_genome --panel 1240k --target Denisova3.DG --output C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome",
+  "command": "python -m archaic.denisovan_genome --panel 1240k --target Denisova3.DG --output results/denisovan_genome",
   "panel": "1240k",
-  "panel_prefix": "C:/Users/benne/aadr_v66\\v66.p1_1240K",
+  "panel_prefix": "v66.p1_1240K",
   "target": "Denisova3.DG",
   "target_genotype_sha256": "68eb8f6e3681156f72f40e5df10afbbb73b7328171dc7db8a2fcb0b7ed6ce5e4",
   "autosomal_panel_sites": 1150639,
@@ -120,25 +120,25 @@
   },
   "input_provenance": {
     ".geno": {
-      "path": "C:\\Users\\benne\\aadr_v66\\v66.p1_1240K.geno",
+      "path": "v66.p1_1240K.geno",
       "size_bytes": 7117276654,
       "mtime_utc": "2026-06-29T16:27:37.671885+00:00",
       "sha256": null
     },
     ".snp": {
-      "path": "C:\\Users\\benne\\aadr_v66\\v66.p1_1240K.snp",
+      "path": "v66.p1_1240K.snp",
       "size_bytes": 77679819,
       "mtime_utc": "2026-06-29T16:10:30.710522+00:00",
       "sha256": "1189e253b82058822fddabc4966c1448dea70373a96c40106e720bedd93b55bf"
     },
     ".ind": {
-      "path": "C:\\Users\\benne\\aadr_v66\\v66.p1_1240K.ind",
+      "path": "v66.p1_1240K.ind",
       "size_bytes": 1017460,
       "mtime_utc": "2026-06-29T16:10:26.703018+00:00",
       "sha256": "c7500f8d337a42833d034800f989e1c6419855a6427769cc74de9d0a8bf76f98"
     },
     ".anno": {
-      "path": "C:\\Users\\benne\\aadr_v66\\v66.p1_1240K.anno",
+      "path": "v66.p1_1240K.anno",
       "size_bytes": 13443726,
       "mtime_utc": "2026-06-29T16:10:31.957706+00:00",
       "sha256": null
@@ -158,15 +158,15 @@
     "Denisova25.SG has a provisional AADR/publication status and is interpreted accordingly."
   ],
   "outputs": {
-    "qc": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\sample_qc.tsv",
-    "pairwise": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\pairwise_comparisons.tsv",
-    "fstats": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\fstats.tsv",
-    "sensitivity": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\transversion_sensitivity.tsv",
-    "marker": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\denisovan_marker_sharing.tsv",
-    "chromosomes": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\chromosome_robustness.tsv",
-    "figure": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\denisovan_genome_summary.png",
-    "manifest": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\run_manifest.json",
-    "report": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\report.html",
-    "results": "C:\\Users\\benne\\OneDrive\\Desktop\\Archaic Genomics Pipeline\\archaic-introgression\\results\\denisovan_genome\\RESULTS.md"
+    "qc": "results/denisovan_genome/sample_qc.tsv",
+    "pairwise": "results/denisovan_genome/pairwise_comparisons.tsv",
+    "fstats": "results/denisovan_genome/fstats.tsv",
+    "sensitivity": "results/denisovan_genome/transversion_sensitivity.tsv",
+    "marker": "results/denisovan_genome/denisovan_marker_sharing.tsv",
+    "chromosomes": "results/denisovan_genome/chromosome_robustness.tsv",
+    "figure": "results/denisovan_genome/denisovan_genome_summary.png",
+    "manifest": "results/denisovan_genome/run_manifest.json",
+    "report": "results/denisovan_genome/report.html",
+    "results": "results/denisovan_genome/RESULTS.md"
   }
 }

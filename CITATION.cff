@@ -7,7 +7,8 @@ authors:
     given-names: Bennett
 repository-code: "https://github.com/bennettek99-spec/Archaic-DNA-processing-pipeline"
 license: MIT
-version: 0.5.0
+version: 0.6.0
+date-released: 2026-07-17
 keywords:
   - archaeogenetics
   - ancient DNA
@@ -15,11 +16,11 @@ keywords:
   - f-statistics
   - AADR
 abstract: >-
-  A modular, validated Python pipeline that estimates Neanderthal and Denisovan
-  ancestry in ancient Eurasian genomes from the Allen Ancient DNA Resource using
-  allele-frequency f-statistics with block-jackknife errors, detects individuals
-  whose archaic ancestry is unexpected given their ancestry, geography and age,
-  and is validated against published estimates, coalescent simulations with known
+  A modular, validated Python pipeline that estimates Neanderthal ancestry and
+  relative Denisovan affinity in ancient and present-day genomes from the Allen
+  Ancient DNA Resource using allele-frequency f-statistics with block-jackknife
+  errors. It separates raw numerical maxima from credibility-aware results and
+  is validated against published estimates, coalescent simulations with known
   ground truth, and ADMIXTOOLS 2.
 references:
   - type: article

@@ -14,6 +14,14 @@ from pathlib import Path
 import pandas as pd
 
 
+def portable_path(path):
+    candidate=Path(path)
+    try:
+        return candidate.resolve().relative_to(Path.cwd().resolve()).as_posix()
+    except ValueError:
+        return candidate.name
+
+
 def canonical_id(value):
     s=re.sub(r"\.BY\.AA$","",str(value)); s=s.rsplit(".",1)[0] if "." in s else s
     return re.sub(r"_d$","",s,flags=re.IGNORECASE)
@@ -48,7 +56,7 @@ def write_segment_followup(candidate_ids,segments,output):
     for sid in candidate_ids:
         hit=by_id.get(canonical_id(sid))
         if hit:
-            row=hit._asdict(); row.update(genetic_id=sid,segment_status="existing_array_proxy",source=str(path))
+            row=hit._asdict(); row.update(genetic_id=sid,segment_status="existing_array_proxy",source=portable_path(path))
         else:
             row={"genetic_id":sid,"canonical_id":canonical_id(sid),"segment_status":"not_available: validated general caller/read data required","source":""}
         rows.append(row)

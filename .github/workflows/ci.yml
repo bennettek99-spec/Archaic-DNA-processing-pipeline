@@ -5,10 +5,20 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   pytest:
+    name: pytest (py${{ matrix.python-version }})
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.10", "3.11", "3.12"]
     steps:
@@ -16,12 +26,54 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: "pip"
-      - name: Install
+          cache: pip
+      - name: Install package and test dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install numpy pandas scipy scikit-learn matplotlib pyyaml msprime pytest pyflakes
-      - name: Lint (pyflakes)
+          python -m pip install -e ".[test,sim]"
+      - name: Lint
         run: pyflakes archaic *.py tests tools oase1_bam_pipeline
-      - name: Run tests
-        run: pytest -q
+      - name: Test with coverage
+        run: >-
+          python -m pytest -q
+          --cov=archaic
+          --cov-report=term-missing
+          --cov-fail-under=50
+
+  repository-checks:
+    name: package and documentation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install validation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[test,sim]"
+      - name: Check documentation, versions, and tracked BAM provenance
+        run: python tools/check_repo_docs.py
+      - name: Build source and wheel distributions
+        run: python -m build
+
+  windows-smoke:
+    name: Windows smoke
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[test]"
+      - name: Run synthetic CLI smoke test
+        run: archaic-pipeline smoke-test
+      - name: Run synthetic smoke unit test
+        run: python -m pytest tests/test_smoke_synthetic.py -q

@@ -42,13 +42,25 @@ def _chi2_sf(x, k):
 
 def _block_sums(freq, quads, mask, block, n_blocks):
     """Per-block sum of (pW-pX)(pY-pZ) over `mask`, for each (W,X,Y,Z) in quads.
-    Returns (n_blocks, len(quads)) float64 — one O(n_snp) pass per quad."""
-    bsum = np.empty((n_blocks, len(quads)), dtype=np.float64)
-    for qi, (W, X, Y, Z) in enumerate(quads):
-        a = (freq[W] - freq[X]) * (freq[Y] - freq[Z])
-        a = np.where(mask, a, 0.0)
-        bsum[:, qi] = np.bincount(block, weights=a, minlength=n_blocks)
-    return bsum
+
+    Vectorised: all quads computed in one O(n_snp) pass with stacked arrays,
+    then block sums via add.reduceat on block boundaries.  Returns (n_blocks, K).
+    """
+    K = len(quads)
+    if K == 0:
+        return np.zeros((n_blocks, 0), dtype=np.float64)
+    pW = np.array([freq[w] for w, _, _, _ in quads])
+    pX = np.array([freq[x] for _, x, _, _ in quads])
+    pY = np.array([freq[y] for _, _, y, _ in quads])
+    pZ = np.array([freq[z] for _, _, _, z in quads])
+    a = (pW - pX) * (pY - pZ)
+    a = np.where(mask[None, :], a, 0.0)
+    starts = np.where(np.diff(block, prepend=-1) != 0)[0]
+    bsum = np.add.reduceat(a, starts, axis=1)
+    if bsum.shape[1] < n_blocks:
+        pad = np.zeros((K, n_blocks - bsum.shape[1]), dtype=bsum.dtype)
+        bsum = np.concatenate([bsum, pad], axis=1)
+    return bsum.T
 
 
 def _build_system(freq, target, sources, outgroups, block, n_blocks):

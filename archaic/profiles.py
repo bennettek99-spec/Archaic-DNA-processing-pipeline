@@ -15,10 +15,15 @@ This module:
   * gives pairwise genome-wide allele-frequency distances between cohorts (for a
     genetic-context / clustering view);
   * can save/load profiles (.npz) so they are reusable across analyses.
+
+Parallelisation: group_archaic() and distance_matrix() both use
+ThreadPoolExecutor over independent cohorts / pairs, since the underlying numpy
+operations release the GIL.
 """
 from __future__ import annotations
 import numpy as np
 import pandas as pd
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from . import stats as st
 
 
@@ -48,20 +53,25 @@ def cohort_frequencies(panel, name_to_cols, min_ind=1):
 
 
 def group_archaic(freq, cohorts, block, n_blocks=50,
-                  A="Altai", O="Chimp", B="Mbuti", Ref="Vindija", Den="Denisova"):
+                  A="Altai", O="Chimp", B="Mbuti", Ref="Vindija", Den="Denisova",
+                  max_workers=None):
     """Group-level archaic estimates per cohort, using the same validated stats.
 
     Requires reference frequencies (A,O,B,Ref,Den) to be present in `freq`.
+    Cohorts are processed in parallel via ThreadPoolExecutor.
+
     Returns a DataFrame: alpha_Nea, alpha_SE, D_Nea(+Z), D_Den(+Z), n_used.
     """
-    rows = []
-    for c in cohorts:
+    def _eval(c):
         a = st.f4_ratio(freq, A, O, c, B, Ref, block, n_blocks)
         dn = st.dstat(freq, c, B, A, O, block, n_blocks)
         dd = st.dstat(freq, c, B, Den, O, block, n_blocks)
-        rows.append(dict(cohort=c, alpha_Nea=a["theta"], alpha_SE=a["se"],
-                         alpha_nSNP=a["n_used"], D_Nea=dn["theta"], D_Nea_Z=dn["z"],
-                         D_Den=dd["theta"], D_Den_Z=dd["z"]))
+        return dict(cohort=c, alpha_Nea=a["theta"], alpha_SE=a["se"],
+                    alpha_nSNP=a["n_used"], D_Nea=dn["theta"], D_Nea_Z=dn["z"],
+                    D_Den=dd["theta"], D_Den_Z=dd["z"])
+
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        rows = list(pool.map(_eval, cohorts))
     return pd.DataFrame(rows)
 
 
@@ -72,17 +82,27 @@ def f4_contrast(freq, P1, P2, block, n_blocks=50, A="Altai", O="Chimp"):
     return st.dstat(freq, P1, P2, A, O, block, n_blocks)
 
 
-def distance_matrix(freq, names, min_overlap=20000):
+def distance_matrix(freq, names, min_overlap=20000, max_workers=None):
     """Pairwise genome-wide allele-frequency distance: mean (pA - pB)^2 over SNPs
-    where both cohorts have data. Returns an (n,n) DataFrame (0 on diagonal)."""
+    where both cohorts have data. Returns an (n,n) DataFrame (0 on diagonal).
+    Pairs are processed in parallel via ThreadPoolExecutor."""
     F = {n: freq[n] for n in names}
-    D = np.zeros((len(names), len(names)))
-    for i, a in enumerate(names):
-        for j in range(i + 1, len(names)):
-            b = names[j]
-            m = np.isfinite(F[a]) & np.isfinite(F[b])
-            d = np.mean((F[a][m] - F[b][m]) ** 2) if m.sum() >= min_overlap else np.nan
+    N = len(names)
+    D = np.zeros((N, N))
+
+    pairs = [(i, j, a, b) for i, a in enumerate(names) for j in range(i + 1, N) for b in [names[j]]]
+
+    def _dist(item):
+        i, j, a, b = item
+        m = np.isfinite(F[a]) & np.isfinite(F[b])
+        if m.sum() >= min_overlap:
+            return i, j, float(np.mean((F[a][m] - F[b][m]) ** 2))
+        return i, j, np.nan
+
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        for i, j, d in pool.map(_dist, pairs):
             D[i, j] = D[j, i] = d
+
     return pd.DataFrame(D, index=names, columns=names)
 
 

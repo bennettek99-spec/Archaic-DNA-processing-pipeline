@@ -23,11 +23,16 @@ Two packed layouts (auto-detected from the 5-byte magic):
 
 In both layouts each genotype is 2 bits, 4 per byte, the FIRST element in the
 HIGH bits, value 0/1/2 = copies of the counted allele and 3 = missing.
+
+Parallelisation: the TGENO read loop over individual chunks is distributed
+across threads via ThreadPoolExecutor (the memmap reads and numpy bit
+operations are GIL-free).
 """
 
 import os
 import numpy as np
 import pandas as pd
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 # ---------------------------------------------------------------- .ind --------
@@ -114,7 +119,7 @@ class PackedGeno:
             raise ValueError(f"{geno_path}: unknown magic {magic!r} "
                              f"(expected b'GENO' or b'TGENO').")
 
-    def read(self, snp_rows, ind_cols, ind_chunk=256, snp_chunk=20000):
+    def read(self, snp_rows, ind_cols, ind_chunk=256, snp_chunk=20000, max_workers=None):
         """
         snp_rows : 1-D int array of .geno SNP-row indices to fetch.
         ind_cols : 1-D int array of individual indices to fetch.
@@ -125,23 +130,30 @@ class PackedGeno:
         out = np.empty((len(snp_rows), len(ind_cols)), dtype=np.int8)
 
         if self.transposed:
-            # data is individual-major -> extract SNP bits, looping individuals
             sbyte = snp_rows // 4
-            sshift = ((3 - (snp_rows % 4)) * 2).astype(np.uint8)    # (n_snp,)
-            for c in range(0, len(ind_cols), ind_chunk):
-                rows = self.data[ind_cols[c:c + ind_chunk]]          # (k, rlen)
-                sub = rows[:, sbyte]                                 # (k, n_snp)
-                vals = ((sub >> sshift) & 3).astype(np.int8)         # per-SNP shift
+            sshift = ((3 - (snp_rows % 4)) * 2).astype(np.uint8)
+
+            def _read_chunk(c_start):
+                c_end = min(c_start + ind_chunk, len(ind_cols))
+                rows = self.data[ind_cols[c_start:c_end]]
+                sub = rows[:, sbyte]
+                vals = ((sub >> sshift) & 3).astype(np.int8)
                 vals[vals == 3] = -1
-                out[:, c:c + rows.shape[0]] = vals.T
+                return c_start, vals.T
+
+            with ThreadPoolExecutor(max_workers=max_workers) as pool:
+                futs = {pool.submit(_read_chunk, c): c
+                        for c in range(0, len(ind_cols), ind_chunk)}
+                for fut in as_completed(futs):
+                    c_start, block = fut.result()
+                    out[:, c_start:c_start + block.shape[1]] = block
         else:
-            # data is SNP-major -> extract individual bits, looping SNPs
             ibyte = ind_cols // 4
-            ishift = ((3 - (ind_cols % 4)) * 2).astype(np.uint8)     # (n_ind,)
+            ishift = ((3 - (ind_cols % 4)) * 2).astype(np.uint8)
             for s in range(0, len(snp_rows), snp_chunk):
-                rows = self.data[snp_rows[s:s + snp_chunk]]          # (c, rlen)
-                sub = rows[:, ibyte]                                 # (c, n_ind)
-                vals = ((sub >> ishift) & 3).astype(np.int8)         # per-ind shift
+                rows = self.data[snp_rows[s:s + snp_chunk]]
+                sub = rows[:, ibyte]
+                vals = ((sub >> ishift) & 3).astype(np.int8)
                 vals[vals == 3] = -1
                 out[s:s + rows.shape[0]] = vals
         return out

@@ -16,9 +16,14 @@ relatedness statistic with published thresholds:
 
 `prune` returns the set of individuals to keep (one per related cluster, the
 higher-coverage member), so downstream group frequencies use independent samples.
+
+Parallelisation: the O(N^2) pair loop is split across threads via
+concurrent.futures.ThreadPoolExecutor, since each pair's numpy operations
+release the GIL.
 """
 from __future__ import annotations
 import numpy as np
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 READ_UNREL, READ_2ND, READ_1ST = 0.90625, 0.8125, 0.625
 
@@ -36,8 +41,23 @@ def _haploid_alleles(G, seed=0):
     return A
 
 
-def mismatch_matrix(panel, cols, n_snp=40000, min_overlap=500, seed=0):
-    """Pairwise P0 (allele-mismatch rate) for the individuals in `cols`."""
+def _pair_p0(i, j, A, miss, min_overlap):
+    """Compute P0 for a single pair (i, j). Returns (i, j, p, c)."""
+    m = (~miss[:, i]) & (~miss[:, j])
+    c = int(m.sum())
+    if c >= min_overlap:
+        p = float(np.mean(A[m, i] != A[m, j]))
+        return i, j, p, c
+    return i, j, np.nan, 0
+
+
+def mismatch_matrix(panel, cols, n_snp=40000, min_overlap=500, seed=0,
+                    max_workers=None):
+    """Pairwise P0 (allele-mismatch rate) for the individuals in `cols`.
+
+    The O(N^2) pair loop is parallelised across threads.  Set max_workers to
+    control parallelism (default: os.cpu_count()).
+    """
     cols = np.asarray(cols, dtype=np.int64)
     sub = panel.snp_rows[np.linspace(0, panel.n_snp - 1, min(n_snp, panel.n_snp)).astype(int)]
     G = panel.pg.read(sub, cols)
@@ -45,13 +65,15 @@ def mismatch_matrix(panel, cols, n_snp=40000, min_overlap=500, seed=0):
     miss = G < 0
     N = len(cols)
     P0 = np.full((N, N), np.nan)
-    nov = np.full((N, N), 0)
-    for i in range(N):
-        for j in range(i + 1, N):
-            m = (~miss[:, i]) & (~miss[:, j])
-            c = int(m.sum())
+    nov = np.full((N, N), 0, dtype=np.int64)
+
+    pairs = [(i, j) for i in range(N) for j in range(i + 1, N)]
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        futs = [pool.submit(_pair_p0, i, j, A, miss, min_overlap)
+                for i, j in pairs]
+        for fut in as_completed(futs):
+            i, j, p, c = fut.result()
             if c >= min_overlap:
-                p = float(np.mean(A[m, i] != A[m, j]))
                 P0[i, j] = P0[j, i] = p
                 nov[i, j] = nov[j, i] = c
     return P0, nov

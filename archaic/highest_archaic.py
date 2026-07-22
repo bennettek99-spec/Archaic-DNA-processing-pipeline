@@ -337,14 +337,18 @@ def make_figures(df,out,sensitivity):
     fdir=out/"figures"; fdir.mkdir(exist_ok=True)
     plt.rcParams.update({"figure.dpi":140,"font.size":9,"axes.spines.top":False,"axes.spines.right":False})
     top=rank_neanderthal(df,25).sort_values("neanderthal_pct"); fig,ax=plt.subplots(figsize=(9,8)); y=np.arange(len(top))
-    raw_id=rank_neanderthal(df,1).iloc[0].genetic_id; cred_id=rank_neanderthal(credible(df),1,True).iloc[0].genetic_id
-    colors=["#d7301f" if x==raw_id else "#54278f" if x==cred_id else "#2c7fb8" for x in top.genetic_id]
+    raw_id=rank_neanderthal(df,1).iloc[0].genetic_id
+    credible_rank=rank_neanderthal(credible(df),1,True)
+    cred_id=credible_rank.iloc[0].genetic_id if len(credible_rank) else None
+    colors=["#d7301f" if x==raw_id else "#54278f" if cred_id is not None and x==cred_id else "#2c7fb8" for x in top.genetic_id]
     for yi,(_,r),color in zip(y,top.iterrows(),colors): ax.errorbar(r.neanderthal_pct,yi,xerr=1.96*r.neanderthal_se_pct,fmt="o",color=color)
     ax.set_yticks(y,top.genetic_id); ax.set(xlabel="Neanderthal ancestry (%)",title="Highest raw estimates with 95% CIs"); _save(fig,fdir/"01_ranked_estimates.png")
     specs=[("alpha_nSNP","neanderthal_pct","Neanderthal estimate vs informative SNPs","Neanderthal (%)"),("D_Den_nSNP","denisovan_affinity","Denisovan affinity vs informative SNPs","Denisovan D"),("date_bp","neanderthal_pct","Estimate vs sample age","Neanderthal (%)"),("contam_lb","neanderthal_pct","Estimate vs contamination","Neanderthal (%)")]
     for i,(x,ycol,title,ylabel) in enumerate(specs,start=2):
         fig,ax=plt.subplots(figsize=(8,5)); sc=ax.scatter(df[x],df[ycol],c=df.artifact_risk_score,s=7,cmap="viridis_r",alpha=.55,rasterized=True)
-        for sid,color in ((raw_id,"#d7301f"),(cred_id,"#54278f")):
+        highlights=[(raw_id,"#d7301f")]
+        if cred_id is not None and cred_id != raw_id: highlights.append((cred_id,"#54278f"))
+        for sid,color in highlights:
             r=df[df.genetic_id.eq(sid)]
             if len(r): ax.scatter(r[x],r[ycol],s=65,facecolors="none",edgecolors=color,linewidths=1.5); ax.annotate(sid,(r[x].iloc[0],r[ycol].iloc[0]),fontsize=7)
         ax.set(xlabel=x,ylabel=ylabel,title=title); fig.colorbar(sc,ax=ax,label="Artifact risk"); _save(fig,fdir/f"{i:02d}_{x}.png")
@@ -359,8 +363,12 @@ def make_figures(df,out,sensitivity):
     ax.set(xlim=(-180,180),ylim=(-60,85),xlabel="Longitude",ylabel="Latitude",title="Geography of archaic estimates"); fig.colorbar(sc,ax=ax,label="Neanderthal (%)"); _save(fig,fdir/"08_geographic_map.png")
     maxima=credible(df).sort_values("neanderthal_ci_low_pct",ascending=False).groupby(["region","archaeological_period"],as_index=False).head(1)
     fig,ax=plt.subplots(figsize=(11,6))
-    for region,g in maxima.groupby("region"): ax.scatter(g.date_bp,g.neanderthal_pct,label=region,s=28)
-    ax.invert_xaxis(); ax.set(xlabel="Age BP",ylabel="Regional maximum Neanderthal (%)",title="Regional maxima through time"); ax.legend(fontsize=6,ncol=2); _save(fig,fdir/"09_regional_maxima_time.png")
+    if len(maxima):
+        for region,g in maxima.groupby("region"): ax.scatter(g.date_bp,g.neanderthal_pct,label=region,s=28)
+        ax.legend(fontsize=6,ncol=2)
+    else:
+        ax.text(.5,.5,"No sample in this subset passes the credibility thresholds",ha="center",va="center",transform=ax.transAxes)
+    ax.invert_xaxis(); ax.set(xlabel="Age BP",ylabel="Regional maximum Neanderthal (%)",title="Regional maxima through time"); _save(fig,fdir/"09_regional_maxima_time.png")
     for name,col,title in [("10_leave_one_chromosome.png","loco_range","Leave-one-chromosome-out instability"),("11_block_influence.png","max_block_delta","Maximum block influence")]:
         fig,ax=plt.subplots(figsize=(8,4.5)); ss=sensitivity.dropna(subset=[col]) if len(sensitivity) and col in sensitivity else pd.DataFrame()
         if len(ss): ax.bar(ss.genetic_id,100*ss[col]); ax.tick_params(axis="x",rotation=60); ax.set_ylabel("Percentage points")
@@ -387,7 +395,8 @@ def write_reports(df,t,out):
     rdir=out/"candidate_reports"; rdir.mkdir(exist_ok=True)
     for old in rdir.glob("*.md"):
         old.unlink()
-    cand=rank_neanderthal(credible(df),10,True)
+    supported=credible(df)
+    cand=rank_neanderthal(supported,10,True) if len(supported) else rank_neanderthal(df,10,True)
     sens_cols=[c for c in ("alpha_transversion","alpha_alt_outgroup","alpha_swapped_reference","loco_range","max_block_delta","subsample_sd") if c in df]
     for rank,(_,r) in enumerate(cand.iterrows(),1):
         safe=re.sub(r"[^A-Za-z0-9_.-]+","_",r.genetic_id)
@@ -395,12 +404,26 @@ def write_reports(df,t,out):
         body += [f"- {c}: {r.get(c)}" for c in sens_cols]
         body += ["","## Interpretation","","Elevated under the pipeline f4-ratio; a follow-up candidate, not proof of recent admixture. Read-level filters and a validated segment caller are required for that claim."]
         (rdir/f"{rank:02d}_{safe}.md").write_text("\n".join(body)+"\n",encoding="utf-8")
-    raw=rank_neanderthal(df,1).iloc[0]; cred=rank_neanderthal(credible(df),1,True).iloc[0]; den=rank_denisovan(credible(df),1).iloc[0]
+    raw=rank_neanderthal(df,1).iloc[0]
+    cred_rank=rank_neanderthal(supported,1,True)
+    cred=cred_rank.iloc[0] if len(cred_rank) else None
+    den=rank_denisovan(supported if len(supported) else df,1).iloc[0]
     known=df[df.genetic_id.str.contains("Oase|F6-620|BB7-240",case=False,na=False)].sort_values("neanderthal_pct",ascending=False)
     artifacts=rank_neanderthal(df[df.credibility_class.isin(["Likely artifact","Low confidence"])],10)
-    tested=df[df.sensitivity_status.eq("complete")].sort_values("alpha_transversion",ascending=False)
-    report=["# Highest archaic ancestry in the analyzed AADR subset","","> Ancient individuals retained by the existing global Phase 2-4 scan. Neanderthal is an f4-ratio percentage; Denisovan is a relative D-statistic. Combined percentage is not estimable under the validated model.","","## Conclusions","",f"- Highest numerical Neanderthal estimate: **{raw.genetic_id}**, {raw.neanderthal_pct:.2f}% (95% CI {raw.neanderthal_ci_low_pct:.2f}-{raw.neanderthal_ci_high_pct:.2f}%), {raw.credibility_class}.",f"- Highest estimate among sufficiently covered individuals and highest credibility-aware lower bound: **{cred.genetic_id}**, lower CI {cred.neanderthal_ci_low_pct:.2f}% ({cred.neanderthal_pct:.2f}% point estimate).",f"- Strongest Denisovan-related signal: **{den.genetic_id}**, D={den.denisovan_affinity:.5f}, Z={den.D_Den_Z:.2f}; no percentage is claimed.","- Highest combined archaic percentage: **not identifiable** because the validated Denisovan statistic is not on a percentage scale.",f"- Strongest evidence for recent Neanderthal admixture remains **{raw.genetic_id}**: the standard estimate is extreme and persists under transversions, alternate outgroup, chromosome deletion, and block bootstrap. The separate Oase1 segment workflow supplies the appropriate haplotype-level context; no newly screened sample has equivalent segment evidence.","","## Top credibility-aware Neanderthal results","",md_table(rank_neanderthal(credible(df),25,True),["genetic_id","neanderthal_pct","neanderthal_ci_low_pct","alpha_nSNP","artifact_risk_score","credibility_class"],25),"","## Raw results most likely affected by artifacts","",md_table(artifacts,["genetic_id","neanderthal_pct","neanderthal_ci_low_pct","alpha_nSNP","artifact_risk_score","credibility_class"],10),"","## Sensitivity-tested transversion ranking","",md_table(tested,["genetic_id","alpha_standard","alpha_transversion","alpha_alt_outgroup","loco_min","loco_max","bootstrap_q025","artifact_risk_score","credibility_class"],20),"","## Context: Oase 1 and Bacho Kiro","",md_table(known,["genetic_id","date_bp","neanderthal_pct","neanderthal_ci_low_pct","alpha_nSNP","alpha_transversion","loco_min","bootstrap_q025","credibility_class"],20),"",f"Oase1 is the numerical and biologically contextualized recent-admixture result, but its low SNP count keeps the genotype-only classification at moderate confidence. Bacho Kiro F6-620 is well covered and elevated ({known.loc[known.genetic_id.eq('F6-620.AG.BY.AA'),'neanderthal_pct'].iloc[0]:.2f}% when present), but this scan does not establish a newly recent ancestor without segment evidence. SB605 is the strongest sufficiently covered statistical outlier, not proof of recent admixture.","","## Threshold provenance","",f"- Broad informative-SNP floor: {t['broad_min_snps']:,}.",f"- High-confidence floor: {t['high_min_snps']:,} (existing pipeline threshold).",f"- Elite floor: {t['elite_min_snps']:,}, observed 75th percentile constrained by the high-confidence floor.",f"- Elite maximum SE: {100*t['elite_max_se']:.3f} percentage points (observed 25th percentile).","","## Limitations","","- EIGENSTRAT cannot support terminal-base trimming or higher base/mapping-quality thresholds; BAM/CRAM is required.","- One validated Denisovan reference cannot yield an absolute Denisovan f4-ratio or combined percentage.","- The metadata residual model is an outlier screen, not evidence of recent admixture.","- General segment detection is not validated. The separate Oase1 read-level workflow is contextual evidence only.","- Close-relative, batch, and genetic-ancestry-cluster controls need dedicated genotype/read analyses beyond duplicate-library and metadata residual checks.","","## Reproduction","","```bash",f"python -m archaic.highest_archaic --aadr-data PATH --metadata PATH --config configs/highest_archaic.yaml --output {out.as_posix()} --threads AUTO --resume","```",""]
-    text="\n".join(report); (REPO/"reports"/"highest_archaic_ancestry_report.md").write_text(text,encoding="utf-8"); (out/"highest_archaic_ancestry_report.md").write_text(text,encoding="utf-8")
+    tested=df[df.sensitivity_status.eq("complete")]
+    if "alpha_transversion" in tested: tested=tested.sort_values("alpha_transversion",ascending=False)
+    conclusions=[f"- Highest numerical Neanderthal estimate: **{raw.genetic_id}**, {raw.neanderthal_pct:.2f}% (95% CI {raw.neanderthal_ci_low_pct:.2f}-{raw.neanderthal_ci_high_pct:.2f}%), {raw.credibility_class}."]
+    if cred is None:
+        conclusions.append("- No individual in this subset passes the pipeline's high/elite credibility thresholds; raw point estimates must therefore be treated as low-power screening results.")
+    else:
+        conclusions.append(f"- Highest estimate among sufficiently covered individuals and highest credibility-aware lower bound: **{cred.genetic_id}**, lower CI {cred.neanderthal_ci_low_pct:.2f}% ({cred.neanderthal_pct:.2f}% point estimate).")
+    conclusions += [f"- Strongest Denisovan-related signal in this subset: **{den.genetic_id}**, D={den.denisovan_affinity:.5f}, Z={den.D_Den_Z:.2f}; no percentage is claimed.","- Highest combined archaic percentage: **not identifiable** because the validated Denisovan statistic is not on a percentage scale.","- Genotype sensitivity tests assess robustness of the genome-wide estimate but cannot establish recent admixture without validated segment or read-level evidence."]
+    if len(known):
+        context_note="Named comparison individuals are shown only when present in the analyzed subset; their segment evidence is not transferred to other samples."
+    else:
+        context_note="No Oase 1 or Bacho Kiro comparison individual is present in this subset."
+    report=["# Highest archaic ancestry in the analyzed AADR subset","","> Ancient individuals retained by the existing global Phase 2-4 scan. Neanderthal is an f4-ratio percentage; Denisovan is a relative D-statistic. Combined percentage is not estimable under the validated model.","","## Conclusions",""]+conclusions+["","## Top credibility-aware Neanderthal results","",md_table(rank_neanderthal(supported,25,True),["genetic_id","neanderthal_pct","neanderthal_ci_low_pct","alpha_nSNP","artifact_risk_score","credibility_class"],25),"","## Raw results most likely affected by artifacts","",md_table(artifacts,["genetic_id","neanderthal_pct","neanderthal_ci_low_pct","alpha_nSNP","artifact_risk_score","credibility_class"],10),"","## Sensitivity-tested transversion ranking","",md_table(tested,["genetic_id","alpha_standard","alpha_transversion","alpha_alt_outgroup","loco_min","loco_max","bootstrap_q025","artifact_risk_score","credibility_class"],20),"","## Context: Oase 1 and Bacho Kiro","",md_table(known,["genetic_id","date_bp","neanderthal_pct","neanderthal_ci_low_pct","alpha_nSNP","alpha_transversion","loco_min","bootstrap_q025","credibility_class"],20),"",context_note,"","## Threshold provenance","",f"- Broad informative-SNP floor: {t['broad_min_snps']:,}.",f"- High-confidence floor: {t['high_min_snps']:,} (existing pipeline threshold).",f"- Elite floor: {t['elite_min_snps']:,}, observed 75th percentile constrained by the high-confidence floor.",f"- Elite maximum SE: {100*t['elite_max_se']:.3f} percentage points (observed 25th percentile).","","## Limitations","","- EIGENSTRAT cannot support terminal-base trimming or higher base/mapping-quality thresholds; BAM/CRAM is required.","- One validated Denisovan reference cannot yield an absolute Denisovan f4-ratio or combined percentage.","- The metadata residual model is an outlier screen, not evidence of recent admixture.","- General segment detection is not validated. The separate Oase1 read-level workflow is contextual evidence only.","- Close-relative, batch, and genetic-ancestry-cluster controls need dedicated genotype/read analyses beyond duplicate-library and metadata residual checks.","","## Reproduction","","```bash",f"python -m archaic.highest_archaic --aadr-data PATH --metadata PATH --config configs/highest_archaic.yaml --output {out.as_posix()} --threads AUTO --resume","```",""]
+    text="\n".join(report); (out/"highest_archaic_ancestry_report.md").write_text(text,encoding="utf-8")
 
 
 def choose_sensitivity_ids(df,cfg):
@@ -456,6 +479,9 @@ def main(argv=None):
     df,t=prepare(base,cfg,prefix,sensitivity)
     excluded=pd.read_csv(args.excluded,low_memory=False) if Path(args.excluded).exists() else pd.DataFrame(columns=["genetic_id","reason"])
     write_tables(df,excluded,sensitivity,out,int(cfg["top_n"])); make_figures(df,out,sensitivity); write_reports(df,t,out)
+    if not args.subset:
+        canonical_report=REPO/"reports"/"highest_archaic_ancestry_report.md"
+        canonical_report.write_text((out/"highest_archaic_ancestry_report.md").read_text(encoding="utf-8"),encoding="utf-8")
     from .highest_archaic_segments import write_segment_followup
     segment_ids=list(dict.fromkeys(rank_neanderthal(df,1).genetic_id.tolist()+rank_neanderthal(credible(df),10,True).genetic_id.tolist()))
     write_segment_followup(segment_ids,REPO/"reports"/"oase1_haplotype"/"oase1_segments.csv",out/"segment_followup.tsv")

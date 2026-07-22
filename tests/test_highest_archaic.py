@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 
 from archaic.highest_archaic import (
-    load_analysis, load_settings, parse_contamination, prepare,
-    rank_denisovan, rank_neanderthal,
+    load_analysis, load_settings, make_figures, parse_contamination, prepare,
+    rank_denisovan, rank_neanderthal, write_reports,
 )
 from archaic.highest_archaic_segments import canonical_id, summarize_segments
 
@@ -47,6 +47,18 @@ def test_combined_percentage_is_not_fabricated(tmp_path):
     assert out.combined_archaic_pct.isna().all()
     assert out.denisovan_pct.isna().all()
     assert out.combined_status.str.contains("not_estimable").all()
+
+
+def test_low_confidence_single_sample_subset_writes_figures_and_report(tmp_path):
+    df = load_analysis(FIXTURE, subset="RAW1.AG")
+    out, thresholds = prepare(df, load_settings(), str(tmp_path / "missing_panel"))
+    sensitivity = pd.DataFrame(columns=["genetic_id", "sensitivity_status"])
+    make_figures(out, tmp_path, sensitivity)
+    write_reports(out, thresholds, tmp_path)
+    report = (tmp_path / "highest_archaic_ancestry_report.md").read_text()
+    assert "No individual in this subset passes" in report
+    assert (tmp_path / "figures" / "01_ranked_estimates.png").exists()
+    assert (tmp_path / "candidate_reports" / "01_RAW1.AG.md").exists()
 
 
 def test_segment_followup_summarizes_only_supplied_calls():

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EV16A.SG dedicated archaic-introgression analysis</title>
+<style>
+:root{--ink:#172026;--muted:#5d6b73;--paper:#fbfaf6;--card:#fff;--line:#d9dedf;--rust:#a8462a;--gold:#c99b3e;--teal:#2f7370}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.58 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:1080px;margin:auto;padding:42px 24px 80px}header{border-left:8px solid var(--rust);padding:4px 0 8px 22px;margin-bottom:28px}h1{font:700 clamp(2rem,5vw,4rem)/1.02 Georgia,serif;margin:0 0 10px}h2{font:700 1.65rem/1.2 Georgia,serif;margin:38px 0 14px}p{max-width:82ch}.eyebrow{letter-spacing:.12em;text-transform:uppercase;color:var(--rust);font-weight:750}.verdict{background:#f3e9dc;border:1px solid #dfc9ad;border-radius:14px;padding:22px 25px;font-size:1.08rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:22px 0}.metric{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}.metric b{display:block;font:700 1.85rem Georgia,serif;color:var(--rust)}.metric span{color:var(--muted);font-size:.9rem}table{width:100%;border-collapse:collapse;background:var(--card);font-size:.92rem}th,td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#edf1ef;color:#314047}.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px}figure{margin:26px 0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}figure img{display:block;width:100%;height:auto}figcaption{color:var(--muted);font-size:.9rem;padding:8px}.callout{border-left:4px solid var(--teal);padding:8px 18px;background:#eaf3f1}.warn{border-left-color:var(--gold);background:#f8f1df}code{background:#edf0ee;padding:.12em .35em;border-radius:4px}pre{background:#1d272a;color:#eaf2ef;padding:18px;border-radius:10px;overflow:auto}a{color:#1d6765}.small{color:var(--muted);font-size:.9rem}@media print{body{background:#fff}main{max-width:none;padding:20px}.metric,table,figure{break-inside:avoid}}
+</style>
+</head>
+<body><main>
+<header><div class="eyebrow">Dedicated AADR v66.1 pipeline analysis</div><h1>EV16A.SG</h1><div>Monteriggioni, Tuscany · Iron Age Etruscan · 2549 ± 58 BP</div></header>
+<section class="verdict"><strong>Verdict:</strong> EV16A is an interesting but <strong>low-confidence</strong> candidate for above-average Neanderthal ancestry. Its elevated direction survives the available genotype controls, but sparse data and wide uncertainty prevent a reliable 5.35% claim or any inference of a recent Neanderthal ancestor.</section>
+<div class="grid">
+<div class="metric"><b>5.35%</b><span>standard Neanderthal point estimate</span></div>
+<div class="metric"><b>1.22–9.49%</b><span>jackknife 95% confidence interval</span></div>
+<div class="metric"><b>15,994</b><span>informative SNPs; 8.0% of high-confidence floor</span></div>
+<div class="metric"><b>Z = 0.22</b><span>Denisovan affinity: no signal</span></div>
+</div>
+<h2>What the supplied numbers mean</h2>
+<p><code>2549</code> is the mean age in years BP. <code>5.35</code> is the Neanderthal f4-ratio percentage. <code>+1.64</code> is the within-Etruscan residual z-score and <code>+1.44</code> is the ancestry-and-geography-conditioned residual z-score. The two z-scores are not ancestry percentages, and neither reaches |z| = 2.</p>
+<h2>Robustness controls</h2>
+<div class="scroll"><table><thead><tr><th>Test</th><th>Result</th><th>Interpretation</th></tr></thead><tbody>
+<tr><td>Standard f4-ratio</td><td>5.3539% ± 2.1094 pp; 15,994 SNPs</td><td>Elevated, very wide interval</td></tr>
+<tr><td>Block bootstrap (200)</td><td>Mean 5.3583%; 2.5–97.5%: 1.8596–9.4790%</td><td>Reproduces the wide uncertainty</td></tr>
+<tr><td>Transversion-only</td><td>6.9936% ± 3.9214 pp; 4,941 SNPs</td><td>No collapse, but extremely imprecise</td></tr>
+<tr><td>Yoruba outgroup</td><td>4.7346%</td><td>Same direction under alternate baseline</td></tr>
+<tr><td>Swapped Altai/Vindija roles</td><td>6.5032%</td><td>Same direction; reference range 1.77 pp</td></tr>
+<tr><td>Leave-one-chromosome-out</td><td>4.3090–6.1315%</td><td>No single chromosome explains the result</td></tr>
+<tr><td>Maximum block influence</td><td>0.7211 pp; block 5</td><td>No one block explains the full estimate</td></tr>
+<tr><td>Denisovan affinity</td><td>D 0.005626 ± 0.025991; Z 0.216</td><td>No unusual Denisovan affinity</td></tr>
+</tbody></table></div>
+<figure><img src="figures/01_ranked_estimates.png" alt="EV16A Neanderthal point estimate and 95 percent confidence interval"><figcaption>The central problem is visible directly: an elevated point estimate paired with a very wide confidence interval.</figcaption></figure>
+<h2>Population context</h2>
+<p>EV16A is first by raw point estimate among 75 Etruscan-context individuals and 74th among 17,143 retained ancient samples (99.57th percentile). Those are <em>raw</em> ranks, not credibility-aware ranks: noisy low-information samples are overrepresented at both extremes.</p>
+<div class="grid"><div class="metric"><b>1.885%</b><span>inverse-variance-weighted Etruscan peer estimate, EV16A excluded</span></div><div class="metric"><b>z ≈ 1.64</b><span>EV16A difference from Etruscan peers</span></div><div class="metric"><b>2.675%</b><span>weighted Monteriggioni peer estimate, EV16A excluded</span></div><div class="metric"><b>z ≈ 1.23</b><span>EV16A difference from Monteriggioni peers</span></div></div>
+<div class="callout">The estimate is high enough to justify follow-up, but not statistically exceptional within the Etruscan analysis once EV16A's own uncertainty is included.</div>
+<h2>Why the classification is low confidence</h2>
+<ul><li>15,994 informative SNPs versus the pipeline's 200,000-SNP high-confidence floor.</li><li>An 8.27-percentage-point-wide 95% interval.</li><li>No contamination or damage covariates available for this unknown-sex sample.</li><li>No validated EV16A archaic-segment call.</li><li>Packed EIGENSTRAT genotypes cannot support terminal trimming or mapping/base-quality re-filtering.</li></ul>
+<div class="callout warn"><strong>Interpretation boundary:</strong> “low-power candidate for above-average Neanderthal ancestry” is supported. An exact 5.35% claim, recent-ancestor claim, segment count, Denisovan percentage, or combined-archaic percentage is not.</div>
+<h2>Best next step</h2>
+<p>Use the deposited reads from <code>ENA:PRJEB77116</code> for terminal trimming, mapping/base-quality filtering, contamination-aware checks, and a validated archaic-segment caller. A second extract or library would be especially valuable for replication.</p>
+<h2>Files and reproducibility</h2>
+<p>The machine-readable outputs are <code>all_sample_archaic_estimates.tsv</code> and <code>top_candidate_sensitivity_tests.tsv</code>. The run manifest records the fixed seed (<code>20260714</code>), configuration, and input digest. The full narrative is also available as <a href="EV16A_dedicated_report.md">Markdown</a>.</p>
+<pre>.\.venv\Scripts\python.exe -m archaic.highest_archaic `
+  --aadr-data PATH\TO\AADR `
+  --metadata results\phase4_1240k_global_analysis.csv `
+  --excluded results\phase2_1240k_global_excluded.csv `
+  --config configs\highest_archaic.yaml `
+  --output results\individual_EV16A `
+  --subset EV16A.SG --resume</pre>
+<p class="small">Source representation: Ravasini &amp; Trombetta et al., Genome Biology (2024), <a href="https://doi.org/10.1186/s13059-024-03430-4">doi:10.1186/s13059-024-03430-4</a>. This report interprets pipeline output; it does not add a new calibrated Denisovan model or a segment caller.</p>
+</main></body></html>

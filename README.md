@@ -34,6 +34,22 @@ above.
 [Read the paper-style report](reports/global_archaic_survey/PAPER_global.md) or
 [browse its supporting outputs](reports/global_archaic_survey/).
 
+## Focused example: EV16A Etruscan candidate
+
+**[Read the dedicated EV16A analysis](results/individual_EV16A/EV16A_dedicated_report.md)**
+
+EV16A.SG is an Iron Age individual from Monteriggioni with a raw 5.35%
+Neanderthal point estimate but only 15,994 informative SNPs and a 1.22-9.49%
+confidence interval. This focused example shows the pipeline's candidate-audit
+workflow: transversion, alternate-outgroup, reference-swap, chromosome,
+block-bootstrap, and local Etruscan controls all remain visible, while the final
+classification stays **low confidence** because coverage, read-level QC, and
+validated segment evidence are insufficient. It is a deliberate contrast to
+the segment-supported Oase1 result.
+
+[Open the portable HTML report](results/individual_EV16A/EV16A_dedicated_report.html)
+or [inspect the sensitivity table](results/individual_EV16A/top_candidate_sensitivity_tests.tsv).
+
 ## Status
 
 - The core estimator passes seven AADR-based validation gates and is checked

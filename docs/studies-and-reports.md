@@ -14,6 +14,7 @@ reviewed scientific conclusions.
 | Global >5% survey | `python global_archaic_survey.py` | `reports/global_archaic_survey/PAPER_global.md` | Neanderthal threshold result supported; Denisovan context is relative or literature-derived |
 | Eurasian >5% survey | `python high_archaic_survey.py` | `reports/high_archaic_survey/PAPER.md` | Supported high-confidence threshold result; raw crossings audited as artifacts |
 | Oase1 array segments | `python oase1_haplotype.py` | `reports/oase1_haplotype/PAPER_oase1.md` | Focused contextual evidence; read-level workflow preferred for confirmation |
+| EV16A Etruscan candidate | `python -m archaic.highest_archaic --subset EV16A.SG` | `results/individual_EV16A/EV16A_dedicated_report.md` | Low-confidence focused example; elevated point estimate, no validated segment evidence |
 | West-Eurasian ancestry | `archaic-pipeline ancestry` | `reports/ancestry/PAPER_ancestry.md` | Supported descriptive model comparison |
 | Etruscan case study | `python etruscan_study.py` | [ETRUSCAN_FINDINGS.md](../ETRUSCAN_FINDINGS.md) | Group-level supported summary; individual/locus claims exploratory |
 | FADS analysis | `python fads_report.py` | [FADS_REPORT.md](../FADS_REPORT.md) | Selection context; not proof of adaptive introgression |

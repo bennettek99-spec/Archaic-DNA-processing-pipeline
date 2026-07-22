@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+### Added
+
+- Published a dedicated EV16A.SG Etruscan example with a portable HTML report,
+  machine-readable sensitivity results, provenance, and explicit comparison to
+  the segment-supported Oase1 evidence standard.
+
+### Fixed
+
+- Made `highest-archaic --subset` robust when a focused subset contains no
+  high/elite-confidence sample, and prevented subset reports from overwriting
+  the canonical all-sample report.
+
 ## [0.6.0] - 2026-07-17
 
 ### Added

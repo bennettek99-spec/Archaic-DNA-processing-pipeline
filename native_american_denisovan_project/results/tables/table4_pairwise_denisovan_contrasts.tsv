@@ -1,0 +1,15 @@
+mode	test	X	role	D	SE	Z	nSNP
+all_snps	D(X,Han;Denisova,Chimp)	USR1.SG	Ancient Beringian	0.000905142745947932	0.0059063088610562765	0.153250154578956	560966
+all_snps	D(X,Han;Denisova,Chimp)	Kolyma1.SG	Ancient Paleo-Siberian	0.014621743734801549	0.005769733957095692	2.534214548457567	560915
+all_snps	D(X,Han;Denisova,Chimp)	MA1.SG	Ancient North Eurasian (Mal'ta)	0.007706269580126519	0.00625814836695066	1.2313977119531714	411248
+all_snps	D(X,Han;Denisova,Chimp)	Yana1.SG	Upper Paleolithic Siberian (Yana)	0.0067574127870052205	0.005568114709287452	1.2135908004434703	560954
+all_snps	D(X,Han;Denisova,Chimp)	Sumidouro6.SG	Ancient South America (Lagoa Santa)	0.00550012754953595	0.006089490023874942	0.9032164480065998	490213
+all_snps	D(X,Han;Denisova,Chimp)	Papuan	present-day positive contrast	0.04707315195724965	0.005449384452397345	8.638251231575481	560998
+all_snps	D(X,Han;Denisova,Chimp)	Karitiana	present-day Native American	0.005758868564656936	0.004419725639475432	1.3029923199803968	561000
+transversions_only	D(X,Han;Denisova,Chimp)	USR1.SG	Ancient Beringian	-0.007438934175241249	0.010600345611583769	-0.7017633620466284	104200
+transversions_only	D(X,Han;Denisova,Chimp)	Kolyma1.SG	Ancient Paleo-Siberian	0.018556513584646727	0.009954829208317438	1.8640715170826263	104199
+transversions_only	D(X,Han;Denisova,Chimp)	MA1.SG	Ancient North Eurasian (Mal'ta)	0.028819405705636205	0.016239252274801667	1.774675657348773	76683
+transversions_only	D(X,Han;Denisova,Chimp)	Yana1.SG	Upper Paleolithic Siberian (Yana)	0.03701000052402133	0.009805317368080862	3.7744826745230666	104208
+transversions_only	D(X,Han;Denisova,Chimp)	Sumidouro6.SG	Ancient South America (Lagoa Santa)	0.00908888819365253	0.010487587995348754	0.8666328423354781	94246
+transversions_only	D(X,Han;Denisova,Chimp)	Papuan	present-day positive contrast	0.05301145459196658	0.007660478414512798	6.920123225141687	104213
+transversions_only	D(X,Han;Denisova,Chimp)	Karitiana	present-day Native American	0.014756106840383063	0.007190051976608956	2.0522948774763217	104213

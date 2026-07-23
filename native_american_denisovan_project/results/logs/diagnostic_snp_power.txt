@@ -1,0 +1,49 @@
+==============================================================================
+DENISOVAN-DIAGNOSTIC SNP POWER ESTIMATE (1240K autosomal panel)
+==============================================================================
+Autosomal panel SNPs: 1,150,639
+Set A (strict):  10,942   Set B (shared): 12,180   Set F (neg ctrl): 13,852
+TV-only sub-panel SNPs: 228,560
+TV-only Set A: 1,738   Set B: 1,998   Set F: 2,480
+
+Per-chromosome Set B counts:
+chromosome  n_SNP_panel  n_set_A  n_set_B  n_set_F
+         1        93166      895     1014     1232
+         2        98657      901     1018     1261
+         3        81416      909      986     1004
+         4        71634      685      766      828
+         5        74004      705      788      779
+         6        78867      778      889      831
+         7        62595      533      585      786
+         8        63916      632      686      767
+         9        52765      445      502      597
+        10        61131      523      602      841
+        11        57163      536      606      652
+        12        56133      511      557      751
+        13        40441      349      379      364
+        14        37903      393      436      442
+        15        35991      407      434      402
+        16        36000      387      422      473
+        17        30733      303      324      383
+        18        35327      292      332      399
+        19        19273      175      194      244
+        20        30377      282      328      417
+        21        16727      165      180      183
+        22        16420      136      152      216
+
+Per-individual callability (Set B):
+         sample                                role  n_callable_diag_markers  mean_denisovan_marker_allele      pct
+  [pool] Papuan                 present-day control                    12126                      0.088441 8.844054
+     [pool] Han                 present-day control                    12127                      0.058532 5.853244
+[pool] Japanese                 present-day control                    12143                      0.058759 5.875934
+     [pool] Dai                 present-day control                    12180                      0.056262 5.626176
+  [pool] French                 present-day control                    12127                      0.056138 5.613827
+   [pool] Mbuti                 present-day control                    12127                      0.018975 1.897536
+  [pool] Yoruba                 present-day control                    12127                      0.036776 3.677639
+        USR1.SG                   Ancient Beringian                    12180                      0.065189 6.518883
+     Kolyma1.SG              Ancient Paleo-Siberian                    12177                      0.063152 6.315184
+         MA1.SG     Ancient North Eurasian (Mal'ta)                     8949                      0.064812 6.481171
+       Yana1.SG   Upper Paleolithic Siberian (Yana)                    12178                      0.063147 6.314666
+  Sumidouro6.SG Ancient South America (Lagoa Santa)                    10857                      0.059685 5.968500
+    Anzick-1.SG                   Anzick-1 (Clovis)                        0                           NaN      NaN
+  SpiritCave.SG                         Spirit Cave                        0                           NaN      NaN

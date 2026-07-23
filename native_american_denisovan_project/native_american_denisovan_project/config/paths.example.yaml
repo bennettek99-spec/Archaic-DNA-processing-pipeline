@@ -1,0 +1,13 @@
+# Machine-local AADR location. Copy this file to config/paths.yaml and edit.
+# config/paths.yaml is gitignored (do not commit real local paths).
+
+aadr_dir: "C:/Users/benne/aadr_v66"
+
+panels:
+  ho:
+    prefix: "v66.p1_HO"
+  1240k:
+    prefix: "v66.p1_1240K"
+
+# Reuse the production archaic package (read-only) from the sibling repo:
+archaic_package_dir: "../archaic-introgression"

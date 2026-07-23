@@ -1,0 +1,32 @@
+# Native American Denisovan study — default configuration.
+# Paths come from config/paths.yaml (gitignored) or ARCHAIC_AADR_DIR; no hard-coded dirs.
+
+panel: "1240k"            # primary analysis panel; "ho" for diversity/positive-control checks
+aadr_dir_env: "ARCHAIC_AADR_DIR"   # env var to override aadr_dir
+
+analysis:
+  n_blocks: 50            # block-jackknife blocks (matches validated production pipeline)
+  snp_floor_ancient: 30000        # 1240K SNP floor for a "usable" ancient genome
+  snp_floor_lowpower: 200000     # below this, flag as low-power
+  min_ind_pool: 3                # min individuals to report a present-day pool
+  transversions_only: true       # also run TV-only variant of every statistic
+
+diagnostic_sets:
+  denisova_high_min: 0.90        # Denisova carries the high allele at >= this freq
+  african_max: 0.10              # pooled African baseline carries it at <= this
+  set_A_neanderthal_max: 0.10    # strict set: Neanderthal mean <= this
+  set_B_neanderthal_max: 0.50    # shared set: Neanderthal mean <= this
+  set_F_neanderthal_min: 0.90    # shared-archaic negative control
+
+sign_gate:
+  required_before_results: true  # tests/test_dstat_sign.py must pass before any real-data S3
+  test_path: "tests/test_dstat_sign.py"
+
+primary_statistic:
+  id: S3
+  statement: >
+    After conditioning on East-Asian-related and Ancient-North-Eurasian-related
+    ancestry, Native American populations show greater sharing with
+    Papuan-associated Denisovan markers than with East-Asian-associated
+    Denisovan markers.
+  excluded_statistics: ["D(Altai,Denisova;X,Mbuti)"]   # failed sign-gate; Neanderthal indicator

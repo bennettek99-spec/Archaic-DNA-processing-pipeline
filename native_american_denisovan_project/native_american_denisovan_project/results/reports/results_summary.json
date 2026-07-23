@@ -1,0 +1,11 @@
+{
+  "outcome": "D (no replication)",
+  "S3_ancient_mean": -0.23099994261522797,
+  "S3_ancient_min": -0.3325290536523356,
+  "S3_ancient_max": -0.1103564148023645,
+  "S3_ancient_n_positive": 0,
+  "S3_ancient_n_total": 14,
+  "papuan_S3": 0.4011475135422087,
+  "han_S3": -0.4011475135422088,
+  "verdict": "Hypothesis not supported: Native American Denisovan profiles are Han-like, not Papuan-like"
+}

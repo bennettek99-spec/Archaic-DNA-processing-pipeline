@@ -1,0 +1,69 @@
+==========================================================================================
+D-STATISTIC FEASIBILITY PROBE  (convention: D(X, Mbuti; Denisova, Chimp); + = more Denisovan)
+  task-spec D(African,X;Denisovan,Chimp) == -D(X,Mbuti;Denisova,Chimp)  (antisymmetry)
+==========================================================================================
+
+--- Tier 1: D(X, Mbuti; Denisova, Chimp)  [all sites] ---
+    mode                      test             X                                role        D      SE        Z   nSNP
+all_snps D(X,Mbuti;Denisova,Chimp)        Papuan                         present-day  0.03449 0.00582  5.92268 560995
+all_snps D(X,Mbuti;Denisova,Chimp)           Han                         present-day -0.00338 0.00437 -0.77406 560996
+all_snps D(X,Mbuti;Denisova,Chimp)      Japanese                         present-day -0.00351 0.00435 -0.80714 560996
+all_snps D(X,Mbuti;Denisova,Chimp)           Dai                         present-day -0.00228 0.00414 -0.54987 560997
+all_snps D(X,Mbuti;Denisova,Chimp)     Karitiana                         present-day  0.00095 0.00523  0.18231 560997
+all_snps D(X,Mbuti;Denisova,Chimp)        French                         present-day -0.00162 0.00372 -0.43602 560995
+all_snps D(X,Mbuti;Denisova,Chimp)        Yoruba                         present-day -0.00509 0.00247 -2.05734 560997
+all_snps D(X,Mbuti;Denisova,Chimp)       USR1.SG                   Ancient Beringian -0.00269 0.00563 -0.47883 560963
+all_snps D(X,Mbuti;Denisova,Chimp)    Kolyma1.SG              Ancient Paleo-Siberian  0.00766 0.00575  1.33209 560912
+all_snps D(X,Mbuti;Denisova,Chimp)        MA1.SG     Ancient North Eurasian (Mal'ta)  0.00652 0.00618  1.05519 411245
+all_snps D(X,Mbuti;Denisova,Chimp)      Yana1.SG   Upper Paleolithic Siberian (Yana)  0.00211 0.00483  0.43734 560951
+all_snps D(X,Mbuti;Denisova,Chimp) Sumidouro6.SG Ancient South America (Lagoa Santa)  0.00155 0.00643  0.24172 490210
+
+--- Tier 1: transversions only ---
+              mode                      test             X                                role        D      SE        Z   nSNP
+transversions_only D(X,Mbuti;Denisova,Chimp)        Papuan                         present-day  0.04644 0.00777  5.97494 104212
+transversions_only D(X,Mbuti;Denisova,Chimp)           Han                         present-day  0.00435 0.00675  0.64413 104212
+transversions_only D(X,Mbuti;Denisova,Chimp)      Japanese                         present-day  0.00709 0.00694  1.02247 104212
+transversions_only D(X,Mbuti;Denisova,Chimp)           Dai                         present-day  0.00776 0.00641  1.20974 104212
+transversions_only D(X,Mbuti;Denisova,Chimp)     Karitiana                         present-day  0.01540 0.00892  1.72652 104212
+transversions_only D(X,Mbuti;Denisova,Chimp)        French                         present-day  0.01554 0.00634  2.45169 104212
+transversions_only D(X,Mbuti;Denisova,Chimp)        Yoruba                         present-day  0.00241 0.00433  0.55567 104212
+transversions_only D(X,Mbuti;Denisova,Chimp)       USR1.SG                   Ancient Beringian -0.00128 0.00963 -0.13316 104199
+transversions_only D(X,Mbuti;Denisova,Chimp)    Kolyma1.SG              Ancient Paleo-Siberian  0.01837 0.00958  1.91775 104198
+transversions_only D(X,Mbuti;Denisova,Chimp)        MA1.SG     Ancient North Eurasian (Mal'ta)  0.03474 0.01327  2.61723  76682
+transversions_only D(X,Mbuti;Denisova,Chimp)      Yana1.SG   Upper Paleolithic Siberian (Yana)  0.03412 0.00843  4.04676 104207
+transversions_only D(X,Mbuti;Denisova,Chimp) Sumidouro6.SG Ancient South America (Lagoa Santa)  0.01541 0.00962  1.60153  94245
+
+--- Tier 2: D(X, Han; Denisova, Chimp)  [all sites] ---
+    mode                    test             X                                role       D      SE       Z   nSNP
+all_snps D(X,Han;Denisova,Chimp)       USR1.SG                   Ancient Beringian 0.00091 0.00591 0.15325 560966
+all_snps D(X,Han;Denisova,Chimp)    Kolyma1.SG              Ancient Paleo-Siberian 0.01462 0.00577 2.53421 560915
+all_snps D(X,Han;Denisova,Chimp)        MA1.SG     Ancient North Eurasian (Mal'ta) 0.00771 0.00626 1.23140 411248
+all_snps D(X,Han;Denisova,Chimp)      Yana1.SG   Upper Paleolithic Siberian (Yana) 0.00676 0.00557 1.21359 560954
+all_snps D(X,Han;Denisova,Chimp) Sumidouro6.SG Ancient South America (Lagoa Santa) 0.00550 0.00609 0.90322 490213
+all_snps D(X,Han;Denisova,Chimp)        Papuan       present-day positive contrast 0.04707 0.00545 8.63825 560998
+all_snps D(X,Han;Denisova,Chimp)     Karitiana         present-day Native American 0.00576 0.00442 1.30299 561000
+
+--- Tier 2: transversions only ---
+              mode                    test             X                                role        D      SE        Z   nSNP
+transversions_only D(X,Han;Denisova,Chimp)       USR1.SG                   Ancient Beringian -0.00744 0.01060 -0.70176 104200
+transversions_only D(X,Han;Denisova,Chimp)    Kolyma1.SG              Ancient Paleo-Siberian  0.01856 0.00995  1.86407 104199
+transversions_only D(X,Han;Denisova,Chimp)        MA1.SG     Ancient North Eurasian (Mal'ta)  0.02882 0.01624  1.77468  76683
+transversions_only D(X,Han;Denisova,Chimp)      Yana1.SG   Upper Paleolithic Siberian (Yana)  0.03701 0.00981  3.77448 104208
+transversions_only D(X,Han;Denisova,Chimp) Sumidouro6.SG Ancient South America (Lagoa Santa)  0.00909 0.01049  0.86663  94246
+transversions_only D(X,Han;Denisova,Chimp)        Papuan       present-day positive contrast  0.05301 0.00766  6.92012 104213
+transversions_only D(X,Han;Denisova,Chimp)     Karitiana         present-day Native American  0.01476 0.00719  2.05229 104213
+
+--- Tier 3: D(Altai, Denisova; X, Mbuti)  [all sites] ---
+    mode                      test             X                                role       D      SE       Z   nSNP
+all_snps D(Altai,Denisova;X,Mbuti)        Papuan                         present-day 0.00349 0.00795 0.43881 573269
+all_snps D(Altai,Denisova;X,Mbuti)           Han                         present-day 0.03892 0.00598 6.50971 573269
+all_snps D(Altai,Denisova;X,Mbuti)      Japanese                         present-day 0.03803 0.00588 6.46717 573267
+all_snps D(Altai,Denisova;X,Mbuti)           Dai                         present-day 0.03827 0.00568 6.74345 573272
+all_snps D(Altai,Denisova;X,Mbuti)     Karitiana                         present-day 0.03447 0.00607 5.67453 573272
+all_snps D(Altai,Denisova;X,Mbuti)        French                         present-day 0.03573 0.00564 6.33192 573270
+all_snps D(Altai,Denisova;X,Mbuti)        Yoruba                         present-day 0.00171 0.00364 0.47050 573272
+all_snps D(Altai,Denisova;X,Mbuti)       USR1.SG                   Ancient Beringian 0.02532 0.00697 3.63523 573217
+all_snps D(Altai,Denisova;X,Mbuti)    Kolyma1.SG              Ancient Paleo-Siberian 0.02555 0.00758 3.37221 573157
+all_snps D(Altai,Denisova;X,Mbuti)        MA1.SG     Ancient North Eurasian (Mal'ta) 0.02922 0.00765 3.81996 420294
+all_snps D(Altai,Denisova;X,Mbuti)      Yana1.SG   Upper Paleolithic Siberian (Yana) 0.03540 0.00799 4.43245 573207
+all_snps D(Altai,Denisova;X,Mbuti) Sumidouro6.SG Ancient South America (Lagoa Santa) 0.03733 0.00777 4.80627 500741

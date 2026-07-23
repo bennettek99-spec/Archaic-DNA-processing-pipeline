@@ -1,0 +1,8 @@
+model	description	evidence	verdict
+M0_null	No Denisovan ancestry in Native Americans	S2 Z>|3| in 1/14 ancient cohorts; Papuan S2 Z=7.3	Contradicted
+M1_single_pulse	Single ancestral East Eurasian Denisovan pulse	Mean ancient American S3=-0.2310 (near 0 = tracks Han ~ equally); 0/14 positive	Partially supported
+M2_multiple_ea	Multiple Denisovan pulses in East Asia	Not directly tested by S3; requires tract-level analysis (deferred)	Unresolved
+M3_papuan_source	Papuan-related source contribution	Mean ancient American S3=-0.2310; 0/14 positive; bootstrap CIs checked	Not supported
+M4_structured	Structured Denisovan source populations	Requires tract phylogenies (deferred to whole-genome tier)	Unresolved
+M5_dilution	Differential dilution	Regression R2 = 0.36279509415322087	Unresolved
+M6_selection	Selection-driven convergence	Selected-loci exclusion S3 changes: see table8	Unresolved

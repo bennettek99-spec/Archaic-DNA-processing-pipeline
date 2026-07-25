@@ -1,0 +1,125 @@
+project:
+  name: papuan_denisovan_v1
+  generation_time_years: 29
+  random_seed: 20260725
+
+runtime:
+  profile: laptop
+  max_threads: 4
+  max_memory_gb: 10
+  max_block_minutes: 55
+  checkpoint_interval_minutes: 10
+  stop_before_limit_minutes: 5
+  output_root: archaic_admixture_dating/outputs
+
+downloads:
+  enabled: true
+  resumable: true
+  max_block_minutes: 55
+  chunk_size_mb: 64
+  retries: 8
+  retry_backoff_seconds: 30
+  verify_checksums: true
+  retain_partial_files: true
+  bandwidth_limit_mbps: null
+  datasets: {}
+
+tracts:
+  minimum_length_cm: 0.02
+  maximum_gap_bp: 50000
+  minimum_confidence: 0.8
+  minimum_callable_fraction: 0.8
+  exclude_low_mappability: true
+  exclude_centromeres: true
+  exclude_telomere_buffers: true
+  selected_loci_bed: null
+  masks:
+    low_mappability: null
+    centromeres: null
+    telomeres: null
+
+dating:
+  bootstrap_replicates: 500
+  chromosome_block_bootstrap: true
+  generation_time_sensitivity: [27, 28, 29, 30]
+  minimum_tract_length_sensitivity_cm: [0.02, 0.03, 0.05, 0.1]
+  confidence_sensitivity: [0.7, 0.8, 0.9]
+  recombination_map_scale_sensitivity: [0.95, 1.0, 1.05]
+  single_pulse:
+    enabled: true
+    bounds_generations: [100, 4000]
+  two_pulse:
+    enabled: true
+    minimum_separation_generations: 100
+  continuous_flow:
+    enabled: true
+
+simulation:
+  enabled: true
+  engine: tract_approximation
+  initial_replicates_per_model: 20
+  final_replicates_per_model: 200
+  observed_tract_count: 300
+  sequence_length_mode: chromosome_subset
+  pilot_chromosomes: [21, 22]
+  msprime:
+    sequence_length_bp: 20000000
+    recombination_rate: 1.0e-8
+    sample_individuals: 20
+    introgression_fraction: 0.04
+  caller_error:
+    false_negative_rate: 0.05
+    length_noise_sd_fraction: 0.08
+
+models:
+  M1: {name: "Single Denisovan pulse at 50 kya", kind: single, dates_kya: [50]}
+  M2: {name: "Single Denisovan pulse at 40 kya", kind: single, dates_kya: [40]}
+  M3: {name: "Single Denisovan pulse at 31 kya", kind: single, dates_kya: [31]}
+  M4: {name: "Single Denisovan pulse at 25 kya", kind: single, dates_kya: [25]}
+  M5: {name: "Two pulses at 50 kya and 31 kya", kind: two, dates_kya: [50, 31], weights: [0.65, 0.35]}
+  M6: {name: "Prolonged gene flow from 50 kya to 30 kya", kind: continuous, dates_kya: [50, 30]}
+  M7: {name: "Older pulse plus severe Papuan bottleneck", kind: bottleneck, dates_kya: [50]}
+  M8: {name: "Older pulse plus recent modern-human admixture", kind: modern_mixing, dates_kya: [50, 12], weights: [0.75, 0.25]}
+  M9: {name: "Two divergent Denisovan sources", kind: divergent_sources, dates_kya: [50, 42], weights: [0.55, 0.45]}
+  M10: {name: "Older pulse plus selection on a subset of tracts", kind: selection, dates_kya: [50], selected_fraction: 0.08}
+
+profiles:
+  smoke:
+    runtime:
+      max_threads: 1
+      max_memory_gb: 2
+      max_block_minutes: 10
+      stop_before_limit_minutes: 1
+    dating:
+      bootstrap_replicates: 20
+    simulation:
+      initial_replicates_per_model: 2
+      final_replicates_per_model: 2
+      observed_tract_count: 120
+  laptop:
+    runtime:
+      max_threads: 4
+      max_memory_gb: 10
+      max_block_minutes: 55
+      stop_before_limit_minutes: 5
+    dating:
+      bootstrap_replicates: 100
+    simulation:
+      initial_replicates_per_model: 20
+      final_replicates_per_model: 20
+  full:
+    runtime:
+      max_threads: 16
+      max_memory_gb: 64
+      max_block_minutes: 240
+      stop_before_limit_minutes: 10
+    dating:
+      bootstrap_replicates: 500
+    simulation:
+      engine: msprime
+      final_replicates_per_model: 200
+
+workflow:
+  profile: laptop
+  run_id: papuan_denisovan_v1_snakemake
+  tract_input: null

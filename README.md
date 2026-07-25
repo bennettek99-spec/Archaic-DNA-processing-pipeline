@@ -136,6 +136,7 @@ Important limitations:
 | Full Phase 2-9 workflow | `archaic-pipeline all --panel 1240k` | `reports/archaic_report_1240k.html` |
 | Highest-archaic credibility scan | `archaic-pipeline highest-archaic` | [module guide](docs/highest_archaic.md) |
 | Denisovan reference genome | `archaic-pipeline denisovan-genome --panel 1240k` | [module guide](docs/denisovan_genome.md) |
+| Papuan Denisovan admixture dating V1 | `archaic-admixture-dating run-all --profile smoke --resume` | [module guide](archaic_admixture_dating/README.md) |
 | Global and Eurasian >5% survey | `python global_archaic_survey.py` | [study index](docs/studies-and-reports.md) |
 | Oase1 segment analysis | `python oase1_haplotype.py` | [study index](docs/studies-and-reports.md) |
 | West-Eurasian source ancestry | `archaic-pipeline ancestry` | [study index](docs/studies-and-reports.md) |
@@ -165,6 +166,7 @@ requirements.
 - [Studies and reports](docs/studies-and-reports.md)
 - [Data and artifact policy](DATA.md)
 - [Simulation validation](SIMULATION_VALIDATION.md)
+- [Papuan Denisovan admixture dating V1](archaic_admixture_dating/README.md)
 - [Roadmap](ROADMAP_GENETICS.md)
 - [Changelog](CHANGELOG.md)
 - [Contributing](CONTRIBUTING.md)

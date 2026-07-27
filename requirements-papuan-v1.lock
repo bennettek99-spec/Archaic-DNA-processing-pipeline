@@ -1,0 +1,15 @@
+# Tested Papuan Denisovan V1 environment (Python 3.12.10, Windows x86-64).
+# Recreate in a fresh venv with:
+#   python -m pip install -r requirements-papuan-v1.lock
+numpy==2.5.1
+pandas==3.0.3
+scipy==1.18.0
+scikit-learn==1.9.0
+matplotlib==3.11.1
+PyYAML==6.0.3
+msprime==1.4.2
+pytest==9.1.1
+pytest-cov==7.1.0
+pyflakes==3.4.0
+build==1.5.0
+snakemake==9.23.1

@@ -1,0 +1,59 @@
+"""Snakemake entry point for the checkpoint-aware Papuan Denisovan V1 CLI.
+
+Snakemake tracks the governed tract input, configuration, log, and final
+report. The Python workflow retains chromosome, replicate, bootstrap, download,
+and model-fit checkpoints so a voluntarily paused rule can be restarted without
+discarding completed units.
+"""
+
+from pathlib import Path
+
+MODULE_DIR = Path(workflow.basedir).parent.resolve()
+CONFIG_PATH = MODULE_DIR / "configs" / "papuan_denisovan_v1.yaml"
+configfile: str(CONFIG_PATH)
+
+WORKFLOW = config.get("workflow", {})
+PROFILE = WORKFLOW.get("profile", config["runtime"].get("profile", "laptop"))
+RUN_ID = WORKFLOW.get("run_id", "papuan_denisovan_v1_snakemake")
+TRACT_INPUT = WORKFLOW.get("tract_input")
+OUTPUT_ROOT = Path(config["runtime"]["output_root"])
+if not OUTPUT_ROOT.is_absolute():
+    OUTPUT_ROOT = (MODULE_DIR.parent / OUTPUT_ROOT).resolve()
+RUN_DIR = OUTPUT_ROOT / RUN_ID
+
+
+rule all:
+    input:
+        str(RUN_DIR / "report" / "report.html")
+
+
+rule run_papuan_denisovan_v1:
+    input:
+        config=str(CONFIG_PATH),
+        tracts=lambda _wildcards: [str(Path(TRACT_INPUT).resolve())] if TRACT_INPUT else [],
+    output:
+        report=str(RUN_DIR / "report" / "report.html"),
+        provenance=str(RUN_DIR / "report" / "provenance.json"),
+        manifest=str(RUN_DIR / "output_manifest.json"),
+    log:
+        str(RUN_DIR / "logs" / "snakemake_run_all.log"),
+    threads:
+        int(config["runtime"]["max_threads"])
+    resources:
+        mem_mb=int(float(config["runtime"]["max_memory_gb"]) * 1024),
+        runtime=int(config["runtime"]["max_block_minutes"]),
+    params:
+        input_arg=(f'--input "{Path(TRACT_INPUT).resolve()}"' if TRACT_INPUT else ""),
+        profile=PROFILE,
+        run_id=RUN_ID,
+        max_minutes=config["runtime"]["max_block_minutes"],
+    shell:
+        r"""
+        python -m archaic_admixture_dating.cli run-all \
+          --config "{input.config}" \
+          --profile "{params.profile}" \
+          --run-id "{params.run_id}" \
+          --max-block-minutes {params.max_minutes} \
+          --threads {threads} \
+          --resume {params.input_arg} > "{log}" 2>&1
+        """

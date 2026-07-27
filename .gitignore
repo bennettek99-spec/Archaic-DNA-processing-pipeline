@@ -6,6 +6,7 @@ __pycache__/
 build/
 dist/
 .pytest_cache/
+.snakemake/
 .coverage
 htmlcov/
 .ipynb_checkpoints/
@@ -40,3 +41,8 @@ results/lea/*.geno
 tmp/
 output/pdf/
 reports/etruscan_publication/
+
+# Papuan Denisovan admixture-dating run products and resumable transfers
+archaic_admixture_dating/outputs/*
+!archaic_admixture_dating/outputs/.gitkeep
+*.part

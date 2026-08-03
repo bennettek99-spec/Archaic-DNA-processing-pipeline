@@ -84,3 +84,45 @@ Generated run directories are intentionally ignored:
 
 - `archaic_admixture_dating/outputs/papuan_skov_real_v1_broad`
 - `archaic_admixture_dating/outputs/papuan_skov_real_v1_strict`
+
+## GRCh37 HapMap genetic-map sensitivity
+
+A bounded Windows sensitivity run replaced the constant `1.2e-8` conversion
+with linear interpolation on the chromosome-specific HapMap Phase II map
+lifted to GRCh37 by Adam Auton. The 22 compressed autosomal maps total
+36,704,757 bytes (35.0 MiB). Source commit:
+`42e69e59f1d3a31725378e61d8f8e82a51e88d63`.
+
+The run used the real S5 supplement, one thread, a 2 GiB configured ceiling,
+20 bootstrap replicates, five complex-model bootstrap replicates, and two
+calibration replicates for each M1-M10 scenario. It is a low-compute
+sensitivity analysis; the small calibration is suitable for rejecting an
+unstable result, not for positive model selection.
+
+| Analysis | Retained tracts | Individuals | Median length | Verdict |
+|---|---:|---:|---:|---|
+| Broad Denisovan affinity | 75,360 | 89 | 0.3018 cM | Not estimable |
+| Strict Denisovan affinity | 71,320 | 89 | 0.2911 cM | Not estimable |
+
+Before source-class and confidence filtering, 1,528 autosomal Papuan HMM
+intervals extended beyond the covered map ranges and were excluded rather
+than extrapolated. Another 30 intervals spanned zero cM on the map and failed
+the positive-length check.
+
+In both analyses the single-pulse fit reached its 100-generation lower bound
+and failed the exponential goodness-of-fit test (`KS p = 0`). The favored
+two-pulse optimizer solutions contained a younger component at the
+50-generation lower bound and had 0% model-family classification accuracy in
+the bounded calibration. Their numerical dates are rejected diagnostics, not
+admixture-event estimates.
+
+This sensitivity changes the inferred genetic-length distribution but does
+not rescue the independent-tract dating model. The defensible conclusion
+remains `not-estimable`. Compact results are in
+`MAP_AWARE_LIGHTWEIGHT_SUMMARY.tsv`; hashes for the uncommitted reference maps
+are in `GRCH37_MAP_MANIFEST.tsv`.
+
+Generated reports remain ignored:
+
+- `archaic_admixture_dating/outputs/papuan_s5_map_grch37_light_broad/report/report.html`
+- `archaic_admixture_dating/outputs/papuan_s5_map_grch37_light_strict/report/report.html`

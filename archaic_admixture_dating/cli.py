@@ -21,6 +21,7 @@ from .checkpointing import (
     atomic_write_json,
     atomic_write_text,
     file_fingerprint,
+    sha256_file,
 )
 from .config import apply_profile, config_hash, load_config, save_snapshot
 from .dating_continuous import fit_continuous_flow
@@ -31,6 +32,7 @@ from .downloads import Deadline as DownloadDeadline
 from .downloads import DownloadError, download, verify_record
 from .logging_utils import get_logger
 from .manifests import DownloadManifest, DownloadRecord
+from .genetic_map import DEFAULT_MAP_PATTERN
 from .model_comparison import compare_models
 from .plotting import make_qc_figure
 from .reporting import write_report
@@ -283,6 +285,10 @@ def command_import(args: argparse.Namespace) -> int:
         caller=args.caller,
         column_map=parse_column_map(args.map_column),
         population=args.population,
+        chromosomes=args.chromosomes,
+        genetic_map_directory=args.genetic_map_dir,
+        genetic_map_pattern=args.genetic_map_pattern,
+        genetic_map_build=args.genetic_map_build,
         output=output / "tracts" / "imported_tracts.tsv",
         excluded_output=output / "tracts" / "malformed_tracts.tsv",
     )
@@ -295,10 +301,14 @@ def command_import(args: argparse.Namespace) -> int:
 
 
 def _input_manifest(args: argparse.Namespace) -> dict:
+    input_fingerprint = file_fingerprint(args.input)
+    input_fingerprint["filename"] = Path(args.input).name
+    input_fingerprint.pop("path", None)
     manifest = {
-        "input": file_fingerprint(args.input),
+        "input": input_fingerprint,
         "caller": args.caller,
         "population_override": args.population,
+        "chromosome_selection": args.chromosomes,
         "access_authorization": (
             "user-supplied path; operator is responsible for documented permission"
         ),
@@ -327,6 +337,33 @@ def _input_manifest(args: argparse.Namespace) -> dict:
                     "Shared_with_Denisova > Shared_with_Altai"
                 ),
             }
+        )
+    if args.genetic_map_dir:
+        directory = Path(args.genetic_map_dir)
+        wildcard = args.genetic_map_pattern.replace("{chromosome}", "*")
+        map_files = []
+        for path in sorted(directory.glob(wildcard)):
+            if path.is_file():
+                map_files.append(
+                    {
+                        "filename": path.name,
+                        "size": path.stat().st_size,
+                        "sha256": sha256_file(path),
+                    }
+                )
+        manifest["genetic_map"] = {
+            "build": args.genetic_map_build,
+            "pattern": args.genetic_map_pattern,
+            "source": "HapMap Phase II map lifted to GRCh37 by Adam Auton",
+            "source_repository": (
+                "https://github.com/adimitromanolakis/geneticMap-GRCh37"
+            ),
+            "interpolation": "linear between adjacent map positions; no extrapolation",
+            "files": map_files,
+        }
+        manifest["genetic_length_conversion"] = (
+            "chromosome-specific genetic-map interpolation; intervals outside map "
+            "coverage fail closed"
         )
     return manifest
 
@@ -553,6 +590,10 @@ def command_run_all(args: argparse.Namespace) -> int:
                 caller=args.caller,
                 column_map=parse_column_map(args.map_column),
                 population=args.population,
+                chromosomes=args.chromosomes,
+                genetic_map_directory=args.genetic_map_dir,
+                genetic_map_pattern=args.genetic_map_pattern,
+                genetic_map_build=args.genetic_map_build,
             )
             atomic_write_json(
                 output / "input_manifest.json",
@@ -874,6 +915,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     import_parser.add_argument("--population")
     import_parser.add_argument("--map-column", action="append")
+    import_parser.add_argument("--genetic-map-dir")
+    import_parser.add_argument("--genetic-map-pattern", default=DEFAULT_MAP_PATTERN)
+    import_parser.add_argument("--genetic-map-build", default="GRCh37")
     import_parser.set_defaults(function=command_import)
 
     simulate_parser = subparsers.add_parser("simulate")
@@ -891,6 +935,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     run_parser.add_argument("--population")
     run_parser.add_argument("--map-column", action="append")
+    run_parser.add_argument("--genetic-map-dir")
+    run_parser.add_argument("--genetic-map-pattern", default=DEFAULT_MAP_PATTERN)
+    run_parser.add_argument("--genetic-map-build", default="GRCh37")
     run_parser.set_defaults(function=command_run_all)
     return parser
 

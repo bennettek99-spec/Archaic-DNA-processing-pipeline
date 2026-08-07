@@ -21,6 +21,13 @@ The normal project extras remain available:
 .\.venv\Scripts\python.exe -m pip install -e ".[test,sim]"
 ```
 
+Reading the published S4 Excel workbook requires the lightweight `excel`
+extra:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -e ".[excel]"
+```
+
 `pyarrow` is optional and required only for Parquet. TSV remains the portable
 default.
 

@@ -12,6 +12,12 @@
 - Reference similarity does not uniquely identify geographic source.
 - Tract-level simulation is a workflow/recovery approximation; strong claims
   require caller-aware coalescent calibration on appropriately governed data.
+- The bounded observation-process stress test includes random false negatives
+  and multiplicative length noise but does not invent an unvalidated tract-
+  merging process.
+- The external HMMix hg38 HGDP callset has no exact sample-ID overlap with the
+  89-person GRCh37 S4/S5 analysis, so it cannot provide a matched-person
+  replication.
 - Relative Denisovan affinity cannot be reported as an absolute ancestry
   percentage without a separately calibrated estimator.
 - A young conditional tract date does not establish Denisovan survival to that

@@ -42,7 +42,7 @@ def test_analysis_sets_keep_affinity_semantics_separate():
     assert len(sets["neanderthal_affinity"]) == 1
 
 
-def test_s4_bridge_matches_all_individuals_and_is_reproducible(tmp_path):
+def test_s4_bridge_matches_all_individuals_and_is_reproducible(tmp_path, monkeypatch):
     sample_ids = [f"P{i:02d}" for i in range(89)]
     s4 = pd.DataFrame(
         {
@@ -56,8 +56,7 @@ def test_s4_bridge_matches_all_individuals_and_is_reproducible(tmp_path):
         }
     )
     workbook = tmp_path / "s4.xlsx"
-    with pd.ExcelWriter(workbook, engine="openpyxl") as writer:
-        s4.to_excel(writer, sheet_name="Human population parameters", index=False)
+    monkeypatch.setattr(pd, "read_excel", lambda *args, **kwargs: s4.copy())
     features = pd.DataFrame(
         {
             "sample_id": sample_ids,

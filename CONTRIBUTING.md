@@ -51,6 +51,26 @@ local analyses. Retain a generated result only when its command, input release,
 provenance, and interpretation status are documented in
 [DATA.md](DATA.md) or the study report.
 
+## Publishing a focused change
+
+GitHub authentication and the `origin` remote are already configured for this
+checkout. Existing tracked branches can be published with `git push`. For a new
+branch, the repository's `push.autoSetupRemote` setting makes its first
+`git push` create and track the matching `origin` branch automatically.
+
+For a guarded commit-and-push workflow, use the PowerShell helper with an
+explicit file list:
+
+```powershell
+.\tools\publish.ps1 -Message "Describe the focused change" -Path README.md, CONTRIBUTING.md
+```
+
+It refuses a pre-staged index, checks whether the branch is behind its remote,
+rejects ignored and out-of-repository paths, shows the exact staged files,
+requires `PUBLISH` confirmation, then verifies that the remote SHA matches and
+reports `0 0` local/remote parity. It deliberately does not support an implicit
+"all files" mode.
+
 ## Pull requests
 
 Keep pull requests focused. Include:

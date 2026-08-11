@@ -23,6 +23,9 @@ dependencies = [
 
 [project.optional-dependencies]
 sim = ["msprime>=1.3"]
+parquet = ["pyarrow>=14"]
+excel = ["openpyxl>=3.1,<4"]
+workflow = ["snakemake>=8,<10"]
 pdf = ["reportlab>=4.0", "pypdf>=4.0"]
 test = [
     "pytest>=7.0",
@@ -37,6 +40,7 @@ archaic-pipeline = "archaic.cli:main"
 archaic-highest = "archaic.highest_archaic:main"
 archaic-highest-segments = "archaic.highest_archaic_segments:main"
 archaic-denisovan = "archaic.denisovan_genome:main"
+archaic-admixture-dating = "archaic_admixture_dating.cli:main"
 
 [project.urls]
 Repository = "https://github.com/bennettek99-spec/Archaic-DNA-processing-pipeline"
@@ -45,7 +49,10 @@ Issues = "https://github.com/bennettek99-spec/Archaic-DNA-processing-pipeline/is
 Changelog = "https://github.com/bennettek99-spec/Archaic-DNA-processing-pipeline/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
-packages = ["archaic"]
+packages = ["archaic", "archaic_admixture_dating", "archaic_admixture_dating.configs"]
+
+[tool.setuptools.package-data]
+archaic_admixture_dating = ["configs/*.yaml"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "archaic_admixture_dating/tests"]

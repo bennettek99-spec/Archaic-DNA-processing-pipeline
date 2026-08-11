@@ -1,0 +1,8 @@
+analysis_set	minimum_length_cm	tracts	effective_generations_unbounded	ks_statistic	ks_pvalue	interpretation
+denisovan_broad	0.02	75360	83.900816	0.298314	0	diagnostic_not_event_date
+denisovan_broad	0.10	60487	71.657420	0.273025	0	diagnostic_not_event_date
+denisovan_broad	0.20	46785	59.164135	0.221204	0	diagnostic_not_event_date
+denisovan_broad	0.50	29082	42.552120	0.103120	1.06118e-269	diagnostic_not_event_date
+denisovan_broad	1.00	20603	36.630913	0.054105	7.33068e-53	diagnostic_not_event_date
+denisovan_broad_excluding_gower_candidates	0.02	74303	84.185087	0.299343	0	diagnostic_not_event_date
+denisovan_broad_remove_longest_5pct	0.02	71592	127.938751	0.224748	0	diagnostic_not_event_date

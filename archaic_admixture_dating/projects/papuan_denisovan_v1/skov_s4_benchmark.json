@@ -1,0 +1,31 @@
+{
+  "source": {
+    "doi": "10.1371/journal.pgen.1007641",
+    "supplement": "S4",
+    "sha256": "80b3ceb73d05ae3ffc3388380ab702213c4bfc011a79405edb3a0773ec4df8bc",
+    "worksheet": "Human population parameters",
+    "filter": "Outgroup == Whole~world"
+  },
+  "sample_crosscheck": {
+    "s4_individuals": 89,
+    "s5_papuan_hmm_individuals": 89,
+    "sets_match_exactly": true
+  },
+  "summary": {
+    "median_generations": 1019.77078883,
+    "minimum_generations": 888.32089,
+    "maximum_generations": 1191.36387129,
+    "median_kya_27": 27.53381129841,
+    "median_kya_29": 29.57335287607,
+    "median_kya_30": 30.5931236649
+  },
+  "bootstrap_cross_individual_median": {
+    "replicates": 10000,
+    "seed": 20260725,
+    "ci_low_generations": 995.400377083,
+    "ci_high_generations": 1042.64441258,
+    "ci_low_kya_29": 28.866610935407,
+    "ci_high_kya_29": 30.23668796482
+  },
+  "interpretation_boundary": "Published HMM parameter summary, not an independent raw-genome event estimate or a Denisovan survival date."
+}

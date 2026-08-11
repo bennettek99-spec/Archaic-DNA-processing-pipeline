@@ -5,7 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 import pandas as pd
 
-from .tract_schema import read_tracts, validate_tracts, write_tracts
+from .genetic_map import DEFAULT_MAP_PATTERN, apply_genetic_map
+from .tract_schema import normalize_chromosome, read_tracts, validate_tracts, write_tracts
 
 IBDMIX_ALIASES = {
     "ID": "sample_id",
@@ -95,6 +96,10 @@ def import_tracts(
     caller: str = "generic",
     column_map: dict[str, str] | None = None,
     population: str | None = None,
+    chromosomes: list[str] | None = None,
+    genetic_map_directory: str | Path | None = None,
+    genetic_map_pattern: str = DEFAULT_MAP_PATTERN,
+    genetic_map_build: str = "GRCh37",
     output: str | Path | None = None,
     excluded_output: str | Path | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -110,6 +115,18 @@ def import_tracts(
         frame["population"] = population
     if "caller" not in frame:
         frame["caller"] = caller
+    if chromosomes:
+        selected = {normalize_chromosome(value) for value in chromosomes}
+        frame = frame.loc[
+            frame["chromosome"].map(normalize_chromosome).isin(selected)
+        ].copy()
+    if genetic_map_directory is not None:
+        frame = apply_genetic_map(
+            frame,
+            genetic_map_directory,
+            pattern=genetic_map_pattern,
+            build=genetic_map_build,
+        )
     if "caller_metadata" not in frame:
         known = {
             "sample_id", "population", "chromosome", "start_bp", "end_bp",
@@ -119,6 +136,7 @@ def import_tracts(
             "snps", "country", "region", "Shared_with_Altai",
             "Shared_with_Denisova", "Shared_with_Vindija", "outgroup", "method",
             "genetic_length_method", "source_class_rule",
+            "genetic_map_status", "genetic_map_build", "genetic_map_pattern",
         }
         extras = [column for column in frame.columns if column not in known]
         if extras:

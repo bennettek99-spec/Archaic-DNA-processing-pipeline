@@ -42,6 +42,29 @@ Generic tables can map caller-specific columns repeatedly with
 population, chromosome, base-pair start/end, and genetic length in cM (or
 genetic start/end).
 
+## Apply a chromosome-specific genetic map
+
+For GRCh37/hg19 tract coordinates, `import-tracts` and `run-all` can replace a
+constant recombination-rate conversion with linear interpolation on one map
+per chromosome:
+
+```bash
+python -m archaic_admixture_dating.cli run-all \
+  --profile smoke \
+  --run-id papuan_map_sensitivity \
+  --input /approved/path/tracts.tsv \
+  --caller skov_hmm \
+  --chromosomes 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 \
+  --genetic-map-dir /reference/maps/grch37
+```
+
+The default filename pattern is
+`genetic_map_GRCh37_chr{chromosome}.txt.gz`; override it with
+`--genetic-map-pattern`. Endpoints outside a map's covered range are not
+extrapolated and fail closed during tract validation. Input manifests record
+the map build, source filenames, byte sizes, and SHA-256 hashes without
+machine-local map paths.
+
 ## Safe one-hour laptop workflow
 
 ```bash

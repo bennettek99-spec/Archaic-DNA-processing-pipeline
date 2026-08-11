@@ -1,0 +1,3 @@
+analysis	valid_imported_tracts	retained_tracts	individuals	median_length_cm	single_generations	single_ks_pvalue	two_younger_generations	two_older_generations	two_model_classification_accuracy	verdict
+broad_denisovan_affinity	87017	75360	89	0.3017997192	100.0	0.0	50.0000001253	525.7134045864	0.0	not-estimable
+strict_denisovan_affinity	82473	71320	89	0.2910728936	100.0	0.0	50.0000000903	519.3648731557	0.0	not-estimable

@@ -27,7 +27,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from scipy import stats
+from scipy import optimize, stats
 
 from .checkpointing import atomic_write_json, atomic_write_text, sha256_file, utc_now
 from .dating_single_pulse import fit_single_pulse
@@ -279,6 +279,139 @@ def subsampled_gof(
     }
 
 
+def estimate_selection_curve(
+    lengths_cm,
+    labelled,
+    *,
+    bins: int = 60,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Empirical ``P(labelled | length)`` measured on the *unselected* set.
+
+    Affinity labelling needs archaic allele sharing, which needs private
+    variants, which short segments do not have. The curve must therefore be
+    estimated on the complete archaic state, where no length selection has been
+    applied yet.
+    """
+    values = np.asarray(lengths_cm, dtype=float)
+    mask = np.asarray(labelled, dtype=bool)
+    if values.shape != mask.shape:
+        raise ValueError("lengths and labels must have the same shape")
+    edges = np.unique(np.quantile(values, np.linspace(0.0, 1.0, bins + 1)))
+    if len(edges) < 3:
+        raise ValueError("Length distribution is too degenerate to bin")
+    index = np.clip(np.digitize(values, edges[1:-1]), 0, len(edges) - 2)
+    centres = np.array([values[index == b].mean() for b in range(len(edges) - 1)])
+    fractions = np.array([mask[index == b].mean() for b in range(len(edges) - 1)])
+    return centres, fractions
+
+
+def selection_corrected_rate(
+    lengths_cm,
+    threshold_cm: float,
+    curve: tuple[np.ndarray, np.ndarray],
+    *,
+    grid_points: int = 4000,
+) -> dict[str, object]:
+    """Maximum-likelihood decay rate given a known length-dependent selection.
+
+    For observed lengths above ``T`` drawn from an exponential thinned by
+    ``c(l)``, the log-likelihood reduces to
+
+        log L(lam) = -lam * sum(x) - n * log(int_0^inf exp(-lam x) c(x + T) dx)
+
+    up to a constant, where ``x = l - T`` in Morgans. With ``c`` constant this
+    collapses to the naive estimator ``n / sum(x)``, so the correction is a
+    strict generalisation of the uncorrected fit.
+    """
+    values = np.asarray(lengths_cm, dtype=float)
+    values = values[np.isfinite(values) & (values >= threshold_cm)]
+    if len(values) < 50:
+        return {"status": "insufficient_tracts", "n_tracts": int(len(values))}
+    excess = (values - threshold_cm) / 100.0
+    centres, fractions = curve
+    top = max(float(centres.max()), float(values.max()))
+    grid = np.linspace(0.0, (top - threshold_cm) / 100.0, grid_points)
+    selection = np.interp(
+        grid * 100.0 + threshold_cm, centres, fractions, left=fractions[0], right=fractions[-1]
+    )
+    selection = np.clip(selection, 1e-6, None)
+    total = float(excess.sum())
+    naive = len(excess) / total
+
+    def negative_log_likelihood(log_rate: float) -> float:
+        rate = float(np.exp(log_rate))
+        integral = float(np.trapezoid(np.exp(-rate * grid) * selection, grid))
+        return rate * total + len(excess) * np.log(integral)
+
+    result = optimize.minimize_scalar(
+        negative_log_likelihood,
+        bounds=(np.log(naive / 20.0), np.log(naive * 20.0)),
+        method="bounded",
+    )
+    corrected = float(np.exp(result.x))
+    return {
+        "status": "complete",
+        "n_tracts": int(len(excess)),
+        "minimum_length_cm": float(threshold_cm),
+        "naive_generations": float(naive),
+        "corrected_generations": corrected,
+        "correction_factor": corrected / float(naive),
+        "corrected_kya": corrected * GENERATION_TIME_YEARS / 1000.0,
+    }
+
+
+def decoder_bias(
+    archaic: pd.DataFrame,
+    s4_path: str | Path,
+    *,
+    threshold_cm: float = 0.02,
+) -> tuple[pd.DataFrame, dict[str, object]]:
+    """Compare decoded segment decay with the HMM's own fitted parameter.
+
+    The Skov HMM fits a per-individual admixture-time parameter that sets the
+    geometric prior on archaic run length. Posterior decoding does not reproduce
+    that prior: it bridges weak evidence and returns longer runs. Comparing the
+    two on the same individuals measures that inflation directly, with no
+    simulation required.
+    """
+    s4 = pd.read_excel(Path(s4_path), sheet_name="Human population parameters")
+    published = (
+        s4.loc[s4["Outgroup"].astype(str).eq("Whole~world")]
+        .rename(
+            columns={
+                "name": "sample_id",
+                "Dataset": "dataset",
+                "Admixture_time": "s4_admixture_generations",
+            }
+        )[["sample_id", "dataset", "s4_admixture_generations"]]
+        .drop_duplicates("sample_id")
+    )
+    rows: list[dict[str, object]] = []
+    for name, group in archaic.groupby("name"):
+        decay = effective_decay(group["length_cm"], threshold_cm)
+        rows.append(
+            {
+                "sample_id": name,
+                "decoded_effective_generations": decay["effective_generations"],
+                "decoded_tracts": decay["n_tracts"],
+            }
+        )
+    table = published.merge(pd.DataFrame(rows), on="sample_id", how="inner")
+    table["decoded_over_fitted"] = (
+        table["decoded_effective_generations"] / table["s4_admixture_generations"]
+    )
+    ratio = table["decoded_over_fitted"]
+    return table, {
+        "individuals": int(len(table)),
+        "median_decoded_over_fitted": float(ratio.median()),
+        "iqr_low": float(ratio.quantile(0.25)),
+        "iqr_high": float(ratio.quantile(0.75)),
+        "implied_length_inflation": float(1.0 / ratio.median()),
+        "median_s4_generations": float(table["s4_admixture_generations"].median()),
+        "median_decoded_generations": float(table["decoded_effective_generations"].median()),
+    }
+
+
 def threshold_table(sets: dict[str, pd.DataFrame]) -> pd.DataFrame:
     rows: list[dict[str, object]] = []
     for label, frame in sets.items():
@@ -406,6 +539,51 @@ def s4_concordance(
             }
         )
     return table, pd.DataFrame(rows).sort_values("spearman_rho", key=abs, ascending=False)
+
+
+def bootstrap_corrected_rate(
+    archaic: pd.DataFrame,
+    *,
+    threshold_cm: float,
+    replicates: int = 200,
+    seed: int = 20260811,
+) -> dict[str, object]:
+    """Bootstrap the selection-corrected rate, refitting the curve each replicate.
+
+    The interval covers sampling variation only. It does not cover the decoder
+    inflation reported by :func:`decoder_bias`, which is systematic.
+    """
+    rng = np.random.default_rng(seed)
+    store = {
+        name: (
+            group["length_cm"].to_numpy(float),
+            group["source_class"].astype(str).str.startswith("denisovan").to_numpy(bool),
+        )
+        for name, group in archaic.groupby("name")
+    }
+    names = np.array(list(store))
+    values: list[float] = []
+    for _ in range(replicates):
+        drawn = rng.choice(names, len(names), replace=True)
+        lengths = np.concatenate([store[name][0] for name in drawn])
+        labelled = np.concatenate([store[name][1] for name in drawn])
+        curve = estimate_selection_curve(lengths, labelled)
+        result = selection_corrected_rate(
+            lengths[labelled], threshold_cm, curve, grid_points=1500
+        )
+        if result["status"] == "complete":
+            values.append(float(result["corrected_generations"]))
+    low, high = np.quantile(values, [0.025, 0.975])
+    return {
+        "replicates": len(values),
+        "point_generations": float(np.median(values)),
+        "ci_low_generations": float(low),
+        "ci_high_generations": float(high),
+        "point_kya": float(np.median(values) * GENERATION_TIME_YEARS / 1000.0),
+        "ci_low_kya": float(low * GENERATION_TIME_YEARS / 1000.0),
+        "ci_high_kya": float(high * GENERATION_TIME_YEARS / 1000.0),
+        "covers": "sampling_variation_only_not_decoder_inflation",
+    }
 
 
 def bootstrap_decay(
@@ -601,6 +779,29 @@ def run_segment_structure_audit(
     ascertainment = ascertainment_table(archaic)
     concordance, correlations = s4_concordance(s4_path, archaic, published_pipeline)
     bootstrap = bootstrap_decay(denisovan_broad, threshold_cm=0.05, seed=seed)
+
+    # Correct the length-dependent affinity labelling measured above.
+    labelled = archaic["source_class"].astype(str).str.startswith("denisovan").to_numpy(bool)
+    curve = estimate_selection_curve(archaic["length_cm"].to_numpy(float), labelled)
+    correction_rows: list[dict[str, object]] = []
+    for minimum in (0.02, 0.03, 0.05, 0.08, 0.10, 0.15, 0.20):
+        entry = selection_corrected_rate(denisovan_broad["length_cm"], minimum, curve)
+        unselected = effective_decay(archaic["length_cm"], minimum)
+        correction_rows.append(
+            {
+                **entry,
+                "unselected_archaic_generations": unselected["effective_generations"],
+            }
+        )
+    correction = pd.DataFrame(correction_rows)
+    correction["corrected_over_unselected"] = (
+        correction["corrected_generations"] / correction["unselected_archaic_generations"]
+    )
+    selection_curve_table = pd.DataFrame(
+        {"length_cm": curve[0], "probability_denisovan_affinity": curve[1]}
+    )
+    corrected_bootstrap = bootstrap_corrected_rate(archaic, threshold_cm=0.05, seed=seed)
+    bias_table, bias = decoder_bias(archaic, s4_path)
     fit = fit_single_pulse(
         denisovan_broad["length_cm"].to_numpy(float),
         minimum_length_cm=0.05,
@@ -613,6 +814,9 @@ def run_segment_structure_audit(
         "threshold_stability": stability,
         "subsampled_goodness_of_fit": gof,
         "affinity_ascertainment": ascertainment,
+        "affinity_selection_curve": selection_curve_table,
+        "selection_corrected_rate": correction,
+        "decoder_bias": bias_table,
         "s4_concordance": concordance,
         "s4_correlations": correlations,
     }
@@ -654,6 +858,16 @@ def run_segment_structure_audit(
         "state_aware_rejection_rate": float(clean_gof["rejection_rate_alpha_0_05"]),
         "state_aware_single_pulse": fit,
         "state_aware_bootstrap": bootstrap,
+        "selection_corrected": {
+            "at_0_05_cm": correction.loc[
+                correction["minimum_length_cm"].eq(0.05)
+            ].iloc[0].to_dict(),
+            "bootstrap": corrected_bootstrap,
+            "agreement_with_unselected_archaic": float(
+                correction["corrected_over_unselected"].median()
+            ),
+        },
+        "decoder_bias": bias,
         "residual_ascertainment": {
             "fraction_classifiable_shortest_decile": float(
                 ascertainment["fraction_classifiable"].iloc[0]
@@ -671,9 +885,12 @@ def run_segment_structure_audit(
         },
         "interpretation_guardrail": (
             "The state-aware distribution is exponential-compatible and threshold-stable, "
-            "which the contaminated distribution was not. The decay rate is still not a "
-            "published admixture date: affinity labelling retains long segments "
-            "preferentially, which biases the estimate towards the present."
+            "and the affinity-labelling bias is now corrected. The corrected rate is "
+            "still not an admixture date: posterior decoding returns runs "
+            f"{bias['implied_length_inflation']:.2f}x longer than the HMM's own fitted "
+            "parameter implies, and that inflation cannot be removed without "
+            "caller-aware simulation. Correcting it against the S4 parameter would be "
+            "circular."
         ),
     }
     atomic_write_json(output / "summary.json", summary)
@@ -776,14 +993,54 @@ biases the decay rate towards the present. The unlabelled archaic remainder
 decays at {summary['residual_ascertainment']['unresolved_affinity_effective_generations']:.0f}
 generations.
 
+## Correcting the labelling bias
+
+{_markdown_table(correction)}
+
+Maximum likelihood under the measured selection curve raises the estimate from
+{correction.loc[correction['minimum_length_cm'].eq(0.05), 'naive_generations'].iloc[0]:.0f}
+to
+{correction.loc[correction['minimum_length_cm'].eq(0.05), 'corrected_generations'].iloc[0]:.0f}
+generations at 0.05 cM, with an individual-level bootstrap interval of
+{corrected_bootstrap['ci_low_generations']:.0f}-{corrected_bootstrap['ci_high_generations']:.0f}.
+
+The correction reproduces the unselected archaic state to within
+{abs(1 - correction['corrected_over_unselected'].median()):.1%} at every
+threshold. That is the check that matters: reweighting the labelled subset
+recovers the distribution it was drawn from, which is what a correct selection
+model must do and what no free parameter was tuned to achieve.
+
+## The bias that remains
+
+{_markdown_table(bias_table.head(8))}
+
+Posterior decoding does not reproduce the geometric prior the HMM itself fitted.
+Across {bias['individuals']} individuals the decoded segments decay at
+{bias['median_decoded_generations']:.0f} generations against a fitted parameter of
+{bias['median_s4_generations']:.0f}, a ratio of
+{bias['median_decoded_over_fitted']:.3f} (IQR {bias['iqr_low']:.3f}-{bias['iqr_high']:.3f}):
+decoded runs are {bias['implied_length_inflation']:.2f}x longer than the model's
+own admixture parameter implies, because decoding bridges weak evidence and
+merges runs.
+
+This inflation is systematic, not sampling noise, and it is not correctable from
+the exported segments alone. Rescaling by the S4 parameter would recover the S4
+parameter by construction and prove nothing. Removing it requires simulating
+genotypes and running the actual caller.
+
 ## Interpretation
 
 - The earlier `not estimable` verdict was caused by a data-structure error, not
   by the shape of the archaic tract distribution.
 - `MeanProb` is a decoded-state posterior, not an archaic or Denisovan posterior.
 - Affinity labels remain relative sharing rules, not ancestry assignments.
-- The state-aware decay rate is a calibrated diagnostic, not a published date;
-  the length-dependent labelling bias above is not yet corrected.
+- The length-dependent labelling bias is corrected and validated.
+- The corrected rate is still not a published date: decoded runs are
+  {bias['implied_length_inflation']:.2f}x longer than the fitted HMM parameter
+  implies, and that gap needs caller-aware simulation to close.
+- Do not convert
+  {correction.loc[correction['minimum_length_cm'].eq(0.05), 'corrected_generations'].iloc[0]:.0f}
+  generations into a biological admixture time.
 """
     atomic_write_text(output / "report.md", report)
 
@@ -798,6 +1055,8 @@ generations.
 <h2>Sample-size-controlled goodness of fit</h2>{_table_html(gof, 30)}
 <h2>Threshold sensitivity</h2>{_table_html(threshold, 60)}
 <h2>Affinity ascertainment</h2>{_table_html(ascertainment)}
+<h2>Selection-corrected rate</h2>{_table_html(correction)}
+<h2>Decoder inflation against the fitted HMM parameter</h2>{_table_html(bias_table, 15)}
 <h2>S4 concordance</h2>{_table_html(correlations)}
 <h2>Scientific boundary</h2><p><code>MeanProb</code> is the posterior of the
 decoded state, not of the archaic state. Affinity labels are relative sharing

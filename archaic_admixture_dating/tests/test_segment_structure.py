@@ -8,9 +8,12 @@ from archaic_admixture_dating.segment_structure import (
     audit_tiling,
     ascertainment_table,
     classify_source_affinity,
+    decoder_bias,
     effective_decay,
+    estimate_selection_curve,
     fit_state_mixture,
     load_decoded_segments,
+    selection_corrected_rate,
     stability_summary,
     subsampled_gof,
     threshold_table,
@@ -182,6 +185,75 @@ def test_source_affinity_rule_is_relative_sharing_only():
         "denisovan_affinity",
         "unresolved",
     ]
+
+
+@pytest.mark.parametrize("true_generations", [600.0, 1000.0, 1800.0])
+def test_selection_correction_recovers_a_known_rate(true_generations):
+    """The estimator must recover a rate it was never told, under known selection."""
+    rng = np.random.default_rng(int(true_generations))
+    lengths = rng.exponential(1.0 / true_generations, 300_000) * 100.0
+    # Labelling saturates with length, as archaic allele sharing does.
+    labelled = rng.random(len(lengths)) < 0.5 * (1.0 - np.exp(-lengths / 0.12))
+    curve = estimate_selection_curve(lengths, labelled)
+
+    result = selection_corrected_rate(lengths[labelled], 0.05, curve)
+
+    assert result["status"] == "complete"
+    # The uncorrected fit is biased towards the present; the correction removes it.
+    assert result["naive_generations"] < true_generations * 0.95
+    assert result["corrected_generations"] == pytest.approx(true_generations, rel=0.05)
+    assert result["correction_factor"] > 1.0
+
+
+def test_selection_correction_is_a_no_op_without_selection():
+    rng = np.random.default_rng(31)
+    lengths = rng.exponential(1.0 / 800.0, 60_000) * 100.0
+    labelled = rng.random(len(lengths)) < 0.4  # length-independent
+
+    curve = estimate_selection_curve(lengths, labelled)
+    result = selection_corrected_rate(lengths[labelled], 0.05, curve)
+
+    assert result["corrected_generations"] == pytest.approx(result["naive_generations"], rel=0.03)
+
+
+def test_selection_correction_fails_closed_on_small_samples():
+    curve = (np.array([0.1, 0.5]), np.array([0.2, 0.8]))
+    result = selection_corrected_rate(np.linspace(0.05, 0.5, 20), 0.05, curve)
+
+    assert result["status"] == "insufficient_tracts"
+
+
+def test_selection_curve_requires_matching_shapes():
+    with pytest.raises(ValueError):
+        estimate_selection_curve(np.linspace(0.01, 1.0, 100), np.ones(50, dtype=bool))
+
+
+def test_decoder_bias_measures_inflation_against_the_fitted_parameter(monkeypatch):
+    rng = np.random.default_rng(13)
+    sample_ids = [f"P{i:02d}" for i in range(20)]
+    fitted = np.linspace(900.0, 1200.0, 20)
+    s4 = pd.DataFrame(
+        {
+            "name": sample_ids,
+            "Dataset": "A",
+            "Outgroup": "Whole~world",
+            "Admixture_time": fitted,
+        }
+    )
+    monkeypatch.setattr(pd, "read_excel", lambda *args, **kwargs: s4.copy())
+    # Decoded runs are twice as long as the fitted parameter implies.
+    rows = []
+    for sample_id, generations in zip(sample_ids, fitted):
+        lengths = rng.exponential(1.0 / (generations / 2.0), 4_000) * 100.0
+        rows.append(pd.DataFrame({"name": sample_id, "length_cm": lengths}))
+    archaic = pd.concat(rows, ignore_index=True)
+
+    table, summary = decoder_bias(archaic, "unused.xlsx", threshold_cm=0.0)
+
+    assert summary["individuals"] == 20
+    assert summary["median_decoded_over_fitted"] == pytest.approx(0.5, rel=0.05)
+    assert summary["implied_length_inflation"] == pytest.approx(2.0, rel=0.05)
+    assert len(table) == 20
 
 
 def test_ascertainment_table_exposes_length_dependent_labelling():

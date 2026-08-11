@@ -29,8 +29,15 @@ distribution stops being pathological:
 The corrected distribution is statistically indistinguishable from a single
 exponential. The contaminated one was rejected in every one of 200 subsamples.
 
-This does **not** yet yield a published admixture date. See
-[Residual bias](#residual-bias).
+After additionally correcting the length-dependent affinity labelling bias, the
+estimate is **618.0 generations** (bootstrap 612.5–623.7), or 17.9 kya at 29
+years per generation.
+
+**That number is not an admixture date and must not be reported as one.** A
+third bias remains: posterior decoding returns runs 1.56x longer than the HMM's
+own fitted parameter implies, which accounts for essentially the whole remaining
+gap. It cannot be removed from the exported segments without circularity. See
+[The bias that remains](#the-bias-that-remains-and-why-the-answer-is-still-not-a-date).
 
 ## Evidence that S5 is a genome tiling
 
@@ -160,25 +167,97 @@ should if the fix is structural rather than tuned to one label. The
 modern-human segments that the old pipeline labelled Denisovan are rejected on
 their own, confirming they were a distinct population of intervals.
 
-So the honest statement is:
+## Correcting the labelling bias
 
-> Restricting to the archaic hidden state removes the artifact that made the
-> distribution non-exponential and makes a single-pulse fit statistically valid.
-> The resulting rate is a calibrated diagnostic, not an admixture date, because
-> the affinity labelling step imposes a quantified length-dependent
-> ascertainment that is not yet corrected.
+The bias is correctable, because the selection function is directly measurable on
+the complete archaic state. For lengths above `T` drawn from an exponential
+thinned by `c(l)`, the log-likelihood is
+
+```
+log L(lam) = -lam * sum(x) - n * log( integral_0^inf exp(-lam x) c(x + T) dx )
+```
+
+up to a constant, with `x = l - T` in Morgans. With `c` constant it collapses to
+the naive estimator, so the correction is a strict generalisation of the
+uncorrected fit.
+
+**The estimator is validated against known truth.** On simulated data with a
+saturating selection curve matching the real one, it recovers rates it was never
+told, to within 5%:
+
+| True rate | Uncorrected fit | Corrected fit |
+|---:|---:|---:|
+| 600 generations | 490 (−18%) | 600 (0%) |
+| 1,000 generations | 800 (−20%) | 1,000 (0%) |
+| 1,800 generations | 1,430 (−21%) | 1,790 (−0.6%) |
+
+Applied to the real data:
+
+| Minimum length | n | Uncorrected | Corrected | Unselected archaic | Ratio |
+|---:|---:|---:|---:|---:|---:|
+| 0.02 cM | 49,123 | 567.7 | 644.1 | 658.4 | 0.978 |
+| 0.05 cM | 41,567 | 569.7 | **618.0** | 621.4 | 0.995 |
+| 0.10 cM | 31,532 | 575.2 | 607.4 | 609.9 | 0.996 |
+| 0.20 cM | 17,259 | 560.5 | 575.3 | 575.6 | 0.999 |
+
+Headline: **618.0 generations**, individual-level bootstrap 612.5–623.7.
+
+The decisive check is the last column. Reweighting the labelled subset
+reproduces the unselected archaic distribution it was drawn from, to within
+0.4–2.2%, at every threshold. Nothing was tuned to achieve that; it is what a
+correct selection model must do, and it confirms the correction is removing the
+labelling bias rather than manufacturing a number.
+
+## The bias that remains, and why the answer is still not a date
+
+618 generations is **17.9 kya** at 29 years per generation. That is still not a
+credible Denisovan admixture date, and the reason is now measured rather than
+suspected.
+
+The Skov HMM fits a per-individual admixture-time parameter that sets the
+geometric prior on archaic run length. Posterior decoding does not reproduce that
+prior — it bridges weak evidence and merges runs. Comparing the two on the same
+89 individuals measures the inflation directly, with no simulation:
+
+| Quantity | Value |
+|---|---:|
+| Median fitted S4 parameter | 1,019.8 generations |
+| Median decoded archaic decay | 655.3 generations |
+| Ratio decoded / fitted | 0.640 (IQR 0.612–0.670) |
+| Implied length inflation | **1.56x** |
+
+Decoded runs are 1.56 times longer than the model's own admixture parameter
+implies. That accounts for essentially the whole remaining gap: 618 x 1.56 = 966,
+against a fitted 1,020.
+
+**That multiplication must not be performed.** Rescaling by the S4 parameter
+recovers the S4 parameter by construction and demonstrates nothing. The inflation
+is a property of the decoder and can only be removed by simulating genotypes,
+running the actual caller, and measuring what it returns for a known truth.
+
+And even then the target would be 1,020 generations, or 29.6 kya — the value
+Skov's own estimator produces, which is itself more recent than the 45–55 kya
+consensus for Denisovan admixture. Closing that second gap is a question about
+the estimator, not about this dataset.
+
+## Summary of the three biases
+
+| Bias | Size | Status |
+|---|---:|---|
+| Modern-human segments dated as archaic tracts | ~7x, and destroyed the fit entirely | **Fixed** |
+| Length-dependent affinity labelling | 1.08x at 0.05 cM | **Fixed and validated** |
+| Posterior-decoding run inflation | 1.56x | Measured, not correctable here |
 
 ## What still gates a published date
 
-Unchanged from the previous analysis, plus one new item:
-
-1. **New.** Correct or avoid the length-dependent affinity ascertainment. Either
-   model the labelling probability explicitly, or estimate on the full archaic
-   state and treat Denisovan-versus-Neanderthal partitioning separately.
+1. **Removed.** The length-dependent affinity ascertainment is corrected, with
+   the estimator validated against known rates and against the unselected set.
 2. Caller-aware simulation recovery: simulate genotypes, run the actual HMM, and
-   confirm the observed distribution lies inside calibrated envelopes. The
-   M1–M10 calibration must be rerun against archaic-state segments, since it was
-   previously compared against contaminated data.
+   confirm the observed distribution lies inside calibrated envelopes. This is
+   now the sole remaining blocker and it is the only way to remove the 1.56x
+   decoder inflation without circularity. The M1–M10 calibration must also be
+   rerun against archaic-state segments, since it was previously compared
+   against contaminated data.
 3. Independent population-level replication (HGDP Papuans, hg38).
 
 ## Interpretation rules
@@ -192,9 +271,10 @@ Carried forward, with two corrections:
 - **S5 rows are decoded segments, not tracts.** Roughly half are modern-human
   background.
 - "Denisovan affinity" remains a relative sharing rule, not proof of a unique
-  Denisovan donor, and is additionally length-biased.
+  Denisovan donor. Its length bias is now corrected; its donor semantics are not.
 - Effective decay values remain diagnostics, not event dates.
-- Do not convert 569.7 generations into a biological admixture time.
+- Do not convert 618 generations into a biological admixture time, and do not
+  multiply it by the 1.56x decoder inflation to reach one.
 - Do not infer Denisovan survival or extinction timing.
 - Raw and genotype data remain uncommitted.
 

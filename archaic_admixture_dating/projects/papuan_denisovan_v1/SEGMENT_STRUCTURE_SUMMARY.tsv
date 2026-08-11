@@ -37,6 +37,21 @@ corrected_estimate	ks_statistic	0.0203973	effect size, not p-value
 corrected_estimate	unresolved_affinity_generations	1061.98	unlabelled archaic remainder; near published S4 1019.8
 corrected_estimate	fraction_classifiable_shortest_decile	0.213183	length-dependent affinity ascertainment
 corrected_estimate	fraction_classifiable_longest_decile	0.974443	length-dependent affinity ascertainment
+selection_corrected	at_0.02cM_corrected_generations	644.074	naive=567.7 factor=1.135 recovers_unselected=0.9783
+selection_corrected	at_0.03cM_corrected_generations	632.385	naive=567.6 factor=1.114 recovers_unselected=0.9869
+selection_corrected	at_0.05cM_corrected_generations	617.977	naive=569.7 factor=1.085 recovers_unselected=0.9946
+selection_corrected	at_0.08cM_corrected_generations	610.338	naive=572.5 factor=1.066 recovers_unselected=0.9958
+selection_corrected	at_0.10cM_corrected_generations	607.431	naive=575.2 factor=1.056 recovers_unselected=0.9960
+selection_corrected	at_0.15cM_corrected_generations	600.988	naive=581.4 factor=1.034 recovers_unselected=0.9969
+selection_corrected	at_0.20cM_corrected_generations	575.304	naive=560.5 factor=1.026 recovers_unselected=0.9995
+selection_corrected	bootstrap_point_generations	618.168	200 reps, curve refit each replicate
+selection_corrected	bootstrap_ci_low_generations	612.521	sampling variation only
+selection_corrected	bootstrap_ci_high_generations	623.699	sampling variation only
+selection_corrected	agreement_with_unselected_archaic	0.995786	1.0 = correction reproduces the unselected set
+decoder_bias	median_s4_fitted_generations	1019.77	HMM's own admixture parameter
+decoder_bias	median_decoded_generations	655.291	archaic-state segments
+decoder_bias	median_decoded_over_fitted	0.639836	IQR 0.612-0.670
+decoder_bias	implied_length_inflation	1.5629	NOT correctable here; rescaling would be circular
 threshold_sweep	published_pipeline_denisovan_broad_at_0.02cM_generations	83.911	n=75126 KS_D=0.3001
 threshold_sweep	published_pipeline_denisovan_broad_at_0.05cM_generations	78.9447	n=68974 KS_D=0.2917
 threshold_sweep	published_pipeline_denisovan_broad_at_0.10cM_generations	71.216	n=59933 KS_D=0.2724

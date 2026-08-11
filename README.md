@@ -34,6 +34,28 @@ above.
 [Read the paper-style report](reports/global_archaic_survey/PAPER_global.md) or
 [browse its supporting outputs](reports/global_archaic_survey/).
 
+## Featured example: watching Denisovan ancestry arrive
+
+**[Open the Remote Oceania transect (PDF)](reports/oceania_transect/Oceania_archaic_transect.pdf)**
+
+Denisovan ancestry is almost always measured on present-day genomes, so its
+arrival in a population is inferred rather than observed. Vanuatu is the
+exception: it was settled ~3,000 years ago by Lapita people of overwhelmingly
+Austronesian ancestry, and the Papuan-related ancestry that carries the region's
+Denisovan ancestry arrived afterwards. Across 31 Vanuatu ancients in four dated
+horizons, pooled Denisovan affinity rises from indistinguishable from zero in the
+founding horizon to 75% of the present-day Papuan level, tracking a Papuan-related
+ancestry influx measured with no archaic genome in the statistic. Ninety-six
+Guam/Marianas genomes, from the same expansion but without that influx, stay flat
+across the identical period.
+
+The example also shows the pipeline refusing a result it cannot support: the
+parallel Neanderthal rise appears in the control population too, so it is
+reported as shared measurement drift rather than attributed to the influx.
+
+[Read the paper-style report](reports/oceania_transect/PAPER_oceania.md) or
+[browse its supporting outputs](reports/oceania_transect/).
+
 ## Focused example: EV16A Etruscan candidate
 
 **[Read the dedicated EV16A analysis](results/individual_EV16A/EV16A_dedicated_report.md)**
@@ -152,6 +174,7 @@ Important limitations:
 | Full Phase 2-9 workflow | `archaic-pipeline all --panel 1240k` | `reports/archaic_report_1240k.html` |
 | Highest-archaic credibility scan | `archaic-pipeline highest-archaic` | [module guide](docs/highest_archaic.md) |
 | Denisovan reference genome | `archaic-pipeline denisovan-genome --panel 1240k` | [module guide](docs/denisovan_genome.md) |
+| Remote Oceania archaic time transect | `archaic-pipeline oceania-transect --panel 1240k` | [report](reports/oceania_transect/PAPER_oceania.md) |
 | Global and Eurasian >5% survey | `python global_archaic_survey.py` | [study index](docs/studies-and-reports.md) |
 | Oase1 segment analysis | `python oase1_haplotype.py` | [study index](docs/studies-and-reports.md) |
 | West-Eurasian source ancestry | `archaic-pipeline ancestry` | [study index](docs/studies-and-reports.md) |

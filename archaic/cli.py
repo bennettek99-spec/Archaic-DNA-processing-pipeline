@@ -38,6 +38,7 @@ SCRIPTS = {
     "report": "generate_report.py",
     "all": "run_pipeline.py",
     "ancestry": "ancestry_decomposition.py",
+    "oceania-transect": "oceania_transect.py",
 }
 
 

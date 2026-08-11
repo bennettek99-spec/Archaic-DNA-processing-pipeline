@@ -4,6 +4,21 @@
 
 ### Added
 
+- New `archaic/transect.py`: a reusable pooled time-transect layer (date
+  binning, pooled cohort archaic statistics, archaic-free f4-ratio ancestry
+  fractions, mixture prediction with full error propagation, coverage-matched
+  SNP sets, endpoint contrasts and inverse-variance trends), with 14 unit tests
+  that need no AADR data.
+- New `oceania_transect.py` study: a 3,000-year Remote Oceania archaic-ancestry
+  time transect (`archaic-pipeline oceania-transect`). Pooled Denisovan
+  affinity in Vanuatu rises from indistinguishable-from-zero in the founding
+  Lapita horizon to 75% of the present-day Papuan level, tracking an
+  independently measured Papuan-related ancestry influx; the Guam/Marianas
+  control stays flat, giving a difference-in-differences of +0.030 +/- 0.012
+  (Z = 2.58). Includes coverage-matched recomputation, a transversions-only
+  damage sensitivity, and an explicit finding that the parallel Neanderthal
+  rise appears in the control too and is therefore *not* attributed to the
+  influx.
 - Published a dedicated EV16A.SG Etruscan example with a portable HTML report,
   machine-readable sensitivity results, provenance, and explicit comparison to
   the segment-supported Oase1 evidence standard.

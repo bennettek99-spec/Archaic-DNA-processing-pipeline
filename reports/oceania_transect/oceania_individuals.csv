@@ -1,0 +1,128 @@
+genetic_id,group_id,date_bp,coverage,locality,alpha_Nea,alpha_SE,alpha_nSNP,D_Den,D_Den_SE,D_Den_Z,D_Den_nSNP
+I5266.AG,Vanuatu_3000BP,2950.0,0.14625178,Teouma (Efate),0.011581,0.0089,62072,-0.012359,0.013228,-0.934,69894
+I1370.AG,Vanuatu_2900BP,2945.0,0.31540909,Teouma (Efate),0.005127,0.0075,91923,-0.005809,0.009582,-0.606,107346
+I1369.AG,Vanuatu_2900BP,2885.0,0.39217513,Teouma (Efate),0.018536,0.009107,106237,-0.014752,0.009141,-1.614,123709
+I1368.AG,Vanuatu_2900BP,2870.0,0.24639961,Teouma (Efate),0.024671,0.011855,71168,-0.01589,0.012662,-1.255,82894
+I5951.AG,Vanuatu_2900BP,2820.0,0.13257329,Teouma (Efate),0.023991,0.012225,55944,-0.025016,0.014089,-1.776,62638
+I16998.AG,Guam_LateUnai,2728.0,0.13985968,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.017838,0.015134,48072,-0.029574,0.016197,-1.826,56002
+I18495.AG,Guam_LateUnai,2719.0,0.34955186,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.023658,0.007824,109682,-0.01595,0.010481,-1.522,127014
+I18496.AG,Guam_LateUnai,2708.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.007772,0.014747,42205,-0.005335,0.017523,-0.304,47371
+I18501.AG,Guam_LateUnai_PreLatte,2703.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.022677,0.014847,26653,-0.004422,0.01667,-0.265,31403
+I18445.AG,Guam_LateUnai,2693.0,0.12759171,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.019046,0.012264,54165,0.013309,0.012679,1.05,61190
+I18442.AG,Guam_LateUnai,2674.0,0.06201685,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",-0.001472,0.019396,25161,-0.037454,0.020802,-1.801,28128
+I18503.AG,Guam_LateUnai,2644.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.010663,0.019214,22479,-0.004462,0.019111,-0.233,25964
+I18447.AG,Guam_PreLattePeriod_LateUnai,2632.0,0.31314079,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.007669,0.00851,101613,-0.017163,0.009818,-1.748,116032
+I18461.AG,Guam_LateUnai,2630.0,0.08954763,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.016266,0.015276,37192,-0.035305,0.017889,-1.974,40953
+I16820.AG,Guam_LateUnai,2623.0,0.07281606,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",-0.005278,0.015944,32199,-0.058441,0.019416,-3.01,36385
+I18450.AG,Guam_LateUnai,2593.0,0.03167805,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.000392,0.01947,14324,-0.024763,0.022855,-1.083,16076
+MAL004.AG,Vanuatu_2600BP,2567.0,1.77013729,Malakula (Malampa Province),0.016361,0.00544,307542,0.020146,0.006854,2.939,344000
+I18443.AG,Guam_LateUnai,2550.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.04299,0.021149,15799,-0.006747,0.026439,-0.255,17991
+I18462.AG,Guam_LateUnai,2550.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.006068,0.010751,46851,-0.013239,0.014736,-0.898,52828
+I18444.AG,Guam_LateUnai,2550.0,0.06695758,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.009,0.01352,27588,-0.021615,0.01923,-1.124,30427
+I18959.AG,Guam_LateUnai,2550.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.038669,0.01288,46332,0.00899,0.015079,0.596,51769
+MAL002.AG,Vanuatu_2500BP,2525.0,0.30687383,Malakula (Malampa Province),0.019032,0.009764,101611,0.017759,0.012081,1.47,110673
+I16997.AG,Guam_LateUnai,2525.0,0.07907606,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.018247,0.016675,31814,-0.018268,0.018882,-0.967,36576
+I16819.AG,Guam_LateUnai,2518.0,0.03539772,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",-0.01101,0.020371,15803,-0.028245,0.028607,-0.987,17890
+TAN002.AG,Vanuatu_2500BP,2490.0,0.24455976,Tanna (Tafea Province),0.020944,0.009663,88438,0.0344,0.014431,2.384,95371
+I16822.AG,Guam_LateUnai,2420.0,0.04401207,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.045053,0.019367,19838,-0.042657,0.022213,-1.92,22268
+I4451.AG,Vanuatu_2300BP,2260.0,1.73904066,Mele-Taplins (Efate),0.01567,0.006645,331957,0.029848,0.007214,4.138,380876
+MAL001.AG,Vanuatu_2200BP,2240.0,0.08980836,Malakula (Malampa Province),0.007681,0.016975,29969,0.009669,0.017284,0.559,34251
+MAL007.AG,Vanuatu_2000BP,2038.0,0.61818694,Malakula (Malampa Province),0.01949,0.008116,180715,0.025834,0.007763,3.328,197772
+I24239.AG,Guam_PreLattePeriod,1565.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.02582,0.006169,263318,-0.001909,0.007289,-0.262,319795
+I4096.AG,Vanuatu_1300BP,1305.0,10.8998669,Burumbe (Epi Island),0.022471,0.00461,432935,0.023136,0.007125,3.247,502265
+I3921.AG,Vanuatu_1300BP,1260.0,13.1284903,Burumbe (Epi Island),0.023041,0.005318,448705,0.024272,0.007341,3.306,516990
+FUT002.AG,Vanuatu_1200BP,1238.0,1.1821301,Futuna (Tafea Province),0.021943,0.005144,279232,0.020701,0.006645,3.115,318954
+FUT006.AG,Vanuatu_1200BP,1209.0,0.75224028,Futuna (Tafea Province),0.020489,0.007018,209360,0.017745,0.007898,2.247,245069
+FUT007.AG,Vanuatu_1200BP,1204.0,0.60816555,Futuna (Tafea Province),0.026301,0.00642,179788,0.02496,0.007322,3.409,202333
+FUT001.AG,Vanuatu_1100BP,1159.0,1.30947934,Futuna (Tafea Province),0.027039,0.004861,275672,0.017349,0.008116,2.138,319758
+I24259.AG,Guam_Latte,708.0,5.11459719,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.031749,0.00581,318499,0.000936,0.006126,0.153,389655
+I24230.AG,Guam_Latte,705.0,4.03803191,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.024334,0.004914,305672,-0.002631,0.006533,-0.403,375470
+I24595.AG,Guam_Latte,704.0,6.84098314,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.024056,0.005788,380457,-0.002203,0.005794,-0.38,456212
+I24580.AG,Guam_Latte,700.0,6.63300392,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.019934,0.005073,366386,-0.006295,0.005574,-1.129,442156
+I24249.AG,Guam_Latte,700.0,2.38447159,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.020685,0.005147,303559,-0.004275,0.006548,-0.653,370155
+I24248.AG,Guam_Latte,700.0,3.28418036,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.017096,0.006142,295030,-0.007334,0.006952,-1.055,361793
+I24530.AG,Guam_Latte,656.0,3.64303226,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.022198,0.006125,349858,-0.007386,0.005441,-1.357,421214
+I24526.AG,Guam_Latte,656.0,5.37991412,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.023225,0.005054,368286,-0.005758,0.005471,-1.052,441572
+I24252.AG,Guam_Latte,650.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.013488,0.004965,298207,-0.013565,0.007458,-1.819,364242
+I24240.AG,Guam_Latte,650.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.009778,0.006413,304108,-0.012604,0.006093,-2.069,373892
+I24525.AG,Guam_Latte,602.0,3.96434155,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.0214,0.005482,353469,0.001912,0.005714,0.335,427209
+I24255.AG,Guam_Latte,601.0,3.57552195,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.018007,0.005528,307673,-0.011911,0.00543,-2.194,376724
+I24568.AG,Guam_Latte,600.0,2.39054473,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.01485,0.005419,343079,-0.008902,0.005865,-1.518,411912
+I24613.AG,Guam_Latte,600.0,4.81945597,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.015424,0.00623,351226,-0.00765,0.005373,-1.424,426006
+I24577.AG,Guam_Latte,600.0,3.10451323,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.014103,0.006523,364951,-0.007737,0.005922,-1.307,437111
+I25191.AG,Guam_LateLattePeriod,600.0,1.60278941,Haputo (Finegayan Station),0.024775,0.006097,329764,-0.00829,0.006873,-1.206,390922
+I25187.AG,Guam_LateLattePeriod,600.0,0.181062,Haputo (Finegayan Station),0.020563,0.010657,74542,0.011313,0.011452,0.988,87906
+I25188.AG,Guam_LateLattePeriod,600.0,0.07630195,Haputo (Finegayan Station),0.035619,0.015891,34991,-0.013734,0.017246,-0.796,40681
+I25190.AG,Guam_LateLattePeriod,600.0,0.17899272,Haputo (Finegayan Station),0.016589,0.010465,76712,-0.014257,0.011459,-1.244,89510
+I24574.AG,Guam_Latte,600.0,4.26962323,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.015596,0.005163,362411,-0.015502,0.006085,-2.547,435894
+I24594.AG,Guam_Latte,600.0,2.01207242,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.01802,0.005443,330962,-0.005188,0.007361,-0.705,398794
+I24253.AG,Guam_Latte,600.0,1.86227044,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.018822,0.007235,273169,-0.013234,0.006655,-1.989,335272
+I24242.AG,Guam_Latte,600.0,2.74784098,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.015857,0.006136,294003,-0.007143,0.005702,-1.253,361183
+I24585.AG,Guam_Latte,575.0,3.67911308,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.015013,0.005133,360152,-0.011144,0.00535,-2.083,433373
+I24247.AG,Guam_Latte,550.0,3.21508397,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.014643,0.005973,290695,-0.010129,0.006016,-1.684,357513
+I24262.AG,Guam_Latte,550.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.011291,0.005155,305939,-0.011529,0.006397,-1.802,374585
+I24527.AG,Guam_Latte,531.0,7.16500484,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.016099,0.005889,389586,-0.010599,0.004854,-2.184,464617
+I24241.AG,Guam_Latte,525.0,6.27842877,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.023577,0.004583,319000,-0.001603,0.007082,-0.226,392148
+I24246.AG,Guam_Latte,525.0,5.4327352,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.024824,0.005297,320156,-9.4e-05,0.006622,-0.014,392079
+I24573.AG,Guam_Latte,525.0,5.55682191,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.012519,0.005153,373909,-0.00911,0.006138,-1.484,448422
+I24572.AG,Guam_Latte,525.0,0.15347211,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.028112,0.009776,65284,0.008578,0.012388,0.692,78302
+I24575.AG,Guam_Latte,525.0,2.62367606,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.013378,0.005672,346368,-0.008644,0.006439,-1.342,417506
+I24581.AG,Guam_Latte,525.0,4.15223541,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.017761,0.005491,358080,-0.005053,0.005686,-0.889,432317
+I24578.AG,Guam_Latte,525.0,2.67342494,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.027432,0.005989,347186,-0.007436,0.005609,-1.326,418882
+I24579.AG,Guam_Latte,525.0,3.76758653,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.019251,0.004847,360743,-0.010525,0.006635,-1.586,435209
+I24531.AG,Guam_Latte,525.0,7.57238543,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.019048,0.004783,369474,-0.011225,0.005069,-2.214,444083
+I24250.AG,Guam_Latte,525.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.009549,0.020585,15653,0.045266,0.021087,2.147,18573
+I24616.AG,Guam_Latte,525.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",-0.018029,0.013653,54660,-0.042409,0.01422,-2.982,64642
+I24586.AG,Guam_Latte,525.0,3.85058216,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.014441,0.005831,339928,-0.002791,0.00627,-0.445,413812
+I24584.AG,Guam_Latte,525.0,0.5109361,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.017346,0.006798,174805,-0.014399,0.008499,-1.694,207718
+I24618.AG,Guam_Latte,525.0,4.68535483,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.021848,0.005208,320150,-0.004311,0.006517,-0.662,392584
+I24617.AG,Guam_Latte,525.0,5.95688048,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.015637,0.004037,339062,-0.008022,0.006006,-1.336,413065
+I24615.AG,Guam_Latte,525.0,4.78200982,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.015619,0.005346,335977,-0.006081,0.006275,-0.969,408711
+I24244.AG,Guam_Latte,525.0,4.46353809,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.013545,0.004211,319896,-0.009424,0.006233,-1.512,392144
+I24258.AG,Guam_Latte,525.0,4.68325948,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.013202,0.005525,301412,-0.013859,0.006598,-2.1,370687
+I24254.AG,Guam_Latte,525.0,4.64523104,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.015437,0.005781,319908,-0.002193,0.005775,-0.38,392614
+I24522.AG,Guam_Latte,525.0,5.33715005,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.022295,0.005402,364280,-0.001637,0.005751,-0.285,440132
+I24523.AG,Guam_Latte,525.0,8.09892677,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.020755,0.005701,367503,-0.005571,0.006182,-0.901,444784
+I24519.AG,Guam_Latte,525.0,3.72727936,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.012895,0.004828,360209,-0.00391,0.005647,-0.692,434038
+I24264.AG,Guam_Latte,525.0,4.19471702,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.020448,0.005529,309525,-0.011805,0.007017,-1.682,379464
+I24524.AG,Guam_Latte,525.0,5.00154957,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.015144,0.005359,374766,-0.003392,0.007319,-0.464,450015
+I24518.AG,Guam_Latte,520.0,7.52533418,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.019161,0.004672,371277,-0.009486,0.005617,-1.689,447428
+I24529.AG,Guam_Latte,517.0,4.11323969,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.022711,0.006362,362626,-0.003439,0.005729,-0.6,436680
+I24576.AG,Guam_Latte,508.0,7.22371395,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.025915,0.00459,371098,0.001111,0.005628,0.197,448164
+I24596.AG,Guam_Latte,500.0,4.78681672,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.024904,0.004934,363746,-0.002903,0.005663,-0.513,438744
+I24520.AG,Guam_Latte,500.0,3.83249481,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.019016,0.005017,348872,-0.005039,0.006883,-0.732,420708
+I24261.AG,Guam_Latte,500.0,3.75268438,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.018021,0.005895,306415,-0.006614,0.007224,-0.915,376512
+I24614.AG,Guam_Latte,500.0,3.39588003,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.020759,0.005762,332864,-0.006136,0.005433,-1.129,403657
+I24238.AG,Guam_Latte,496.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.026974,0.005529,305937,-0.002827,0.006032,-0.469,375776
+I5259.AG,Vanuatu_500BP,480.0,2.89075809,Mangalitu (Efate),0.027277,0.004853,356880,0.030663,0.006277,4.885,413303
+I24517.AG,Guam_Latte,478.0,1.85343014,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.024935,0.005813,321377,-0.009169,0.005923,-1.548,387530
+I24260.AG,Guam_Latte,475.0,4.21450516,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.01861,0.004949,331590,-0.005202,0.006373,-0.816,403283
+I24528.AG,Guam_Latte,475.0,5.56989812,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.017158,0.005425,365863,-0.009933,0.007086,-1.402,438221
+I24236.AG,Guam_Latte,475.0,4.91409556,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.016614,0.005735,329388,-0.010016,0.006729,-1.489,401931
+I24583.AG,Guam_Latte,475.0,2.16697765,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.019994,0.005397,331622,-0.015477,0.005544,-2.791,399537
+I24567.AG,Guam_Latte,475.0,2.4116756,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.021776,0.005474,343555,-0.009298,0.006939,-1.34,414443
+I24587.AG,Guam_Latte,475.0,1.32844272,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.015869,0.006091,289090,-0.003465,0.006546,-0.529,347070
+I24612.AG,Guam_Latte,475.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.019279,0.005329,354930,-0.016566,0.005709,-2.902,428698
+I24582.AG,Guam_Latte,475.0,7.26178063,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.016349,0.005337,379662,-0.01156,0.00565,-2.046,456196
+I24532.AG,Guam_Latte,450.0,3.9258273,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.026486,0.005238,354399,0.001314,0.005823,0.226,426970
+I24257.AG,Guam_Latte,450.0,5.23815897,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.017201,0.0055,314813,-0.008263,0.005398,-1.531,387048
+I24243.AG,Guam_Latte,450.0,3.69991457,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.018332,0.004297,304915,-0.008148,0.007148,-1.14,374554
+I24237.AG,Guam_Latte,450.0,3.2626219,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.021429,0.005641,302576,-0.010727,0.006998,-1.533,370982
+I24265.AG,Guam_Latte,447.0,4.43014186,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.022188,0.00531,312291,-0.006065,0.006013,-1.009,383847
+I24256.AG,Guam_Latte,425.0,,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.025621,0.008238,117730,-0.005294,0.008151,-0.65,142384
+I10968.AG,Vanuatu_400BP,400.0,2.28310791,Retoka (Shefa Province),0.024805,0.006173,369468,0.016895,0.006885,2.454,432367
+I25082.AG,Guam_Latte,400.0,6.45925438,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.015827,0.005601,368749,-0.002811,0.006666,-0.422,444876
+I10969.AG,Vanuatu_400BP,400.0,3.31559334,Retoka (Shefa Province),0.018755,0.005438,328988,0.013199,0.007263,1.817,394076
+I10966.AG,Vanuatu_400BP-o,400.0,1.49710205,Mangaasi (Efate),0.0232,0.005744,285664,0.018815,0.006896,2.728,343611
+I14493.AG,Vanuatu_400BP,387.0,0.64761059,Retoka (Shefa Province),0.019339,0.006253,225970,0.024515,0.008075,3.036,263926
+I24610.AG,Guam_Latte,383.0,6.88416871,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.016045,0.00516,363580,-0.011509,0.006019,-1.912,438240
+I24251.AG,Guam_Latte,365.0,12.5809233,"Naton Beach Site (Guam, Tamuning-Tumon-Harmon Municipality, Tamuning)",0.018951,0.005847,392821,-0.002004,0.006574,-0.305,470432
+I4450.AG,Vanuatu_150BP,215.0,4.6549048,Pangpang (Efate),0.022434,0.0054,350825,0.024014,0.007966,3.014,417692
+TAN001.AG,Vanuatu_200BP,202.0,1.22803242,Tanna (Tafea Province),0.02431,0.007372,281963,0.027648,0.008239,3.356,334541
+EFE005.AG,Vanuatu_200BP,202.0,0.0734418,Banana Bay (Efate),0.039292,0.015437,28033,0.024086,0.017892,1.346,33304
+I10967.AG,Vanuatu_200BP-oPolynesian,156.0,0.74934971,Mangaasi (Efate),0.027368,0.007632,206492,0.028547,0.007826,3.648,253943
+I4105.AG,Vanuatu_150BP,150.0,8.09172382,Wam Bay (Epi Island),0.03397,0.006248,436085,0.030514,0.007109,4.292,503023
+I4419.AG,Vanuatu_150BP,140.0,4.19043592,Banana Bay (Efate),0.028012,0.005455,322070,0.030578,0.007444,4.108,387872
+I4424.AG,Vanuatu_150BP,140.0,3.77339809,Pango Village (Efate),0.021964,0.005407,330041,0.014139,0.006418,2.203,395622
+I4106.AG,Vanuatu_150BP,140.0,13.0718253,Wam Bay (Epi Island),0.029259,0.005078,441321,0.025267,0.006717,3.762,510786
+I4425.AG,Vanuatu_150BP,135.0,2.28356505,Ifira (Efate),0.02753,0.006091,300111,0.020689,0.007914,2.614,357984

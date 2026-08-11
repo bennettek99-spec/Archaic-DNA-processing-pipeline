@@ -23,7 +23,7 @@ operations release the GIL.
 from __future__ import annotations
 import numpy as np
 import pandas as pd
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 from . import stats as st
 
 

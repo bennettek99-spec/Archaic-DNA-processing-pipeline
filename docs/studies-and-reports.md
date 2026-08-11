@@ -21,6 +21,7 @@ reviewed scientific conclusions.
 | Local archaic windows | `python local_archaic_scan.py --panel 1240k` | [LOCAL_ARCHAIC_REPORT.md](../LOCAL_ARCHAIC_REPORT.md) | Peaks are exploratory; desert recovery failed |
 | X-chromosome depletion | `python xchrom_depletion.py --panel ho` | [XCHROM_REPORT.md](../XCHROM_REPORT.md) | Inconclusive/data-limited |
 | Denisovan population survey | `python denisovan_survey.py --panel 1240k` | [DENISOVAN_REPORT.md](../DENISOVAN_REPORT.md) | Validated relative-affinity positive control; no percentage |
+| Remote Oceania archaic transect | `archaic-pipeline oceania-transect --panel 1240k` | `reports/oceania_transect/PAPER_oceania.md` | Supported relative-affinity time series with control population and difference-in-differences; Denisovan arm supported, Neanderthal arm explicitly not attributed |
 | Sima de los Huesos BAM adapter | `python tools/sima_de_los_huesos_scan.py` | `output/sima_de_los_huesos/` when run | Exploratory and below normal AADR evidence floor |
 
 ## Highest-archaic reporting

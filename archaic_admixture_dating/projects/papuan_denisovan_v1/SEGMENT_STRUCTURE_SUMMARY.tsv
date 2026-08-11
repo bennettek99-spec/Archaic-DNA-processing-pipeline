@@ -1,0 +1,66 @@
+section	metric	value	note
+structure	median_decoded_bp_per_individual	2.64175e+09	whole autosomal genome; S5 is a tiling
+structure	fraction_exactly_abutting	0.950278	neighbouring segments share a boundary
+structure	mean_prob_minimum	0.500001	decoded-state posterior floor at 0.5
+structure	genome_fraction_passing_meanprob_0.8	0.991499	published filter removed almost nothing
+structure	modern_human_private_snps_per_kb	0.0256245	EM Poisson mixture component
+structure	archaic_private_snps_per_kb	0.224505	EM Poisson mixture component
+structure	state_posterior_ambiguous_fraction	0.0203302	0.05<p<0.95
+structure	fraction_alternating_neighbours	0.98612	independent check of state call
+structure	archaic_genome_fraction	0.0682071	matches published Papuan archaic ancestry
+structure	median_archaic_segment_bp	59000	archaic hidden state
+structure	median_modern_human_segment_bp	675000	modern-human hidden state
+threshold_stability	published_pipeline_denisovan_broad_spread_ratio_0.02_to_0.20cM	1.43245	1.0 = threshold-independent decay
+threshold_stability	state_aware_archaic_all_spread_ratio_0.02_to_0.20cM	1.14377	1.0 = threshold-independent decay
+threshold_stability	state_aware_denisovan_broad_spread_ratio_0.02_to_0.20cM	1.02632	1.0 = threshold-independent decay
+threshold_stability	state_aware_denisovan_strict_spread_ratio_0.02_to_0.20cM	1.02241	1.0 = threshold-independent decay
+threshold_stability	state_aware_neanderthal_affinity_spread_ratio_0.02_to_0.20cM	1.04055	1.0 = threshold-independent decay
+threshold_stability	state_aware_unresolved_affinity_spread_ratio_0.02_to_0.20cM	1.75057	1.0 = threshold-independent decay
+threshold_stability	modern_human_state_denisovan_labelled_spread_ratio_0.02_to_0.20cM	1.00277	1.0 = threshold-independent decay
+goodness_of_fit	published_pipeline_denisovan_broad_rejection_rate	1	n=500 subsamples x200; nominal 0.05
+goodness_of_fit	state_aware_archaic_all_rejection_rate	0.07	n=500 subsamples x200; nominal 0.05
+goodness_of_fit	state_aware_denisovan_broad_rejection_rate	0.025	n=500 subsamples x200; nominal 0.05
+goodness_of_fit	state_aware_denisovan_strict_rejection_rate	0.025	n=500 subsamples x200; nominal 0.05
+goodness_of_fit	state_aware_neanderthal_affinity_rejection_rate	0.06	n=500 subsamples x200; nominal 0.05
+goodness_of_fit	state_aware_unresolved_affinity_rejection_rate	0.465	n=500 subsamples x200; nominal 0.05
+goodness_of_fit	modern_human_state_denisovan_labelled_rejection_rate	0.765	n=500 subsamples x200; nominal 0.05
+s4_concordance	state_aware_median_length_cm_spearman_rho	-0.575877	expected sign: negative
+s4_concordance	published_pipeline_tracts_spearman_rho	-0.514866	expected sign: negative
+s4_concordance	state_aware_effective_generations_spearman_rho	0.494348	expected sign: positive
+s4_concordance	state_aware_tracts_spearman_rho	-0.454047	expected sign: negative
+s4_concordance	published_pipeline_effective_generations_spearman_rho	-0.431222	expected sign: positive
+s4_concordance	published_pipeline_median_length_cm_spearman_rho	0.121144	expected sign: negative
+corrected_estimate	state_aware_denisovan_broad_generations	569.658	diagnostic_not_event_date
+corrected_estimate	bootstrap_ci_low_generations	563.315	individual-level, 400 replicates
+corrected_estimate	bootstrap_ci_high_generations	576.174	individual-level, 400 replicates
+corrected_estimate	ks_statistic	0.0203973	effect size, not p-value
+corrected_estimate	unresolved_affinity_generations	1061.98	unlabelled archaic remainder; near published S4 1019.8
+corrected_estimate	fraction_classifiable_shortest_decile	0.213183	length-dependent affinity ascertainment
+corrected_estimate	fraction_classifiable_longest_decile	0.974443	length-dependent affinity ascertainment
+selection_corrected	at_0.02cM_corrected_generations	644.074	naive=567.7 factor=1.135 recovers_unselected=0.9783
+selection_corrected	at_0.03cM_corrected_generations	632.385	naive=567.6 factor=1.114 recovers_unselected=0.9869
+selection_corrected	at_0.05cM_corrected_generations	617.977	naive=569.7 factor=1.085 recovers_unselected=0.9946
+selection_corrected	at_0.08cM_corrected_generations	610.338	naive=572.5 factor=1.066 recovers_unselected=0.9958
+selection_corrected	at_0.10cM_corrected_generations	607.431	naive=575.2 factor=1.056 recovers_unselected=0.9960
+selection_corrected	at_0.15cM_corrected_generations	600.988	naive=581.4 factor=1.034 recovers_unselected=0.9969
+selection_corrected	at_0.20cM_corrected_generations	575.304	naive=560.5 factor=1.026 recovers_unselected=0.9995
+selection_corrected	bootstrap_point_generations	618.168	200 reps, curve refit each replicate
+selection_corrected	bootstrap_ci_low_generations	612.521	sampling variation only
+selection_corrected	bootstrap_ci_high_generations	623.699	sampling variation only
+selection_corrected	agreement_with_unselected_archaic	0.995786	1.0 = correction reproduces the unselected set
+decoder_bias	median_s4_fitted_generations	1019.77	HMM's own admixture parameter
+decoder_bias	median_decoded_generations	655.291	archaic-state segments
+decoder_bias	median_decoded_over_fitted	0.639836	IQR 0.612-0.670
+decoder_bias	implied_length_inflation	1.5629	NOT correctable here; rescaling would be circular
+threshold_sweep	published_pipeline_denisovan_broad_at_0.02cM_generations	83.911	n=75126 KS_D=0.3001
+threshold_sweep	published_pipeline_denisovan_broad_at_0.05cM_generations	78.9447	n=68974 KS_D=0.2917
+threshold_sweep	published_pipeline_denisovan_broad_at_0.10cM_generations	71.216	n=59933 KS_D=0.2724
+threshold_sweep	published_pipeline_denisovan_broad_at_0.20cM_generations	58.5786	n=46205 KS_D=0.2181
+threshold_sweep	published_pipeline_denisovan_broad_at_0.50cM_generations	42.4161	n=28939 KS_D=0.1023
+threshold_sweep	published_pipeline_denisovan_broad_at_1.00cM_generations	36.6134	n=20564 KS_D=0.0540
+threshold_sweep	state_aware_denisovan_broad_at_0.02cM_generations	567.705	n=49123 KS_D=0.0175
+threshold_sweep	state_aware_denisovan_broad_at_0.05cM_generations	569.658	n=41567 KS_D=0.0204
+threshold_sweep	state_aware_denisovan_broad_at_0.10cM_generations	575.239	n=31532 KS_D=0.0266
+threshold_sweep	state_aware_denisovan_broad_at_0.20cM_generations	560.487	n=17259 KS_D=0.0428
+threshold_sweep	state_aware_denisovan_broad_at_0.50cM_generations	431.926	n=3094 KS_D=0.0618
+threshold_sweep	state_aware_denisovan_broad_at_1.00cM_generations	262.678	n=337 KS_D=0.1428

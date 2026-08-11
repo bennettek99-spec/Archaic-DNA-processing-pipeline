@@ -1,6 +1,20 @@
 # Real-data result: Skov et al. Papuan supplements
 
-Status: **completed, with S5 event dating rejected as not estimable**
+Status: **superseded — the `not estimable` verdict below was an artifact**
+
+> **Correction.** A later structural audit
+> ([SEGMENT_STRUCTURE_RESULTS.md](SEGMENT_STRUCTURE_RESULTS.md)) established that
+> S5 is a complete two-state segmentation of every decoded genome, not a list of
+> archaic tracts, and that `MeanProb` is the posterior of the decoded state
+> rather than an archaic posterior. The analysis below therefore dated a mixture
+> of archaic segments and modern-human background segments. Restricting to the
+> archaic hidden state removes the pathology: the threshold spread falls from
+> 1.43x to 1.03x and the subsampled goodness-of-fit rejection rate falls from
+> 1.000 to 0.025.
+>
+> Every diagnostic recorded below remains factually correct as a description of
+> the contaminated input. The interpretations that attribute the failure to the
+> shape of the archaic tract distribution do not stand.
 
 This run used the public supplementary files from Skov et al. (2018),
 *Detecting archaic introgression using an unadmixed outgroup*:

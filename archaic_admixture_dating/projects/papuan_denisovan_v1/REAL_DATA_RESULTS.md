@@ -126,3 +126,78 @@ Generated reports remain ignored:
 
 - `archaic_admixture_dating/outputs/papuan_s5_map_grch37_light_broad/report/report.html`
 - `archaic_admixture_dating/outputs/papuan_s5_map_grch37_light_strict/report/report.html`
+
+## Failure anatomy and S4-S5 bridge
+
+The full map-aware follow-up retained 75,360 broad Denisovan-affinity tracts
+from the same 89 individuals. The distribution is not close to a stable single
+exponential:
+
+| Diagnostic | Result |
+|---|---:|
+| Effective decay at 0.02 cM | 83.90 generations |
+| Effective decay at 0.50 cM | 42.55 generations |
+| Effective decay at 1.00 cM | 36.63 generations |
+| KS statistic at 0.02 cM | 0.2983 |
+| KS p-value | 0 |
+| Effective decay after removing longest 5% | 127.94 generations |
+| Leave-one-chromosome-out range | 78.77-86.60 generations |
+| Leave-one-individual-out range | 83.79-84.04 generations |
+
+This pattern localizes the instability to the shape and long tail of the
+distribution, not to one person or chromosome. These effective decay values
+are unbounded diagnostics, not event dates.
+
+The published Gower et al. (2021) GRCh37/hg19 Melanesian adaptive-
+introgression candidate intervals overlapped 1,057 broad-affinity tracts.
+Excluding them changed the effective decay only from 83.90 to 84.19
+generations and left the KS p-value at zero. Candidate selected loci therefore
+do not explain the model failure. The intervals are candidates, not a
+definitive selected-locus catalogue.
+
+All 89 `Whole~world` S4 individuals matched their map-aware S5 features. The
+strongest cross-person association with the published S4 admixture-time
+parameter was for Neanderthal-affinity total tract length (Spearman
+`rho = 0.615`, 95% individual bootstrap interval `0.473-0.730`). The broad
+Denisovan-affinity median-length association was weak within every source
+cohort (`rho = 0.054`, `0.007`, and `0.179`). These are concordance checks on
+related outputs from the same HMM study, not independent validation.
+
+## Bounded observation-process calibration
+
+The calibration generated 400 summary replicates: 20 replicates for each
+M1-M10 approximation under the configured caller error and under a heavier
+stress case (20% random false negatives and 25% length noise). Each replicate
+requested 5,000 tracts.
+
+Internal leave-one-out model classification averaged 92.5% under configured
+error and 88.0% under stress. Single-pulse M1-M4 median relative recovery error
+was 0.8-1.4% under configured error and 2.3-3.4% under stress. The calibration
+can therefore recover and distinguish its own approximations.
+
+Nevertheless, the real broad-affinity profile fell outside all nine 95%
+feature envelopes for every model and error scenario. The closest tested
+combination was stress-case M8, but it matched `0/9` features and was rejected.
+No tested M1-M10 model is compatible, and the result remains **not estimable**.
+This is posterior-predictive rejection, not a posterior probability over
+demographic histories.
+
+## External HMMix and raw chr22 gates
+
+The official HMMix hg38 HGDP premade segment file is 399,257,886 bytes and
+therefore below the 500 MB transfer cap. A 1 MiB HTTP range request verified
+the schema. However, its Papuan samples use HGDP identifiers (for example,
+`HGDP00540`), while none of the 89 S4/S5 individuals has an HGDP identifier.
+The exact matched-person count is zero, so the remaining 398 MB was not
+downloaded and no cross-build, unmatched population comparison was substituted.
+
+A local 205,612,353-byte chromosome-22 1000 Genomes VCF was also inventoried.
+It contains no Papuan population. WSL, bcftools, and vcftools are unavailable,
+and the official hg19 HMMix ancestral, outgroup, and reference inputs are each
+larger than the 500 MB cap. The raw caller pilot was therefore not run: there
+is no authorized Papuan chr22 target in the local input, and the required
+resource/tool gate does not pass.
+
+Compact evidence is in `FAILURE_ANATOMY_SUMMARY.tsv`,
+`OBSERVATION_CALIBRATION_SUMMARY.tsv`, and `EXTERNAL_PREFLIGHT.tsv`. Generated
+HTML reports remain ignored under `archaic_admixture_dating/outputs/`.

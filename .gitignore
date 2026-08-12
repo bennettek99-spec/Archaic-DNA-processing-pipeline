@@ -42,6 +42,9 @@ tmp/
 output/pdf/
 reports/etruscan_publication/
 
+# Pooled-frequency cache for neanderthal_source.py (regenerable in one pass)
+results/neanderthal_source_cache/
+
 # Papuan Denisovan admixture-dating run products and resumable transfers
 archaic_admixture_dating/outputs/*
 !archaic_admixture_dating/outputs/.gitkeep

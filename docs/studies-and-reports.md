@@ -22,6 +22,7 @@ reviewed scientific conclusions.
 | X-chromosome depletion | `python xchrom_depletion.py --panel ho` | [XCHROM_REPORT.md](../XCHROM_REPORT.md) | Inconclusive/data-limited |
 | Denisovan population survey | `python denisovan_survey.py --panel 1240k` | [DENISOVAN_REPORT.md](../DENISOVAN_REPORT.md) | Validated relative-affinity positive control; no percentage |
 | Remote Oceania archaic transect | `archaic-pipeline oceania-transect --panel 1240k` | `reports/oceania_transect/PAPER_oceania.md` | Supported relative-affinity time series with control population and difference-in-differences; Denisovan arm supported, Neanderthal arm explicitly not attributed |
+| Altai vs Vindija Neanderthal source | `archaic-pipeline neanderthal-source --panel 1240k` | `reports/neanderthal_source/PAPER_neanderthal_source.md` | Characterised null with a stated detection limit (13% of signal); positive controls recovered; age-correlated residual reported as unresolved candidate; Oase1 explicitly unplaceable |
 | Sima de los Huesos BAM adapter | `python tools/sima_de_los_huesos_scan.py` | `output/sima_de_los_huesos/` when run | Exploratory and below normal AADR evidence floor |
 
 ## Highest-archaic reporting

@@ -39,6 +39,7 @@ SCRIPTS = {
     "all": "run_pipeline.py",
     "ancestry": "ancestry_decomposition.py",
     "oceania-transect": "oceania_transect.py",
+    "neanderthal-source": "neanderthal_source.py",
 }
 
 

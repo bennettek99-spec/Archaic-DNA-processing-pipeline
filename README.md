@@ -176,6 +176,7 @@ Important limitations:
 | Denisovan reference genome | `archaic-pipeline denisovan-genome --panel 1240k` | [module guide](docs/denisovan_genome.md) |
 | Papuan Denisovan admixture dating V1 | `archaic-admixture-dating run-all --profile smoke --resume` | [module guide](archaic_admixture_dating/README.md) |
 | Remote Oceania archaic time transect | `archaic-pipeline oceania-transect --panel 1240k` | [report](reports/oceania_transect/PAPER_oceania.md) |
+| Which Neanderthal? Altai vs Vindija source contrast | `archaic-pipeline neanderthal-source --panel 1240k` | [report](reports/neanderthal_source/PAPER_neanderthal_source.md) |
 | Global and Eurasian >5% survey | `python global_archaic_survey.py` | [study index](docs/studies-and-reports.md) |
 | Oase1 segment analysis | `python oase1_haplotype.py` | [study index](docs/studies-and-reports.md) |
 | West-Eurasian source ancestry | `archaic-pipeline ancestry` | [study index](docs/studies-and-reports.md) |

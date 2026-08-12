@@ -4,6 +4,37 @@
 
 ### Added
 
+- New `archaic/source_contrast.py`: a reusable layer for asking *which*
+  Neanderthal population a cohort descends from, rather than how much
+  Neanderthal ancestry it has. Provides `D_VA = D(X, Yoruba; Vindija, Altai)`, a
+  Vindija/Altai-symmetric normaliser `D_NEA = D(X, Yoruba; NeaAvg, Chimp)` that
+  measures Neanderthal quantity without responding to its source, per-cohort
+  block tables, a **paired** block jackknife that cancels the archaic genomes'
+  shared sampling noise (empirically 1.9x tighter than quadrature), an
+  origin-constrained single-source fit with jackknifed residuals, a detection-
+  limit calculator, and technical-covariate diagnostics. 15 unit tests, no AADR
+  data needed.
+- New `archaic.cohort.pooled_freq_multi`: pooled allele frequencies for many
+  overlapping cohorts in a single streaming pass over the genotypes, so a study
+  spanning most of the AADR traverses the `.geno` once instead of once per
+  cohort.
+- New `neanderthal_source.py` study (`archaic-pipeline neanderthal-source`):
+  Altai-versus-Vindija affinity across 10,954 unique Eurasian ancient genomes in
+  41 dated cohorts plus 18 present-day anchors, with a pooled-frequency cache so
+  reruns take seconds. Recovers both anchors — every Neanderthal-carrying cohort
+  is displaced towards Vindija (Prufer et al. 2017), and the Denisovan genome is
+  pulled towards Altai (`-0.147`, Z = -6.7) as its ~1% Denisovan-related
+  ancestry predicts. Upper Palaeolithic Europeans and Palaeolithic north-east
+  Asians are indistinguishable (`-0.0009 +/- 0.0060`), as are present-day French
+  and Han (`-0.0008 +/- 0.0056`); a single proportional relation
+  `D_VA = 2.24 x D_NEA` fits 49 of 53 cohorts within 2 SE and none departs after
+  Bonferroni. **Stated detection limit: 0.0098 in D_VA units, 13% of the total
+  Vindija-over-Altai signal (2% for the best-powered pairs).** An age-correlated
+  deficit in the oldest cohorts is reported explicitly as an unresolved
+  candidate, not a finding, with four checks against it. Oase1 is admitted below
+  the SNP floor and reported as unplaceable on this axis at 25,838 usable sites.
+
+
 - New `archaic/transect.py`: a reusable pooled time-transect layer (date
   binning, pooled cohort archaic statistics, archaic-free f4-ratio ancestry
   fractions, mixture prediction with full error propagation, coverage-matched

@@ -32,7 +32,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e ".[test,sim]"
       - name: Lint
-        run: pyflakes archaic *.py tests tools oase1_bam_pipeline
+        run: pyflakes archaic scripts tests tools oase1_bam_pipeline
       - name: Test with coverage
         run: >-
           python -m pytest -q

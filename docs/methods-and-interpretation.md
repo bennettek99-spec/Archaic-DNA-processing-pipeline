@@ -58,8 +58,8 @@ The estimator is checked through complementary evidence:
 4. Concordance checks against ADMIXTOOLS 2.
 5. Synthetic packed-panel smoke tests for file-format and sign regressions.
 
-See [VALIDATION.md](../VALIDATION.md) and
-[SIMULATION_VALIDATION.md](../SIMULATION_VALIDATION.md).
+See [VALIDATION.md](studies/VALIDATION.md) and
+[SIMULATION_VALIDATION.md](studies/SIMULATION_VALIDATION.md).
 
 ## Credibility-aware ranking
 

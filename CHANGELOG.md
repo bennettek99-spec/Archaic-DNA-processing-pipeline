@@ -2,6 +2,31 @@
 
 ## Unreleased
 
+### Changed
+
+- Repository layout. The 32 flat entry-point scripts moved from the repository
+  root into `scripts/`, and the 12 report and policy markdown files moved into
+  `docs/` (authored) and `docs/studies/` (generated). Each moved script anchored
+  its paths with `os.path.dirname(os.path.abspath(__file__))` meaning "the
+  repository root", so all 51 anchors were re-based one level; the report
+  generators now write into `docs/studies/`. `run_pipeline.py` deliberately
+  keeps a `scripts/`-level anchor because it locates its sibling phase scripts.
+  Commands change from `python phase3_estimate.py` to
+  `python scripts/phase3_estimate.py`; the five console entry points are
+  unaffected. The repository root now holds nine files instead of forty-four.
+- Upstream phase intermediates are no longer tracked: phase-2 metadata and
+  sample manifests, phase-3 estimate tables, the phase-5 PCA table, phase-6
+  residuals, and the highest-archaic outlier dump (27 MB). The phase-4 analysis
+  tables stay tracked because every published study reads them. The boundary is
+  documented in `docs/DATA.md`.
+- README leads with the two papers — the global AADR survey and the Iron Age
+  Etruscan study — and carries a quickstart that ends at a passing smoke test.
+
+### Fixed
+
+- `pyflakes` lint failure on `main`: 26 fragments of placeholder-free f-strings
+  in the Neanderthal source-contrast report text.
+
 ### Added
 
 - New `archaic/source_contrast.py`: a reusable layer for asking *which*

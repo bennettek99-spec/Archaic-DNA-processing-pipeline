@@ -49,7 +49,7 @@ without an independently justified calibration and corresponding validation.
 Stage files explicitly. Do not use `git add -A` in a working tree containing
 local analyses. Retain a generated result only when its command, input release,
 provenance, and interpretation status are documented in
-[DATA.md](DATA.md) or the study report.
+[docs/DATA.md](docs/DATA.md) or the study report.
 
 ## Publishing a focused change
 

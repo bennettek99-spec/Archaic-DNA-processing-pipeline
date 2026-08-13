@@ -76,18 +76,84 @@ def _is_pulse(event, time: float, source: int, dest: int) -> bool:
 
 @dataclass
 class PulseConfig:
-    """How the Denisovan gene flow is configured for one replicate."""
+    """How the Denisovan gene flow is configured for one replicate.
 
-    mode: str = "single"          # "single" | "published"
-    generations: float | None = None
+    ``single``      one pulse at ``generations``
+    ``published``   both Jacobs pulses exactly as published
+    ``two``         two pulses at ``generations = (older, younger)``, split by
+                    ``weights``
+    ``continuous``  gene flow spread over ``generations = (older, younger)``
+                    in ``n_bins`` equal steps
+    """
+
+    mode: str = "single"
+    generations: float | tuple[float, float] | None = None
     proportion: float = PUBLISHED_DEN1_PROPORTION + PUBLISHED_DEN2_PROPORTION
+    weights: tuple[float, float] = (0.5, 0.5)
+    n_bins: int = 7
+    label: str = ""
 
     def describe(self) -> dict[str, Any]:
+        older, younger = (None, None)
+        if isinstance(self.generations, (tuple, list)):
+            older, younger = float(self.generations[0]), float(self.generations[1])
+        elif self.generations is not None:
+            older = younger = float(self.generations)
         return {
             "pulse_mode": self.mode,
-            "pulse_generations": self.generations,
+            "pulse_label": self.label or self.mode,
+            "pulse_generations": older,
+            "pulse_generations_younger": younger,
             "pulse_proportion": self.proportion,
+            "pulse_weight_older": self.weights[0],
         }
+
+
+def _interval(pulse: PulseConfig) -> tuple[float, float]:
+    if not isinstance(pulse.generations, (tuple, list)) or len(pulse.generations) != 2:
+        raise ValueError(f"{pulse.mode!r} mode requires generations=(older, younger)")
+    older, younger = float(pulse.generations[0]), float(pulse.generations[1])
+    if younger >= older:
+        raise ValueError(
+            f"generations must be (older, younger) with older > younger, "
+            f"got ({older}, {younger})"
+        )
+    return older, younger
+
+
+def _recipient(time: float) -> int:
+    return POP_PAPUAN if time <= PAPUAN_MERGE_TIME else POP_GHOST
+
+
+def _check_time(time: float) -> None:
+    if not 0 < time < GHOST_MERGE_TIME:
+        raise ValueError(
+            f"pulse time {time} must be between 0 and {GHOST_MERGE_TIME} "
+            "generations for this demography"
+        )
+
+
+def _staged_proportions(total: float, weights: tuple[float, float]) -> tuple[float, float]:
+    """Per-event proportions giving a target total archaic fraction.
+
+    Mass migrations compose backwards in time: a lineage that already moved at
+    the younger event is no longer available at the older one. Applying
+    ``p_young`` then ``p_old`` leaves a realised fraction of
+    ``p_young + (1 - p_young) * p_old``, so the older event must be inflated to
+    hit the intended total. Passing the raw weights straight through would
+    quietly under-deliver archaic ancestry and confound the mixture sweep with
+    a change in total introgression.
+    """
+    w_old, w_young = weights
+    scale = w_old + w_young
+    p_young = total * (w_young / scale)
+    denominator = 1.0 - p_young
+    if denominator <= 0:
+        raise ValueError("younger pulse proportion leaves nothing for the older pulse")
+    p_old = total * (w_old / scale) / denominator
+    if not 0 <= p_old < 1:
+        raise ValueError(f"derived older-pulse proportion {p_old} is out of range")
+    return p_old, p_young
 
 
 def build_demography(pulse: PulseConfig):
@@ -102,14 +168,6 @@ def build_demography(pulse: PulseConfig):
 
     if pulse.mode == "published":
         return demography, model
-
-    if pulse.generations is None:
-        raise ValueError("single-pulse mode requires pulse.generations")
-    if not 0 < pulse.generations < GHOST_MERGE_TIME:
-        raise ValueError(
-            f"pulse time {pulse.generations} must be between 0 and "
-            f"{GHOST_MERGE_TIME} generations for this demography"
-        )
 
     events = [
         e
@@ -126,15 +184,44 @@ def build_demography(pulse: PulseConfig):
 
     import msprime
 
-    recipient = POP_PAPUAN if pulse.generations <= PAPUAN_MERGE_TIME else POP_GHOST
-    events.append(
-        msprime.MassMigration(
-            time=float(pulse.generations),
-            source=recipient,
-            dest=POP_DEN1,
-            proportion=float(pulse.proportion),
+    def add(time: float, proportion: float) -> None:
+        _check_time(time)
+        events.append(
+            msprime.MassMigration(
+                time=float(time),
+                source=_recipient(time),
+                dest=POP_DEN1,
+                proportion=float(proportion),
+            )
         )
-    )
+
+    if pulse.mode == "single":
+        if pulse.generations is None:
+            raise ValueError("single-pulse mode requires pulse.generations")
+        if isinstance(pulse.generations, (tuple, list)):
+            raise ValueError("single-pulse mode takes a scalar generations value")
+        add(float(pulse.generations), pulse.proportion)
+
+    elif pulse.mode == "two":
+        older, younger = _interval(pulse)
+        p_old, p_young = _staged_proportions(pulse.proportion, pulse.weights)
+        add(younger, p_young)
+        add(older, p_old)
+
+    elif pulse.mode == "continuous":
+        older, younger = _interval(pulse)
+        if pulse.n_bins < 2:
+            raise ValueError("continuous mode requires n_bins >= 2")
+        # Each step removes the same fraction of what remains, so the realised
+        # total is 1 - (1 - q)**n_bins. Solving for q keeps the total archaic
+        # fraction identical to the single-pulse runs.
+        q = 1.0 - (1.0 - pulse.proportion) ** (1.0 / pulse.n_bins)
+        for time in np.linspace(younger, older, pulse.n_bins):
+            add(float(time), q)
+
+    else:
+        raise ValueError(f"unsupported pulse mode {pulse.mode!r}")
+
     demography.events = sorted(events, key=lambda e: e.time)
     return demography, model
 

@@ -30,6 +30,11 @@ The formal inversion returns 315 generations (9.1 kya, 95% CI 2.6–13.3 kya).
 reported because refusing to report it would hide how far outside the model the
 real measurement sits.
 
+Mixtures and prolonged gene flow were then tested as the obvious escape route
+and **do not rescue it**: ten two-pulse and continuous-flow scenarios all land
+between their own components, and the lowest of them is still well above the
+real value. The gap is not a property of the admixture history.
+
 ## What was built
 
 | Module | What it does |
@@ -150,6 +155,52 @@ the simulated decay is 1707.9 against the real 655.3. Increasing specificity
 moves the decay **further from** the real value, not towards it. The gap is not
 an over-calling artifact.
 
+## Mixtures do not rescue it either
+
+Ten scenarios, four replicates each, at the same operating point. Every
+scenario delivers exactly 0.04 total archaic ancestry: mass migrations compose
+multiplicatively backwards in time rather than adding, so the per-event
+proportions are solved for the intended total. Without that, a mixture would
+have quietly delivered less archaic ancestry than a single pulse and the
+comparison would confound timing with amount. Full table in
+[MIXTURE_SUMMARY.tsv](MIXTURE_SUMMARY.tsv).
+
+| Scenario | Decoded decay | SD | Apparent single-pulse date |
+|---|---:|---:|---:|
+| single 45 kya | 1437.0 | 54.9 | 48.7 kya |
+| single 14.5 kya (floor) | **932.2** | 123.5 | 23.2 kya |
+| published Jacobs two-pulse | 1236.2 | 56.5 | 38.6 kya |
+| two 45+29 kya 50/50 | 1181.6 | 53.5 | 35.8 kya |
+| two 45+17 kya 50/50 | 1099.7 | 158.9 | 31.6 kya |
+| two 45+17 kya 25/75 | 1122.5 | 320.5 | 32.8 kya |
+| two 45+17 kya 75/25 | 1297.5 | 124.2 | 41.7 kya |
+| two 50+29 kya 50/50 | 1476.0 | 123.2 | 50.7 kya |
+| continuous 45→17 kya | 1173.9 | 243.7 | 35.4 kya |
+| continuous 50→30 kya | 1303.7 | 283.4 | 42.0 kya |
+
+**No tested mixture or prolonged-flow history reaches 655.3.** Every mixture
+lands between its own components, which is what the theory predicts: for a
+mixture of exponentials the mean tract length is the weighted mean of the
+component means, so the implied decay is bounded between them. The hypothesis
+that additional merging might beat that bound — more archaic segments in close
+proximity giving posterior decoding more to bridge — is not supported. The
+floor is set by the youngest component, and no component inside the plausible
+range is young enough.
+
+**Identifiability, as a side result:** a two-pulse history is read by a
+single-pulse estimator as an intermediate date, not as either component. The
+published Jacobs configuration (29.8 + 45.7 kya) reads as a single pulse at
+38.6 kya, and continuous flow from 45 to 17 kya reads as 35.4 kya. Anyone
+fitting a single pulse to genuinely structured gene flow will recover something
+in between and it will look unremarkable.
+
+**Honest note on the margin.** The 14.5 kya floor came out at 932.2 here and
+784.9 in the calibration sweep, on different seeds, against replicate SDs of
+100–300. The real 655.3 sits roughly two standard deviations below the floor
+rather than obviously outside it. The direction is consistent across both
+sweeps and every scenario, but the margin is not large relative to the noise,
+and tightening it needs more replicates or longer sequences.
+
 ## Threats to the conclusion
 
 1. **Rate contrast is 6.97x against the real 8.8x.** Lower contrast means lower
@@ -167,18 +218,25 @@ an over-calling artifact.
    map.
 5. **This is a faithful reimplementation of the Skov model, not Skov's code.**
    Any behaviour specific to their implementation is not captured.
-6. **Single pulses only.** Two-pulse and continuous-flow histories were not
-   swept, and a mixture could in principle produce a slower-decaying
-   distribution than any single pulse.
+6. ~~Single pulses only.~~ **Tested and ruled out** — see
+   [Mixtures](#mixtures-do-not-rescue-it-either). Two-pulse and continuous-flow
+   histories land between their components and none reaches the real value.
 7. **The demography is held at published values.** Papuan effective size and
    bottleneck structure directly set tract-length structure, and a different
    demography would move the curve.
 8. **The 655.3 anchor** is inherited from the state-aware reanalysis and
    carries that analysis's own caveats.
 
-Of these, (6) is the most likely route to a reconciling explanation and is the
-obvious next experiment: the required-inflation table says a single pulse
-cannot do it, which is itself a reason to sweep mixtures.
+With mixtures eliminated, the leading remaining candidate is **(4), the flat
+recombination rate**. The simulation uses a constant 1.2e-8 while the real
+decoded decay was measured on GRCh37 HapMap map lengths. A real map has
+hotspots and cold regions, so physically similar tracts get very different
+genetic lengths; that broadens the length distribution and lowers the fitted
+decay in a way a flat map structurally cannot reproduce. The size of the effect
+is not speculative here — the earlier map-aware rerun moved the median tract
+length from 0.2328 to 0.3018 cM, about 30%, purely by changing the map. Running
+the simulation under the same HapMap map is the next experiment, and it is
+cheap: msprime accepts a `RateMap` directly.
 
 ## Interpretation rules
 

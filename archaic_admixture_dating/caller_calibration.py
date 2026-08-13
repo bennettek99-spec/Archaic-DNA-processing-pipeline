@@ -87,6 +87,112 @@ def _true_window_mask(intervals: dict[int, list[tuple[float, float]]],
     return mask
 
 
+def run_scenario(
+    pulse: PulseConfig,
+    *,
+    seed: int,
+    sequence_length: int = 10_000_000,
+    n_papuan: int = 20,
+    n_outgroup: int = 100,
+    recombination_rate: float = 1.2e-8,
+    window_bp: int = 1000,
+    min_length_morgans: float = DEFAULT_MIN_LENGTH_MORGANS,
+    mutation_scale: float = 0.40,
+    max_iter: int = 30,
+) -> dict[str, Any]:
+    """Run any pulse configuration through the caller and summarise it.
+
+    Unlike :func:`run_replicate`, which exists to build the single-pulse
+    calibration curve, this accepts mixtures and prolonged flow so that
+    histories which are not a single pulse can be put on the same axis.
+    """
+    sim = simulate_replicate(
+        pulse,
+        seed=seed,
+        sequence_length=sequence_length,
+        n_papuan=n_papuan,
+        n_outgroup=n_outgroup,
+        recombination_rate=recombination_rate,
+        window_bp=window_bp,
+        mutation_rate=None if mutation_scale == 1.0 else 1.4e-8 * mutation_scale,
+        record_truth=False,
+    )
+    counts = sim["counts"]
+
+    fitted: list[float] = []
+    decoded_lengths: list[np.ndarray] = []
+    modern_rates: list[float] = []
+    archaic_rates: list[float] = []
+    decoded_windows = 0
+
+    for i in range(counts.shape[0]):
+        result = call_individual(
+            counts[i],
+            window_bp=window_bp,
+            recombination_rate=recombination_rate,
+            min_length_morgans=min_length_morgans,
+            archaic_fraction=0.06,
+            admixture_generations=1000.0,
+            max_iter=max_iter,
+        )
+        fitted.append(result["fitted_generations"])
+        decoded_lengths.append(result["lengths_morgans"])
+        decoded_windows += int((result["ends"] - result["starts"]).sum())
+        modern_rates.append(float(result["fit"].rates[0]))
+        archaic_rates.append(float(result["fit"].rates[1]))
+
+    pooled = np.concatenate(decoded_lengths) if decoded_lengths else np.empty(0)
+    kept = pooled[pooled >= min_length_morgans]
+    decoded_decay = decay_generations(pooled, min_length_morgans)
+    fitted_median = float(np.median(fitted)) if fitted else float("nan")
+    modern_rate = float(np.median(modern_rates))
+    archaic_rate = float(np.median(archaic_rates))
+
+    row: dict[str, Any] = dict(pulse.describe())
+    row.update(
+        seed=int(seed),
+        fitted_generations=fitted_median,
+        decoded_decay=decoded_decay,
+        decoded_over_fitted=decoded_decay / fitted_median if fitted_median else float("nan"),
+        archaic_fraction_decoded=decoded_windows / (counts.shape[0] * counts.shape[1]),
+        modern_rate=modern_rate,
+        archaic_rate=archaic_rate,
+        rate_contrast=archaic_rate / modern_rate if modern_rate else float("nan"),
+        n_decoded_tracts=int(kept.size),
+        n_individuals=int(counts.shape[0]),
+        sequence_length=int(sequence_length),
+    )
+    return row
+
+
+def scenario_sweep(
+    scenarios: Sequence[PulseConfig],
+    *,
+    replicates: int = 4,
+    base_seed: int = 20260813,
+    progress: bool = True,
+    **kwargs: Any,
+) -> pd.DataFrame:
+    rows = []
+    total = len(scenarios) * replicates
+    done = 0
+    for index, pulse in enumerate(scenarios):
+        for r in range(replicates):
+            row = run_scenario(pulse, seed=base_seed + index * 977 + r, **kwargs)
+            rows.append(row)
+            done += 1
+            if progress:
+                print(
+                    f"[{done:3d}/{total}] {row['pulse_label']:<28s} "
+                    f"fitted={row['fitted_generations']:7.1f}  "
+                    f"decoded={row['decoded_decay']:7.1f}  "
+                    f"frac={row['archaic_fraction_decoded']:.4f}  "
+                    f"n={row['n_decoded_tracts']:5d}",
+                    flush=True,
+                )
+    return pd.DataFrame(rows)
+
+
 def run_replicate(
     pulse_generations: float,
     *,

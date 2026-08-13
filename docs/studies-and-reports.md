@@ -6,21 +6,21 @@ reviewed scientific conclusions.
 
 | Analysis | Command | Canonical output | Status |
 | --- | --- | --- | --- |
-| Core AADR validation | `archaic-pipeline validate --panel 1240k` | [VALIDATION.md](../VALIDATION.md) | Validated method/control suite |
-| Coalescent validation | `python validate_simulation.py` | [SIMULATION_VALIDATION.md](../SIMULATION_VALIDATION.md) | Validated simulation benchmark |
+| Core AADR validation | `archaic-pipeline validate --panel 1240k` | [VALIDATION.md](studies/VALIDATION.md) | Validated method/control suite |
+| Coalescent validation | `python scripts/validate_simulation.py` | [SIMULATION_VALIDATION.md](studies/SIMULATION_VALIDATION.md) | Validated simulation benchmark |
 | Phase 2-9 AADR workflow | `archaic-pipeline all --panel 1240k` | `reports/archaic_report_1240k.html` | Supported summaries plus explicitly labelled candidates |
 | Highest-archaic scan | `archaic-pipeline highest-archaic` | `reports/highest_archaic_ancestry_report.md` | Credibility-aware ranking; candidate interpretation |
 | Denisovan reference genome | `archaic-pipeline denisovan-genome --panel 1240k` | `results/denisovan_genome/report.html` | Reference/lineage characterization; no Denisovan percentage |
-| Global >5% survey | `python global_archaic_survey.py` | `reports/global_archaic_survey/PAPER_global.md` | Neanderthal threshold result supported; Denisovan context is relative or literature-derived |
-| Eurasian >5% survey | `python high_archaic_survey.py` | `reports/high_archaic_survey/PAPER.md` | Supported high-confidence threshold result; raw crossings audited as artifacts |
-| Oase1 array segments | `python oase1_haplotype.py` | `reports/oase1_haplotype/PAPER_oase1.md` | Focused contextual evidence; read-level workflow preferred for confirmation |
+| Global >5% survey | `python scripts/global_archaic_survey.py` | `reports/global_archaic_survey/PAPER_global.md` | Neanderthal threshold result supported; Denisovan context is relative or literature-derived |
+| Eurasian >5% survey | `python scripts/high_archaic_survey.py` | `reports/high_archaic_survey/PAPER.md` | Supported high-confidence threshold result; raw crossings audited as artifacts |
+| Oase1 array segments | `python scripts/oase1_haplotype.py` | `reports/oase1_haplotype/PAPER_oase1.md` | Focused contextual evidence; read-level workflow preferred for confirmation |
 | EV16A Etruscan candidate | `python -m archaic.highest_archaic --subset EV16A.SG` | `results/individual_EV16A/EV16A_dedicated_report.md` | Low-confidence focused example; elevated point estimate, no validated segment evidence |
 | West-Eurasian ancestry | `archaic-pipeline ancestry` | `reports/ancestry/PAPER_ancestry.md` | Supported descriptive model comparison |
-| Etruscan case study | `python etruscan_study.py` | [ETRUSCAN_FINDINGS.md](../ETRUSCAN_FINDINGS.md) | Group-level supported summary; individual/locus claims exploratory |
-| FADS analysis | `python fads_report.py` | [FADS_REPORT.md](../FADS_REPORT.md) | Selection context; not proof of adaptive introgression |
-| Local archaic windows | `python local_archaic_scan.py --panel 1240k` | [LOCAL_ARCHAIC_REPORT.md](../LOCAL_ARCHAIC_REPORT.md) | Peaks are exploratory; desert recovery failed |
-| X-chromosome depletion | `python xchrom_depletion.py --panel ho` | [XCHROM_REPORT.md](../XCHROM_REPORT.md) | Inconclusive/data-limited |
-| Denisovan population survey | `python denisovan_survey.py --panel 1240k` | [DENISOVAN_REPORT.md](../DENISOVAN_REPORT.md) | Validated relative-affinity positive control; no percentage |
+| Etruscan case study | `python scripts/etruscan_study.py` | [ETRUSCAN_FINDINGS.md](studies/ETRUSCAN_FINDINGS.md) | Group-level supported summary; individual/locus claims exploratory |
+| FADS analysis | `python scripts/fads_report.py` | [FADS_REPORT.md](studies/FADS_REPORT.md) | Selection context; not proof of adaptive introgression |
+| Local archaic windows | `python scripts/local_archaic_scan.py --panel 1240k` | [LOCAL_ARCHAIC_REPORT.md](studies/LOCAL_ARCHAIC_REPORT.md) | Peaks are exploratory; desert recovery failed |
+| X-chromosome depletion | `python scripts/xchrom_depletion.py --panel ho` | [XCHROM_REPORT.md](studies/XCHROM_REPORT.md) | Inconclusive/data-limited |
+| Denisovan population survey | `python scripts/denisovan_survey.py --panel 1240k` | [DENISOVAN_REPORT.md](studies/DENISOVAN_REPORT.md) | Validated relative-affinity positive control; no percentage |
 | Remote Oceania archaic transect | `archaic-pipeline oceania-transect --panel 1240k` | `reports/oceania_transect/PAPER_oceania.md` | Supported relative-affinity time series with control population and difference-in-differences; Denisovan arm supported, Neanderthal arm explicitly not attributed |
 | Altai vs Vindija Neanderthal source | `archaic-pipeline neanderthal-source --panel 1240k` | `reports/neanderthal_source/PAPER_neanderthal_source.md` | Characterised null with a stated detection limit (13% of signal); positive controls recovered; age-correlated residual reported as unresolved candidate; Oase1 explicitly unplaceable |
 | Sima de los Huesos BAM adapter | `python tools/sima_de_los_huesos_scan.py` | `output/sima_de_los_huesos/` when run | Exploratory and below normal AADR evidence floor |

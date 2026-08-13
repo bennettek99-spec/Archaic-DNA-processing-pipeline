@@ -11,7 +11,7 @@ and study-specific findings so the README can remain a reliable entry point.
   validation, uncertainty, and claims the data cannot support.
 - [Studies and reports](studies-and-reports.md): canonical entry points and the
   status of each retained study output.
-- [Data and artifact policy](../DATA.md): AADR handling, the documented
+- [Data and artifact policy](DATA.md): AADR handling, the documented
   PRJEB10597 BAM exception, checksums, and result-retention rules.
 
 ## Module guides
@@ -21,10 +21,10 @@ and study-specific findings so the README can remain a reliable entry point.
 
 ## Validation and project records
 
-- [External validation](../VALIDATION.md)
-- [Simulation validation](../SIMULATION_VALIDATION.md)
+- [External validation](studies/VALIDATION.md)
+- [Simulation validation](studies/SIMULATION_VALIDATION.md)
 - [Changelog](../CHANGELOG.md)
-- [Roadmap](../ROADMAP_GENETICS.md)
+- [Roadmap](ROADMAP_GENETICS.md)
 - [Release process](../RELEASING.md)
 
 ## Evidence labels

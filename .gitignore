@@ -45,6 +45,20 @@ reports/etruscan_publication/
 # Pooled-frequency cache for neanderthal_source.py (regenerable in one pass)
 results/neanderthal_source_cache/
 
+# Per-run resume markers written alongside generated result tables
+results/**/.sensitivity.json
+
+# Upstream phase intermediates. These exist only to produce the phase-4
+# analysis tables, which stay tracked because every published study reads them
+# (see docs/DATA.md). Regenerate with scripts/run_pipeline.py when AADR is local.
+results/phase2_*_metadata.csv
+results/phase2_*_sample_manifest.csv
+results/phase2_1240k_excluded.csv
+results/phase3_*_estimates.csv
+results/phase5_*_pca.csv
+results/phase6_*_residuals.csv
+results/highest_archaic/suspicious_outliers.tsv
+
 # Papuan Denisovan admixture-dating run products and resumable transfers
 archaic_admixture_dating/outputs/*
 !archaic_admixture_dating/outputs/.gitkeep

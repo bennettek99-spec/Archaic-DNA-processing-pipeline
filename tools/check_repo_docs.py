@@ -130,7 +130,7 @@ def digest(path: Path, algorithm: str) -> str:
 
 
 def check_tracked_bams(errors: list[str]) -> None:
-    data_doc = (ROOT / "DATA.md").read_text(encoding="utf-8").lower()
+    data_doc = (ROOT / "docs" / "DATA.md").read_text(encoding="utf-8").lower()
     bams = tracked_files("*.bam")
     if not bams:
         errors.append("expected documented PRJEB10597 BAM exception is missing")

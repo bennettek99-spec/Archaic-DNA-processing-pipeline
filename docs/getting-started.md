@@ -103,7 +103,7 @@ archaic-pipeline all --panel 1240k
 Equivalent direct invocation:
 
 ```bash
-python run_pipeline.py --panel 1240k
+python scripts/run_pipeline.py --panel 1240k
 ```
 
 Progress messages include timestamps and can be made more verbose with

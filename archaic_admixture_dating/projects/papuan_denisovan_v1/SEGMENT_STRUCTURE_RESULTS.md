@@ -252,12 +252,15 @@ the estimator, not about this dataset.
 
 1. **Removed.** The length-dependent affinity ascertainment is corrected, with
    the estimator validated against known rates and against the unselected set.
-2. Caller-aware simulation recovery: simulate genotypes, run the actual HMM, and
-   confirm the observed distribution lies inside calibrated envelopes. This is
-   now the sole remaining blocker and it is the only way to remove the 1.56x
-   decoder inflation without circularity. The M1–M10 calibration must also be
-   rerun against archaic-state segments, since it was previously compared
-   against contaminated data.
+2. **Done, and the answer was negative.** See
+   [CALLER_CALIBRATION_RESULTS.md](CALLER_CALIBRATION_RESULTS.md). Simulating
+   genotypes under the published Jacobs demography and running a Skov-type HMM
+   on them shows that the 1.56x decoder inflation measured here is real but
+   **insufficient**: reconciling the observed distribution with a 45 kya pulse
+   would require 2.72x. The real decoded decay of 655.3 falls below every point
+   in a sweep spanning 14.5–51.6 kya. Over-calling was ruled out as the
+   explanation. The M1–M10 calibration still needs rerunning against
+   archaic-state segments.
 3. Independent population-level replication (HGDP Papuans, hg38).
 
 ## Interpretation rules

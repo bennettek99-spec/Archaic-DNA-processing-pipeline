@@ -29,6 +29,28 @@
 
 ### Added
 
+- New `archaic_admixture_dating/skov_hmm.py`: a Skov-type two-state Poisson HMM
+  over outgroup-private variant counts, with Baum-Welch fitting, posterior
+  decoding, run extraction, and truncated-exponential decay estimation. The
+  forward-backward recursion is numba-JIT'd, which takes a whole-genome
+  individual from 43 hours to about 5 seconds and is what makes calibration
+  laptop-feasible at all. Reports the HMM's own admixture-time parameter and
+  the decoded run decay separately, because their ratio is the decoder
+  inflation the calibration exists to measure.
+- New `archaic_admixture_dating/genotype_simulation.py`: genotype-level
+  simulation of the Skov observation process under the published Jacobs et al.
+  (2019) demography from stdpopsim, with the Denisovan pulse time as a free
+  parameter. The published model encodes a young pulse as a finding, so running
+  it unmodified would assume what is under test; everything else stays at its
+  published value. Pulses older than the Papuan/Ghost merge are retargeted onto
+  the Papuan ancestor.
+- New `archaic_admixture_dating/caller_calibration.py` and the
+  `papuan_denisovan_v1/run_calibration.py` entry point: sweep the true pulse
+  time, run the whole chain to a decoded decay, fit the calibration curve, and
+  invert it on the real measurement with a replicate bootstrap. This replaces
+  the tract-level observation model, whose error was length-preserving and
+  therefore structurally unable to reproduce posterior-decoding run inflation.
+  20 unit tests.
 - New `archaic/source_contrast.py`: a reusable layer for asking *which*
   Neanderthal population a cohort descends from, rather than how much
   Neanderthal ancestry it has. Provides `D_VA = D(X, Yoruba; Vindija, Altai)`, a

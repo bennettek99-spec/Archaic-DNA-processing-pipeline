@@ -24,9 +24,12 @@ an African baseline. Three things about it drive every design decision here.
      source. Reading that as "a different Neanderthal" is the central trap of
      this analysis. It bites hardest on the East Asian question, where published
      estimates put the East-Asian excess over Europeans somewhere around 8-20%
-     — though note that this repository's own f4-ratio on the 1240K panel puts
-     it near 2%, so the size of the confound is itself panel-dependent and
-     should be measured rather than assumed. The fix is to divide it out:
+     — a *relative* excess: absolute Neanderthal fractions are ~1.7-2.6% in both
+     groups and the disputed gap is a few tenths of a percentage point, not
+     8-20 points of genome. Note also that this repository's own f4-ratio on the
+     1240K panel puts the excess near 2% relative (2.14% against 2.11%), so the
+     size of the confound is itself panel-dependent and should be measured
+     rather than assumed. The fix is to divide it out:
 
          R = D_VA / D_NEA      where     D_NEA = D(X, Yoruba; NeaAvg, Chimp)
 

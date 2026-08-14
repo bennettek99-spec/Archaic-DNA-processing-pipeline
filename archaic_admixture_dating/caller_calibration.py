@@ -16,8 +16,10 @@ observed decay, which is then inverted on the real measurement.
 Three numbers are tracked per replicate and they are different things:
 
 ``true_decay``
-    Exponential decay of the true introgressed intervals from the tree
-    sequence's migration records. Should recover the input pulse time.
+    Exponential decay of the true introgressed intervals, recovered from a
+    census placed above every archaic pulse. Should recover the input pulse
+    time. Only populated when ``record_truth`` is set; the sweep does not need
+    it, because the true pulse time is the input.
 ``fitted_generations``
     The HMM's own admixture-time parameter, from the fitted transition rate.
 ``decoded_decay``
@@ -52,6 +54,14 @@ REAL_MODERN_RATE = 0.0256
 REAL_ARCHAIC_RATE = 0.2245
 
 DEFAULT_MIN_LENGTH_MORGANS = 5e-4      # 0.05 cM, matching the real analysis
+
+# Variant density is scaled because the real callset is filtered for
+# callability and the simulation is not. Fitted by matching the two Poisson
+# rates and the decoded archaic fraction to the real analysis; see
+# CALLER_CALIBRATION_RESULTS.md. Both entry points share it so a run cannot
+# accidentally sit at a different operating point from the curve it inverts on.
+CALIBRATED_MUTATION_SCALE = 0.40
+BASE_MUTATION_RATE = 1.4e-8            # the Jacobs model's published value
 
 
 @dataclass
@@ -97,7 +107,7 @@ def run_scenario(
     recombination_rate: float = 1.2e-8,
     window_bp: int = 1000,
     min_length_morgans: float = DEFAULT_MIN_LENGTH_MORGANS,
-    mutation_scale: float = 0.40,
+    mutation_scale: float = CALIBRATED_MUTATION_SCALE,
     max_iter: int = 30,
 ) -> dict[str, Any]:
     """Run any pulse configuration through the caller and summarise it.
@@ -114,7 +124,7 @@ def run_scenario(
         n_outgroup=n_outgroup,
         recombination_rate=recombination_rate,
         window_bp=window_bp,
-        mutation_rate=None if mutation_scale == 1.0 else 1.4e-8 * mutation_scale,
+        mutation_rate=BASE_MUTATION_RATE * mutation_scale,
         record_truth=False,
     )
     counts = sim["counts"]
@@ -197,13 +207,13 @@ def run_replicate(
     pulse_generations: float,
     *,
     seed: int,
-    sequence_length: int = 50_000_000,
+    sequence_length: int = 10_000_000,
     n_papuan: int = 20,
     n_outgroup: int = 200,
     recombination_rate: float = 1.2e-8,
     window_bp: int = 1000,
     min_length_morgans: float = DEFAULT_MIN_LENGTH_MORGANS,
-    mutation_scale: float = 1.0,
+    mutation_scale: float = CALIBRATED_MUTATION_SCALE,
     max_iter: int = 30,
     record_truth: bool = False,
 ) -> ReplicateResult:
@@ -217,7 +227,7 @@ def run_replicate(
         n_outgroup=n_outgroup,
         recombination_rate=recombination_rate,
         window_bp=window_bp,
-        mutation_rate=None if mutation_scale == 1.0 else 1.4e-8 * mutation_scale,
+        mutation_rate=BASE_MUTATION_RATE * mutation_scale,
         record_truth=record_truth,
     )
     counts = sim["counts"]

@@ -233,7 +233,11 @@ def fit_hmm(
     ``archaic_fraction`` and ``admixture_generations`` only seed the search;
     both are free parameters of the fit.
     """
+    if max_iter < 1:
+        raise ValueError(f"max_iter must be at least 1, got {max_iter}")
     obs = np.ascontiguousarray(np.asarray(obs, dtype=np.int64))
+    if obs.size < 2:
+        raise ValueError(f"need at least 2 windows to fit, got {obs.size}")
     rates, A, pi = _initial_parameters(
         obs, archaic_fraction, admixture_generations, window_bp, recombination_rate
     )
@@ -280,10 +284,12 @@ def fit_hmm(
     )
 
 
-def posterior_decode(
-    obs: np.ndarray, fit: HMMFit, threshold: float = 0.5
-) -> np.ndarray:
-    """Posterior state probabilities for the archaic state, per window."""
+def posterior_decode(obs: np.ndarray, fit: HMMFit) -> np.ndarray:
+    """Posterior state probabilities for the archaic state, per window.
+
+    Returns probabilities rather than calls; thresholding belongs to
+    :func:`extract_runs`, so that one decode can be re-thresholded cheaply.
+    """
     obs = np.ascontiguousarray(np.asarray(obs, dtype=np.int64))
     e = poisson_emissions(obs, fit.rates)
     gamma, _, _ = _forward_backward(e, fit.transitions, fit.initial)
@@ -354,7 +360,7 @@ def call_individual(
         recombination_rate=recombination_rate,
         **fit_kwargs,
     )
-    posterior = posterior_decode(obs, fit, threshold=threshold)
+    posterior = posterior_decode(obs, fit)
     starts, ends = extract_runs(posterior, threshold=threshold)
     lengths = run_lengths_morgans(starts, ends, window_bp, recombination_rate)
     decoded = decay_generations(lengths, min_length_morgans)
@@ -368,6 +374,5 @@ def call_individual(
         "decoded_generations": decoded,
         "fitted_generations": fitted,
         "decoded_over_fitted": decoded / fitted if fitted > 0 else float("nan"),
-        "decoded_archaic_fraction": float((ends - starts).sum() * window_bp)
-        / float(obs.size * window_bp),
+        "decoded_archaic_fraction": float((ends - starts).sum()) / float(obs.size),
     }

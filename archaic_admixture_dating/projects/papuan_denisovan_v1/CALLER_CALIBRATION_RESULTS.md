@@ -77,6 +77,17 @@ The JIT is what makes this feasible. A whole-genome forward-backward pass in
 pure Python takes 57.7 s; JIT-compiled it takes 1.1 s, turning a 43-hour
 per-replicate cost into about 5 s per individual.
 
+The simulation side is checkable too. Introgression truth is recovered from a
+census placed above every archaic pulse, which returns the configured
+proportion at **0.0400 ± 0.0089** against a target of 0.0400, independent of
+sequence length, for single-pulse, two-pulse and continuous histories alike.
+This replaced an earlier reading of msprime migration records that
+over-attributed badly enough for the measured archaic fraction to depend on how
+much sequence was simulated (0.158 at 10 Mb, 0.093 at 30 Mb). None of the
+results in this document depended on that path — the sweep does not record
+truth, because the true pulse time is its input — and every published number
+was confirmed bit-identical after the fix.
+
 ## Observation-process fidelity
 
 The simulation's nuisance parameters — effective variant density and outgroup

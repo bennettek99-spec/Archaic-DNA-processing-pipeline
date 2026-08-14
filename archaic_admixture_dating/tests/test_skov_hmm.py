@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import numpy as np
+import pytest
 
 from archaic_admixture_dating.skov_hmm import (
     call_individual,
@@ -8,6 +9,7 @@ from archaic_admixture_dating.skov_hmm import (
     extract_runs,
     fit_hmm,
     poisson_emissions,
+    posterior_decode,
     run_lengths_morgans,
 )
 
@@ -81,6 +83,27 @@ def test_decoding_inflates_run_lengths():
     decoded_median = np.median(result["ends"] - result["starts"])
     assert decoded_median > true_median
     assert result["decoded_over_fitted"] < 1.0
+
+
+def test_fit_rejects_degenerate_inputs():
+    _, obs = _simulate_chain(1200.0, 0.05, 5_000, seed=20)
+    with pytest.raises(ValueError):
+        fit_hmm(obs, max_iter=0)
+    with pytest.raises(ValueError):
+        fit_hmm(np.array([1]))
+
+
+def test_one_decode_can_be_rethresholded():
+    """Thresholding belongs to extract_runs, so decoding happens once."""
+    _, obs = _simulate_chain(1500.0, 0.07, 80_000, seed=21)
+    fit = fit_hmm(obs, window_bp=WINDOW_BP, recombination_rate=RECOMBINATION_RATE)
+    posterior = posterior_decode(obs, fit)
+    assert posterior.shape == obs.shape
+    assert ((posterior >= 0.0) & (posterior <= 1.0)).all()
+
+    loose_starts, loose_ends = extract_runs(posterior, threshold=0.5)
+    tight_starts, tight_ends = extract_runs(posterior, threshold=0.95)
+    assert (tight_ends - tight_starts).sum() <= (loose_ends - loose_starts).sum()
 
 
 def test_extract_runs_handles_edges_and_gaps():

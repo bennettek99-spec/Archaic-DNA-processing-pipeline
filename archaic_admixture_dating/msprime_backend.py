@@ -112,6 +112,26 @@ def _merge(intervals: list[tuple[float, float]]) -> list[tuple[float, float]]:
 
 
 def _extract(ts, archaic_population_ids: set[int]) -> dict[int, list[tuple[float, float]]]:
+    """Introgressed intervals per individual, from migration records.
+
+    .. warning::
+
+       This over-attributes. A migration record's interval is the span of the
+       ancestral lineage when it moved, which is wider than the segment any one
+       modern sample inherits from it, so the intervals come out too long and
+       the measured archaic fraction depends on how much sequence was
+       simulated. Measured directly: fraction 0.158 at 10 Mb against 0.093 at
+       30 Mb, and a 1400-generation pulse recovered as 921 and 1180
+       generations respectively.
+
+       It is left in place because the tract-level M1-M10 workflow was
+       validated against it and its outputs are already published as such, but
+       it must not be used as truth for anything quantitative.
+       :func:`archaic_admixture_dating.genotype_simulation._census_intervals`
+       is the corrected implementation: it recovers the simulated proportion to
+       0.0400 +/- 0.0089 against a target of 0.0400, with no dependence on
+       sequence length.
+    """
     intervals: dict[int, list[tuple[float, float]]] = defaultdict(list)
     for migration in ts.migrations():
         if migration.dest not in archaic_population_ids:

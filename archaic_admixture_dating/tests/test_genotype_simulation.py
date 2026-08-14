@@ -125,6 +125,107 @@ def test_truth_intervals_lie_inside_the_sequence():
     assert (lengths >= 0).all()
 
 
+def _haplotype_fraction(result, sequence_length, key="true_denisovan_haplotype"):
+    covered = sum(right - left for values in result[key].values() for left, right in values)
+    n_haplotypes = 2 * len(result["individuals"])
+    return covered / (n_haplotypes * sequence_length)
+
+
+def test_census_sits_above_every_archaic_pulse():
+    """A pulse older than the census is invisible to it."""
+    from archaic_admixture_dating.genotype_simulation import POP_DEN1, POP_DEN2, POP_NEA1, _census_time
+
+    demography, _ = build_demography(
+        PulseConfig(mode="two", generations=(1550.0, 600.0), weights=(0.5, 0.5))
+    )
+    census = _census_time(demography)
+    archaic = {POP_DEN1, POP_DEN2, POP_NEA1}
+    pulse_times = [
+        e.time
+        for e in demography.events
+        if type(e).__name__ == "MassMigration" and int(e.dest) in archaic
+    ]
+    assert pulse_times
+    assert census > max(pulse_times)
+
+
+@pytest.mark.parametrize(
+    "pulse",
+    [
+        PulseConfig(mode="single", generations=1400.0),
+        PulseConfig(mode="two", generations=(1550.0, 600.0), weights=(0.5, 0.5)),
+        PulseConfig(mode="continuous", generations=(1550.0, 600.0), n_bins=5),
+    ],
+    ids=["single", "two", "continuous"],
+)
+def test_census_truth_recovers_the_simulated_proportion(pulse):
+    """Every mode should deliver the 0.04 it was configured with.
+
+    Averaged over seeds on purpose. At this sequence length the per-replicate
+    scatter is comparable to the mean -- single seeds have come out at 0.009 and
+    0.064 for the same configuration -- so a one-seed assertion would be flaky
+    rather than strict. The window below still excludes the old migration-record
+    method, which returned 0.158 for the single-pulse case.
+    """
+    sequence_length = 5_000_000
+    fractions = [
+        _haplotype_fraction(
+            simulate_replicate(
+                pulse,
+                seed=seed,
+                sequence_length=sequence_length,
+                n_papuan=10,
+                n_outgroup=15,
+                record_truth=True,
+            ),
+            sequence_length,
+        )
+        for seed in (23, 24, 25)
+    ]
+    assert 0.018 < float(np.mean(fractions)) < 0.075
+
+
+def test_diploid_coverage_exceeds_haplotype_coverage():
+    """Either haplotype being archaic is enough for a diploid caller."""
+    sequence_length = 5_000_000
+    result = simulate_replicate(
+        PulseConfig(mode="single", generations=1400.0),
+        seed=22,
+        sequence_length=sequence_length,
+        n_papuan=10,
+        n_outgroup=15,
+        record_truth=True,
+    )
+    haplotype = _haplotype_fraction(result, sequence_length)
+    covered = sum(
+        right - left
+        for values in result["true_denisovan"].values()
+        for left, right in values
+    )
+    individual = covered / (len(result["individuals"]) * sequence_length)
+    assert individual > haplotype
+    # Two independent haplotypes give 1 - (1 - p)^2, so never more than double.
+    assert individual <= 2 * haplotype + 1e-9
+
+
+def test_archaic_truth_includes_neanderthal_as_well_as_denisovan():
+    result = simulate_replicate(
+        PulseConfig(mode="published"),
+        seed=24,
+        sequence_length=5_000_000,
+        n_papuan=10,
+        n_outgroup=15,
+        record_truth=True,
+    )
+    denisovan = sum(
+        right - left for v in result["true_denisovan"].values() for left, right in v
+    )
+    archaic = sum(
+        right - left for v in result["true_archaic"].values() for left, right in v
+    )
+    assert archaic >= denisovan
+
+
 def test_simulation_is_deterministic_for_a_fixed_seed():
     kwargs = dict(
         seed=6, sequence_length=300_000, n_papuan=3, n_outgroup=5, record_truth=False

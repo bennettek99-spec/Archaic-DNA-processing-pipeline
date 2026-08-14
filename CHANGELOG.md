@@ -24,6 +24,36 @@
 
 ### Fixed
 
+- Simulated introgression truth was over-attributed. Reading true tracts from
+  msprime migration records takes each record's interval to be inherited by
+  every descendant sample, but that interval is the span of the ancestral
+  lineage when it moved and is far wider than the segment any one modern sample
+  receives. The measured archaic fraction therefore depended on how much
+  sequence was simulated — 0.158 at 10 Mb against 0.093 at 30 Mb — and a
+  1400-generation pulse came back as 921 and 1180 generations. Truth now comes
+  from a census placed above every archaic pulse plus `link_ancestors`, which
+  recovers the simulated proportion at 0.0400 ± 0.0089 against a target of
+  0.0400 with no dependence on sequence length. The same defect is present in
+  `msprime_backend._extract`, which is left in place because the tract-level
+  M1–M10 outputs were validated against it, but is now documented as unusable
+  as truth.
+- The same extraction was also quadratic — it rebuilt a tree per migration
+  record, and a 50 Mb replicate never finished. The census path is a single
+  pass.
+- `posterior_decode` accepted a `threshold` argument and ignored it, so callers
+  could believe they were thresholding a decode when they were not.
+  Thresholding belongs to `extract_runs`, which lets one decode be
+  re-thresholded cheaply — the mechanism the specificity check relies on.
+- `caller_calibration.invert` only rejected an exactly-zero slope, so a
+  near-degenerate calibration curve produced a confident nonsense estimate
+  instead of an error. It now tests the span the curve covers against the scale
+  of the decay values.
+- `fit_hmm` raised `NameError` rather than a useful error for `max_iter=0`, and
+  accepted inputs too short to fit.
+- `run_replicate` and `run_scenario` defaulted to different variant densities
+  (1.0 and 0.40) and different sequence lengths, so a run could silently sit at
+  a different operating point from the curve it inverts on. Both now share
+  named constants.
 - `pyflakes` lint failure on `main`: 26 fragments of placeholder-free f-strings
   in the Neanderthal source-contrast report text.
 

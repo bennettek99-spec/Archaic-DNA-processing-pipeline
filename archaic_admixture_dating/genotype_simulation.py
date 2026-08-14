@@ -231,56 +231,69 @@ def build_demography(pulse: PulseConfig):
 # --------------------------------------------------------------------------
 
 
-def _true_archaic_intervals(
-    ts, archaic_ids: set[int], keep_nodes: np.ndarray | None = None
+def _census_intervals(
+    ts, archaic_ids: set[int], sample_nodes: np.ndarray, census_time: float
 ) -> dict[int, list[tuple[float, float]]]:
-    """Introgressed intervals per sampled individual, from migration records.
+    """Introgressed intervals per sample haplotype, from a census.
 
-    Each migration is attributed at its own midpoint, so the tree sequence is
-    walked once in order rather than rebuilt per record. Rebuilding (``ts.at``
-    per migration) is quadratic in practice and makes chromosome-scale
-    replicates unusable.
+    Attributing migration *records* to descendants -- the obvious approach, and
+    the one :mod:`msprime_backend` still uses -- is wrong for this purpose. A
+    migration record's interval is the span of the ancestral lineage at the
+    time it moved, which is far wider than the segment any one modern sample
+    ends up inheriting from it, so the intervals over-attribute. The error is
+    not subtle: measured archaic fraction moved from 0.158 at 10 Mb to 0.093 at
+    30 Mb, and the recovered decay for a 1400-generation pulse came out at 921
+    and 1180 respectively. A quantity that depends on how much sequence you
+    simulated is not a truth.
+
+    A census node sits on every lineage at a chosen time. Placing one older
+    than every archaic pulse means introgressed lineages have already entered
+    their source population, so ``link_ancestors`` returns exactly the segments
+    each sample inherits from an archaic ancestor. No approximation.
     """
     from collections import defaultdict
 
-    relevant = [
-        (m.left + (m.right - m.left) / 2.0, m.left, m.right, m.node)
-        for m in ts.migrations()
-        if int(m.dest) in archaic_ids
-    ]
-    if not relevant:
+    import msprime
+
+    nodes = ts.tables.nodes
+    is_census = (nodes.flags & msprime.NODE_IS_CEN_EVENT) != 0
+    census_nodes = np.flatnonzero(is_census & (nodes.time == census_time))
+    if census_nodes.size == 0:
         return {}
-    relevant.sort(key=lambda row: row[0])
+    archaic_census = census_nodes[
+        np.isin(nodes.population[census_nodes], np.fromiter(archaic_ids, dtype=np.int32))
+    ]
+    if archaic_census.size == 0:
+        return {}
 
-    node_individual = ts.tables.nodes.individual
-    keep = None if keep_nodes is None else set(int(n) for n in keep_nodes)
-
+    edges = ts.link_ancestors(
+        samples=[int(n) for n in sample_nodes],
+        ancestors=[int(n) for n in archaic_census],
+    )
     intervals: dict[int, list[tuple[float, float]]] = defaultdict(list)
-    cursor = 0
-    n = len(relevant)
-    for tree in ts.trees():
-        left, right = tree.interval
-        while cursor < n and relevant[cursor][0] < left:
-            cursor += 1
-        probe = cursor
-        while probe < n and relevant[probe][0] < right:
-            _, m_left, m_right, node = relevant[probe]
-            try:
-                descendants = tree.samples(node)
-            except ValueError:
-                probe += 1
-                continue
-            for sample_node in descendants:
-                if keep is not None and int(sample_node) not in keep:
-                    continue
-                individual = node_individual[sample_node]
-                if individual >= 0:
-                    intervals[int(individual)].append((m_left, m_right))
-            probe += 1
-        cursor = probe
-        if cursor >= n:
-            break
-    return {ind: _merge(vals) for ind, vals in intervals.items()}
+    for left, right, child in zip(edges.left, edges.right, edges.child):
+        intervals[int(child)].append((float(left), float(right)))
+    return {node: _merge(values) for node, values in intervals.items()}
+
+
+def _merge_to_individuals(
+    per_node: dict[int, list[tuple[float, float]]],
+    ingroup_nodes: np.ndarray,
+) -> dict[int, list[tuple[float, float]]]:
+    """Collapse haplotype intervals onto their diploid individual.
+
+    Per-haplotype coverage is the quantity that should equal the simulated
+    admixture proportion. Per-individual coverage is what a diploid caller
+    sees, and is larger because either haplotype being archaic is enough.
+    """
+    merged: dict[int, list[tuple[float, float]]] = {}
+    for index in range(ingroup_nodes.shape[0]):
+        combined: list[tuple[float, float]] = []
+        for node in ingroup_nodes[index]:
+            combined.extend(per_node.get(int(node), []))
+        if combined:
+            merged[index] = _merge(combined)
+    return merged
 
 
 def _merge(intervals: list[tuple[float, float]]) -> list[tuple[float, float]]:
@@ -347,6 +360,14 @@ def simulate_replicate(
     if mutation_rate is None:
         mutation_rate = model.mutation_rate
 
+    census_time = None
+    if record_truth:
+        census_time = _census_time(demography)
+        demography.events = sorted(
+            list(demography.events) + [msprime.CensusEvent(time=census_time)],
+            key=lambda e: e.time,
+        )
+
     ts = msprime.sim_ancestry(
         samples={"Papuan": n_papuan, "YRI": n_outgroup},
         ploidy=2,
@@ -354,7 +375,6 @@ def simulate_replicate(
         sequence_length=int(sequence_length),
         recombination_rate=float(recombination_rate),
         random_seed=int(seed),
-        record_migrations=record_truth,
     )
     ts = msprime.sim_mutations(ts, rate=float(mutation_rate), random_seed=int(seed) + 1)
 
@@ -390,27 +410,43 @@ def simulate_replicate(
     if record_truth:
         den_ids = {populations["Den1"], populations["Den2"]}
         nea_ids = {populations["Nea1"]}
-        index = {ind: i for i, ind in enumerate(papuan_individuals)}
         flat_nodes = ingroup_nodes.ravel()
-        denisovan = _index_intervals(
-            _true_archaic_intervals(ts, den_ids, flat_nodes), index
-        )
-        neanderthal = _index_intervals(
-            _true_archaic_intervals(ts, nea_ids, flat_nodes), index
-        )
-        combined: dict[int, list[tuple[float, float]]] = {}
-        for source in (denisovan, neanderthal):
-            for key, values in source.items():
-                combined.setdefault(key, []).extend(values)
-        result["true_denisovan"] = denisovan
-        result["true_neanderthal"] = neanderthal
-        result["true_archaic"] = {k: _merge(v) for k, v in combined.items()}
+
+        den_by_node = _census_intervals(ts, den_ids, flat_nodes, census_time)
+        nea_by_node = _census_intervals(ts, nea_ids, flat_nodes, census_time)
+        archaic_by_node: dict[int, list[tuple[float, float]]] = {}
+        for source in (den_by_node, nea_by_node):
+            for node, values in source.items():
+                archaic_by_node.setdefault(node, []).extend(values)
+        archaic_by_node = {k: _merge(v) for k, v in archaic_by_node.items()}
+
+        result["census_time"] = census_time
+        # Per haplotype: should equal the simulated admixture proportion.
+        result["true_denisovan_haplotype"] = den_by_node
+        result["true_archaic_haplotype"] = archaic_by_node
+        # Per individual: what a diploid caller can see.
+        result["true_denisovan"] = _merge_to_individuals(den_by_node, ingroup_nodes)
+        result["true_neanderthal"] = _merge_to_individuals(nea_by_node, ingroup_nodes)
+        result["true_archaic"] = _merge_to_individuals(archaic_by_node, ingroup_nodes)
     return result
 
 
-def _index_intervals(intervals: dict[int, list[tuple[float, float]]],
-                     index: dict[int, int]) -> dict[int, list[tuple[float, float]]]:
-    return {index[k]: v for k, v in intervals.items() if k in index}
+def _census_time(demography) -> float:
+    """A time older than every archaic pulse in the model.
+
+    The census has to sit above all of them, otherwise pulses older than it are
+    invisible: their lineages have not yet entered the archaic population when
+    the census is taken.
+    """
+    archaic = {POP_DEN1, POP_DEN2, POP_NEA1}
+    times = [
+        float(e.time)
+        for e in demography.events
+        if type(e).__name__ == "MassMigration" and int(e.dest) in archaic
+    ]
+    if not times:
+        raise ValueError("no archaic pulses found; cannot place a census")
+    return max(times) + 1.0
 
 
 def interval_lengths_morgans(

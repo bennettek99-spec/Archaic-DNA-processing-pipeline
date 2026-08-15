@@ -260,6 +260,75 @@ def test_pooled_freq_multi_handles_empty_and_all_missing():
     assert np.all(cm["x"] == 0)
 
 
+def test_subsample_exponent_recovers_the_square_root_law():
+    """An axis whose units are independent must return b = 0.5 exactly."""
+    q = np.array([1.0, 0.5, 0.5, 0.25, 0.25, 0.125])
+    se = 0.004 / np.sqrt(q)
+    out = sc.subsample_exponent(q, se)
+    assert np.isclose(out["b"], 0.5)
+    assert out["b_se"] < 1e-8          # a perfect line has no residual scatter
+    assert out["n_points"] == 6
+
+
+def test_subsample_exponent_returns_zero_for_a_saturated_axis():
+    q = np.array([1.0, 0.5, 0.25, 0.125])
+    out = sc.subsample_exponent(q, np.full(4, 0.004))
+    assert np.isclose(out["b"], 0.0)
+
+
+def test_subsample_exponent_propagates_replicate_scatter_into_b_se():
+    """Replicates must widen the error bar, not be silently averaged away.
+
+    Averaging per fraction before fitting was the tempting shortcut; it would
+    return the same b with a b_se near zero, which is exactly the overconfidence
+    this guards against.
+    """
+    rng = np.random.default_rng(0)
+    q = np.repeat([1.0, 0.5, 0.25, 0.125], 4)
+    clean = sc.subsample_exponent(q, 0.004 / np.sqrt(q))
+    noisy = sc.subsample_exponent(q, 0.004 / np.sqrt(q)
+                                  * rng.lognormal(0, 0.15, len(q)))
+    assert noisy["b_se"] > 20 * max(clean["b_se"], 1e-12)
+    assert abs(noisy["b"] - 0.5) < 4 * noisy["b_se"]
+
+
+def test_subsample_exponent_needs_three_distinct_fractions():
+    out = sc.subsample_exponent([1.0, 1.0, 0.5], [0.004, 0.004, 0.006])
+    assert np.isnan(out["b"]) and np.isnan(out["b_se"])
+
+
+def test_variance_share_splits_a_known_mixture():
+    """Half axis-driven, half floor, recovered from the SE^2 = F + V/q form."""
+    q = np.array([1.0, 0.5, 0.25, 0.125])
+    v, f = 3e-6, 3e-6
+    out = sc.subsample_variance_share(q, np.sqrt(f + v / q))
+    assert np.isclose(out["var_share"], 0.5)
+    assert np.isclose(out["var_axis"], v)
+    assert np.isclose(out["var_floor"], f)
+
+
+def test_variance_share_clips_a_saturated_axis_to_zero():
+    """A flat curve must report 0%, never a small negative share."""
+    q = np.array([1.0, 0.5, 0.25, 0.125])
+    se = np.full(4, 0.004) * np.array([1.0, 0.999, 1.001, 0.998])
+    out = sc.subsample_variance_share(q, se)
+    assert 0.0 <= out["var_share"] <= 0.05
+
+
+def test_variance_share_is_a_lower_bound_under_non_independence():
+    """Sub-sqrt scaling pushes contribution into the floor, never above it.
+
+    When the thinned units are correlated the SE grows as q^-b with b < 0.5, so
+    the 1/q model understates the axis. The returned share must therefore come
+    back below the truth (here the axis is 100% of the variance) rather than
+    silently reporting it as a separate error source.
+    """
+    q = np.array([1.0, 0.5, 0.25, 0.125])
+    se = 0.004 * q ** -0.35             # all axis-driven, but linked units
+    out = sc.subsample_variance_share(q, se)
+    assert out["var_share"] < 1.0
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     for fn in fns:

@@ -815,6 +815,49 @@ def make_figures(df, rdf, cdf, pwdf, fit, lim, limR, tag):
 
 
 # ------------------------------------------------------------------- report ---
+def _power_sentence():
+    """The two-way subsample's verdict, read from its output table.
+
+    Returns the sentence that turns "the archaic genomes are the limiting
+    sample" from an assertion into a citation, or a plainly-hedged fallback if
+    `ns_subsample_power.py` has not been run in this checkout. The fallback
+    matters: a missing table must not silently leave a confident claim standing.
+    """
+    path = os.path.join(OUT, "ns_power_scaling.csv")
+    if not os.path.exists(path):
+        return ("This is expected from the site count but is not measured here; "
+                "run `scripts/ns_subsample_power.py` for the subsample that "
+                "tests it directly. ")
+    try:
+        s = pd.read_csv(path)
+        s = s[s.pair_class == "all"].set_index("arm")
+        bs, bs_se = float(s.loc["sites", "b"]), float(s.loc["sites", "b_se"])
+        bi, bi_se = (float(s.loc["individuals", "b"]),
+                     float(s.loc["individuals", "b_se"]))
+        rs = float(s.loc["sites", "ratio_min_to_1"])
+        ri = float(s.loc["individuals", "ratio_min_to_1"])
+        share = float(s.loc["individuals", "var_share"])
+    except (KeyError, ValueError, IndexError):
+        return ("This is expected from the site count but the subsample table "
+                "could not be read; rerun `scripts/ns_subsample_power.py`. ")
+    if not (bs > bi):
+        return (f"A two-way subsample (`POWER_two_way_subsample.md`) does *not* "
+                f"support this: thinning genomes gives an exponent of "
+                f"{bi:.2f} +/- {bi_se:.2f} against {bs:.2f} +/- {bs_se:.2f} for "
+                f"thinning sites, so the claim above should be read as "
+                f"provisional and is contradicted by the only direct test of "
+                f"it in this repository. ")
+    return (f"That is a measurement, not an inference from the site count: a "
+            f"two-way subsample (`POWER_two_way_subsample.md`) thins the sites "
+            f"at fixed cohorts and the cohorts at fixed sites, and finds the "
+            f"paired difference SE scales as q^-{bs:.2f} +/- {bs_se:.2f} on the "
+            f"site axis against q^-{bi:.2f} +/- {bi_se:.2f} on the genome axis. "
+            f"Cutting every cohort to an eighth of its genomes costs "
+            f"{100*(ri-1):.0f}% on the SE; cutting the panel to an eighth of "
+            f"its sites costs {100*(rs-1):.0f}%. Cohort size accounts for about "
+            f"{100*share:.0f}% of the variance behind the stated limit. ")
+
+
 def write_report(df, rdf, cdf, pwdf, cmdf, covdf, fit, cm_fit, lim, limR, gain,
                  eura, informative, both_called, n_shared, args, tag):
     def get(lab, col="D_VA"):
@@ -840,6 +883,12 @@ def write_report(df, rdf, cdf, pwdf, cmdf, covdf, fit, cm_fit, lim, limR, gain,
         sgn = 1.0 if r["cohort_a"] == a else -1.0
         return dict(diff=sgn * float(r["diff"]), se=float(r["se"]),
                     z=sgn * float(r["z"]))
+
+    # The "which sample is limiting" sentence below is backed by a separate run
+    # (scripts/ns_subsample_power.py). Its numbers are read from that run's table
+    # rather than restated here, so the two documents cannot drift apart; if the
+    # table is absent the claim is stated as the assertion it would otherwise be.
+    power = _power_sentence()
 
     tgt = {t: res(t) for t in TARGETS + ["IUP_Eurasia_45ka",
                                          "UP_Europe_post_LGM", "UstIshim_44ka"]}
@@ -966,7 +1015,8 @@ def write_report(df, rdf, cdf, pwdf, cmdf, covdf, fit, cm_fit, lim, limR, gain,
         f"them** ({100*informative/max(both_called,1):.2f}%). The archaic "
         f"genomes, not the ancient cohorts, are the limiting sample, and that "
         f"is why this contrast is hard however many ancient genomes are "
-        f"available. It also has a useful consequence: the same sites carry the "
+        f"available. {power}It also has a useful consequence: "
+        f"the same sites carry the "
         f"signal for every cohort, so their sampling noise is *common-mode* and "
         f"cancels when two cohorts are differenced inside the same jackknife "
         f"replicate. Pairing the jackknife this way is {gain:.1f}x tighter than "
@@ -1202,7 +1252,11 @@ def write_report(df, rdf, cdf, pwdf, cmdf, covdf, fit, cm_fit, lim, limR, gain,
         "This is a statement about the panel, not about history. The limit is "
         f"set by the {informative:,} 1240K sites that separate the two archaic "
         "genomes; shotgun data at all sites, or the addition of Chagyrskaya and "
-        "Mezmaiskaya (absent from the AADR), would tighten it substantially.\n",
+        "Mezmaiskaya (absent from the AADR), would tighten it substantially. "
+        "The subsample in `POWER_two_way_subsample.md` is what licenses that "
+        "sentence, and it also licenses its converse: growing the ancient "
+        "Eurasian sample, which is the axis the AADR actually grows along, will "
+        "not tighten this limit.\n",
         "### Coverage matching\n",
         f"Every core cohort was recomputed on the {n_shared:,} SNPs covered in "
         f"all of them. The fitted slope is {cm_fit['k']:.4f} +/- "

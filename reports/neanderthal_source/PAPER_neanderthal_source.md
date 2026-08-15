@@ -12,7 +12,7 @@ One pattern is not null and is reported as a candidate rather than a finding. Th
 
 ## The statistic, and the trap inside it
 
-Vindija and Altai are both called at 528,283 autosomal 1240K sites, but only **18,926 of those actually distinguish them** (3.58%). The archaic genomes, not the ancient cohorts, are the limiting sample, and that is why this contrast is hard however many ancient genomes are available. It also has a useful consequence: the same sites carry the signal for every cohort, so their sampling noise is *common-mode* and cancels when two cohorts are differenced inside the same jackknife replicate. Pairing the jackknife this way is 1.9x tighter than combining two independent standard errors, which is the difference between a usable detection limit and an uninformative one.
+Vindija and Altai are both called at 528,283 autosomal 1240K sites, but only **18,926 of those actually distinguish them** (3.58%). The archaic genomes, not the ancient cohorts, are the limiting sample, and that is why this contrast is hard however many ancient genomes are available. That is a measurement, not an inference from the site count: a two-way subsample (`POWER_two_way_subsample.md`) thins the sites at fixed cohorts and the cohorts at fixed sites, and finds the paired difference SE scales as q^-0.41 +/- 0.05 on the site axis against q^-0.06 +/- 0.02 on the genome axis. Cutting every cohort to an eighth of its genomes costs 12% on the SE; cutting the panel to an eighth of its sites costs 126%. Cohort size accounts for about 4% of the variance behind the stated limit. It also has a useful consequence: the same sites carry the signal for every cohort, so their sampling noise is *common-mode* and cancels when two cohorts are differenced inside the same jackknife replicate. Pairing the jackknife this way is 1.9x tighter than combining two independent standard errors, which is the difference between a usable detection limit and an uninformative one.
 
 Three further offsets are common-mode, and are therefore differenced away rather than interpreted:
 
@@ -192,7 +192,7 @@ Note that a same-cohort split is the right yardstick for *bias* and the wrong on
 
 Concretely: if a cohort replaced a fraction *f* of its Neanderthal ancestry with ancestry from a Neanderthal lineage equidistant between Vindija and Altai, this study would detect it only for *f* > 13% in a typical comparison. Structure within the introgressing population finer than that is invisible here. The corresponding limit on R is 0.42.
 
-This is a statement about the panel, not about history. The limit is set by the 18,926 1240K sites that separate the two archaic genomes; shotgun data at all sites, or the addition of Chagyrskaya and Mezmaiskaya (absent from the AADR), would tighten it substantially.
+This is a statement about the panel, not about history. The limit is set by the 18,926 1240K sites that separate the two archaic genomes; shotgun data at all sites, or the addition of Chagyrskaya and Mezmaiskaya (absent from the AADR), would tighten it substantially. The subsample in `POWER_two_way_subsample.md` is what licenses that sentence, and it also licenses its converse: growing the ancient Eurasian sample, which is the axis the AADR actually grows along, will not tighten this limit.
 
 ### Coverage matching
 
@@ -215,8 +215,8 @@ Every core cohort was recomputed on the 1,133,465 SNPs covered in all of them. T
 ## Reproduce
 
 ```bash
-python neanderthal_source.py --panel 1240k
-python neanderthal_source.py --panel 1240k --transversions
+python scripts/neanderthal_source.py --panel 1240k
+python scripts/neanderthal_source.py --panel 1240k --transversions
 ```
 
 

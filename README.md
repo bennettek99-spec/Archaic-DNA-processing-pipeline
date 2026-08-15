@@ -109,8 +109,8 @@ trusting any of them, read
 - The core estimator passes seven AADR-based validation gates and is checked
   against published estimates, simulation, and ADMIXTOOLS 2.
 - The Phase 2-9 AADR workflow, global survey, highest-archaic credibility scan,
-  Etruscan study, Denisovan reference-genome module, and focused Oase1 workflow
-  are implemented.
+  Etruscan study, Denisovan reference-genome module, focused Oase1 workflow,
+  and exploratory single-genome Neanderthal admixture dating are implemented.
 - Individual outlier findings remain hypotheses unless the documented coverage,
   damage, contamination, sensitivity, and—where appropriate—segment evidence
   support them.
@@ -181,6 +181,7 @@ Important limitations:
 | Remote Oceania archaic time transect | `archaic-pipeline oceania-transect --panel 1240k` | [report](reports/oceania_transect/PAPER_oceania.md) |
 | Which Neanderthal? Altai vs Vindija source contrast | `archaic-pipeline neanderthal-source --panel 1240k` | [report](reports/neanderthal_source/PAPER_neanderthal_source.md) |
 | Global and Eurasian >5% survey | `python scripts/global_archaic_survey.py` | [study index](docs/studies-and-reports.md) |
+| Neanderthal admixture dating | `archaic-pipeline admixture-date` | [module guide](docs/neanderthal_admixture_dating.md) |
 | Oase1 segment analysis | `python scripts/oase1_haplotype.py` | [study index](docs/studies-and-reports.md) |
 | West-Eurasian source ancestry | `archaic-pipeline ancestry` | [study index](docs/studies-and-reports.md) |
 | Etruscan case study | `python scripts/etruscan_study.py` | [study index](docs/studies-and-reports.md) |

@@ -1,0 +1,70 @@
+# Neanderthal admixture dating in early modern humans.
+#
+# Ages are AADR v66.p1 date_bp/date_sd values. "primary_shared_event" targets
+# the pulse shared with later non-Africans. Oase1 and Bacho Kiro are explicit
+# recent-admixture controls and must not be pooled with the primary event.
+panel: "1240k"
+
+method:
+  min_cm: 0.02
+  max_cm: 10.0
+  bin_cm: 0.01
+  min_pairs_per_bin: 30
+  min_african_calls: 80
+  max_african_derived_frequency: 0.01
+  non_african_pops: ["CEU", "CHB"]
+  require_vindija: false
+  generation_years: 29.0
+  generation_years_low: 25.0
+  generation_years_high: 33.0
+  seed: 20260723
+
+targets:
+  - genetic_id: "RNI013.SG"
+    label: "Ranis13"
+    role: "primary_shared_event"
+    age_bp: 45875.0
+    age_sd: 2122.0
+    date_source: "AADR v66.p1: 47600-40250 BCE"
+
+  - genetic_id: "ZKU002.SG"
+    label: "Zlaty kun"
+    role: "primary_shared_event"
+    age_bp: 45875.0
+    age_sd: 2122.0
+    date_source: "AADR v66.p1: 47600-40250 BCE"
+
+  - genetic_id: "Ust_Ishim.DG"
+    label: "Ust-Ishim"
+    role: "early_eurasian_replication"
+    age_bp: 44366.0
+    age_sd: 816.0
+    date_source: "AADR v66.p1: 41400 +/- 953 radiocarbon BP"
+
+  - genetic_id: "Tianyuan.AG.BY.AA"
+    label: "Tianyuan"
+    role: "early_eurasian_replication"
+    age_bp: 39565.0
+    age_sd: 655.0
+    date_source: "AADR v66.p1: 38896-36130 calBCE"
+
+  - genetic_id: "Kostenki14_d.AG.BY.AA"
+    label: "Kostenki14 damage-restricted"
+    role: "early_eurasian_replication"
+    age_bp: 38052.0
+    age_sd: 725.0
+    date_source: "AADR v66.p1: 37426-34726 calBCE"
+
+  - genetic_id: "Oase1_d.AG.BY.AA"
+    label: "Oase1 damage-restricted"
+    role: "recent_secondary_admixture_control"
+    age_bp: 39982.0
+    age_sd: 1047.0
+    date_source: "AADR v66.p1: 39956-35756 calBCE"
+
+  - genetic_id: "F6-620.AG.BY.AA"
+    label: "Bacho Kiro F6-620"
+    role: "recent_secondary_admixture_control"
+    age_bp: 43250.0
+    age_sd: 404.0
+    date_source: "AADR v66.p1: 42000-40600 BCE"

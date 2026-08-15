@@ -1,0 +1,18 @@
+profile	genetic_id	n_target_sites	generations	generations_se	event_date_bp	r_squared	status	interpretation
+main	RNI013.SG	4830	55.160	12.678	47474.6	0.380	supported_exploratory_estimate	Primary 0.02-10 cM unweighted fit
+main	ZKU002.SG	8271	122.912	26.262	49439.4	0.480	supported_exploratory_estimate	Primary 0.02-10 cM unweighted fit
+strict_african	RNI013.SG	4111	57.756	14.372	47549.9	0.333	supported_exploratory_estimate	Zero African-derived frequency
+strict_african	ZKU002.SG	7060	111.732	35.832	49115.2	0.424	supported_exploratory_estimate	Zero African-derived frequency
+vindija_confirmed	RNI013.SG	2034	129.408	266.688	49627.8	0.211	inconclusive_data_limited	Vindija confirmation leaves too few Ranis sites
+vindija_confirmed	ZKU002.SG	3365	103.387	22.817	48873.2	0.144	supported_exploratory_estimate	Vindija-confirmed markers
+weighted_fit	RNI013.SG	4830	56.343	14.864	47508.9	0.380	supported_exploratory_estimate	Residuals weighted by square root of pair count
+weighted_fit	ZKU002.SG	8271	114.399	20.674	49192.6	0.479	supported_exploratory_estimate	Residuals weighted by square root of pair count
+bin_0.02cm	RNI013.SG	4830	56.247	12.933	47506.2	0.496	supported_exploratory_estimate	Coarser distance bins
+bin_0.02cm	ZKU002.SG	8271	122.878	25.977	49438.4	0.588	supported_exploratory_estimate	Coarser distance bins
+min_0.05cm	RNI013.SG	4830	55.757	13.500	47491.9	0.375	supported_exploratory_estimate	Exclude the shortest map distances
+min_0.05cm	ZKU002.SG	8271	125.127	28.369	49503.7	0.468	supported_exploratory_estimate	Exclude the shortest map distances
+max_1cm	RNI013.SG	4830	71.619	354.204	47951.9	0.034	exploratory_high_uncertainty	Short fit range cannot identify the affine background
+max_1cm	ZKU002.SG	8271	319.765	427.972	55148.2	0.140	exploratory_high_uncertainty	Short fit range cannot identify the affine background
+transversions	RNI013.SG	1187				inconclusive_data_limited	No estimable curve at the pair-count floor
+transversions	ZKU002.SG	1723	34.162	9238.229	46865.7	-0.000	inconclusive_data_limited	Transversion subset is too sparse
+

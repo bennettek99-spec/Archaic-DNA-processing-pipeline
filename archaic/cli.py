@@ -58,6 +58,11 @@ def main(argv=None):
         help="reference-aware Denisovan genome analysis",
         add_help=False,
     )
+    sub.add_parser(
+        "admixture-date",
+        help="single-ancient-genome Neanderthal admixture dating",
+        add_help=False,
+    )
 
     args, rest = ap.parse_known_args(argv)
 
@@ -72,6 +77,10 @@ def main(argv=None):
     if args.command == "denisovan-genome":
         from .denisovan_genome import main as denisovan_main
         sys.exit(denisovan_main(rest))
+
+    if args.command == "admixture-date":
+        from .admixture_dating import main as dating_main
+        sys.exit(dating_main(rest))
 
     script = os.path.join(REPO_ROOT, SCRIPTS[args.command])
     if not os.path.exists(script):

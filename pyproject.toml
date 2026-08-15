@@ -37,6 +37,7 @@ archaic-pipeline = "archaic.cli:main"
 archaic-highest = "archaic.highest_archaic:main"
 archaic-highest-segments = "archaic.highest_archaic_segments:main"
 archaic-denisovan = "archaic.denisovan_genome:main"
+archaic-admixture-date = "archaic.admixture_dating:main"
 
 [project.urls]
 Repository = "https://github.com/bennettek99-spec/Archaic-DNA-processing-pipeline"

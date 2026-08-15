@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### Added
+
+- Added `archaic.admixture_dating` / `archaic-admixture-date`, an AADR-native
+  implementation of the Moorjani et al. single-ancient-genome Neanderthal
+  ancestry-covariance decay statistic. It includes chimp polarization,
+  Altai-derived/African-ancestral ascertainment, exponential-plus-affine fitting,
+  leave-one-autosome-out uncertainty, calendar-age propagation, sensitivity
+  controls, machine-readable provenance, plots, and fail-closed handling for
+  samples whose 1240K call sets cannot support a curve.
+- Added a prespecified Ranis/Zlaty kun primary analysis with Ust-Ishim,
+  Tianyuan, Kostenki14, Bacho Kiro, and Oase1 controls. The checked-in run is
+  explicitly labeled exploratory because 1240K ascertainment is sparser than
+  the whole-genome and Archaic Panel data used in the primary literature.
+
 ## [0.6.0] - 2026-07-17
 
 ### Added

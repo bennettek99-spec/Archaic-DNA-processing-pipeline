@@ -39,8 +39,8 @@ above.
 - The core estimator passes seven AADR-based validation gates and is checked
   against published estimates, simulation, and ADMIXTOOLS 2.
 - The Phase 2-9 AADR workflow, global survey, highest-archaic credibility scan,
-  Etruscan study, Denisovan reference-genome module, and focused Oase1 workflow
-  are implemented.
+  Etruscan study, Denisovan reference-genome module, focused Oase1 workflow,
+  and exploratory single-genome Neanderthal admixture dating are implemented.
 - Individual outlier findings remain hypotheses unless the documented coverage,
   damage, contamination, sensitivity, and—where appropriate—segment evidence
   support them.
@@ -136,6 +136,7 @@ Important limitations:
 | Full Phase 2-9 workflow | `archaic-pipeline all --panel 1240k` | `reports/archaic_report_1240k.html` |
 | Highest-archaic credibility scan | `archaic-pipeline highest-archaic` | [module guide](docs/highest_archaic.md) |
 | Denisovan reference genome | `archaic-pipeline denisovan-genome --panel 1240k` | [module guide](docs/denisovan_genome.md) |
+| Neanderthal admixture dating | `archaic-pipeline admixture-date` | [module guide](docs/neanderthal_admixture_dating.md) |
 | Global and Eurasian >5% survey | `python global_archaic_survey.py` | [study index](docs/studies-and-reports.md) |
 | Oase1 segment analysis | `python oase1_haplotype.py` | [study index](docs/studies-and-reports.md) |
 | West-Eurasian source ancestry | `archaic-pipeline ancestry` | [study index](docs/studies-and-reports.md) |

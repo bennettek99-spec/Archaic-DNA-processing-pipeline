@@ -1,0 +1,41 @@
+{
+  "method": "single-sample Neanderthal ancestry covariance decay",
+  "method_version": "0.1.0",
+  "citation": "Moorjani et al. 2016 PNAS 113:5652-5657",
+  "config": "configs/neanderthal_dating.yaml",
+  "panel": "1240k",
+  "panel_prefix": "v66.p1_1240K",
+  "transversions_only": false,
+  "weighted_fit": false,
+  "ascertainment": {
+    "autosomal_rows": 1150639,
+    "chimp_defined": 1102442,
+    "altai_derived_african_fixed": 3597,
+    "non_african_control_individuals": 204,
+    "final_ascertained": 3424,
+    "african_reference_individuals": 142,
+    "min_african_calls": 80,
+    "max_african_derived_frequency": 0.01,
+    "require_vindija": true,
+    "non_african_pops": [
+      "CEU",
+      "CHB"
+    ]
+  },
+  "fit": {
+    "min_cm": 0.02,
+    "max_cm": 10.0,
+    "bin_cm": 0.01,
+    "min_pairs_per_bin": 30
+  },
+  "git_commit": "85bd6f0b9a93f31be138eec13d9811bf53cd4577",
+  "git_branch": "codex/neanderthal-admixture-date",
+  "git_status_short": "M CHANGELOG.md\n M README.md\n M archaic/cli.py\n M pyproject.toml\n?? archaic/admixture_dating.py\n?? configs/neanderthal_dating.yaml\n?? docs/neanderthal_admixture_dating.md\n?? reports/neanderthal_admixture_date.md\n?? results/admixture_dating/\n?? results/admixture_dating_sensitivity/\n?? tests/test_admixture_dating.py",
+  "analysis_code_sha256": "2de771c5ba661ee081d16501072852ea9fff73dfce9ecd8fb59dd0f00a5a7ade",
+  "input_geno": {
+    "filename": "v66.p1_1240K.geno",
+    "bytes": 7117276654,
+    "mtime_ns": 1782750457671884800,
+    "sha256_first_last_1mib": "4fae451dbe79d3d296ae873486352089d37ea68638a1449f09d1a5206812045f"
+  }
+}

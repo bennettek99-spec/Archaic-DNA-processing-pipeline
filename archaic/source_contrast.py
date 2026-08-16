@@ -377,6 +377,74 @@ def detection_limit(null_diffs: Sequence[float], comparison_ses: Sequence[float]
                 max_abs_null=float(np.abs(d).max()) if len(d) else np.nan)
 
 
+def subsample_exponent(fractions: Sequence[float], ses: Sequence[float]) -> dict:
+    """b in SE ~ q^-b for a subsample curve, by least squares on log-log.
+
+    A detection limit is only interpretable if you know which sample is setting
+    it. Thin one axis of the design to a fraction q, recompute the standard
+    error, and the exponent says whether that axis is binding: b ~ 0.5 is the
+    usual independent-sample square-root law, b ~ 0 means the axis has saturated
+    and spending more of it buys nothing.
+
+    Pass every replicate, not per-fraction means. Averaging first gives a tidier
+    line and a badly understated error bar, because a block-jackknife SE is
+    itself a noisy estimate and the replicate scatter *is* the uncertainty on b.
+    Fractions at which only one replicate exists (q = 1 is usually deterministic)
+    are fine to include; they simply carry no scatter of their own.
+    """
+    q = np.asarray(fractions, dtype=np.float64)
+    s = np.asarray(ses, dtype=np.float64)
+    ok = np.isfinite(q) & np.isfinite(s) & (q > 0) & (s > 0)
+    q, s = q[ok], s[ok]
+    if len(np.unique(q)) < 3:
+        return dict(b=np.nan, b_se=np.nan, n_points=int(len(q)))
+    A = np.vstack([np.ones_like(q), np.log(q)]).T
+    coef, *_ = np.linalg.lstsq(A, np.log(s), rcond=None)
+    resid = np.log(s) - A @ coef
+    dof = max(len(q) - 2, 1)
+    cov = (resid @ resid / dof) * np.linalg.inv(A.T @ A)
+    return dict(b=float(-coef[1]), b_se=float(np.sqrt(cov[1, 1])),
+                n_points=int(len(q)))
+
+
+def subsample_variance_share(fractions: Sequence[float],
+                             ses: Sequence[float]) -> dict:
+    """Share of the full-data variance controlled by the thinned axis.
+
+    The exponent says which axis binds; it does not say how much of the current
+    error bar that axis is holding. Thinning to a fraction q multiplies the
+    thinned axis's variance by 1/q and leaves the rest alone, so
+
+        SE(q)^2 = F + V/q
+
+    with V the axis-driven variance at full data and F the part that axis cannot
+    touch. Least squares on SE^2 against 1/q recovers both, and V/(F+V) answers
+    the question a reader actually has: what fraction of today's error bar would
+    disappear if this axis were infinite?
+
+    Two caveats travel with the number. A fitted V below zero means the axis is
+    doing nothing measurable, and is clipped to a share of zero rather than
+    reported as a nonsense negative. And the 1/q model assumes the thinned units
+    are independent — where they are not (linked sites, related individuals) the
+    true variance grows more slowly than 1/q, the shortfall is absorbed into F,
+    and the returned share is a *lower bound* on that axis's contribution.
+    """
+    q = np.asarray(fractions, dtype=np.float64)
+    s = np.asarray(ses, dtype=np.float64)
+    ok = np.isfinite(q) & np.isfinite(s) & (q > 0)
+    q, s = q[ok], s[ok]
+    if len(np.unique(q)) < 3:
+        return dict(var_share=np.nan, var_axis=np.nan, var_floor=np.nan)
+    A = np.vstack([np.ones_like(q), 1.0 / q]).T
+    coef, *_ = np.linalg.lstsq(A, s ** 2, rcond=None)
+    floor, v = float(coef[0]), float(coef[1])
+    total = floor + v
+    share = v / total if total > 0 else np.nan
+    return dict(var_share=float(np.clip(share, 0.0, 1.0))
+                if np.isfinite(share) else np.nan,
+                var_axis=v, var_floor=floor)
+
+
 def technical_covariates(labels, values, covariates: Mapping[str, Sequence[float]]):
     """Rank correlation of a cohort statistic against technical covariates.
 

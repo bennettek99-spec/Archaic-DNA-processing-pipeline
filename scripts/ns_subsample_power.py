@@ -480,7 +480,6 @@ def write_report(curve, sdf, n_useful, n_informative, n_ind_of, pairs):
     r_s = get("sites", "all", "ratio_min_to_1")
     r_i = get("individuals", "all", "ratio_min_to_1")
     se1 = get("sites", "all", "se_at_1")
-    signal = 0.073688          # the published D_VA magnitude the limit scales by
     q_min = min(FRACTIONS)
 
     verdict = ("sites" if b_s > b_i + max(bs_se, bi_se) else

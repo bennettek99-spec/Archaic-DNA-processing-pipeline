@@ -10,4 +10,4 @@ Package layout:
 
 See README.md for the method, citations, and validation results.
 """
-__version__ = "0.6.0"
+__version__ = "0.7.0"

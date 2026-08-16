@@ -2,8 +2,8 @@
   "title": "Archaic-DNA processing pipeline: a modular archaeogenetics pipeline for detecting unexpected archaic introgression",
   "description": "A modular, validated Python pipeline that estimates Neanderthal and Denisovan ancestry in ancient Eurasian genomes (AADR) via allele-frequency f-statistics with block-jackknife errors, detects individuals whose archaic ancestry is unexpected given ancestry, geography and age, and is validated against published estimates, coalescent simulations with known ground truth, and ADMIXTOOLS 2. Also models human source-population ancestry (WHG/EHG/CHG/Anatolian farmer/Steppe-Yamnaya admixture) via constrained qpAdm. Includes a case study of Iron Age Etruscan genomes.",
   "upload_type": "software",
-  "version": "0.6.0",
-  "publication_date": "2026-07-17",
+  "version": "0.7.0",
+  "publication_date": "2026-08-16",
   "license": "MIT",
   "keywords": [
     "archaeogenetics",

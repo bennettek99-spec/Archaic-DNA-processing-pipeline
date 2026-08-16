@@ -2,30 +2,7 @@
 
 ## Unreleased
 
-### Changed
-
-- Repository layout. The 32 flat entry-point scripts moved from the repository
-  root into `scripts/`, and the 12 report and policy markdown files moved into
-  `docs/` (authored) and `docs/studies/` (generated). Each moved script anchored
-  its paths with `os.path.dirname(os.path.abspath(__file__))` meaning "the
-  repository root", so all 51 anchors were re-based one level; the report
-  generators now write into `docs/studies/`. `run_pipeline.py` deliberately
-  keeps a `scripts/`-level anchor because it locates its sibling phase scripts.
-  Commands change from `python phase3_estimate.py` to
-  `python scripts/phase3_estimate.py`; the five console entry points are
-  unaffected. The repository root now holds nine files instead of forty-four.
-- Upstream phase intermediates are no longer tracked: phase-2 metadata and
-  sample manifests, phase-3 estimate tables, the phase-5 PCA table, phase-6
-  residuals, and the highest-archaic outlier dump (27 MB). The phase-4 analysis
-  tables stay tracked because every published study reads them. The boundary is
-  documented in `docs/DATA.md`.
-- README leads with the two papers — the global AADR survey and the Iron Age
-  Etruscan study — and carries a quickstart that ends at a passing smoke test.
-
-### Fixed
-
-- `pyflakes` lint failure on `main`: 26 fragments of placeholder-free f-strings
-  in the Neanderthal source-contrast report text.
+## [0.7.0] - 2026-08-16
 
 ### Added
 
@@ -58,8 +35,11 @@
   deficit in the oldest cohorts is reported explicitly as an unresolved
   candidate, not a finding, with four checks against it. Oase1 is admitted below
   the SNP floor and reported as unplaceable on this axis at 25,838 usable sites.
-
-
+- Two-way subsample power analysis (`scripts/ns_subsample_power.py`) for the
+  Vindija-vs-Altai detection limit. Thinning sites scales the paired D_VA SE as
+  q^-0.41 +/- 0.05 against q^-0.06 +/- 0.02 when thinning genomes; cohort size
+  holds ~4% of the variance behind the 13% limit. PAPER wording is generated
+  from `ns_power_scaling.csv` so the claim cannot drift from the numbers.
 - New `archaic/transect.py`: a reusable pooled time-transect layer (date
   binning, pooled cohort archaic statistics, archaic-free f4-ratio ancestry
   fractions, mixture prediction with full error propagation, coverage-matched
@@ -78,14 +58,6 @@
 - Published a dedicated EV16A.SG Etruscan example with a portable HTML report,
   machine-readable sensitivity results, provenance, and explicit comparison to
   the segment-supported Oase1 evidence standard.
-
-### Fixed
-
-- Made `highest-archaic --subset` robust when a focused subset contains no
-  high/elite-confidence sample, and prevented subset reports from overwriting
-  the canonical all-sample report.
-### Added
-
 - Added `archaic.admixture_dating` / `archaic-admixture-date`, an AADR-native
   implementation of the Moorjani et al. single-ancient-genome Neanderthal
   ancestry-covariance decay statistic. It includes chimp polarization,
@@ -97,6 +69,36 @@
   Tianyuan, Kostenki14, Bacho Kiro, and Oase1 controls. The checked-in run is
   explicitly labeled exploratory because 1240K ascertainment is sparser than
   the whole-genome and Archaic Panel data used in the primary literature.
+
+### Changed
+
+- Repository layout. The 32 flat entry-point scripts moved from the repository
+  root into `scripts/`, and the 12 report and policy markdown files moved into
+  `docs/` (authored) and `docs/studies/` (generated). Each moved script anchored
+  its paths with `os.path.dirname(os.path.abspath(__file__))` meaning "the
+  repository root", so all 51 anchors were re-based one level; the report
+  generators now write into `docs/studies/`. `run_pipeline.py` deliberately
+  keeps a `scripts/`-level anchor because it locates its sibling phase scripts.
+  Commands change from `python phase3_estimate.py` to
+  `python scripts/phase3_estimate.py`; the five console entry points are
+  unaffected. The repository root now holds nine files instead of forty-four.
+- Upstream phase intermediates are no longer tracked: phase-2 metadata and
+  sample manifests, phase-3 estimate tables, the phase-5 PCA table, phase-6
+  residuals, and the highest-archaic outlier dump (27 MB). The phase-4 analysis
+  tables stay tracked because every published study reads them. The boundary is
+  documented in `docs/DATA.md`.
+- README leads with the two papers — the global AADR survey and the Iron Age
+  Etruscan study — and carries a quickstart that ends at a passing smoke test.
+- CI: `actions/checkout` 4→7, `actions/setup-python` 5→7; `tomli` floor raised
+  to `>=2.4.1`.
+
+### Fixed
+
+- `pyflakes` lint failure on `main`: 26 fragments of placeholder-free f-strings
+  in the Neanderthal source-contrast report text.
+- Made `highest-archaic --subset` robust when a focused subset contains no
+  high/elite-confidence sample, and prevented subset reports from overwriting
+  the canonical all-sample report.
 
 ## [0.6.0] - 2026-07-17
 

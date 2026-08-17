@@ -1,9 +1,0 @@
-numpy>=1.26
-pandas>=2.0
-scipy>=1.11
-scikit-learn>=1.3
-matplotlib>=3.7
-pyyaml>=6.0
-msprime>=1.0
-# Reuses the validated `archaic.*` package from ../archaic-introgression (on sys.path).
-# R + admixtools2 are OPTIONAL (Tier 14 qpAdm concordance only).

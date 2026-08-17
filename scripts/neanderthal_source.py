@@ -858,6 +858,57 @@ def _power_sentence():
             f"{100*share:.0f}% of the variance behind the stated limit. ")
 
 
+def _mixture_sentence():
+    """The correction to the percentage conversion, read from its own table.
+
+    The sentence immediately above converts a resolvable D_VA difference into a
+    percentage of ancestry by dividing by a typical cohort's *absolute* D_VA.
+    That division assumes a mixture moves D_VA by f x D_VA, which
+    `scripts/ns_mixture_power.py` measures directly. Since the measurement can
+    invalidate the conversion, this paragraph is generated from its output
+    rather than written by hand, and says so plainly when the table is absent -
+    a stated limit that has been shown to be optimistic must never be left
+    standing bare because a file was missing.
+    """
+    path = os.path.join(OUT, "ns_mixture_summary.csv")
+    if not os.path.exists(path):
+        return ("That conversion assumes a mixture moves D_VA by exactly *f* x "
+                "D_VA, which is untested here; run "
+                "`scripts/ns_mixture_power.py` to calibrate it before quoting "
+                "the percentage.\n")
+    try:
+        s = pd.read_csv(path)
+        r = s[s.replacement == "equidistant"].iloc[0]
+        k = float(r["kappa"])
+        f50, f80 = float(r["f50"]), float(r["f80"])
+        corrected = float(r["analytic_limit_kappa_corrected"])
+    except (KeyError, ValueError, IndexError):
+        return ("That conversion assumes a mixture moves D_VA by exactly *f* x "
+                "D_VA; the calibration table could not be read, so the "
+                "percentage above should not be quoted until "
+                "`scripts/ns_mixture_power.py` is rerun.\n")
+    if abs(k - 1.0) < 0.05:
+        return (f"**That conversion has been checked.** Simulated mixtures at "
+                f"known fractions (`POWER_mixture_calibration.md`) move D_VA by "
+                f"{k:.2f} x *f* x D_VA, so the percentage above is calibrated; "
+                f"empirical 50% detection falls at *f* = {100*f50:.0f}% and 80% "
+                f"detection at *f* = {100*f80:.0f}%.\n")
+    return (f"**That conversion is optimistic, and the percentage above should "
+            f"not be quoted on its own.** It assumes a mixture moves D_VA by "
+            f"*f* x D_VA. Simulated mixtures at known fractions built at the "
+            f"allele-frequency level (`POWER_mixture_calibration.md`) move it "
+            f"by only {k:.2f} x that, because the conversion divides by D_VA's "
+            f"*absolute* value - which this study elsewhere states is not "
+            f"interpretable, being inflated by the `.SG`/`.DG` asymmetry and by "
+            f"Yoruba's own Neanderthal ancestry. Rescaled, the threshold is "
+            f"{100*corrected:.0f}%, and the measured detection curve puts 50% "
+            f"detection at *f* = {100*f50:.0f}% and 80% detection at "
+            f"*f* = {100*f80:.0f}%. The honest reading of this study's power is "
+            f"the last of those: a cohort would need to have re-sourced most of "
+            f"its Neanderthal ancestry before this panel would reliably have "
+            f"noticed.\n")
+
+
 def write_report(df, rdf, cdf, pwdf, cmdf, covdf, fit, cm_fit, lim, limR, gain,
                  eura, informative, both_called, n_shared, args, tag):
     def get(lab, col="D_VA"):
@@ -983,9 +1034,13 @@ def write_report(df, rdf, cdf, pwdf, cmdf, covdf, fit, cm_fit, lim, limR, gain,
         f"pair of cohorts, {100*lim['limit_fraction_of_signal']:.0f}% of the "
         f"total Vindija-over-Altai signal** ({lim['best_limit']:.4f}, "
         f"{100*lim['best_fraction_of_signal']:.0f}%, for the best-powered "
-        f"pairs). Sources differing by less than that are invisible here, which "
-        f"includes most of what the literature debates about a second pulse "
-        f"into East Asia.\n\n"
+        f"pairs). That percentage is itself a conversion that assumes a mixture "
+        f"moves D_VA in proportion to its absolute value; simulated mixtures at "
+        f"known fractions show it does not, and the calibrated figures are "
+        f"given under 'Stated detection limit' and in "
+        f"`POWER_mixture_calibration.md`. Either way, sources differing by less "
+        f"than that are invisible here, which includes most of what the "
+        f"literature debates about a second pulse into East Asia.\n\n"
         f"One pattern is not null and is reported as a candidate rather than a "
         f"finding. The oldest cohorts sit below the single-source line: "
         f"normalised source affinity is {old_new['diff']:+.2f} +/- "
@@ -1126,8 +1181,9 @@ def write_report(df, rdf, cdf, pwdf, cmdf, covdf, fit, cm_fit, lim, limR, gain,
         f"{ea['se']:.5f} (Z = {ea['z']:+.2f}). This neither supports nor "
         f"excludes a second pulse. It bounds how different the two sources "
         f"could be, and the bound - "
-        f"{100*lim['limit_fraction_of_signal']:.0f}% of the total signal - is "
-        f"not tight enough to adjudicate the debate.\n",
+        f"{100*lim['limit_fraction_of_signal']:.0f}% of the total signal, and "
+        f"looser still once the percentage conversion is calibrated - is not "
+        f"tight enough to adjudicate the debate.\n",
         f"**Oase1.** In raw D_VA Oase1 is unremarkable ({get('Oase1_40ka'):+.4f} "
         f"+/- {get('Oase1_40ka','D_VA_se'):.4f}), which is *itself* the "
         f"surprise: with D_NEA = {get('Oase1_40ka','D_NEA'):.4f}, three times "
@@ -1249,6 +1305,7 @@ def write_report(df, rdf, cdf, pwdf, cmdf, covdf, fit, cm_fit, lim, limR, gain,
         f"comparison. Structure within the introgressing population finer than "
         f"that is invisible here. The corresponding limit on R is "
         f"{limR['limit']:.2f}.\n",
+        _mixture_sentence(),
         "This is a statement about the panel, not about history. The limit is "
         f"set by the {informative:,} 1240K sites that separate the two archaic "
         "genomes; shotgun data at all sites, or the addition of Chagyrskaya and "

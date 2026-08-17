@@ -445,6 +445,56 @@ def subsample_variance_share(fractions: Sequence[float],
                 var_axis=v, var_floor=floor)
 
 
+def mixture_frequencies(p_x, alpha: float, f: float, p_source, p_target):
+    """Cohort frequencies after re-sourcing fraction `f` of archaic ancestry.
+
+    A cohort modelled as (1-alpha) non-archaic + alpha from `p_source`, which
+    instead drew a fraction f of that archaic component from `p_target`, differs
+    in allele frequency by alpha*f*(target-source) at every site. That is the
+    honest way to pose a "what if some of it came from somewhere else" question:
+    perturb the frequencies and let the statistic respond, rather than asserting
+    how the statistic ought to move.
+
+    Frequencies are clipped back into [0,1]. The perturbation is at most alpha*f,
+    well under 1% for realistic archaic fractions, so clipping is rare - but a
+    frequency outside [0,1] would silently poison a D-statistic denominator, and
+    the count is returned so the caller can report it rather than discover it.
+
+    Returns (p_mixed, n_clipped).
+    """
+    delta = float(alpha) * float(f) * (np.asarray(p_target, dtype=np.float64)
+                                       - np.asarray(p_source, dtype=np.float64))
+    out = np.asarray(p_x, dtype=np.float64) + delta
+    n_clip = int(np.sum((out < 0.0) | (out > 1.0)))
+    return np.clip(out, 0.0, 1.0), n_clip
+
+
+def power_crossing(x: Sequence[float], rate: Sequence[float],
+                   level: float) -> float:
+    """Smallest x at which a detection curve first reaches `level`.
+
+    Linear interpolation on the first upward crossing, not a fitted sigmoid: a
+    power curve measured on a coarse grid of injected effect sizes is a handful
+    of noisy points, and fitting a smooth function to them would manufacture
+    precision the grid does not contain. Returns NaN when the curve never
+    reaches the level, which is the honest answer for a level the run cannot
+    resolve — never an extrapolated value.
+    """
+    x = np.asarray(x, dtype=np.float64)
+    r = np.asarray(rate, dtype=np.float64)
+    ok = np.isfinite(x) & np.isfinite(r)
+    x, r = x[ok], r[ok]
+    o = np.argsort(x)
+    x, r = x[o], r[o]
+    for i in range(1, len(x)):
+        if r[i - 1] < level <= r[i]:
+            if r[i] == r[i - 1]:
+                return float(x[i])
+            t = (level - r[i - 1]) / (r[i] - r[i - 1])
+            return float(x[i - 1] + t * (x[i] - x[i - 1]))
+    return np.nan
+
+
 def technical_covariates(labels, values, covariates: Mapping[str, Sequence[float]]):
     """Rank correlation of a cohort statistic against technical covariates.
 

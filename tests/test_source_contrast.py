@@ -329,6 +329,65 @@ def test_variance_share_is_a_lower_bound_under_non_independence():
     assert out["var_share"] < 1.0
 
 
+def test_mixture_frequencies_is_identity_at_zero():
+    """f = 0 must return the cohort untouched, or nothing downstream is valid."""
+    rng = np.random.default_rng(3)
+    p = rng.random(500)
+    out, nclip = sc.mixture_frequencies(p, 0.02, 0.0, rng.random(500),
+                                        rng.random(500))
+    assert np.array_equal(out, p)
+    assert nclip == 0
+
+
+def test_mixture_frequencies_scales_linearly_in_alpha_f_and_distance():
+    """The displacement is exactly alpha*f*(target-source), jointly linear.
+
+    This is what makes a full swap to Altai exactly twice the displacement of a
+    swap to the half-way lineage, which is the internal consistency check the
+    mixture study leans on.
+    """
+    p = np.full(100, 0.5)
+    src, tgt = np.zeros(100), np.ones(100)
+    half = 0.5 * (src + tgt)
+    a, f = 0.02, 0.3
+    full_out, _ = sc.mixture_frequencies(p, a, f, src, tgt)
+    half_out, _ = sc.mixture_frequencies(p, a, f, src, half)
+    assert np.allclose(full_out - p, a * f)
+    assert np.allclose(full_out - p, 2.0 * (half_out - p))
+    dbl, _ = sc.mixture_frequencies(p, 2 * a, f, src, tgt)
+    assert np.allclose(dbl - p, 2.0 * (full_out - p))
+
+
+def test_mixture_frequencies_clips_and_counts():
+    """Out-of-range frequencies are clipped, and the caller is told how many."""
+    p = np.array([0.0, 1.0, 0.5])
+    src = np.zeros(3)
+    # entry 0 is driven to -1.0 and entry 1 to +2.0; entry 2 stays in range
+    tgt = np.array([-1.0, 1.0, 0.0])
+    out, nclip = sc.mixture_frequencies(p, 1.0, 1.0, src, tgt)
+    assert np.array_equal(out, [0.0, 1.0, 0.5])
+    assert nclip == 2
+
+
+def test_power_crossing_interpolates_the_first_upward_crossing():
+    x = [0.0, 0.1, 0.2, 0.3]
+    rate = [0.05, 0.25, 0.75, 0.95]
+    # 0.50 sits halfway between 0.25 and 0.75, so halfway between 0.1 and 0.2
+    assert np.isclose(sc.power_crossing(x, rate, 0.50), 0.15)
+    assert np.isclose(sc.power_crossing(x, rate, 0.25), 0.10)
+
+
+def test_power_crossing_returns_nan_rather_than_extrapolating():
+    """A level the curve never reaches must not be invented by extrapolation."""
+    assert np.isnan(sc.power_crossing([0.0, 0.1, 0.2], [0.05, 0.2, 0.4], 0.80))
+
+
+def test_power_crossing_is_order_independent():
+    x = [0.3, 0.0, 0.2, 0.1]
+    rate = [0.95, 0.05, 0.75, 0.25]
+    assert np.isclose(sc.power_crossing(x, rate, 0.50), 0.15)
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     for fn in fns:

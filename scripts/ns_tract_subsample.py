@@ -47,6 +47,7 @@ Outputs (reports/neanderthal_source/):
 Run: PYTHONIOENCODING=utf-8 python scripts/ns_tract_subsample.py
 """
 import argparse
+import itertools
 import os
 import sys
 
@@ -67,7 +68,12 @@ OUT = os.path.join(ROOT, "reports", "neanderthal_source")
 FRACTIONS = [1.0, 0.5, 0.25, 0.125]
 N_REP = 6
 SEED = 20260818
-GROUPS = ("WestEurasia", "EastAsia")
+# Every regional pairing, not one. "Which axis binds" was originally
+# established on West Eurasia against East Asia alone and then quoted as a
+# property of the statistic. It is only that if it holds across pairings, and
+# that pair is the worst-powered one available, so it is the least safe single
+# case to generalise from.
+EXCLUDE_REGION = None
 
 
 def paired_se(sub_a, sub_b):
@@ -77,12 +83,22 @@ def paired_se(sub_a, sub_b):
 
 
 def counting_floor(sub_a, sub_b):
-    """SE if multinomial sampling of the shared counts were the only noise.
+    """Independent-sampling reference, and NOT a floor on the paired SE.
 
-    D = (V-A)/(V+A) on counts totalling N has variance (1-D^2)/N. Two
-    independent groups add in quadrature. Any axis that works by increasing
-    counts -- variants or tracts -- cannot push the SE below this, so the gap
-    between it and the measured SE is the headroom those axes have.
+    D = (V-A)/(V+A) on counts totalling N has variance (1-D^2)/N, and this adds
+    the two groups in quadrature as though they were independent. They are not.
+    Both groups' sharing counts are computed against the *same* two archaic
+    genomes, so a large part of that sampling noise is common-mode and cancels
+    in the paired difference -- which is the mechanism this whole study is built
+    on. A paired SE can therefore legitimately fall below this value, and for
+    Central Asia/Siberia against East Asia it does, by 8%.
+
+    So this is a useful scale to compare against, not a bound. An earlier
+    version of this script described it as a floor and used it to claim that
+    ~78% of the variance was "beyond reach of any count-increasing axis". That
+    claim does not follow and has been withdrawn; the variance shares from the
+    subsample itself are the evidence, and they say the same thing without
+    needing an invalid bound to corroborate them.
     """
     out = []
     for s in (sub_a, sub_b):
@@ -124,49 +140,68 @@ def main():
 
     d = ts.load_tracts(min_snps=args.min_snps)
     nea = d[d["cls"] == "neanderthal"]
-    A0 = nea[nea.region == GROUPS[0]]
-    B0 = nea[nea.region == GROUPS[1]]
-    log.info(f"{GROUPS[0]} {A0['name'].nunique()} individuals / {len(A0):,} "
-             f"tracts;  {GROUPS[1]} {B0['name'].nunique()} / {len(B0):,}")
-
-    se_full = paired_se(A0, B0)
-    floor = counting_floor(A0, B0)
-    log.info(f"measured paired SE = {se_full:.5f}; pure counting floor = "
-             f"{floor:.5f}  ({se_full/floor:.1f}x above it, so "
-             f"{100*(1-(floor/se_full)**2):.0f}% of the variance is NOT "
-             f"count-limited)")
+    regions = sorted(r for r in nea["region"].unique() if r != EXCLUDE_REGION)
+    pairings = list(itertools.combinations(regions, 2))
+    log.info(f"{len(pairings)} regional pairings over {len(regions)} regions")
 
     arms = {"variants": thin_variants, "tracts": thin_tracts,
             "individuals": thin_individuals}
-    rows = []
-    for arm, fn in arms.items():
-        for q in FRACTIONS:
-            reps = 1 if q == 1.0 else N_REP
-            for rep in range(reps):
-                a = A0 if q == 1.0 else fn(A0, q, rng)
-                b = B0 if q == 1.0 else fn(B0, q, rng)
-                se = paired_se(a, b)
-                rows.append(dict(arm=arm, fraction=q, rep=rep, se=se,
-                                 n_ind=a["name"].nunique() + b["name"].nunique(),
-                                 n_tracts=len(a) + len(b),
-                                 counts=float(a["Shared_with_Vindija"].sum()
-                                              + a["Shared_with_Altai"].sum()
-                                              + b["Shared_with_Vindija"].sum()
-                                              + b["Shared_with_Altai"].sum())))
-            log.info(f"  [{arm:12s}] q={q:<6} SE="
-                     f"{np.mean([r['se'] for r in rows if r['arm']==arm and r['fraction']==q]):.5f}")
+    rows, floors = [], []
+    for g0, g1 in pairings:
+        A0 = nea[nea.region == g0]
+        B0 = nea[nea.region == g1]
+        se_full = paired_se(A0, B0)
+        floor = counting_floor(A0, B0)
+        floors.append(dict(pair=f"{g0}|{g1}", se_full=se_full, floor=floor,
+                           pct_not_count_limited=100*(1-(floor/se_full)**2)))
+        log.info(f"  [{g0} vs {g1}] SE {se_full:.5f}, counting floor "
+                 f"{floor:.5f} -> {100*(1-(floor/se_full)**2):.0f}% not "
+                 f"count-limited")
+        for arm, fn in arms.items():
+            for q in FRACTIONS:
+                reps = 1 if q == 1.0 else N_REP
+                for rep in range(reps):
+                    a = A0 if q == 1.0 else fn(A0, q, rng)
+                    b = B0 if q == 1.0 else fn(B0, q, rng)
+                    rows.append(dict(pair=f"{g0}|{g1}", arm=arm, fraction=q,
+                                     rep=rep, se=paired_se(a, b),
+                                     n_ind=a["name"].nunique()
+                                     + b["name"].nunique(),
+                                     n_tracts=len(a) + len(b)))
     df = pd.DataFrame(rows)
     df.to_csv(os.path.join(OUT, "ns_tract_subsample.csv"), index=False)
+    pd.DataFrame(floors).to_csv(
+        os.path.join(OUT, "ns_tract_counting_floor.csv"), index=False)
+    se_full = float(np.mean([f["se_full"] for f in floors]))
+    floor = float(np.mean([f["floor"] for f in floors]))
 
+    # Per pairing first, so that a claim about which axis binds can be checked
+    # for consistency instead of asserted from one case.
     frows = []
+    for pair in df["pair"].unique():
+        for arm in arms:
+            sub = df[(df.arm == arm) & (df.pair == pair)]
+            fit = sc.subsample_exponent(sub["fraction"], sub["se"])
+            var = sc.subsample_variance_share(sub["fraction"], sub["se"])
+            frows.append(dict(pair=pair, arm=arm, **fit, **var))
+    perpair = pd.DataFrame(frows)
+    perpair.to_csv(os.path.join(OUT, "ns_tract_subsample_perpair.csv"),
+                   index=False)
+    # Which arm has the largest exponent, pairing by pairing. If the answer is
+    # not the same arm nearly every time, "the binding axis is X" is a statement
+    # about one comparison and not about the statistic.
+    winner = perpair.loc[perpair.groupby("pair")["b"].idxmax()]
+    wins = winner["arm"].value_counts().to_dict()
+    n_pairs = perpair["pair"].nunique()
+    log.info("exponent b by arm, across pairings:")
     for arm in arms:
-        s = df[df.arm == arm]
-        fit = sc.subsample_exponent(s["fraction"], s["se"])
-        var = sc.subsample_variance_share(s["fraction"], s["se"])
-        frows.append(dict(arm=arm, **fit, **var))
-        log.info(f"  {arm:12s} b = {fit['b']:+.3f} +/- {fit['b_se']:.3f}   "
-                 f"holds {100*var['var_share']:.0f}% of the full-data variance")
-    fdf = pd.DataFrame(frows)
+        s_ = perpair[perpair.arm == arm]
+        log.info(f"  {arm:12s} b = {s_['b'].mean():+.3f} "
+                 f"(range {s_['b'].min():+.3f} to {s_['b'].max():+.3f}); "
+                 f"largest in {wins.get(arm, 0)}/{n_pairs} pairings; "
+                 f"mean variance share {100*s_['var_share'].mean():.0f}%")
+    fdf = perpair.groupby("arm", as_index=False)[
+        ["b", "b_se", "var_share"]].mean()
     fdf.to_csv(os.path.join(OUT, "ns_tract_subsample_fit.csv"), index=False)
 
     best = fdf.loc[fdf["b"].idxmax()]
@@ -183,15 +218,30 @@ def main():
     share = float(best["var_share"])
     log.info(f"  the largest single share is {100*share:.0f}% ({best['arm']}). "
              f"The axes overlap, so these shares cannot be added.")
-    log.info(f"  independently, the counting floor puts "
-             f"{100*(1-(floor/se_full)**2):.0f}% of the variance beyond reach "
-             f"of any count-increasing axis - consistent with the "
-             f"{100*(1-share):.0f}% the best axis leaves untouched.")
-    for _, r in fdf.iterrows():
-        asym = se_full * np.sqrt(max(1.0 - float(r["var_share"]), 0.0))
-        log.info(f"  exhausting '{r['arm']}' entirely would take the SE to "
-                 f"{asym:.5f} and f50 to "
-                 f"{100*0.129*asym/se_full:.1f}% (from 12.9%)")
+    log.info(f"  the best axis leaves {100*(1-share):.0f}% of the variance "
+             f"untouched. The independent-sampling reference sits at "
+             f"{100*(1-(floor/se_full)**2):.0f}%, but it is not a bound on a "
+             f"paired statistic -- shared archaic-genome noise cancels in the "
+             f"pairing, and one pairing measures below it -- so it corroborates "
+             f"nothing here and is reported for scale only.")
+    # The baseline f50 is read from the tract study's own output rather than
+    # hardcoded. It was 12.9% when this script was written -- a single pairing,
+    # and with the injection applied in one direction only -- and is now the
+    # symmetrised value pooled over every regional pairing. A stale constant
+    # here would quietly misstate every projection below it.
+    try:
+        base_f50 = float(pd.read_csv(
+            os.path.join(OUT, "ns_tract_limit.csv"))["f50"].iloc[0])
+    except (OSError, KeyError, IndexError):
+        base_f50 = np.nan
+        log.warning("  ns_tract_limit.csv unreadable; projections skipped")
+    if np.isfinite(base_f50):
+        for _, r in fdf.iterrows():
+            asym = se_full * np.sqrt(max(1.0 - float(r["var_share"]), 0.0))
+            log.info(f"  exhausting '{r['arm']}' entirely would take the SE to "
+                     f"{asym:.5f} and f50 to "
+                     f"{100*base_f50*asym/se_full:.1f}% "
+                     f"(from {100*base_f50:.1f}%)")
     make_figure(df, fdf, se_full, floor)
     log.info(f"Wrote ns_tract_subsample*.csv and fig_n8 to {OUT}")
 

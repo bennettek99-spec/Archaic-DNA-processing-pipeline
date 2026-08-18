@@ -281,22 +281,36 @@ def detection_curve(va, aa, vb, ab, kappa, base, rng, n_boot=N_BOOT):
 
     out = []
     for f in (0.0, 0.02, 0.05, 0.10, 0.15, 0.20, 0.30, 0.50):
-        sa, la_ = boot(va, aa, shift=-kappa * f * base)
-        sb, lb_ = boot(vb, ab)
-        diff = sa - sb
-        dl = la_ - lb_
-        ok = np.isfinite(dl)
-        g = ok.sum(axis=1)
-        dl0 = np.where(ok, dl, 0.0)
-        m = dl0.sum(axis=1) / np.maximum(g, 1)
-        var = (((dl0 - m[:, None]) * ok) ** 2).sum(axis=1)
-        with np.errstate(invalid="ignore", divide="ignore"):
-            se = np.sqrt((g - 1) / np.maximum(g, 1) * var)
-            z = diff / se
-        good = np.isfinite(z) & (se > 0)
-        out.append(dict(fraction=f,
-                        detect_rate=float(np.mean(np.abs(z[good]) > N_SIGMA))
-                        if good.any() else np.nan))
+        # Inject into each group in turn and average the two.
+        #
+        # Shifting only one group makes the answer depend on the sign of the
+        # pre-existing difference between them: where the injection opposes
+        # that difference, a small f first cancels the baseline and detection
+        # gets *worse* before it gets better, and where it reinforces it,
+        # detection is flattered. Which group is "a" is arbitrary -- here it is
+        # alphabetical ordering -- so this was a property of the sort order and
+        # not of the statistic. It moved West Eurasia vs East Asia between
+        # 12.9% and 18.2% depending on nothing but that. Averaging the two
+        # directions is the symmetric question: how detectable is a re-sourcing
+        # in one of these two groups, not knowing which.
+        rates = []
+        for v1, a1, v2, a2 in ((va, aa, vb, ab), (vb, ab, va, aa)):
+            s1, l1 = boot(v1, a1, shift=-kappa * f * base)
+            s2, l2 = boot(v2, a2)
+            diff = s1 - s2
+            dl = l1 - l2
+            ok = np.isfinite(dl)
+            g = ok.sum(axis=1)
+            dl0 = np.where(ok, dl, 0.0)
+            m = dl0.sum(axis=1) / np.maximum(g, 1)
+            var = (((dl0 - m[:, None]) * ok) ** 2).sum(axis=1)
+            with np.errstate(invalid="ignore", divide="ignore"):
+                se = np.sqrt((g - 1) / np.maximum(g, 1) * var)
+                z = diff / se
+            good = np.isfinite(z) & (se > 0)
+            rates.append(float(np.mean(np.abs(z[good]) > N_SIGMA))
+                         if good.any() else np.nan)
+        out.append(dict(fraction=f, detect_rate=float(np.nanmean(rates))))
     return pd.DataFrame(out)
 
 
@@ -377,23 +391,55 @@ def main():
     pdf = pd.DataFrame(prows)
     pdf.to_csv(os.path.join(OUT, "ns_tract_pairs.csv"), index=False)
 
-    # Empirical curve on the headline regional comparison.
-    sa, sb = nea[nea.region == "WestEurasia"], nea[nea.region == "EastAsia"]
-    va, aa = block_sums(sa)
-    vb, ab = block_sums(sb)
-    curve = detection_curve(va, aa, vb, ab, kappa, base, rng, args.boot)
+    # Detection curve over EVERY regional pair, not one.
+    #
+    # This used to be computed on WestEurasia against EastAsia alone and then
+    # compared against a genome-wide figure that averages 595 cohort pairs. That
+    # is not a like-for-like comparison, and it flatters nothing: Europe-vs-East
+    # Asia is the *worst*-powered regional pairing in the genome-wide study, at
+    # 1.34x the all-pairs median SE, so the single-pair tract number was being
+    # held against an easier comparator. Averaging the detection rate over all
+    # pairs mirrors how the genome-wide curve is built and makes the two
+    # numbers mean the same thing.
+    regions = sorted(nea["region"].unique())
+    reg_pairs = list(itertools.combinations(regions, 2))
+    per_pair, frames = [], []
+    for a_, b_ in reg_pairs:
+        va, aa = block_sums(nea[nea.region == a_])
+        vb, ab = block_sums(nea[nea.region == b_])
+        c = detection_curve(va, aa, vb, ab, kappa, base, rng, args.boot)
+        frames.append(c.set_index("fraction")["detect_rate"].rename(f"{a_}|{b_}"))
+        p50 = sc.power_crossing(c["fraction"], c["detect_rate"], 0.50)
+        p80 = sc.power_crossing(c["fraction"], c["detect_rate"], 0.80)
+        per_pair.append(dict(a=a_, b=b_, f50=p50, f80=p80,
+                             melanesia="Melanesia" in (a_, b_)))
+        log.info(f"    {a_:20s} vs {b_:20s} f50={100*p50:5.1f}%  "
+                 f"f80={100*p80:5.1f}%")
+    allc = pd.concat(frames, axis=1)
+    curve = pd.DataFrame({"fraction": allc.index,
+                          "detect_rate": allc.mean(axis=1).to_numpy()})
     f50 = sc.power_crossing(curve["fraction"], curve["detect_rate"], 0.50)
     f80 = sc.power_crossing(curve["fraction"], curve["detect_rate"], 0.80)
-    log.info("  detection curve (WestEurasia vs EastAsia): " +
+    pd.DataFrame(per_pair).to_csv(
+        os.path.join(OUT, "ns_tract_pair_limits.csv"), index=False)
+    log.info(f"  pooled over {len(reg_pairs)} regional pairs: " +
              ", ".join(f"{100*r.fraction:.0f}%->{100*r.detect_rate:.0f}%"
                        for r in curve.itertuples()))
-    log.info(f"  f50 = {100*f50:.1f}%   f80 = {100*f80:.1f}%   "
-             f"(genome-wide: 37% and 64%)")
+    log.info(f"  f50 = {100*f50:.1f}%   f80 = {100*f80:.1f}%")
+    log.info(f"  comparators, genome-wide: 37.7%/64.1% over all 595 cohort "
+             f"pairs; ~50.4% for Europe-vs-EastAsia alone")
 
+    # Both comparators are carried, because the honest gain depends on which
+    # one you match scope to: 0.377 averages all 595 genome-wide cohort pairs,
+    # 0.504 is that figure restricted to Europe-vs-EastAsia, which is the
+    # scope the earlier single-pair tract number actually had.
     ldf = pd.DataFrame([dict(statistic="D_tract", kappa=kappa, base=base,
-                             f50=f50, f80=f80,
-                             genome_wide_f50=0.374, genome_wide_f80=0.641,
-                             gain_f50=0.374 / f50 if f50 else np.nan)])
+                             f50=f50, f80=f80, n_region_pairs=len(reg_pairs),
+                             genome_wide_f50_allpairs=0.377,
+                             genome_wide_f80_allpairs=0.641,
+                             genome_wide_f50_eu_vs_ea=0.504,
+                             gain_vs_allpairs=0.377 / f50 if f50 else np.nan,
+                             gain_vs_eu_ea=0.504 / f50 if f50 else np.nan)])
     ldf.to_csv(os.path.join(OUT, "ns_tract_limit.csv"), index=False)
     curve.to_csv(os.path.join(OUT, "ns_tract_curve.csv"), index=False)
 

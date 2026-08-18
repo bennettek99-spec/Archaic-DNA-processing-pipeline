@@ -200,6 +200,35 @@ class BCFReader:
                 return                      # truncated tail; stop cleanly
             yield self._parse_record(buf, l_shared)
 
+    def iter_at(self, wanted) -> Iterator[Record]:
+        """Yield only records whose position is in `wanted`.
+
+        `wanted` maps contig name -> a set of 1-based positions.
+
+        The saving is real but bounded, and it is worth being clear about
+        which half it is. Decompression still happens for every record — the
+        stream is sequential and there is no index — but a record that is not
+        wanted is rejected after reading eight bytes of its shared block, so
+        the allele strings, the INFO block and the per-sample genotypes are
+        never decoded. Against a SNP panel that selects roughly one position in
+        thirty, that skips the large majority of the per-record Python work.
+        """
+        read = self._fh.read
+        by_idx = {i: wanted.get(name, ()) for i, name in self._contigs.items()}
+        while True:
+            head = read(8)
+            if len(head) < 8:
+                return
+            l_shared, l_indiv = struct.unpack("<II", head)
+            buf = memoryview(read(l_shared + l_indiv))
+            if len(buf) < l_shared + l_indiv:
+                return
+            chrom_i, pos0 = struct.unpack_from("<ii", buf, 0)
+            hits = by_idx.get(chrom_i)
+            if not hits or (pos0 + 1) not in hits:
+                continue
+            yield self._parse_record(buf, l_shared)
+
     def _parse_record(self, buf: memoryview, l_shared: int) -> Record:
         chrom_i, pos, _rlen, _qual, n_ai, n_fs = struct.unpack_from(
             "<iiifII", buf, 0)

@@ -78,3 +78,7 @@ data/1_vindija_exome_hg19_1000g_LowQualDeamination.md.bam.annotated_1.3-14gatk.v
 # Downloaded archaic genome BCFs (Zenodo 7246376, ~1.3 GB) - regenerate with
 # scripts/fetch_archaic_bcf.py rather than committing.
 data/archaic_hg19/
+
+# Regenerable from the archaic BCFs via scripts/import_archaic_bcf.py (~100 min).
+# The small CSVs beside it are tracked; the 38 MB frequency array is not.
+results/archaic_panel/archaic_1240k_freqs.npz

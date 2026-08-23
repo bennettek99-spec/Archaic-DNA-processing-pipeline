@@ -90,7 +90,7 @@ mean-genome profiles (`archaic.profiles.group_archaic`).
 
 **Reproduce:**
 ```bash
-python ancestry_decomposition.py
+python scripts/ancestry_decomposition.py
 ```
 Outputs: `results/ancestry/ancestry_{models,best,west3}.csv`, `reports/ancestry/fig_a{1..4}*.png`.
 

@@ -215,8 +215,8 @@ Every core cohort was recomputed on the 224,854 SNPs covered in all of them. The
 ## Reproduce
 
 ```bash
-python neanderthal_source.py --panel 1240k
-python neanderthal_source.py --panel 1240k --transversions
+python scripts/neanderthal_source.py --panel 1240k
+python scripts/neanderthal_source.py --panel 1240k --transversions
 ```
 
 

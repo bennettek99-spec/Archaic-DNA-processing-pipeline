@@ -31,12 +31,12 @@ Here we lift the Eurasia restriction and run the same pipeline on the whole AADR
 
 **Reproduce:**
 ```bash
-python phase2_prepare.py --panel 1240k --scope global
+python scripts/phase2_prepare.py --panel 1240k --scope global
 cp results/phase3_1240k_estimates.csv results/phase3_1240k_global_estimates.csv   # seed
-python phase3_estimate.py --panel 1240k \
+python scripts/phase3_estimate.py --panel 1240k \
        --meta results/phase2_1240k_global_metadata.csv \
        --out  results/phase3_1240k_global_estimates.csv                            # ~5,666 new
-python global_archaic_survey.py    # merges -> phase4_1240k_global_analysis.csv, tables, figs
+python scripts/global_archaic_survey.py    # merges -> phase4_1240k_global_analysis.csv, tables, figs
 ```
 
 ---

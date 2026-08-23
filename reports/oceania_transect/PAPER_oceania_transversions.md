@@ -126,8 +126,8 @@ Low coverage inflates a standard error without moving the point estimate, so com
 ## Reproduce
 
 ```bash
-python oceania_transect.py --panel 1240k
-python oceania_transect.py --panel 1240k --transversions
+python scripts/oceania_transect.py --panel 1240k
+python scripts/oceania_transect.py --panel 1240k --transversions
 ```
 
 

@@ -37,7 +37,7 @@ Fu et al. (2015) exploited exactly this on the shotgun Oase1 genome: they plotte
 
 For full resolution we provide a runnable pipeline that reproduces Fu et al.'s analysis from the aligned reads: it downloads the Oase1 BAM (ENA **PRJEB8987**), calls variants against hg19 on the strict-callability mask, and runs **hmmix** (Skov et al. 2018) — `create_ingroup` → `train` (haploid) → `decode -admixpop` against Altai/Vindija/Chagyrskaya/Denisova BCFs — to segment archaic haplotypes and annotate each as Neanderthal- or Denisovan-derived, then converts segment lengths to a generation estimate. This step requires `samtools`/`bcftools`/`hmmix` (Linux/macOS/WSL); see the pipeline README. It is the resolution-appropriate way to place the segment boundaries and confirm the > 50 cM segments Fu et al. reported.
 
-**Reproduce (array analysis):** `PYTHONIOENCODING=utf-8 python oase1_haplotype.py`
+**Reproduce (array analysis):** `PYTHONIOENCODING=utf-8 python scripts/oase1_haplotype.py`
 
 ---
 

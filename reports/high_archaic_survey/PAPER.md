@@ -65,10 +65,9 @@ Individuals were assigned to macro-regions by a reproducible longitude/latitude 
 
 **Reproduce with:**
 ```bash
-cd archaic-introgression
-PYTHONIOENCODING=utf-8 python high_archaic_survey.py
+PYTHONIOENCODING=utf-8 python scripts/high_archaic_survey.py
 # consumes results/phase4_1240k_analysis.csv (itself produced by
-#   python run_pipeline.py --panel 1240k  -> phases 1-4)
+#   python scripts/run_pipeline.py --panel 1240k  -> phases 1-4)
 ```
 
 ---

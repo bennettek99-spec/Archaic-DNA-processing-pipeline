@@ -121,3 +121,18 @@ The single-sample statistic is downward biased when applied to present-day
 genomes whose admixture event is more than roughly 2,000 generations old. This
 module therefore does not present present-day single-genome dates as valid.
 
+## SNP-density limitation (quantified)
+
+`scripts/ns_dating_density.py` makes the 1240K-density limitation quantitative
+rather than asserted. It simulates a chromosome with a known Neanderthal pulse
+and recombination, ascertains Altai-derived/African-ancestral SNPs exactly as
+the estimator does, then fits the covariance curve at whole-genome-like density
+and at 1240K-like density (`results/dating_density_sim/density_recovery.csv`).
+
+The short-distance (<2 cM) SNP pairs that pin down the decay rate `lambda`
+collapse by roughly **625x** at 1240K density relative to whole-genome density.
+At that pair count the recovered generations are unconstrained (jackknife SE of
+the same order as the point estimate), while whole-genome density at least
+bounds the rate. This is the quantitative form of the "sparse, ascertained 1240K"
+limitation above, and the reason the checked-in run is labelled exploratory.
+

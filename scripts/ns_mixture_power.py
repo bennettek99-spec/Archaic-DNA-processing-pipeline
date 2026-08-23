@@ -506,12 +506,12 @@ def write_report(ldf, pdf, sdf, analytic, limit, signal, n_pairs, labels):
         "assumes; the dashed line is the assumption.\n",
 
         "## Caveats\n",
-        f"- **The result scales inversely with alpha.** The injected shift is "
-        f"alpha x *f* x (target - source), so f50 and f80 move in proportion to "
-        f"whatever error is in the cohort Neanderthal fractions. This "
-        f"repository's f4-ratio is known to run ~0.2pp high on a ~2.1% base, so "
-        f"if alpha is overstated by 10% the true thresholds are 10% *higher* "
-        f"than reported here. No other input carries this sensitivity.\n",
+        "- **The result scales inversely with alpha.** The injected shift is "
+        "alpha x *f* x (target - source), so f50 and f80 move in proportion to "
+        "whatever error is in the cohort Neanderthal fractions. This "
+        "repository's f4-ratio is known to run ~0.2pp high on a ~2.1% base, so "
+        "if alpha is overstated by 10% the true thresholds are 10% *higher* "
+        "than reported here. No other input carries this sensitivity.\n",
         "- **The mixture is instantaneous and clean.** One source replaced by "
         "another at a known fraction, with no drift, no LD decay and no "
         "post-admixture selection. A real second pulse would be messier and "

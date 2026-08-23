@@ -57,7 +57,6 @@ Outputs (reports/neanderthal_source/):
 Run: PYTHONIOENCODING=utf-8 python scripts/ns_phase0_checks.py --panel 1240k
 """
 import argparse
-import itertools
 import os
 import sys
 import types

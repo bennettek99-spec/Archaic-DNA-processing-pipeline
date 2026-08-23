@@ -121,8 +121,7 @@ def load_tracts(path=S5, min_snps=1):
     d = d.dropna(subset=["Shared_with_Altai", "Shared_with_Vindija",
                          "Shared_with_Denisova", "start", "end"])
     d = d[d["snps"] >= min_snps]
-    v, a, dn = (d["Shared_with_Vindija"], d["Shared_with_Altai"],
-                d["Shared_with_Denisova"])
+    v, dn = d["Shared_with_Vindija"], d["Shared_with_Denisova"]
     d["cls"] = np.where(v > dn, "neanderthal",
                         np.where(dn > v, "denisovan", "unresolved"))
     d["chrom"] = pd.to_numeric(d["chrom"], errors="coerce")
@@ -141,7 +140,6 @@ def assign_blocks(chrom, start, n_blocks):
     spanning a chromosome boundary in any way that matters and mirrors the
     fixed-width block scheme the genome-wide study uses on SNP indices.
     """
-    order = np.argsort(chrom, kind="stable")
     offs, run = {}, 0.0
     for c in np.unique(chrom):
         offs[int(c)] = run
@@ -426,8 +424,8 @@ def main():
              ", ".join(f"{100*r.fraction:.0f}%->{100*r.detect_rate:.0f}%"
                        for r in curve.itertuples()))
     log.info(f"  f50 = {100*f50:.1f}%   f80 = {100*f80:.1f}%")
-    log.info(f"  comparators, genome-wide: 37.7%/64.1% over all 595 cohort "
-             f"pairs; ~50.4% for Europe-vs-EastAsia alone")
+    log.info("  comparators, genome-wide: 37.7%/64.1% over all 595 cohort "
+             "pairs; ~50.4% for Europe-vs-EastAsia alone")
 
     # Both comparators are carried, because the honest gain depends on which
     # one you match scope to: 0.377 averages all 595 genome-wide cohort pairs,

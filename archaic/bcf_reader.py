@@ -132,7 +132,6 @@ def _parse_header(text: str):
         if line.startswith("##contig=<") or line.startswith("##FORMAT=<"):
             body = line[line.index("<") + 1:line.rindex(">")]
             fields, depth, cur = {}, 0, ""
-            key = None
             for ch in body:                     # split on commas outside quotes
                 if ch == '"':
                     depth ^= 1

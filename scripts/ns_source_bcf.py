@@ -259,7 +259,7 @@ def main():
     log.info(f"  kappa              {a['kappa']:.3f} -> {b['kappa']:.3f}")
     log.info(f"  f50                {100*a['f50']:.1f}% -> {100*b['f50']:.1f}%")
     log.info(f"  f80                {100*a['f80']:.1f}% -> {100*b['f80']:.1f}%")
-    log.info(f"  (published AADR-based figures, different code: 37% / 64%)")
+    log.info("  (published AADR-based figures, different code: 37% / 64%)")
     make_figure(curves, cmp)
     log.info(f"Wrote ns_bcf_comparison.csv, ns_bcf_cohorts.csv and fig_n9 to {OUT}")
 

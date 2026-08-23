@@ -17,7 +17,7 @@ the repository integration is enabled.
 
    ```bash
    python tools/check_repo_docs.py
-   pyflakes archaic *.py tests tools oase1_bam_pipeline
+   pyflakes archaic archaic_admixture_dating scripts tests tools oase1_bam_pipeline
    python -m pytest -q
    archaic-pipeline smoke-test
    python -m build

@@ -25,6 +25,16 @@ but a global migration paper needs separate source/target definitions, qpWave
 rank tests, transversion-only robustness, and clear continent/period-specific
 model rejection tables.
 
+Groundwork landed: `scripts/v3_migration.py` defines the continent x period
+target cohorts (7 half-open BP bins across Eurasia/Africa/Oceania/Americas),
+assembles pooled frequencies, and writes a per-cell qpAdm model-rejection table
+plus qpWave rank tests to `results/v3_migration/`. The rejection-table logic is
+pure and unit-tested (`archaic.ancestry.model_rejection_table`). The checked-in
+run reports all models formally rejected at full SNP density — consistent with
+the >1M-SNP qpAdm behavior documented in `methods-and-interpretation.md` — so
+the next step is the method discussion and source/target refinement, not more
+fitting.
+
 ## V4 - canid work
 
 Status: separate repository. Keep canid analyses out of this human AADR pipeline

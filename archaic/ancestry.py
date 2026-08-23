@@ -232,3 +232,43 @@ def decompose_best(freq, target, models, block, n_blocks=50):
                 len(r["sources"]))
     results.sort(key=rank_key)
     return results
+
+
+def model_rejection_table(freq, targets, models, block, n_blocks=50,
+                          min_p_for_plausible=0.05):
+    """One rejection table over targets x models, for per-period reporting.
+
+    For each target cohort (a key in `freq`) and each candidate source model
+    (name -> source list), run the constrained qpAdm and record the fit. A model
+    is labelled `plausible` when its GLS p-value clears `min_p_for_plausible`
+    (the standard 0.05 threshold); otherwise `rejected`. Targets or models that
+    cannot be formed (too few sources/outgroups present) are skipped, not
+    guessed at.
+
+    Returns a list of dict rows ready for pd.DataFrame, one per
+    (target, model) that could be attempted. Pure with respect to the data — no
+    AADR required — so it is unit-testable.
+    """
+    rows = []
+    for target in targets:
+        if target not in freq:
+            continue
+        for model, sources in models.items():
+            outs = default_outgroups(sources)
+            r = decompose(freq, target, sources, outs, block, n_blocks)
+            if not r["ok"]:
+                continue
+            p = r["constrained"]["p"]
+            rows.append(dict(
+                target=target,
+                model=model,
+                sources=";".join(r["sources"]),
+                outgroups=";".join(r["outgroups"]),
+                n_snp=r["n_snp"],
+                chi2=r["constrained"]["chi2"],
+                dof=r["constrained"]["dof"],
+                p=float(p) if np.isfinite(p) else np.nan,
+                status=("plausible" if (np.isfinite(p) and p >= min_p_for_plausible)
+                        else "rejected"),
+            ))
+    return rows

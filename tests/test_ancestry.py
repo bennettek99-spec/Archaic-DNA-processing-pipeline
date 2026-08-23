@@ -128,6 +128,32 @@ def test_qpwave_returns_rank_tests():
     assert all(r["dof"] > 0 for r in rows)
 
 
+def test_model_rejection_table_recovers_plausible_vs_rejected():
+    """The true generating model (S1/S2/S3) must be labelled plausible and a
+    wrong model (unrelated sources) rejected, in a per-target x model table."""
+    freq, block, true_w = _synthetic_freq(seed=8)
+    n_snp = len(freq["S1"])
+    rng = np.random.default_rng(8)
+    for name in list(anc.BASE_RIGHT) + ["Unrelated1", "Unrelated2"]:
+        freq[name] = np.clip(rng.beta(2, 2, n_snp), 0.001, 0.999)
+    models = {
+        "true_model": ["S1", "S2", "S3"],
+        "wrong_model": ["Unrelated1", "Unrelated2"],
+    }
+    rows = anc.model_rejection_table(freq, ["Target"], models, block, 50)
+    by = {r["model"]: r for r in rows}
+    assert by["true_model"]["status"] == "plausible"
+    assert by["wrong_model"]["status"] == "rejected"
+    assert all(r["n_snp"] > 0 for r in rows)
+
+
+def test_model_rejection_table_skips_missing_targets():
+    freq, block, _ = _synthetic_freq(seed=9)
+    rows = anc.model_rejection_table(freq, ["NotPresent"], {"west3": ["S1", "S2", "S3"]},
+                                     block, 50)
+    assert rows == []
+
+
 if __name__ == "__main__":
     tests = [v for k, v in list(globals().items()) if k.startswith("test_")]
     for t in tests:

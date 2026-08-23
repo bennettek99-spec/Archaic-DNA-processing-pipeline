@@ -1,0 +1,19 @@
+# Pinned environment for the core archaic-introgression pipeline.
+# Recreate a fresh, tested environment with:
+#   python -m pip install -r requirements.lock
+# Recorded from the primary development machine (Windows 11, Python 3.14.5).
+# The runtime floor in pyproject.toml remains Python >=3.10; these exact pins
+# are the versions the CI and the v0.7.0 results were produced with.
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.1
+scikit-learn==1.9.0
+matplotlib==3.11.0
+PyYAML==6.0.3
+msprime==1.4.2
+reportlab==4.5.1
+pypdf==6.13.2
+pytest==9.1.1
+pytest-cov==7.1.0
+pyflakes==3.4.0
+build==1.5.0

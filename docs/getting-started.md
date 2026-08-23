@@ -9,6 +9,17 @@
 
 The synthetic smoke test does not need AADR data.
 
+For a bit-for-bit reproducible environment, install from the pinned lockfile
+instead of the loose extras:
+
+```bash
+python -m pip install -r requirements.lock
+```
+
+`requirements.lock` records the exact Python-package versions the v0.7.0
+results and CI were produced with. The R side (ADMIXTOOLS 2 concordance) is
+separate: R 4.6.x with `admixtools2` 2.0.10 and Rtools45 on PATH.
+
 ## Install
 
 ```bash
@@ -37,7 +48,7 @@ python -m pip install -e .
 ```
 
 The command-line entry points are designed for an editable checkout because
-the phase scripts live at the repository root.
+the phase scripts live under `scripts/`.
 
 ## Run the synthetic smoke test
 
@@ -117,7 +128,7 @@ Intermediate phase outputs are written under `results/`.
 ```bash
 python -m pip install -e ".[test,sim]"
 python -m pytest -q
-pyflakes archaic *.py tests tools oase1_bam_pipeline
+pyflakes archaic archaic_admixture_dating scripts tests tools oase1_bam_pipeline
 python tools/check_repo_docs.py
 ```
 

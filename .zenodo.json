@@ -19,5 +19,13 @@
   "creators": [
     { "name": "Kuhn, Bennett" }
   ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/bennettek99-spec/Archaic-DNA-processing-pipeline",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ],
   "access_right": "open"
 }

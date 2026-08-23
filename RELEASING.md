@@ -27,13 +27,19 @@ the repository integration is enabled.
 6. Create an annotated `vX.Y.Z` tag on the merge commit and push it.
 7. Create the matching GitHub release from the changelog entry.
 8. If Zenodo is connected, confirm the archive and add its version DOI and
-   all-versions DOI to `CITATION.cff` and the paper's code-availability section.
+   all-versions DOI to `CITATION.cff` (a `doi:` field and a
+   `preferred-citation` identifier) and the paper's code-availability section.
+   The DOI is minted by Zenodo only after the first archive; until then the
+   `related_identifiers` entry in `.zenodo.json` links back to the GitHub repo.
 
 ## Zenodo setup
 
 Sign in to Zenodo with GitHub, open **Settings -> GitHub**, and enable
 `bennettek99-spec/Archaic-DNA-processing-pipeline`. `.zenodo.json` supplies the
-software metadata used when a GitHub release is archived.
+software metadata used when a GitHub release is archived. Once the first archive
+is created, copy the DOI (form `10.5281/zenodo.XXXXXXX`) into:
+- `CITATION.cff` as `doi:` and as the `identifiers` entry, and
+- `README.md` (a Zenodo DOI badge next to the release badge).
 
 ## Versioning
 

@@ -52,3 +52,33 @@ Top within-Etruscan residuals:
 
 ## D. Verdict
 Genome-wide Neanderthal ancestry is essentially flat across the Italian transect (+0.0081 pp/kyr, p=0.79). No Etruscan individual is a significant archaic-ancestry outlier; crucially, the AADR steppe/Levantine/East-Mediterranean *genetic-ancestry* outliers are **not** archaic-ancestry outliers (mean |z| 0.45 vs 0.68 for typical Etruscans) — those alternative West-Eurasian ancestries carry similar ~2% Neanderthal, so the fine-scale ancestry variation in Iron-Age Etruria did **not** translate into archaic-ancestry differences. 1 of 11 introgression loci survive Bonferroni after controlling for ancestry (PCs) and overall archaic level: **FADS1-2** (p=2.6e-04, falling toward present, 5 archaic SNPs). These rest on few archaic-informative SNPs and are flagged as selection *candidates/hypotheses* for higher-coverage follow-up, not proof. FADS1-2 is a well-known target of strong dietary selection in Europeans (Mathieson 2015; Buckley 2017), so a temporal shift there is biologically plausible.
+
+## E. ADMIXTOOLS 2 ancestry-model cross-check
+
+*Authoritative tool cross-check; exploratory. The pure-Python qpAdm in this
+pipeline is a simplified rotating-outgroup form and is not the publication
+instrument — the ADMIXTOOLS 2 run below is.*
+
+Four Italian target cohorts (Etruscan, Latin, ImperialRoman, ItalyBA) were
+modelled with the canonical West-Eurasian sources (Anatolia_N, Yamnaya, WHG, and
+with/without Iran_N) against seven distal outgroups (Mbuti, Han, Papuan,
+Karitiana, Natufian, Ust_Ishim, MA1), using the same PLINK export and cached f2
+statistics as the concordance validation (`tools/admixtools_concordance.R`).
+Results are in `results/etruscan_admixtools/{qpwave,qpadm_popdrop}.csv`, produced
+by `tools/etruscan_qpwave_qpadm.R`.
+
+The outcome is a formal rejection at full SNP density, consistent with the
+pipeline's documented handling of >1M-SNP qpAdm:
+
+- **qpWave** rejects every tested rank (p ≤ 5e-05 for all four cohorts and both
+  source sets): the left/right sets are connected by more ancestry streams than
+  any 3- or 4-source model admits.
+- **qpAdm popdrop ladder** rejects the full 3-way model and every reduced
+  (drop-one-source) model for all four cohorts (all p < 0.05; most < 1e-6), and
+  rejects the 4-way (Iran_N added) model and its drops as well.
+
+The interpretation boundary therefore stands: the mixture *proportions* reported
+by the pipeline's ancestry decomposition are descriptive summaries of a model
+that is formally rejected at >1M SNPs, not an accepted ancestry model. They are
+kept because they reproduce the well-established Steppe-migration signal with no
+manual tuning, but they are not presented as a validated qpAdm fit.

@@ -67,9 +67,7 @@ additive offset before residual analysis.
   `Austria_ImperialRoman-oAfrica-oLevant`) are AADR-flagged ancestry outliers whose
   low Neanderthal is **expected from their actual admixed ancestry**, not anomalous.
 
-## Robustness (Phase 9) and candidates (Phase 7)
-
-The null is **robust**: 0 samples pass Bonferroni/FDR under every perturbation —
+## Robustness (Phase 9) and candidates (Phase 7)The null is **robust**: 0 samples pass Bonferroni/FDR under every perturbation —
 neighbour count K∈{40,80,160}, three 50% reference subsamples, and a tighter
 ≥400k-SNP floor — and the bootstrap (B=100) max|z| = 3.93 [3.79, 4.03] never
 reaches z*=4.55. The residual *ranking* is itself stable (Spearman ρ≈0.99;
@@ -79,6 +77,19 @@ are AADR-flagged ancestry outliers (`Zana` = Georgia_Tkhina_19thC-oAfrican 0.41%
 Austria_ImperialRoman-oAfrica-oLevant, Hungary_EarlyAvar-oHighEastAsia) whose low
 Neanderthal follows directly from recent African/Levantine/East-Asian admixture.
 Per-candidate reports: `results/phase7_reports/`. Figures: `results/figures/`.
+
+## Transversion-only robustness (group level)
+
+`scripts/transversion_robustness.py` reruns the two headline group-level
+quantities — the Neanderthal f4-ratio and the relative Denisovan D-statistic —
+on transversions only (`results/transversion_robustness/group_stats_full_vs_tv.csv`),
+which is immune to cytosine deamination. The conclusions survive: the Papuan
+Denisovan positive control stays strong (D_Den Z ≈ 6 on both SNP sets) and the
+African negative control stays near-null relative to Eurasians. The Neanderthal
+f4-ratio absolute scale shifts upward under transversion ascertainment (~+1.5pp
+on the Italian cohorts), which is the known cross-ascertainment effect, not a
+change in any ordering: the Italian transect stays flat and the group ordering
+is preserved.
 
 ## Limitations
 

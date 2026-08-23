@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 
 from archaic.admixture_dating import (
+    ExponentialFit,
     calendar_interval,
     combine_aggregates,
     covariance_curve,
@@ -57,3 +58,78 @@ def test_calendar_interval_is_reproducible_and_contains_point():
     point, low, high = first
     assert point == 47_320
     assert low < point < high
+
+
+def test_pair_covariance_rejects_bad_distance_bounds():
+    chrom = np.array(["1", "1"])
+    gpos = np.array([0.0, 0.005])
+    g = np.array([0, 2], dtype=float)
+    for min_cm, max_cm in ((0.5, 0.1), (-0.1, 1.0)):
+        try:
+            pair_covariance_aggregates(chrom, gpos, g,
+                                       min_cm=min_cm, max_cm=max_cm, bin_cm=1.0)
+            raised = False
+        except ValueError:
+            raised = True
+        assert raised
+
+
+def test_pair_covariance_rejects_nonpositive_bin():
+    chrom = np.array(["1", "1"])
+    gpos = np.array([0.0, 0.005])
+    g = np.array([0, 2], dtype=float)
+    try:
+        pair_covariance_aggregates(chrom, gpos, g,
+                                   min_cm=0.0, max_cm=1.0, bin_cm=0.0)
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+
+
+def test_combine_aggregates_excluding_every_chromosome_raises():
+    agg = np.zeros((4, 2))
+    per_chrom = {"1": agg.copy(), "2": agg.copy()}
+    try:
+        combine_aggregates(per_chrom, exclude="1")
+        # excluding one still leaves "2", so this must NOT raise
+    except ValueError:
+        assert False, "excluding one of two chromosomes should be valid"
+    try:
+        combine_aggregates({"1": agg.copy()}, exclude="1")
+        assert False, "excluding the only chromosome should raise"
+    except ValueError:
+        pass
+
+
+def test_covariance_curve_marks_single_pair_as_nan():
+    centers = np.array([0.5])
+    agg = np.array([[1.0], [1.0], [1.0], [1.0]])   # sum_x, sum_y, sum_xy, n=1
+    curve = covariance_curve(centers, agg)
+    assert curve.loc[0, "n_pairs"] == 1
+    assert np.isnan(curve.loc[0, "covariance"])     # needs n > 1
+
+
+def test_fit_exponential_curve_rejects_too_few_bins():
+    dist = np.arange(0.0225, 0.06, 0.005)
+    curve = pd.DataFrame({"distance_cm": dist,
+                          "covariance": np.zeros(len(dist)),
+                          "n_pairs": np.full(len(dist), 100)})
+    try:
+        fit_exponential_curve(curve, min_pairs=50)
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+
+
+def test_fit_exponential_curve_weighted_recovers_same_rate():
+    distance_cm = np.arange(0.0225, 1.0, 0.005)
+    true_generations = 80.0
+    covariance = 0.3 * np.exp(-true_generations * distance_cm / 100.0) + 0.005
+    curve = pd.DataFrame({"distance_cm": distance_cm,
+                          "covariance": covariance,
+                          "n_pairs": np.full(len(distance_cm), 1000)})
+    fit = fit_exponential_curve(curve, min_pairs=50, weighted=True)
+    assert fit.converged
+    assert abs(fit.generations - true_generations) < 1.0

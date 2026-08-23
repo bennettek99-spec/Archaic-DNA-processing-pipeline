@@ -72,3 +72,38 @@ def test_jackknife_matches_batch():
 def test_block_starts():
     starts = st.block_starts(1000, 10)
     assert len(starts) == 10 and starts[0] == 0 and np.all(np.diff(starts) > 0)
+
+
+def test_jackknife_ratio_empty_input_is_all_nan():
+    out = st.jackknife_ratio(np.full(10, np.nan), np.full(10, np.nan),
+                             st.assign_blocks(10, 5), 5)
+    assert np.isnan(out["theta"]) and np.isnan(out["se"]) and np.isnan(out["z"])
+    assert out["n_used"] == 0 and out["n_blocks_used"] == 0
+
+
+def test_jackknife_ratio_single_block_se_is_nan():
+    # one usable block leaves the delete-one jackknife with g==1 -> se=nan
+    num = np.array([1.0, 2.0, 3.0, 4.0])
+    den = np.ones(4)
+    out = st.jackknife_ratio(num, den, np.zeros(4, dtype=np.int32), 1)
+    assert np.isclose(out["theta"], 2.5)
+    assert np.isnan(out["se"])
+    assert np.isnan(out["z"])
+
+
+def test_jackknife_ratio_zero_denominator_is_nan_theta():
+    out = st.jackknife_ratio(np.array([1.0, 2.0]), np.zeros(2),
+                             st.assign_blocks(2, 2), 2)
+    assert np.isnan(out["theta"])
+
+
+def test_dstat_double_swap_is_invariant():
+    """D(W,X;Y,Z) == D(W,X;Z,Y) under a sign flip, i.e. swapping Y/Z negates."""
+    rng = np.random.default_rng(9)
+    n = 3000
+    p = {"W": rng.random(n), "X": rng.random(n),
+         "Y": rng.random(n), "Z": rng.random(n)}
+    blk = st.assign_blocks(n, 20)
+    a = st.dstat(p, "W", "X", "Y", "Z", blk, 20)
+    b = st.dstat(p, "W", "X", "Z", "Y", blk, 20)
+    assert np.isclose(a["theta"], -b["theta"], atol=1e-12)

@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 
 from archaic.admixture_dating import (
-    ExponentialFit,
     calendar_interval,
     combine_aggregates,
     covariance_curve,
